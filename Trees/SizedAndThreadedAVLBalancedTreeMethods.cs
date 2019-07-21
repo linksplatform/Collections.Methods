@@ -6,7 +6,7 @@ using Platform.Unsafe;
 using Platform.Collections;
 #endif
 
-namespace Platform.Data.Core.Collections.Trees
+namespace Platform.Collections.Methods.Trees
 {
     /// <summary>
     /// Combination of Size, Height (AVL), and threads.
@@ -40,10 +40,10 @@ namespace Platform.Data.Core.Collections.Trees
         protected void DecrementBalance(TElement node) => SetBalance(node, (sbyte)(GetBalance(node) - 1));
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected override TElement GetLeftOrDefault(TElement node) => GetLeftIsChild(node) ? base.GetLeftOrDefault(node) : default(TElement);
+        protected override TElement GetLeftOrDefault(TElement node) => GetLeftIsChild(node) ? base.GetLeftOrDefault(node) : default;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected override TElement GetRightOrDefault(TElement node) => GetRightIsChild(node) ? base.GetRightOrDefault(node) : default(TElement);
+        protected override TElement GetRightOrDefault(TElement node) => GetRightIsChild(node) ? base.GetRightOrDefault(node) : default;
 
         protected abstract bool GetLeftIsChild(TElement node);
         protected abstract void SetLeftIsChild(TElement node, bool value);
@@ -132,7 +132,7 @@ namespace Platform.Data.Core.Collections.Trees
 
                     var currentNodeBalance = GetBalance(currentNode);
 
-                    if ((currentNodeBalance < -1) || (currentNodeBalance > 1))
+                    if (currentNodeBalance < -1 || currentNodeBalance > 1)
                     {
                         currentNode = Balance(currentNode);
                         if (IsEquals(parent, default))
@@ -150,7 +150,7 @@ namespace Platform.Data.Core.Collections.Trees
                     }
 
                     currentNodeBalance = GetBalance(currentNode);
-                    if ((currentNodeBalance == 0) || IsEquals(parent, default))
+                    if (currentNodeBalance == 0 || IsEquals(parent, default))
                         break;
 
                     if (isLeftNode)
@@ -486,7 +486,7 @@ namespace Platform.Data.Core.Collections.Trees
 
                         var currentNodeBalance = GetBalance(balanceNode);
 
-                        if ((currentNodeBalance < -1) || (currentNodeBalance > 1))
+                        if (currentNodeBalance < -1 || currentNodeBalance > 1)
                         {
                             balanceNode = Balance(balanceNode);
                             if (IsEquals(balanceParent, default))
@@ -498,7 +498,7 @@ namespace Platform.Data.Core.Collections.Trees
                         }
 
                         currentNodeBalance = GetBalance(balanceNode);
-                        if ((currentNodeBalance != 0) || IsEquals(balanceParent, default))
+                        if (currentNodeBalance != 0 || IsEquals(balanceParent, default))
                             break;
 
                         if (isLeftNode)

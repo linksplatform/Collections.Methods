@@ -1,7 +1,7 @@
 ﻿using System;
 using Platform.Unsafe;
 
-namespace Platform.Data.Core.Collections.Trees
+namespace Platform.Collections.Methods.Trees
 {
     /// <remarks>
     /// Можно сделать прошитую версию дерева, чтобы сделать проход по дереву более оптимальным.
@@ -146,7 +146,7 @@ namespace Platform.Data.Core.Collections.Trees
 
                 if (FirstIsToTheLeftOfSecond(node, root.GetValue<TElement>())) // node.Key < root.Key
                 {
-                    if (EqualToZero (left.GetValue<TElement>()))
+                    if (EqualToZero(left.GetValue<TElement>()))
                         throw new Exception($"Элемент {node} не содержится в дереве.");
 
                     var rightLeft = GetLeftValue(right.GetValue<TElement>());
@@ -158,7 +158,7 @@ namespace Platform.Data.Core.Collections.Trees
                     {
                         LeftRotate(root);
                     }
-                    else if (GreaterThan(rightLeftSize,Decrement(leftSize)))
+                    else if (GreaterThan(rightLeftSize, Decrement(leftSize)))
                     {
                         RightRotate(right);
                         LeftRotate(root);
@@ -172,7 +172,7 @@ namespace Platform.Data.Core.Collections.Trees
                 }
                 else if (FirstIsToTheRightOfSecond(node, root.GetValue<TElement>())) // node.Key > root.Key
                 {
-                    if (EqualToZero (right.GetValue<TElement>() ))
+                    if (EqualToZero(right.GetValue<TElement>()))
                         throw new Exception($"Элемент {node} не содержится в дереве.");
 
                     var leftLeft = GetLeftValue(left.GetValue<TElement>());
@@ -180,11 +180,11 @@ namespace Platform.Data.Core.Collections.Trees
                     var leftRight = GetRightValue(left.GetValue<TElement>());
                     var leftRightSize = GetSizeOrZero(leftRight);
 
-                    if (GreaterThan(leftLeftSize,Decrement(rightSize)))
+                    if (GreaterThan(leftLeftSize, Decrement(rightSize)))
                     {
                         RightRotate(root);
                     }
-                    else if (GreaterThan(leftRightSize,Decrement(rightSize)))
+                    else if (GreaterThan(leftRightSize, Decrement(rightSize)))
                     {
                         LeftRotate(left);
                         RightRotate(root);

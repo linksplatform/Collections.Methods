@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using Platform.Numbers;
 using Platform.Unsafe;
 
-namespace Platform.Data.Core.Collections
+namespace Platform.Collections.Methods
 {
     public abstract class GenericCollectionMethodsBase<TElement>
     {

@@ -6,7 +6,7 @@ using System.Text;
 using Platform.Numbers;
 using Platform.Unsafe;
 
-namespace Platform.Data.Core.Collections.Trees
+namespace Platform.Collections.Methods.Trees
 {
     public abstract class BinaryTreeMethodsBase<TElement> : GenericCollectionMethodsBase<TElement>
     {

@@ -1,4 +1,4 @@
-﻿namespace Platform.Data.Core.Collections.Lists
+﻿namespace Platform.Collections.Methods.Lists
 {
     /// <remarks>
     /// Based on https://en.wikipedia.org/wiki/Doubly_linked_list

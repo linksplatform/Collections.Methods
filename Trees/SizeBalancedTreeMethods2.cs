@@ -1,7 +1,7 @@
 ﻿using System;
 using Platform.Unsafe;
 
-namespace Platform.Data.Core.Collections.Trees
+namespace Platform.Collections.Methods.Trees
 {
     /// <remarks>
     /// Можно сделать прошитую версию дерева, чтобы сделать проход по дереву более оптимальным.

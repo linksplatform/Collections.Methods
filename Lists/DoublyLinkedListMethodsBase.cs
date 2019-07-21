@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace Platform.Data.Core.Collections.Lists
+namespace Platform.Collections.Methods.Lists
 {
     public abstract class DoublyLinkedListMethodsBase<TElement> : GenericCollectionMethodsBase<TElement>
     {
