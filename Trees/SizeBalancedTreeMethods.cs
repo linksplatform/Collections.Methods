@@ -17,7 +17,7 @@ namespace Platform.Collections.Methods.Trees
                 var leftSize = GetSizeOrZero(left.GetValue<TElement>());
                 var right = GetRightPointer(root.GetValue<TElement>());
                 var rightSize = GetSizeOrZero(right.GetValue<TElement>());
-                if (FirstIsToTheLeftOfSecond(node, root.GetValue<TElement>())) // node.Key < root.Key
+                if (FirstIsToTheLeftOfSecond(node, root.GetValue<TElement>())) // node.Key less than root.Key
                 {
                     if (EqualToZero(left.GetValue<TElement>()))
                     {
@@ -26,7 +26,7 @@ namespace Platform.Collections.Methods.Trees
                         left.SetValue(node);
                         break;
                     }
-                    if (FirstIsToTheRightOfSecond(node, left.GetValue<TElement>())) // node.Key > left.Key
+                    if (FirstIsToTheRightOfSecond(node, left.GetValue<TElement>())) // node.Key greater than left.Key
                     {
                         var leftRight = GetRightValue(left.GetValue<TElement>());
                         var leftRightSize = GetSizeOrZero(leftRight);
@@ -36,7 +36,7 @@ namespace Platform.Collections.Methods.Trees
                             {
                                 SetLeft(node, left.GetValue<TElement>());
                                 SetRight(node, root.GetValue<TElement>());
-                                SetSize(node, Add(GetSize(left.GetValue<TElement>()), GetTwo())); // 2 - размер ветки *root (right) и самого node
+                                SetSize(node, Add(GetSize(left.GetValue<TElement>()), GetTwo())); // Two (2) - размер ветки *root (right) и самого node
                                 SetLeft(root.GetValue<TElement>(), GetZero());
                                 SetSize(root.GetValue<TElement>(), GetOne());
                                 root.SetValue(node);
@@ -51,7 +51,7 @@ namespace Platform.Collections.Methods.Trees
                             root = left;
                         }
                     }
-                    else // node.Key < left.Key
+                    else // node.Key less than left.Key
                     {
                         var leftLeft = GetLeftValue(left.GetValue<TElement>());
                         var leftLeftSize = GetSizeOrZero(leftLeft);
@@ -66,7 +66,7 @@ namespace Platform.Collections.Methods.Trees
                         }
                     }
                 }
-                else // node.Key > root.Key
+                else // node.Key greater than root.Key
                 {
                     if (EqualToZero(right.GetValue<TElement>()))
                     {
@@ -75,7 +75,7 @@ namespace Platform.Collections.Methods.Trees
                         right.SetValue(node);
                         break;
                     }
-                    if (FirstIsToTheRightOfSecond(node, right.GetValue<TElement>())) // node.Key > right.Key
+                    if (FirstIsToTheRightOfSecond(node, right.GetValue<TElement>())) // node.Key greater than right.Key
                     {
                         var rightRight = GetRightValue(right.GetValue<TElement>());
                         var rightRightSize = GetSizeOrZero(rightRight);
@@ -89,7 +89,7 @@ namespace Platform.Collections.Methods.Trees
                             root = right;
                         }
                     }
-                    else // node.Key < right.Key
+                    else // node.Key less than right.Key
                     {
                         var rightLeft = GetLeftValue(right.GetValue<TElement>());
                         var rightLeftSize = GetSizeOrZero(rightLeft);
@@ -99,7 +99,7 @@ namespace Platform.Collections.Methods.Trees
                             {
                                 SetLeft(node, root.GetValue<TElement>());
                                 SetRight(node, right.GetValue<TElement>());
-                                SetSize(node, Add(GetSize(right.GetValue<TElement>()), GetTwo())); // 2 - размер ветки *root (left) и самого node
+                                SetSize(node, Add(GetSize(right.GetValue<TElement>()), GetTwo())); // Two (2) - размер ветки *root (left) и самого node
                                 SetRight(root.GetValue<TElement>(), GetZero());
                                 SetSize(root.GetValue<TElement>(), GetOne());
                                 root.SetValue(node);
@@ -126,7 +126,7 @@ namespace Platform.Collections.Methods.Trees
                 var leftSize = GetSizeOrZero(left.GetValue<TElement>());
                 var right = GetRightPointer(root.GetValue<TElement>());
                 var rightSize = GetSizeOrZero(right.GetValue<TElement>());
-                if (FirstIsToTheLeftOfSecond(node, root.GetValue<TElement>())) // node.Key < root.Key
+                if (FirstIsToTheLeftOfSecond(node, root.GetValue<TElement>())) // node.Key less than root.Key
                 {
                     EnsureNodeInTheTree(node, left);
                     var rightLeft = GetLeftValue(right.GetValue<TElement>());
@@ -148,7 +148,7 @@ namespace Platform.Collections.Methods.Trees
                         root = left;
                     }
                 }
-                else if (FirstIsToTheRightOfSecond(node, root.GetValue<TElement>())) // node.Key > root.Key
+                else if (FirstIsToTheRightOfSecond(node, root.GetValue<TElement>())) // node.Key greater than root.Key
                 {
                     EnsureNodeInTheTree(node, right);
                     var leftLeft = GetLeftValue(left.GetValue<TElement>());
@@ -170,7 +170,7 @@ namespace Platform.Collections.Methods.Trees
                         root = right;
                     }
                 }
-                else // key == root.Key;
+                else // key equals to root.Key
                 {
                     if (GreaterThanZero(leftSize) && GreaterThanZero(rightSize))
                     {
