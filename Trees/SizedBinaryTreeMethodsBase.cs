@@ -8,7 +8,7 @@ using Platform.Unsafe;
 
 namespace Platform.Collections.Methods.Trees
 {
-    public abstract class BinaryTreeMethodsBase<TElement> : GenericCollectionMethodsBase<TElement>
+    public abstract class SizedBinaryTreeMethodsBase<TElement> : GenericCollectionMethodsBase<TElement>
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract IntPtr GetLeftPointer(TElement node);

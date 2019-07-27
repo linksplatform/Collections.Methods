@@ -16,7 +16,7 @@ namespace Platform.Collections.Methods.Trees
     /// <remarks>
     /// TODO: Compare performance with and without unchecked.
     /// </remarks>
-    public abstract class SizedAndThreadedAVLBalancedTreeMethods<TElement> : BinaryTreeMethodsBase<TElement>
+    public abstract class SizedAndThreadedAVLBalancedTreeMethods<TElement> : SizedBinaryTreeMethodsBase<TElement>
     {
         // TODO: Link with size of TElement
         private const int MaxPath = 92;
