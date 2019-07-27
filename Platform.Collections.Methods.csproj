@@ -25,7 +25,7 @@
 
   <ItemGroup>
     <PackageReference Include="Platform.Numbers" Version="0.0.2" />
-    <PackageReference Include="Platform.Unsafe" Version="0.0.1" />
+    <PackageReference Include="Platform.Unsafe" Version="0.0.2" />
   </ItemGroup>
 
 </Project>
