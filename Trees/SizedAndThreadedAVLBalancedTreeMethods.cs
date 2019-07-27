@@ -111,7 +111,7 @@ namespace Platform.Collections.Methods.Trees
                     }
                     else
                     {
-                        throw new Exception("Node with the same key already attached to a tree.");
+                        throw new InvalidOperationException("Node with the same key already attached to a tree.");
                     }
                 }
 

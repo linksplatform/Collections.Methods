@@ -56,7 +56,7 @@ namespace Platform.Collections.Methods.Trees
                 }
                 else
                 {
-                    throw new Exception("Duplicate link found in the tree.");
+                    throw new InvalidOperationException("Duplicate link found in the tree.");
                 }
             }
             if (!ValueEqualToZero(GetLeftPointer(nodeToDetach)) && !ValueEqualToZero(GetRightPointer(nodeToDetach)))
