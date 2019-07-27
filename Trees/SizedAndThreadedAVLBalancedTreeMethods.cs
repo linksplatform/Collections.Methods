@@ -21,14 +21,12 @@ namespace Platform.Collections.Methods.Trees
         // TODO: Link with size of TElement
         private const int MaxPath = 92;
 
-        protected override void PrintNode(TElement node, StringBuilder sb, int level = 0)
+        protected override void PrintNode(TElement node, StringBuilder sb, int level)
         {
             base.PrintNode(node, sb, level);
-
             sb.Append(' ');
             sb.Append(GetLeftIsChild(node) ? 'l' : 'L');
             sb.Append(GetRightIsChild(node) ? 'r' : 'R');
-
             sb.Append(' ');
             sb.Append(GetBalance(node));
         }
@@ -58,7 +56,6 @@ namespace Platform.Collections.Methods.Trees
             {
                 // TODO: Check what is faster to use simple array or array from array pool
                 // TODO: Try to use stackalloc as an optimization (requires code generation, because of generics)
-
 #if USEARRAYPOOL
                 var path = ArrayPool.Allocate<TElement>(MaxPath);
                 var pathPosition = 0;
@@ -67,9 +64,7 @@ namespace Platform.Collections.Methods.Trees
                 var path = new TElement[MaxPath];
                 var pathPosition = 1;
 #endif
-
                 var currentNode = root.GetValue<TElement>();
-
                 while (true)
                 {
                     if (FirstIsToTheLeftOfSecond(node, currentNode))
@@ -85,11 +80,9 @@ namespace Platform.Collections.Methods.Trees
                             // Threads
                             SetLeft(node, GetLeftValue(currentNode));
                             SetRight(node, currentNode);
-
                             SetLeft(currentNode, node);
                             SetLeftIsChild(currentNode, true);
                             DecrementBalance(currentNode);
-
                             SetSize(node, GetOne());
                             FixSize(currentNode); // Should be incremented already
                             break;
@@ -108,18 +101,18 @@ namespace Platform.Collections.Methods.Trees
                             // Threads
                             SetRight(node, GetRightValue(currentNode));
                             SetLeft(node, currentNode);
-
                             SetRight(currentNode, node);
                             SetRightIsChild(currentNode, true);
                             IncrementBalance(currentNode);
-
                             SetSize(node, GetOne());
                             FixSize(currentNode); // Should be incremented already
                             break;
                         }
                     }
                     else
+                    {
                         throw new Exception("Node with the same key already attached to a tree.");
+                    }
                 }
 
                 // Restore balance. This is the goodness of a non-recursive
@@ -129,14 +122,14 @@ namespace Platform.Collections.Methods.Trees
                 {
                     var parent = path[--pathPosition];
                     var isLeftNode = !IsEquals(parent, default) && IsEquals(currentNode, GetLeftValue(parent));
-
                     var currentNodeBalance = GetBalance(currentNode);
-
                     if (currentNodeBalance < -1 || currentNodeBalance > 1)
                     {
                         currentNode = Balance(currentNode);
                         if (IsEquals(parent, default))
+                        {
                             root.SetValue(currentNode);
+                        }
                         else if (isLeftNode)
                         {
                             SetLeft(parent, currentNode);
@@ -148,19 +141,21 @@ namespace Platform.Collections.Methods.Trees
                             FixSize(parent);
                         }
                     }
-
                     currentNodeBalance = GetBalance(currentNode);
                     if (currentNodeBalance == 0 || IsEquals(parent, default))
+                    {
                         break;
-
+                    }
                     if (isLeftNode)
+                    {
                         DecrementBalance(parent);
+                    }
                     else
+                    {
                         IncrementBalance(parent);
-
+                    }
                     currentNode = parent;
                 }
-
 #if USEARRAYPOOL
                 ArrayPool.Free(path);
 #endif
@@ -192,7 +187,6 @@ namespace Platform.Collections.Methods.Trees
                     }
                     node = LeftRotateWithBalance(node);
                 }
-
                 return node;
             }
         }
@@ -202,42 +196,46 @@ namespace Platform.Collections.Methods.Trees
             unchecked
             {
                 var right = GetRightValue(node);
-
                 if (GetLeftIsChild(right))
+                {
                     SetRight(node, GetLeftValue(right));
+                }
                 else
                 {
                     SetRightIsChild(node, false);
                     SetLeftIsChild(right, true);
                 }
-
                 SetLeft(right, node);
-
                 // Fix size
                 SetSize(right, GetSize(node));
                 FixSize(node);
-
                 // Fix balance
                 var rootBalance = GetBalance(node);
                 var rightBalance = GetBalance(right);
-
                 if (rightBalance <= 0)
                 {
                     if (rootBalance >= 1)
+                    {
                         SetBalance(right, (sbyte)(rightBalance - 1));
+                    }
                     else
+                    {
                         SetBalance(right, (sbyte)(rootBalance + rightBalance - 2));
+                    }
                     SetBalance(node, (sbyte)(rootBalance - 1));
                 }
                 else
                 {
                     if (rootBalance <= rightBalance)
+                    {
                         SetBalance(right, (sbyte)(rootBalance - 2));
+                    }
                     else
+                    {
                         SetBalance(right, (sbyte)(rightBalance - 1));
+                    }
                     SetBalance(node, (sbyte)(rootBalance - rightBalance - 1));
                 }
-
                 return right;
             }
         }
@@ -247,42 +245,46 @@ namespace Platform.Collections.Methods.Trees
             unchecked
             {
                 var left = GetLeftValue(node);
-
                 if (GetRightIsChild(left))
+                {
                     SetLeft(node, GetRightValue(left));
+                }
                 else
                 {
                     SetLeftIsChild(node, false);
                     SetRightIsChild(left, true);
                 }
-
                 SetRight(left, node);
-
                 // Fix size
                 SetSize(left, GetSize(node));
                 FixSize(node);
-
                 // Fix balance
                 var rootBalance = GetBalance(node);
                 var leftBalance = GetBalance(left);
-
                 if (leftBalance <= 0)
                 {
                     if (leftBalance > rootBalance)
+                    {
                         SetBalance(left, (sbyte)(leftBalance + 1));
+                    }
                     else
+                    {
                         SetBalance(left, (sbyte)(rootBalance + 2));
+                    }
                     SetBalance(node, (sbyte)(rootBalance - leftBalance + 1));
                 }
                 else
                 {
                     if (rootBalance <= -1)
+                    {
                         SetBalance(left, (sbyte)(leftBalance + 1));
+                    }
                     else
+                    {
                         SetBalance(left, (sbyte)(rootBalance + leftBalance + 2));
+                    }
                     SetBalance(node, (sbyte)(rootBalance + 1));
                 }
-
                 return left;
             }
         }
@@ -292,11 +294,13 @@ namespace Platform.Collections.Methods.Trees
             unchecked
             {
                 var current = GetRightValue(node);
-
                 if (GetRightIsChild(node))
+                {
                     while (GetLeftIsChild(current))
+                    {
                         current = GetLeftValue(current);
-
+                    }
+                }
                 return current;
             }
         }
@@ -306,11 +310,13 @@ namespace Platform.Collections.Methods.Trees
             unchecked
             {
                 var current = GetLeftValue(node);
-
                 if (GetLeftIsChild(node))
+                {
                     while (GetRightIsChild(current))
+                    {
                         current = GetRightValue(current);
-
+                    }
+                }
                 return current;
             }
         }
@@ -327,15 +333,15 @@ namespace Platform.Collections.Methods.Trees
                 var path = new TElement[MaxPath];
                 var pathPosition = 1;
 #endif
-
                 var currentNode = root.GetValue<TElement>();
                 while (true)
                 {
                     if (FirstIsToTheLeftOfSecond(node, currentNode))
                     {
                         if (!GetLeftIsChild(currentNode))
-                            throw new Exception("Cannot find a node.");
-
+                        {
+                            throw new InvalidOperationException("Cannot find a node.");
+                        }
                         DecrementSize(currentNode);
                         path[pathPosition++] = currentNode;
                         currentNode = GetLeftValue(currentNode);
@@ -343,27 +349,29 @@ namespace Platform.Collections.Methods.Trees
                     else if (FirstIsToTheRightOfSecond(node, currentNode))
                     {
                         if (!GetRightIsChild(currentNode))
-                            throw new Exception("Cannot find a node.");
-
+                        {
+                            throw new InvalidOperationException("Cannot find a node.");
+                        }
                         DecrementSize(currentNode);
                         path[pathPosition++] = currentNode;
                         currentNode = GetRightValue(currentNode);
                     }
                     else
+                    {
                         break;
+                    }
                 }
-
                 var parent = path[--pathPosition];
                 var balanceNode = parent;
-
                 var isLeftNode = !IsEquals(parent, default) && IsEquals(currentNode, GetLeftValue(parent));
-
                 if (!GetLeftIsChild(currentNode))
                 {
                     if (!GetRightIsChild(currentNode)) // node has no children
                     {
                         if (IsEquals(parent, default))
+                        {
                             root.SetValue(GetZero());
+                        }
                         else if (isLeftNode)
                         {
                             SetLeftIsChild(parent, false);
@@ -381,10 +389,11 @@ namespace Platform.Collections.Methods.Trees
                     {
                         var successor = GetNext(currentNode);
                         SetLeft(successor, GetLeftValue(currentNode));
-
                         var right = GetRightValue(currentNode);
                         if (IsEquals(parent, default))
+                        {
                             root.SetValue(right);
+                        }
                         else if (isLeftNode)
                         {
                             SetLeft(parent, right);
@@ -403,10 +412,11 @@ namespace Platform.Collections.Methods.Trees
                     {
                         var predecessor = GetPrevious(currentNode);
                         SetRight(predecessor, GetRightValue(currentNode));
-
                         var leftValue = GetLeftValue(currentNode);
                         if (IsEquals(parent, default))
+                        {
                             root.SetValue(leftValue);
+                        }
                         else if (isLeftNode)
                         {
                             SetLeft(parent, leftValue);
@@ -422,60 +432,65 @@ namespace Platform.Collections.Methods.Trees
                     {
                         var predecessor = GetLeftValue(currentNode);
                         var successor = GetRightValue(currentNode);
-
                         var successorParent = currentNode;
                         int previousPathPosition = ++pathPosition;
-
-                        // path[pathPosition] == parent
                         // find the immediately next node (and its parent)
                         while (GetLeftIsChild(successor))
                         {
                             path[++pathPosition] = successorParent = successor;
                             successor = GetLeftValue(successor);
                             if (!IsEquals(successorParent, currentNode))
+                            {
                                 DecrementSize(successorParent);
+                            }
                         }
-
                         path[previousPathPosition] = successor;
                         balanceNode = path[pathPosition];
-
                         // remove 'successor' from the tree
                         if (!IsEquals(successorParent, currentNode))
                         {
                             if (!GetRightIsChild(successor))
+                            {
                                 SetLeftIsChild(successorParent, false);
+                            }
                             else
+                            {
                                 SetLeft(successorParent, GetRightValue(successor));
+                            }
                             IncrementBalance(successorParent);
-
                             SetRightIsChild(successor, true);
                             SetRight(successor, GetRightValue(currentNode));
                         }
                         else
+                        {
                             DecrementBalance(currentNode);
-
+                        }
                         // set the predecessor's successor link to point to the right place
                         while (GetRightIsChild(predecessor))
+                        {
                             predecessor = GetRightValue(predecessor);
+                        }
                         SetRight(predecessor, successor);
-
                         // prepare 'successor' to replace 'node'
                         var left = GetLeftValue(currentNode);
                         SetLeftIsChild(successor, true);
                         SetLeft(successor, left);
                         SetBalance(successor, GetBalance(currentNode));
-
                         FixSize(successor);
-
                         if (IsEquals(parent, default))
+                        {
                             root.SetValue(successor);
+                        }
                         else if (isLeftNode)
+                        {
                             SetLeft(parent, successor);
+                        }
                         else
+                        {
                             SetRight(parent, successor);
+                        }
                     }
                 }
-
                 // restore balance
                 if (!IsEquals(balanceNode, default))
                 {
@@ -483,35 +498,40 @@ namespace Platform.Collections.Methods.Trees
                     {
                         var balanceParent = path[--pathPosition];
                         isLeftNode = !IsEquals(balanceParent, default) && IsEquals(balanceNode, GetLeftValue(balanceParent));
-
                         var currentNodeBalance = GetBalance(balanceNode);
-
                         if (currentNodeBalance < -1 || currentNodeBalance > 1)
                         {
                             balanceNode = Balance(balanceNode);
                             if (IsEquals(balanceParent, default))
+                            {
                                 root.SetValue(balanceNode);
+                            }
                             else if (isLeftNode)
+                            {
                                 SetLeft(balanceParent, balanceNode);
+                            }
                             else
+                            {
                                 SetRight(balanceParent, balanceNode);
+                            }
                         }
-
                         currentNodeBalance = GetBalance(balanceNode);
                         if (currentNodeBalance != 0 || IsEquals(balanceParent, default))
+                        {
                             break;
-
+                        }
                         if (isLeftNode)
+                        {
                             IncrementBalance(balanceParent);
+                        }
                         else
+                        {
                             DecrementBalance(balanceParent);
-
+                        }
                         balanceNode = balanceParent;
                     }
                 }
-
                 ClearNode(node);
-
 #if USEARRAYPOOL
                 ArrayPool.Free(path);
 #endif

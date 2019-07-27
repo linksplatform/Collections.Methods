@@ -19,7 +19,6 @@ namespace Platform.Collections.Methods.Trees
             else
             {
                 IncrementSize(root.GetValue<TElement>());
-
                 if (FirstIsToTheLeftOfSecond(newNode, root.GetValue<TElement>()))
                 {
                     AttachCore(GetLeftPointer(root.GetValue<TElement>()), newNode);
@@ -36,12 +35,12 @@ namespace Platform.Collections.Methods.Trees
         protected override void DetachCore(IntPtr root, TElement nodeToDetach)
         {
             if (ValueEqualToZero(root))
+            {
                 return;
-
+            }
             var currentNode = root;
             var parent = IntPtr.Zero; /* Изначально зануление, так как родителя может и не быть (Корень дерева). */
             var replacementNode = GetZero();
-
             while (!IsEquals(currentNode.GetValue<TElement>(), nodeToDetach))
             {
                 SetSize(currentNode.GetValue<TElement>(), Decrement(GetSize(currentNode.GetValue<TElement>())));
@@ -56,17 +55,18 @@ namespace Platform.Collections.Methods.Trees
                     currentNode = GetRightPointer(currentNode.GetValue<TElement>());
                 }
                 else
+                {
                     throw new Exception("Duplicate link found in the tree.");
+                }
             }
-
             if (!ValueEqualToZero(GetLeftPointer(nodeToDetach)) && !ValueEqualToZero(GetRightPointer(nodeToDetach)))
             {
                 var minNode = GetRightValue(nodeToDetach);
                 while (!EqualToZero(GetLeftValue(minNode)))
+                {
                     minNode = GetLeftValue(minNode); /* Передвигаемся до минимума */
-
+                }
                 DetachCore(GetRightPointer(nodeToDetach), minNode);
-
                 SetLeft(minNode, GetLeftValue(nodeToDetach));
                 if (!ValueEqualToZero(GetRightPointer(nodeToDetach)))
                 {
@@ -74,22 +74,31 @@ namespace Platform.Collections.Methods.Trees
                     SetSize(minNode, Increment(Add(GetSize(GetLeftValue(nodeToDetach)), GetSize(GetRightValue(nodeToDetach)))));
                 }
                 else
+                {
                     SetSize(minNode, Increment(GetSize(GetLeftValue(nodeToDetach))));
-
+                }
                 replacementNode = minNode;
             }
             else if (!ValueEqualToZero(GetLeftPointer(nodeToDetach)))
+            {
                 replacementNode = GetLeftValue(nodeToDetach);
+            }
             else if (!ValueEqualToZero(GetRightPointer(nodeToDetach)))
+            {
                 replacementNode = GetRightValue(nodeToDetach);
-
+            }
             if (parent == IntPtr.Zero)
+            {
                 root.SetValue(replacementNode);
+            }
             else if (IsEquals(GetLeftValue(parent.GetValue<TElement>()), nodeToDetach))
+            {
                 SetLeft(parent.GetValue<TElement>(), replacementNode);
+            }
             else if (IsEquals(GetRightValue(parent.GetValue<TElement>()), nodeToDetach))
+            {
                 SetRight(parent.GetValue<TElement>(), replacementNode);
-
+            }
             ClearNode(nodeToDetach);
         }
 
@@ -104,7 +113,9 @@ namespace Platform.Collections.Methods.Trees
                     var rootLeftNodeLeftNode = GetLeftPointer(rootLeftNode.GetValue<TElement>());
                     if (!ValueEqualToZero(rootLeftNodeLeftNode) &&
                         (ValueEqualToZero(rootRightNode) || GreaterThan(GetSize(rootLeftNodeLeftNode.GetValue<TElement>()), GetSize(rootRightNode.GetValue<TElement>()))))
+                    {
                         RightRotate(root);
+                    }
                     else
                     {
                         var rootLeftNodeRightNode = GetRightPointer(rootLeftNode.GetValue<TElement>());
@@ -115,7 +126,9 @@ namespace Platform.Collections.Methods.Trees
                             RightRotate(root);
                         }
                         else
+                        {
                             return;
+                        }
                     }
                     LeftMaintain(GetLeftPointer(root.GetValue<TElement>()));
                     RightMaintain(GetRightPointer(root.GetValue<TElement>()));
@@ -136,7 +149,9 @@ namespace Platform.Collections.Methods.Trees
                     var rootRightNodeRightNode = GetRightPointer(rootRightNode.GetValue<TElement>());
                     if (!ValueEqualToZero(rootRightNodeRightNode) &&
                         (ValueEqualToZero(rootLeftNode) || GreaterThan(GetSize(rootRightNodeRightNode.GetValue<TElement>()), GetSize(rootLeftNode.GetValue<TElement>()))))
+                    {
                         LeftRotate(root);
+                    }
                     else
                     {
                         var rootRightNodeLeftNode = GetLeftPointer(rootRightNode.GetValue<TElement>());
@@ -147,7 +162,9 @@ namespace Platform.Collections.Methods.Trees
                             LeftRotate(root);
                         }
                         else
+                        {
                             return;
+                        }
                     }
                     LeftMaintain(GetLeftPointer(root.GetValue<TElement>()));
                     RightMaintain(GetRightPointer(root.GetValue<TElement>()));

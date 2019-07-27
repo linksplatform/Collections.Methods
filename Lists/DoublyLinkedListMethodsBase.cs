@@ -24,10 +24,8 @@ namespace Platform.Collections.Methods.Lists
         protected abstract void SetNext(TElement element, TElement next);
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract void SetSize(TElement size);
-
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected void IncrementSize() => SetSize(Increment(GetSize()));
-
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected void DecrementSize() => SetSize(Decrement(GetSize()));
     }
