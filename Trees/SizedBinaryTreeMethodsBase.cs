@@ -222,7 +222,7 @@ namespace Platform.Collections.Methods.Trees
             var size = GetSize(node);
             var leftSize = GetLeftSize(node);
             var rightSize = GetRightSize(node);
-            var expectedSize = ArithmeticHelpers.Increment(ArithmeticHelpers.Add(leftSize, rightSize));
+            var expectedSize = Arithmetic.Increment(Arithmetic.Add(leftSize, rightSize));
             if (!IsEquals(size, expectedSize))
             {
                 throw new InvalidOperationException($"Size of {node} is not valid. Expected size: {expectedSize}, actual size: {size}.");
@@ -236,7 +236,7 @@ namespace Platform.Collections.Methods.Trees
             var size = GetSize(node);
             var leftSize = GetLeftSize(node);
             var rightSize = GetRightSize(node);
-            var expectedSize = ArithmeticHelpers.Increment(ArithmeticHelpers.Add(leftSize, rightSize));
+            var expectedSize = Arithmetic.Increment(Arithmetic.Add(leftSize, rightSize));
             if (!IsEquals(size, expectedSize))
             {
                 throw new InvalidOperationException($"Size of {node} is not valid. Expected size: {expectedSize}, actual size: {size}.");
