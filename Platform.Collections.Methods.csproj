@@ -30,7 +30,7 @@ Refactoring and issues fix.</PackageReleaseNotes>
 
   <ItemGroup>
     <PackageReference Include="Platform.Numbers" Version="0.1.0" />
-    <PackageReference Include="Platform.Unsafe" Version="0.0.2" />
+    <PackageReference Include="Platform.Unsafe" Version="0.1.0" />
   </ItemGroup>
 
 </Project>
