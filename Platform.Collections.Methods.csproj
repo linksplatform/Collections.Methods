@@ -29,7 +29,6 @@ Refactoring and issues fix.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Platform.Numbers" Version="0.1.0" />
     <PackageReference Include="Platform.Unsafe" Version="0.1.0" />
   </ItemGroup>
 
