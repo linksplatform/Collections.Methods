@@ -8,8 +8,8 @@ namespace Platform.Collections.Methods
 {
     public abstract class GenericCollectionMethodsBase<TElement>
     {
-        private static readonly EqualityComparer<TElement> EqualityComparer = EqualityComparer<TElement>.Default;
-        private static readonly Comparer<TElement> Comparer = Comparer<TElement>.Default;
+        private static readonly EqualityComparer<TElement> _equalityComparer = EqualityComparer<TElement>.Default;
+        private static readonly Comparer<TElement> _comparer = Comparer<TElement>.Default;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual TElement GetZero() => Integer<TElement>.Zero;
@@ -21,37 +21,37 @@ namespace Platform.Collections.Methods
         protected virtual TElement GetTwo() => Integer<TElement>.Two;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual bool ValueEqualToZero(IntPtr pointer) => EqualityComparer.Equals(pointer.GetValue<TElement>(), GetZero());
+        protected virtual bool ValueEqualToZero(IntPtr pointer) => _equalityComparer.Equals(pointer.GetValue<TElement>(), GetZero());
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual bool EqualToZero(TElement value) => EqualityComparer.Equals(value, GetZero());
+        protected virtual bool EqualToZero(TElement value) => _equalityComparer.Equals(value, GetZero());
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual bool IsEquals(TElement first, TElement second) => EqualityComparer.Equals(first, second);
+        protected virtual bool IsEquals(TElement first, TElement second) => _equalityComparer.Equals(first, second);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual bool GreaterThanZero(TElement value) => Comparer.Compare(value, GetZero()) > 0;
+        protected virtual bool GreaterThanZero(TElement value) => _comparer.Compare(value, GetZero()) > 0;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual bool GreaterThan(TElement first, TElement second) => Comparer.Compare(first, second) > 0;
+        protected virtual bool GreaterThan(TElement first, TElement second) => _comparer.Compare(first, second) > 0;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual bool GreaterOrEqualThanZero(TElement value) => Comparer.Compare(value, GetZero()) >= 0;
+        protected virtual bool GreaterOrEqualThanZero(TElement value) => _comparer.Compare(value, GetZero()) >= 0;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual bool GreaterOrEqualThan(TElement first, TElement second) => Comparer.Compare(first, second) >= 0;
+        protected virtual bool GreaterOrEqualThan(TElement first, TElement second) => _comparer.Compare(first, second) >= 0;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual bool LessOrEqualThanZero(TElement value) => Comparer.Compare(value, GetZero()) <= 0;
+        protected virtual bool LessOrEqualThanZero(TElement value) => _comparer.Compare(value, GetZero()) <= 0;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual bool LessOrEqualThan(TElement first, TElement second) => Comparer.Compare(first, second) <= 0;
+        protected virtual bool LessOrEqualThan(TElement first, TElement second) => _comparer.Compare(first, second) <= 0;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual bool LessThanZero(TElement value) => Comparer.Compare(value, GetZero()) < 0;
+        protected virtual bool LessThanZero(TElement value) => _comparer.Compare(value, GetZero()) < 0;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual bool LessThan(TElement first, TElement second) => Comparer.Compare(first, second) < 0;
+        protected virtual bool LessThan(TElement first, TElement second) => _comparer.Compare(first, second) < 0;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual TElement Increment(TElement value) => Arithmetic<TElement>.Increment(value);

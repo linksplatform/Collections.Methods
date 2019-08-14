@@ -12,22 +12,31 @@ namespace Platform.Collections.Methods.Trees
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract IntPtr GetLeftPointer(TElement node);
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract IntPtr GetRightPointer(TElement node);
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract TElement GetLeftValue(TElement node);
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract TElement GetRightValue(TElement node);
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract TElement GetSize(TElement node);
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract void SetLeft(TElement node, TElement left);
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract void SetRight(TElement node, TElement right);
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract void SetSize(TElement node, TElement size);
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract bool FirstIsToTheLeftOfSecond(TElement first, TElement second);
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract bool FirstIsToTheRightOfSecond(TElement first, TElement second);
 

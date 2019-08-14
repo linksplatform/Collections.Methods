@@ -113,7 +113,6 @@ namespace Platform.Collections.Methods.Trees
                         throw new InvalidOperationException("Node with the same key already attached to a tree.");
                     }
                 }
-
                 // Restore balance. This is the goodness of a non-recursive
                 // implementation, when we are done with balancing we 'break'
                 // the loop and we are done.
