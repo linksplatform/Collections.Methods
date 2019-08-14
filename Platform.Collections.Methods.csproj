@@ -11,7 +11,7 @@
     <PackageId>Platform.Collections.Methods</PackageId>
     <PackageTags>LinksPlatform;Collections.Methods;CircularDoublyLinkedList;DoublyLinkedList;OpenDoublyLinkedList;SizeBalancedTree;SizedAndThreadedAVLBalancedTree</PackageTags>
     <PackageIconUrl>https://raw.githubusercontent.com/linksplatform/Documentation/18469f4d033ee9a5b7b84caab9c585acab2ac519/doc/Avatar-rainbow-icon-64x64.png</PackageIconUrl>
-    <PackageProjectUrl>https://github.com/linksplatform/Collections.Methods</PackageProjectUrl>
+    <PackageProjectUrl>https://linksplatform.github.io/Collections.Methods</PackageProjectUrl>
     <PackageLicenseExpression>LGPL-3.0-only</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <RepositoryType>git</RepositoryType>
