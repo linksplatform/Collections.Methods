@@ -4,6 +4,8 @@ using System.Runtime.CompilerServices;
 using Platform.Numbers;
 using Platform.Unsafe;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+
 namespace Platform.Collections.Methods
 {
     public abstract class GenericCollectionMethodsBase<TElement>

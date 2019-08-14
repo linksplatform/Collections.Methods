@@ -5,6 +5,7 @@ using Platform.Numbers;
 using Platform.Unsafe;
 
 //#define ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace Platform.Collections.Methods.Trees
 {

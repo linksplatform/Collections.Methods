@@ -6,6 +6,8 @@ using Platform.Unsafe;
 using Platform.Collections;
 #endif
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+
 namespace Platform.Collections.Methods.Trees
 {
     /// <summary>
