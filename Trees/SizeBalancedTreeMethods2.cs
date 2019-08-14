@@ -3,6 +3,9 @@ using Platform.Unsafe;
 
 namespace Platform.Collections.Methods.Trees
 {
+    /// <summary>
+    /// Experimental implementation, don't use it yet.
+    /// </summary>
     public abstract class SizeBalancedTreeMethods2<TElement> : SizedBinaryTreeMethodsBase<TElement>
     {
         protected override void AttachCore(IntPtr root, TElement newNode)
