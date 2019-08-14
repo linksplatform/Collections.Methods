@@ -10,11 +10,10 @@ namespace Platform.Collections.Methods.Trees
 {
     /// <summary>
     /// Combination of Size, Height (AVL), and threads.
-    /// Based on: https://github.com/programmatom/TreeLib/blob/master/TreeLib/TreeLib/Generated/AVLTreeList.cs
-    /// Which itself based on: https://github.com/GNOME/glib/blob/master/glib/gtree.c
     /// </summary>
     /// <remarks>
-    /// TODO: Compare performance with and without unchecked.
+    /// Based on: <a href="https://github.com/programmatom/TreeLib/blob/master/TreeLib/TreeLib/Generated/AVLTreeList.cs">TreeLib.AVLTreeList</a>.
+    /// Which itself based on: <a href="https://github.com/GNOME/glib/blob/master/glib/gtree.c">GNOME/glib/gtree</a>.
     /// </remarks>
     public abstract class SizedAndThreadedAVLBalancedTreeMethods<TElement> : SizedBinaryTreeMethodsBase<TElement>
     {

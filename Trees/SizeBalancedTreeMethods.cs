@@ -3,10 +3,6 @@ using Platform.Unsafe;
 
 namespace Platform.Collections.Methods.Trees
 {
-    /// <remarks>
-    /// Можно сделать прошитую версию дерева, чтобы сделать проход по дереву более оптимальным.
-    /// Также имеет смысл разобраться почему не работает версия с идеальной балансировкой.
-    /// </remarks>
     public abstract class SizeBalancedTreeMethods<TElement> : SizedBinaryTreeMethodsBase<TElement>
     {
         protected override void AttachCore(IntPtr root, TElement node)

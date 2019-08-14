@@ -1,7 +1,7 @@
 ﻿namespace Platform.Collections.Methods.Lists
 {
     /// <remarks>
-    /// Based on https://en.wikipedia.org/wiki/Doubly_linked_list
+    /// Based on <a href="https://en.wikipedia.org/wiki/Doubly_linked_list">doubly linked list</a> implementation.
     /// </remarks>
     public abstract class OpenDoublyLinkedListMethods<TElement> : DoublyLinkedListMethodsBase<TElement>
     {
