@@ -4,7 +4,7 @@
     <Description>LinksPlatform's Platform.Collections.Methods Class Library</Description>
     <Copyright>Konstantin Diachenko</Copyright>
     <AssemblyTitle>Platform.Collections.Methods</AssemblyTitle>
-    <VersionPrefix>0.0.5</VersionPrefix>
+    <VersionPrefix>0.0.6</VersionPrefix>
     <Authors>Konstantin Diachenko</Authors>
     <TargetFrameworks Condition="'$(OS)' == 'Windows_NT'">netstandard2.0;net461</TargetFrameworks>
     <TargetFramework Condition="'$(OS)' != 'Windows_NT'">netcoreapp2.0</TargetFramework>
@@ -23,7 +23,9 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <PackageReleaseNotes>Platform.Unsafe dependency updated from 0.1.0 to 0.1.1.</PackageReleaseNotes>
+    <PackageReleaseNotes>Added support for net461 (.NET Framework 4.6.1).
+Platform.Unsafe dependency updated from 0.1.1 to 0.1.2.
+Refactoring, issues fix.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
