@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using System.Text;
-using Platform.Unsafe;
 #if USEARRAYPOOL
 using Platform.Collections;
 #endif
@@ -17,7 +16,7 @@ namespace Platform.Collections.Methods.Trees
     /// Based on: <a href="https://github.com/programmatom/TreeLib/blob/master/TreeLib/TreeLib/Generated/AVLTreeList.cs">TreeLib.AVLTreeList</a>.
     /// Which itself based on: <a href="https://github.com/GNOME/glib/blob/master/glib/gtree.c">GNOME/glib/gtree</a>.
     /// </remarks>
-    public abstract class SizedAndThreadedAVLBalancedTreeMethods<TElement> : SizedBinaryTreeMethodsBase<TElement>
+    public unsafe abstract class SizedAndThreadedAVLBalancedTreeMethods<TElement> : SizedBinaryTreeMethodsBase<TElement>
     {
         // TODO: Link with size of TElement
         private const int MaxPath = 92;
@@ -65,7 +64,8 @@ namespace Platform.Collections.Methods.Trees
                 var path = new TElement[MaxPath];
                 var pathPosition = 1;
 #endif
-                var currentNode = root.GetValue<TElement>();
+                var rootPointer = (void*)root;
+                var currentNode = System.Runtime.CompilerServices.Unsafe.Read<TElement>(rootPointer);
                 while (true)
                 {
                     if (FirstIsToTheLeftOfSecond(node, currentNode))
@@ -128,7 +128,7 @@ namespace Platform.Collections.Methods.Trees
                         currentNode = Balance(currentNode);
                         if (IsEquals(parent, default))
                         {
-                            root.SetValue(currentNode);
+                            System.Runtime.CompilerServices.Unsafe.Write((void*)root, currentNode);
                         }
                         else if (isLeftNode)
                         {
@@ -333,7 +333,8 @@ namespace Platform.Collections.Methods.Trees
                 var path = new TElement[MaxPath];
                 var pathPosition = 1;
 #endif
-                var currentNode = root.GetValue<TElement>();
+                var rootPointer = (void*)root;
+                var currentNode = System.Runtime.CompilerServices.Unsafe.Read<TElement>(rootPointer);
                 while (true)
                 {
                     if (FirstIsToTheLeftOfSecond(node, currentNode))
@@ -370,7 +371,7 @@ namespace Platform.Collections.Methods.Trees
                     {
                         if (IsEquals(parent, default))
                         {
-                            root.SetValue(GetZero());
+                            System.Runtime.CompilerServices.Unsafe.Write(rootPointer, GetZero());
                         }
                         else if (isLeftNode)
                         {
@@ -392,7 +393,7 @@ namespace Platform.Collections.Methods.Trees
                         var right = GetRightValue(currentNode);
                         if (IsEquals(parent, default))
                         {
-                            root.SetValue(right);
+                            System.Runtime.CompilerServices.Unsafe.Write(rootPointer, right);
                         }
                         else if (isLeftNode)
                         {
@@ -415,7 +416,7 @@ namespace Platform.Collections.Methods.Trees
                         var leftValue = GetLeftValue(currentNode);
                         if (IsEquals(parent, default))
                         {
-                            root.SetValue(leftValue);
+                            System.Runtime.CompilerServices.Unsafe.Write(rootPointer, leftValue);
                         }
                         else if (isLeftNode)
                         {
@@ -479,7 +480,7 @@ namespace Platform.Collections.Methods.Trees
                         FixSize(successor);
                         if (IsEquals(parent, default))
                         {
-                            root.SetValue(successor);
+                            System.Runtime.CompilerServices.Unsafe.Write(rootPointer, successor);
                         }
                         else if (isLeftNode)
                         {
@@ -504,7 +505,7 @@ namespace Platform.Collections.Methods.Trees
                             balanceNode = Balance(balanceNode);
                             if (IsEquals(balanceParent, default))
                             {
-                                root.SetValue(balanceNode);
+                                System.Runtime.CompilerServices.Unsafe.Write(rootPointer, balanceNode);
                             }
                             else if (isLeftNode)
                             {

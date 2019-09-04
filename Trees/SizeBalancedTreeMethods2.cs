@@ -1,5 +1,4 @@
 ﻿using System;
-using Platform.Unsafe;
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
@@ -8,26 +7,26 @@ namespace Platform.Collections.Methods.Trees
     /// <summary>
     /// Experimental implementation, don't use it yet.
     /// </summary>
-    public abstract class SizeBalancedTreeMethods2<TElement> : SizedBinaryTreeMethodsBase<TElement>
+    public unsafe abstract class SizeBalancedTreeMethods2<TElement> : SizedBinaryTreeMethodsBase<TElement>
     {
         protected override void AttachCore(IntPtr root, TElement newNode)
         {
             if (ValueEqualToZero(root))
             {
-                root.SetValue(newNode);
-                IncrementSize(root.GetValue<TElement>());
+                System.Runtime.CompilerServices.Unsafe.Write((void*)root, newNode);
+                IncrementSize(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root));
             }
             else
             {
-                IncrementSize(root.GetValue<TElement>());
-                if (FirstIsToTheLeftOfSecond(newNode, root.GetValue<TElement>()))
+                IncrementSize(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root));
+                if (FirstIsToTheLeftOfSecond(newNode, System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root)))
                 {
-                    AttachCore(GetLeftPointer(root.GetValue<TElement>()), newNode);
+                    AttachCore(GetLeftPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root)), newNode);
                     LeftMaintain(root);
                 }
                 else
                 {
-                    AttachCore(GetRightPointer(root.GetValue<TElement>()), newNode);
+                    AttachCore(GetRightPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root)), newNode);
                     RightMaintain(root);
                 }
             }
@@ -42,18 +41,18 @@ namespace Platform.Collections.Methods.Trees
             var currentNode = root;
             var parent = IntPtr.Zero; /* Изначально зануление, так как родителя может и не быть (Корень дерева). */
             var replacementNode = GetZero();
-            while (!IsEquals(currentNode.GetValue<TElement>(), nodeToDetach))
+            while (!IsEquals(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)currentNode), nodeToDetach))
             {
-                SetSize(currentNode.GetValue<TElement>(), Decrement(GetSize(currentNode.GetValue<TElement>())));
-                if (FirstIsToTheLeftOfSecond(nodeToDetach, currentNode.GetValue<TElement>()))
+                SetSize(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)currentNode), Decrement(GetSize(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)currentNode))));
+                if (FirstIsToTheLeftOfSecond(nodeToDetach, System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)currentNode)))
                 {
                     parent = currentNode;
-                    currentNode = GetLeftPointer(currentNode.GetValue<TElement>());
+                    currentNode = GetLeftPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)currentNode));
                 }
-                else if (FirstIsToTheRightOfSecond(nodeToDetach, currentNode.GetValue<TElement>()))
+                else if (FirstIsToTheRightOfSecond(nodeToDetach, System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)currentNode)))
                 {
                     parent = currentNode;
-                    currentNode = GetRightPointer(currentNode.GetValue<TElement>());
+                    currentNode = GetRightPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)currentNode));
                 }
                 else
                 {
@@ -90,15 +89,15 @@ namespace Platform.Collections.Methods.Trees
             }
             if (parent == IntPtr.Zero)
             {
-                root.SetValue(replacementNode);
+                System.Runtime.CompilerServices.Unsafe.Write((void*)root, replacementNode);
             }
-            else if (IsEquals(GetLeftValue(parent.GetValue<TElement>()), nodeToDetach))
+            else if (IsEquals(GetLeftValue(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)parent)), nodeToDetach))
             {
-                SetLeft(parent.GetValue<TElement>(), replacementNode);
+                SetLeft(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)parent), replacementNode);
             }
-            else if (IsEquals(GetRightValue(parent.GetValue<TElement>()), nodeToDetach))
+            else if (IsEquals(GetRightValue(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)parent)), nodeToDetach))
             {
-                SetRight(parent.GetValue<TElement>(), replacementNode);
+                SetRight(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)parent), replacementNode);
             }
             ClearNode(nodeToDetach);
         }
@@ -107,23 +106,23 @@ namespace Platform.Collections.Methods.Trees
         {
             if (!ValueEqualToZero(root))
             {
-                var rootLeftNode = GetLeftPointer(root.GetValue<TElement>());
+                var rootLeftNode = GetLeftPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root));
                 if (!ValueEqualToZero(rootLeftNode))
                 {
-                    var rootRightNode = GetRightPointer(root.GetValue<TElement>());
-                    var rootLeftNodeLeftNode = GetLeftPointer(rootLeftNode.GetValue<TElement>());
+                    var rootRightNode = GetRightPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root));
+                    var rootLeftNodeLeftNode = GetLeftPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)rootLeftNode));
                     if (!ValueEqualToZero(rootLeftNodeLeftNode) &&
-                        (ValueEqualToZero(rootRightNode) || GreaterThan(GetSize(rootLeftNodeLeftNode.GetValue<TElement>()), GetSize(rootRightNode.GetValue<TElement>()))))
+                        (ValueEqualToZero(rootRightNode) || GreaterThan(GetSize(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)rootLeftNodeLeftNode)), GetSize(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)rootRightNode)))))
                     {
                         RightRotate(root);
                     }
                     else
                     {
-                        var rootLeftNodeRightNode = GetRightPointer(rootLeftNode.GetValue<TElement>());
+                        var rootLeftNodeRightNode = GetRightPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)rootLeftNode));
                         if (!ValueEqualToZero(rootLeftNodeRightNode) &&
-                            (ValueEqualToZero(rootRightNode) || GreaterThan(GetSize(rootLeftNodeRightNode.GetValue<TElement>()), GetSize(rootRightNode.GetValue<TElement>()))))
+                            (ValueEqualToZero(rootRightNode) || GreaterThan(GetSize(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)rootLeftNodeRightNode)), GetSize(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)rootRightNode)))))
                         {
-                            LeftRotate(GetLeftPointer(root.GetValue<TElement>()));
+                            LeftRotate(GetLeftPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root)));
                             RightRotate(root);
                         }
                         else
@@ -131,8 +130,8 @@ namespace Platform.Collections.Methods.Trees
                             return;
                         }
                     }
-                    LeftMaintain(GetLeftPointer(root.GetValue<TElement>()));
-                    RightMaintain(GetRightPointer(root.GetValue<TElement>()));
+                    LeftMaintain(GetLeftPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root)));
+                    RightMaintain(GetRightPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root)));
                     LeftMaintain(root);
                     RightMaintain(root);
                 }
@@ -143,23 +142,23 @@ namespace Platform.Collections.Methods.Trees
         {
             if (!ValueEqualToZero(root))
             {
-                var rootRightNode = GetRightPointer(root.GetValue<TElement>());
+                var rootRightNode = GetRightPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root));
                 if (!ValueEqualToZero(rootRightNode))
                 {
-                    var rootLeftNode = GetLeftPointer(root.GetValue<TElement>());
-                    var rootRightNodeRightNode = GetRightPointer(rootRightNode.GetValue<TElement>());
+                    var rootLeftNode = GetLeftPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root));
+                    var rootRightNodeRightNode = GetRightPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)rootRightNode));
                     if (!ValueEqualToZero(rootRightNodeRightNode) &&
-                        (ValueEqualToZero(rootLeftNode) || GreaterThan(GetSize(rootRightNodeRightNode.GetValue<TElement>()), GetSize(rootLeftNode.GetValue<TElement>()))))
+                        (ValueEqualToZero(rootLeftNode) || GreaterThan(GetSize(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)rootRightNodeRightNode)), GetSize(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)rootLeftNode)))))
                     {
                         LeftRotate(root);
                     }
                     else
                     {
-                        var rootRightNodeLeftNode = GetLeftPointer(rootRightNode.GetValue<TElement>());
+                        var rootRightNodeLeftNode = GetLeftPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)rootRightNode));
                         if (!ValueEqualToZero(rootRightNodeLeftNode) &&
-                            (ValueEqualToZero(rootLeftNode) || GreaterThan(GetSize(rootRightNodeLeftNode.GetValue<TElement>()), GetSize(rootLeftNode.GetValue<TElement>()))))
+                            (ValueEqualToZero(rootLeftNode) || GreaterThan(GetSize(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)rootRightNodeLeftNode)), GetSize(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)rootLeftNode)))))
                         {
-                            RightRotate(GetRightPointer(root.GetValue<TElement>()));
+                            RightRotate(GetRightPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root)));
                             LeftRotate(root);
                         }
                         else
@@ -167,8 +166,8 @@ namespace Platform.Collections.Methods.Trees
                             return;
                         }
                     }
-                    LeftMaintain(GetLeftPointer(root.GetValue<TElement>()));
-                    RightMaintain(GetRightPointer(root.GetValue<TElement>()));
+                    LeftMaintain(GetLeftPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root)));
+                    RightMaintain(GetRightPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root)));
                     LeftMaintain(root);
                     RightMaintain(root);
                 }

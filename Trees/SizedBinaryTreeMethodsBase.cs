@@ -2,14 +2,13 @@
 using System.Runtime.CompilerServices;
 using System.Text;
 using Platform.Numbers;
-using Platform.Unsafe;
 
 //#define ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace Platform.Collections.Methods.Trees
 {
-    public abstract class SizedBinaryTreeMethodsBase<TElement> : GenericCollectionMethodsBase<TElement>
+    public unsafe abstract class SizedBinaryTreeMethodsBase<TElement> : GenericCollectionMethodsBase<TElement>
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract IntPtr GetLeftPointer(TElement node);
@@ -66,7 +65,11 @@ namespace Platform.Collections.Methods.Trees
         protected void FixSize(TElement node) => SetSize(node, Increment(Add(GetLeftSize(node), GetRightSize(node))));
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected void LeftRotate(IntPtr root) => root.SetValue(LeftRotate(root.GetValue<TElement>()));
+        protected void LeftRotate(IntPtr root)
+        {
+            var rootPointer = (void*)root;
+            System.Runtime.CompilerServices.Unsafe.Write(rootPointer, LeftRotate(System.Runtime.CompilerServices.Unsafe.Read<TElement>(rootPointer)));
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected TElement LeftRotate(TElement root)
@@ -86,7 +89,11 @@ namespace Platform.Collections.Methods.Trees
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected void RightRotate(IntPtr root) => root.SetValue(RightRotate(root.GetValue<TElement>()));
+        protected void RightRotate(IntPtr root)
+        {
+            var rootPointer = (void*)root;
+            System.Runtime.CompilerServices.Unsafe.Write(rootPointer, RightRotate(System.Runtime.CompilerServices.Unsafe.Read<TElement>(rootPointer)));
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected TElement RightRotate(TElement root)
@@ -146,7 +153,7 @@ namespace Platform.Collections.Methods.Trees
             if (ValueEqualToZero(root))
             {
                 SetSize(node, GetOne());
-                root.SetValue(node);
+                System.Runtime.CompilerServices.Unsafe.Write((void*)root, node);
                 return;
             }
             AttachCore(root, node);
@@ -194,13 +201,13 @@ namespace Platform.Collections.Methods.Trees
 
         protected abstract void DetachCore(IntPtr root, TElement node);
 
-        public TElement GetSize(IntPtr root) => root == IntPtr.Zero ? GetZero() : GetSizeOrZero(root.GetValue<TElement>());
+        public TElement GetSize(IntPtr root) => root == IntPtr.Zero ? GetZero() : GetSizeOrZero(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root));
 
         public void FixSizes(IntPtr root)
         {
             if (root != IntPtr.Zero)
             {
-                FixSizes(root.GetValue<TElement>());
+                FixSizes(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root));
             }
         }
 
@@ -219,7 +226,7 @@ namespace Platform.Collections.Methods.Trees
         {
             if (root != IntPtr.Zero)
             {
-                ValidateSizes(root.GetValue<TElement>());
+                ValidateSizes(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root));
             }
         }
 
@@ -258,7 +265,7 @@ namespace Platform.Collections.Methods.Trees
             if (root != IntPtr.Zero)
             {
                 var sb = new StringBuilder();
-                PrintNodes(root.GetValue<TElement>(), sb);
+                PrintNodes(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root), sb);
                 return sb.ToString();
             }
             return "";

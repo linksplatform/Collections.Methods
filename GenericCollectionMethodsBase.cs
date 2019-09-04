@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Platform.Numbers;
-using Platform.Unsafe;
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace Platform.Collections.Methods
 {
-    public abstract class GenericCollectionMethodsBase<TElement>
+    public unsafe abstract class GenericCollectionMethodsBase<TElement>
     {
         private static readonly EqualityComparer<TElement> _equalityComparer = EqualityComparer<TElement>.Default;
         private static readonly Comparer<TElement> _comparer = Comparer<TElement>.Default;
@@ -23,7 +22,7 @@ namespace Platform.Collections.Methods
         protected virtual TElement GetTwo() => Integer<TElement>.Two;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual bool ValueEqualToZero(IntPtr pointer) => _equalityComparer.Equals(pointer.GetValue<TElement>(), GetZero());
+        protected virtual bool ValueEqualToZero(IntPtr pointer) => _equalityComparer.Equals(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)pointer), GetZero());
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual bool EqualToZero(TElement value) => _equalityComparer.Equals(value, GetZero());
