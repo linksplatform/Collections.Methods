@@ -201,6 +201,7 @@ namespace Platform.Collections.Methods.Trees
 
         protected abstract void DetachCore(IntPtr root, TElement node);
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public TElement GetSize(IntPtr root) => root == IntPtr.Zero ? GetZero() : GetSizeOrZero(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root));
 
         public void FixSizes(IntPtr root)

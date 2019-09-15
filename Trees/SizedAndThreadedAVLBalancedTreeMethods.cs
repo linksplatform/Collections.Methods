@@ -43,11 +43,22 @@ namespace Platform.Collections.Methods.Trees
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected override TElement GetRightOrDefault(TElement node) => GetRightIsChild(node) ? base.GetRightOrDefault(node) : default;
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract bool GetLeftIsChild(TElement node);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract void SetLeftIsChild(TElement node, bool value);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract bool GetRightIsChild(TElement node);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract void SetRightIsChild(TElement node, bool value);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract sbyte GetBalance(TElement node);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract void SetBalance(TElement node, sbyte value);
 
         protected override void AttachCore(IntPtr root, TElement node)
