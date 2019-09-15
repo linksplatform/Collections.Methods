@@ -4,7 +4,7 @@
     <Description>LinksPlatform's Platform.Collections.Methods Class Library</Description>
     <Copyright>Konstantin Diachenko</Copyright>
     <AssemblyTitle>Platform.Collections.Methods</AssemblyTitle>
-    <VersionPrefix>0.0.6</VersionPrefix>
+    <VersionPrefix>0.0.7</VersionPrefix>
     <Authors>Konstantin Diachenko</Authors>
     <TargetFrameworks>net471;netstandard2.0</TargetFrameworks>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -23,9 +23,10 @@
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <LangVersion>Latest</LangVersion>
-    <PackageReleaseNotes>Added support for net461 (.NET Framework 4.6.1).
-Platform.Unsafe dependency updated from 0.1.1 to 0.1.2.
-Refactoring, issues fix.</PackageReleaseNotes>
+    <PackageReleaseNotes>The minimum supported version of .NET Framework is now 4.7.1.
+Platform.Unsafe dependency updated from 0.1.2 to 0.1.3.
+Project file updated to support multiple build environments: dotnet, Travis CI, MonoDevelop, and Visual Studio.
+Travis CI configuration updated to support automatic NuGet package publishing.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4')) AND '$(MSBuildRuntimeType)' == 'Core' AND '$(OS)' != 'Windows_NT'">
