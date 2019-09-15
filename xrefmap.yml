@@ -305,12 +305,12 @@ references:
   fullName.vb: Platform.Collections.Methods.GenericCollectionMethodsBase(Of TElement).Subtract
   nameWithType: GenericCollectionMethodsBase<TElement>.Subtract
   nameWithType.vb: GenericCollectionMethodsBase(Of TElement).Subtract
-- uid: Platform.Collections.Methods.GenericCollectionMethodsBase`1.ValueEqualToZero(IntPtr)
+- uid: Platform.Collections.Methods.GenericCollectionMethodsBase`1.ValueEqualToZero(System.IntPtr)
   name: ValueEqualToZero(IntPtr)
-  href: api/Platform.Collections.Methods.GenericCollectionMethodsBase-1.html#Platform_Collections_Methods_GenericCollectionMethodsBase_1_ValueEqualToZero_IntPtr_
-  commentId: M:Platform.Collections.Methods.GenericCollectionMethodsBase`1.ValueEqualToZero(IntPtr)
-  fullName: Platform.Collections.Methods.GenericCollectionMethodsBase<TElement>.ValueEqualToZero(IntPtr)
-  fullName.vb: Platform.Collections.Methods.GenericCollectionMethodsBase(Of TElement).ValueEqualToZero(IntPtr)
+  href: api/Platform.Collections.Methods.GenericCollectionMethodsBase-1.html#Platform_Collections_Methods_GenericCollectionMethodsBase_1_ValueEqualToZero_System_IntPtr_
+  commentId: M:Platform.Collections.Methods.GenericCollectionMethodsBase`1.ValueEqualToZero(System.IntPtr)
+  fullName: Platform.Collections.Methods.GenericCollectionMethodsBase<TElement>.ValueEqualToZero(System.IntPtr)
+  fullName.vb: Platform.Collections.Methods.GenericCollectionMethodsBase(Of TElement).ValueEqualToZero(System.IntPtr)
   nameWithType: GenericCollectionMethodsBase<TElement>.ValueEqualToZero(IntPtr)
   nameWithType.vb: GenericCollectionMethodsBase(Of TElement).ValueEqualToZero(IntPtr)
 - uid: Platform.Collections.Methods.GenericCollectionMethodsBase`1.ValueEqualToZero*
@@ -744,12 +744,12 @@ references:
   fullName.vb: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods(Of TElement)
   nameWithType: SizeBalancedTreeMethods<TElement>
   nameWithType.vb: SizeBalancedTreeMethods(Of TElement)
-- uid: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods`1.AttachCore(IntPtr,`0)
+- uid: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods`1.AttachCore(System.IntPtr,`0)
   name: AttachCore(IntPtr, TElement)
-  href: api/Platform.Collections.Methods.Trees.SizeBalancedTreeMethods-1.html#Platform_Collections_Methods_Trees_SizeBalancedTreeMethods_1_AttachCore_IntPtr__0_
-  commentId: M:Platform.Collections.Methods.Trees.SizeBalancedTreeMethods`1.AttachCore(IntPtr,`0)
-  fullName: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods<TElement>.AttachCore(IntPtr, TElement)
-  fullName.vb: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods(Of TElement).AttachCore(IntPtr, TElement)
+  href: api/Platform.Collections.Methods.Trees.SizeBalancedTreeMethods-1.html#Platform_Collections_Methods_Trees_SizeBalancedTreeMethods_1_AttachCore_System_IntPtr__0_
+  commentId: M:Platform.Collections.Methods.Trees.SizeBalancedTreeMethods`1.AttachCore(System.IntPtr,`0)
+  fullName: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods<TElement>.AttachCore(System.IntPtr, TElement)
+  fullName.vb: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods(Of TElement).AttachCore(System.IntPtr, TElement)
   nameWithType: SizeBalancedTreeMethods<TElement>.AttachCore(IntPtr, TElement)
   nameWithType.vb: SizeBalancedTreeMethods(Of TElement).AttachCore(IntPtr, TElement)
 - uid: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods`1.AttachCore*
@@ -761,12 +761,12 @@ references:
   fullName.vb: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods(Of TElement).AttachCore
   nameWithType: SizeBalancedTreeMethods<TElement>.AttachCore
   nameWithType.vb: SizeBalancedTreeMethods(Of TElement).AttachCore
-- uid: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods`1.DetachCore(IntPtr,`0)
+- uid: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods`1.DetachCore(System.IntPtr,`0)
   name: DetachCore(IntPtr, TElement)
-  href: api/Platform.Collections.Methods.Trees.SizeBalancedTreeMethods-1.html#Platform_Collections_Methods_Trees_SizeBalancedTreeMethods_1_DetachCore_IntPtr__0_
-  commentId: M:Platform.Collections.Methods.Trees.SizeBalancedTreeMethods`1.DetachCore(IntPtr,`0)
-  fullName: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods<TElement>.DetachCore(IntPtr, TElement)
-  fullName.vb: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods(Of TElement).DetachCore(IntPtr, TElement)
+  href: api/Platform.Collections.Methods.Trees.SizeBalancedTreeMethods-1.html#Platform_Collections_Methods_Trees_SizeBalancedTreeMethods_1_DetachCore_System_IntPtr__0_
+  commentId: M:Platform.Collections.Methods.Trees.SizeBalancedTreeMethods`1.DetachCore(System.IntPtr,`0)
+  fullName: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods<TElement>.DetachCore(System.IntPtr, TElement)
+  fullName.vb: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods(Of TElement).DetachCore(System.IntPtr, TElement)
   nameWithType: SizeBalancedTreeMethods<TElement>.DetachCore(IntPtr, TElement)
   nameWithType.vb: SizeBalancedTreeMethods(Of TElement).DetachCore(IntPtr, TElement)
 - uid: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods`1.DetachCore*
@@ -787,12 +787,12 @@ references:
   fullName.vb: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2(Of TElement)
   nameWithType: SizeBalancedTreeMethods2<TElement>
   nameWithType.vb: SizeBalancedTreeMethods2(Of TElement)
-- uid: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2`1.AttachCore(IntPtr,`0)
+- uid: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2`1.AttachCore(System.IntPtr,`0)
   name: AttachCore(IntPtr, TElement)
-  href: api/Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2-1.html#Platform_Collections_Methods_Trees_SizeBalancedTreeMethods2_1_AttachCore_IntPtr__0_
-  commentId: M:Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2`1.AttachCore(IntPtr,`0)
-  fullName: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2<TElement>.AttachCore(IntPtr, TElement)
-  fullName.vb: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2(Of TElement).AttachCore(IntPtr, TElement)
+  href: api/Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2-1.html#Platform_Collections_Methods_Trees_SizeBalancedTreeMethods2_1_AttachCore_System_IntPtr__0_
+  commentId: M:Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2`1.AttachCore(System.IntPtr,`0)
+  fullName: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2<TElement>.AttachCore(System.IntPtr, TElement)
+  fullName.vb: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2(Of TElement).AttachCore(System.IntPtr, TElement)
   nameWithType: SizeBalancedTreeMethods2<TElement>.AttachCore(IntPtr, TElement)
   nameWithType.vb: SizeBalancedTreeMethods2(Of TElement).AttachCore(IntPtr, TElement)
 - uid: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2`1.AttachCore*
@@ -804,12 +804,12 @@ references:
   fullName.vb: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2(Of TElement).AttachCore
   nameWithType: SizeBalancedTreeMethods2<TElement>.AttachCore
   nameWithType.vb: SizeBalancedTreeMethods2(Of TElement).AttachCore
-- uid: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2`1.DetachCore(IntPtr,`0)
+- uid: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2`1.DetachCore(System.IntPtr,`0)
   name: DetachCore(IntPtr, TElement)
-  href: api/Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2-1.html#Platform_Collections_Methods_Trees_SizeBalancedTreeMethods2_1_DetachCore_IntPtr__0_
-  commentId: M:Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2`1.DetachCore(IntPtr,`0)
-  fullName: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2<TElement>.DetachCore(IntPtr, TElement)
-  fullName.vb: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2(Of TElement).DetachCore(IntPtr, TElement)
+  href: api/Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2-1.html#Platform_Collections_Methods_Trees_SizeBalancedTreeMethods2_1_DetachCore_System_IntPtr__0_
+  commentId: M:Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2`1.DetachCore(System.IntPtr,`0)
+  fullName: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2<TElement>.DetachCore(System.IntPtr, TElement)
+  fullName.vb: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2(Of TElement).DetachCore(System.IntPtr, TElement)
   nameWithType: SizeBalancedTreeMethods2<TElement>.DetachCore(IntPtr, TElement)
   nameWithType.vb: SizeBalancedTreeMethods2(Of TElement).DetachCore(IntPtr, TElement)
 - uid: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2`1.DetachCore*
@@ -830,12 +830,12 @@ references:
   fullName.vb: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods(Of TElement)
   nameWithType: SizedAndThreadedAVLBalancedTreeMethods<TElement>
   nameWithType.vb: SizedAndThreadedAVLBalancedTreeMethods(Of TElement)
-- uid: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods`1.AttachCore(IntPtr,`0)
+- uid: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods`1.AttachCore(System.IntPtr,`0)
   name: AttachCore(IntPtr, TElement)
-  href: api/Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods-1.html#Platform_Collections_Methods_Trees_SizedAndThreadedAVLBalancedTreeMethods_1_AttachCore_IntPtr__0_
-  commentId: M:Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods`1.AttachCore(IntPtr,`0)
-  fullName: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods<TElement>.AttachCore(IntPtr, TElement)
-  fullName.vb: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods(Of TElement).AttachCore(IntPtr, TElement)
+  href: api/Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods-1.html#Platform_Collections_Methods_Trees_SizedAndThreadedAVLBalancedTreeMethods_1_AttachCore_System_IntPtr__0_
+  commentId: M:Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods`1.AttachCore(System.IntPtr,`0)
+  fullName: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods<TElement>.AttachCore(System.IntPtr, TElement)
+  fullName.vb: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods(Of TElement).AttachCore(System.IntPtr, TElement)
   nameWithType: SizedAndThreadedAVLBalancedTreeMethods<TElement>.AttachCore(IntPtr, TElement)
   nameWithType.vb: SizedAndThreadedAVLBalancedTreeMethods(Of TElement).AttachCore(IntPtr, TElement)
 - uid: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods`1.AttachCore*
@@ -881,12 +881,12 @@ references:
   fullName.vb: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods(Of TElement).DecrementBalance
   nameWithType: SizedAndThreadedAVLBalancedTreeMethods<TElement>.DecrementBalance
   nameWithType.vb: SizedAndThreadedAVLBalancedTreeMethods(Of TElement).DecrementBalance
-- uid: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods`1.DetachCore(IntPtr,`0)
+- uid: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods`1.DetachCore(System.IntPtr,`0)
   name: DetachCore(IntPtr, TElement)
-  href: api/Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods-1.html#Platform_Collections_Methods_Trees_SizedAndThreadedAVLBalancedTreeMethods_1_DetachCore_IntPtr__0_
-  commentId: M:Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods`1.DetachCore(IntPtr,`0)
-  fullName: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods<TElement>.DetachCore(IntPtr, TElement)
-  fullName.vb: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods(Of TElement).DetachCore(IntPtr, TElement)
+  href: api/Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods-1.html#Platform_Collections_Methods_Trees_SizedAndThreadedAVLBalancedTreeMethods_1_DetachCore_System_IntPtr__0_
+  commentId: M:Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods`1.DetachCore(System.IntPtr,`0)
+  fullName: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods<TElement>.DetachCore(System.IntPtr, TElement)
+  fullName.vb: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods(Of TElement).DetachCore(System.IntPtr, TElement)
   nameWithType: SizedAndThreadedAVLBalancedTreeMethods<TElement>.DetachCore(IntPtr, TElement)
   nameWithType.vb: SizedAndThreadedAVLBalancedTreeMethods(Of TElement).DetachCore(IntPtr, TElement)
 - uid: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods`1.DetachCore*
@@ -1051,12 +1051,12 @@ references:
   fullName.vb: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods(Of TElement).LeftRotateWithBalance
   nameWithType: SizedAndThreadedAVLBalancedTreeMethods<TElement>.LeftRotateWithBalance
   nameWithType.vb: SizedAndThreadedAVLBalancedTreeMethods(Of TElement).LeftRotateWithBalance
-- uid: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods`1.PrintNode(`0,StringBuilder,System.Int32)
+- uid: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods`1.PrintNode(`0,System.Text.StringBuilder,System.Int32)
   name: PrintNode(TElement, StringBuilder, Int32)
-  href: api/Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods-1.html#Platform_Collections_Methods_Trees_SizedAndThreadedAVLBalancedTreeMethods_1_PrintNode__0_StringBuilder_System_Int32_
-  commentId: M:Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods`1.PrintNode(`0,StringBuilder,System.Int32)
-  fullName: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods<TElement>.PrintNode(TElement, StringBuilder, System.Int32)
-  fullName.vb: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods(Of TElement).PrintNode(TElement, StringBuilder, System.Int32)
+  href: api/Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods-1.html#Platform_Collections_Methods_Trees_SizedAndThreadedAVLBalancedTreeMethods_1_PrintNode__0_System_Text_StringBuilder_System_Int32_
+  commentId: M:Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods`1.PrintNode(`0,System.Text.StringBuilder,System.Int32)
+  fullName: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods<TElement>.PrintNode(TElement, System.Text.StringBuilder, System.Int32)
+  fullName.vb: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods(Of TElement).PrintNode(TElement, System.Text.StringBuilder, System.Int32)
   nameWithType: SizedAndThreadedAVLBalancedTreeMethods<TElement>.PrintNode(TElement, StringBuilder, Int32)
   nameWithType.vb: SizedAndThreadedAVLBalancedTreeMethods(Of TElement).PrintNode(TElement, StringBuilder, Int32)
 - uid: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods`1.PrintNode*
@@ -1145,12 +1145,12 @@ references:
   fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement)
   nameWithType: SizedBinaryTreeMethodsBase<TElement>
   nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement)
-- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.Attach(IntPtr,`0)
+- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.Attach(System.IntPtr,`0)
   name: Attach(IntPtr, TElement)
-  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_Attach_IntPtr__0_
-  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.Attach(IntPtr,`0)
-  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.Attach(IntPtr, TElement)
-  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).Attach(IntPtr, TElement)
+  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_Attach_System_IntPtr__0_
+  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.Attach(System.IntPtr,`0)
+  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.Attach(System.IntPtr, TElement)
+  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).Attach(System.IntPtr, TElement)
   nameWithType: SizedBinaryTreeMethodsBase<TElement>.Attach(IntPtr, TElement)
   nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).Attach(IntPtr, TElement)
 - uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.Attach*
@@ -1162,12 +1162,12 @@ references:
   fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).Attach
   nameWithType: SizedBinaryTreeMethodsBase<TElement>.Attach
   nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).Attach
-- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.AttachCore(IntPtr,`0)
+- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.AttachCore(System.IntPtr,`0)
   name: AttachCore(IntPtr, TElement)
-  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_AttachCore_IntPtr__0_
-  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.AttachCore(IntPtr,`0)
-  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.AttachCore(IntPtr, TElement)
-  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).AttachCore(IntPtr, TElement)
+  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_AttachCore_System_IntPtr__0_
+  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.AttachCore(System.IntPtr,`0)
+  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.AttachCore(System.IntPtr, TElement)
+  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).AttachCore(System.IntPtr, TElement)
   nameWithType: SizedBinaryTreeMethodsBase<TElement>.AttachCore(IntPtr, TElement)
   nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).AttachCore(IntPtr, TElement)
 - uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.AttachCore*
@@ -1230,12 +1230,12 @@ references:
   fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).DecrementSize
   nameWithType: SizedBinaryTreeMethodsBase<TElement>.DecrementSize
   nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).DecrementSize
-- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.Detach(IntPtr,`0)
+- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.Detach(System.IntPtr,`0)
   name: Detach(IntPtr, TElement)
-  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_Detach_IntPtr__0_
-  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.Detach(IntPtr,`0)
-  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.Detach(IntPtr, TElement)
-  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).Detach(IntPtr, TElement)
+  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_Detach_System_IntPtr__0_
+  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.Detach(System.IntPtr,`0)
+  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.Detach(System.IntPtr, TElement)
+  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).Detach(System.IntPtr, TElement)
   nameWithType: SizedBinaryTreeMethodsBase<TElement>.Detach(IntPtr, TElement)
   nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).Detach(IntPtr, TElement)
 - uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.Detach*
@@ -1247,12 +1247,12 @@ references:
   fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).Detach
   nameWithType: SizedBinaryTreeMethodsBase<TElement>.Detach
   nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).Detach
-- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.DetachCore(IntPtr,`0)
+- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.DetachCore(System.IntPtr,`0)
   name: DetachCore(IntPtr, TElement)
-  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_DetachCore_IntPtr__0_
-  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.DetachCore(IntPtr,`0)
-  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.DetachCore(IntPtr, TElement)
-  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).DetachCore(IntPtr, TElement)
+  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_DetachCore_System_IntPtr__0_
+  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.DetachCore(System.IntPtr,`0)
+  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.DetachCore(System.IntPtr, TElement)
+  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).DetachCore(System.IntPtr, TElement)
   nameWithType: SizedBinaryTreeMethodsBase<TElement>.DetachCore(IntPtr, TElement)
   nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).DetachCore(IntPtr, TElement)
 - uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.DetachCore*
@@ -1323,12 +1323,12 @@ references:
   fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).FixSizes(TElement)
   nameWithType: SizedBinaryTreeMethodsBase<TElement>.FixSizes(TElement)
   nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).FixSizes(TElement)
-- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.FixSizes(IntPtr)
+- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.FixSizes(System.IntPtr)
   name: FixSizes(IntPtr)
-  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_FixSizes_IntPtr_
-  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.FixSizes(IntPtr)
-  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.FixSizes(IntPtr)
-  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).FixSizes(IntPtr)
+  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_FixSizes_System_IntPtr_
+  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.FixSizes(System.IntPtr)
+  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.FixSizes(System.IntPtr)
+  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).FixSizes(System.IntPtr)
   nameWithType: SizedBinaryTreeMethodsBase<TElement>.FixSizes(IntPtr)
   nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).FixSizes(IntPtr)
 - uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.FixSizes*
@@ -1484,12 +1484,12 @@ references:
   fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).GetSize(TElement)
   nameWithType: SizedBinaryTreeMethodsBase<TElement>.GetSize(TElement)
   nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).GetSize(TElement)
-- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.GetSize(IntPtr)
+- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.GetSize(System.IntPtr)
   name: GetSize(IntPtr)
-  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_GetSize_IntPtr_
-  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.GetSize(IntPtr)
-  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.GetSize(IntPtr)
-  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).GetSize(IntPtr)
+  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_GetSize_System_IntPtr_
+  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.GetSize(System.IntPtr)
+  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.GetSize(System.IntPtr)
+  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).GetSize(System.IntPtr)
   nameWithType: SizedBinaryTreeMethodsBase<TElement>.GetSize(IntPtr)
   nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).GetSize(IntPtr)
 - uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.GetSize*
@@ -1543,12 +1543,12 @@ references:
   fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).LeftRotate(TElement)
   nameWithType: SizedBinaryTreeMethodsBase<TElement>.LeftRotate(TElement)
   nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).LeftRotate(TElement)
-- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.LeftRotate(IntPtr)
+- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.LeftRotate(System.IntPtr)
   name: LeftRotate(IntPtr)
-  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_LeftRotate_IntPtr_
-  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.LeftRotate(IntPtr)
-  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.LeftRotate(IntPtr)
-  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).LeftRotate(IntPtr)
+  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_LeftRotate_System_IntPtr_
+  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.LeftRotate(System.IntPtr)
+  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.LeftRotate(System.IntPtr)
+  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).LeftRotate(System.IntPtr)
   nameWithType: SizedBinaryTreeMethodsBase<TElement>.LeftRotate(IntPtr)
   nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).LeftRotate(IntPtr)
 - uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.LeftRotate*
@@ -1568,20 +1568,20 @@ references:
   fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).PrintNode(TElement)
   nameWithType: SizedBinaryTreeMethodsBase<TElement>.PrintNode(TElement)
   nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).PrintNode(TElement)
-- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.PrintNode(`0,StringBuilder)
+- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.PrintNode(`0,System.Text.StringBuilder)
   name: PrintNode(TElement, StringBuilder)
-  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_PrintNode__0_StringBuilder_
-  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.PrintNode(`0,StringBuilder)
-  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.PrintNode(TElement, StringBuilder)
-  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).PrintNode(TElement, StringBuilder)
+  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_PrintNode__0_System_Text_StringBuilder_
+  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.PrintNode(`0,System.Text.StringBuilder)
+  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.PrintNode(TElement, System.Text.StringBuilder)
+  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).PrintNode(TElement, System.Text.StringBuilder)
   nameWithType: SizedBinaryTreeMethodsBase<TElement>.PrintNode(TElement, StringBuilder)
   nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).PrintNode(TElement, StringBuilder)
-- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.PrintNode(`0,StringBuilder,System.Int32)
+- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.PrintNode(`0,System.Text.StringBuilder,System.Int32)
   name: PrintNode(TElement, StringBuilder, Int32)
-  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_PrintNode__0_StringBuilder_System_Int32_
-  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.PrintNode(`0,StringBuilder,System.Int32)
-  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.PrintNode(TElement, StringBuilder, System.Int32)
-  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).PrintNode(TElement, StringBuilder, System.Int32)
+  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_PrintNode__0_System_Text_StringBuilder_System_Int32_
+  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.PrintNode(`0,System.Text.StringBuilder,System.Int32)
+  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.PrintNode(TElement, System.Text.StringBuilder, System.Int32)
+  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).PrintNode(TElement, System.Text.StringBuilder, System.Int32)
   nameWithType: SizedBinaryTreeMethodsBase<TElement>.PrintNode(TElement, StringBuilder, Int32)
   nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).PrintNode(TElement, StringBuilder, Int32)
 - uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.PrintNode*
@@ -1601,28 +1601,28 @@ references:
   fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).PrintNodes(TElement)
   nameWithType: SizedBinaryTreeMethodsBase<TElement>.PrintNodes(TElement)
   nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).PrintNodes(TElement)
-- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.PrintNodes(`0,StringBuilder)
+- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.PrintNodes(`0,System.Text.StringBuilder)
   name: PrintNodes(TElement, StringBuilder)
-  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_PrintNodes__0_StringBuilder_
-  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.PrintNodes(`0,StringBuilder)
-  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.PrintNodes(TElement, StringBuilder)
-  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).PrintNodes(TElement, StringBuilder)
+  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_PrintNodes__0_System_Text_StringBuilder_
+  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.PrintNodes(`0,System.Text.StringBuilder)
+  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.PrintNodes(TElement, System.Text.StringBuilder)
+  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).PrintNodes(TElement, System.Text.StringBuilder)
   nameWithType: SizedBinaryTreeMethodsBase<TElement>.PrintNodes(TElement, StringBuilder)
   nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).PrintNodes(TElement, StringBuilder)
-- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.PrintNodes(`0,StringBuilder,System.Int32)
+- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.PrintNodes(`0,System.Text.StringBuilder,System.Int32)
   name: PrintNodes(TElement, StringBuilder, Int32)
-  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_PrintNodes__0_StringBuilder_System_Int32_
-  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.PrintNodes(`0,StringBuilder,System.Int32)
-  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.PrintNodes(TElement, StringBuilder, System.Int32)
-  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).PrintNodes(TElement, StringBuilder, System.Int32)
+  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_PrintNodes__0_System_Text_StringBuilder_System_Int32_
+  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.PrintNodes(`0,System.Text.StringBuilder,System.Int32)
+  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.PrintNodes(TElement, System.Text.StringBuilder, System.Int32)
+  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).PrintNodes(TElement, System.Text.StringBuilder, System.Int32)
   nameWithType: SizedBinaryTreeMethodsBase<TElement>.PrintNodes(TElement, StringBuilder, Int32)
   nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).PrintNodes(TElement, StringBuilder, Int32)
-- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.PrintNodes(IntPtr)
+- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.PrintNodes(System.IntPtr)
   name: PrintNodes(IntPtr)
-  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_PrintNodes_IntPtr_
-  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.PrintNodes(IntPtr)
-  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.PrintNodes(IntPtr)
-  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).PrintNodes(IntPtr)
+  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_PrintNodes_System_IntPtr_
+  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.PrintNodes(System.IntPtr)
+  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.PrintNodes(System.IntPtr)
+  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).PrintNodes(System.IntPtr)
   nameWithType: SizedBinaryTreeMethodsBase<TElement>.PrintNodes(IntPtr)
   nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).PrintNodes(IntPtr)
 - uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.PrintNodes*
@@ -1634,12 +1634,12 @@ references:
   fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).PrintNodes
   nameWithType: SizedBinaryTreeMethodsBase<TElement>.PrintNodes
   nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).PrintNodes
-- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.PrintNodeValue(`0,StringBuilder)
+- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.PrintNodeValue(`0,System.Text.StringBuilder)
   name: PrintNodeValue(TElement, StringBuilder)
-  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_PrintNodeValue__0_StringBuilder_
-  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.PrintNodeValue(`0,StringBuilder)
-  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.PrintNodeValue(TElement, StringBuilder)
-  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).PrintNodeValue(TElement, StringBuilder)
+  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_PrintNodeValue__0_System_Text_StringBuilder_
+  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.PrintNodeValue(`0,System.Text.StringBuilder)
+  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.PrintNodeValue(TElement, System.Text.StringBuilder)
+  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).PrintNodeValue(TElement, System.Text.StringBuilder)
   nameWithType: SizedBinaryTreeMethodsBase<TElement>.PrintNodeValue(TElement, StringBuilder)
   nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).PrintNodeValue(TElement, StringBuilder)
 - uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.PrintNodeValue*
@@ -1659,12 +1659,12 @@ references:
   fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).RightRotate(TElement)
   nameWithType: SizedBinaryTreeMethodsBase<TElement>.RightRotate(TElement)
   nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).RightRotate(TElement)
-- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.RightRotate(IntPtr)
+- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.RightRotate(System.IntPtr)
   name: RightRotate(IntPtr)
-  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_RightRotate_IntPtr_
-  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.RightRotate(IntPtr)
-  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.RightRotate(IntPtr)
-  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).RightRotate(IntPtr)
+  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_RightRotate_System_IntPtr_
+  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.RightRotate(System.IntPtr)
+  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.RightRotate(System.IntPtr)
+  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).RightRotate(System.IntPtr)
   nameWithType: SizedBinaryTreeMethodsBase<TElement>.RightRotate(IntPtr)
   nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).RightRotate(IntPtr)
 - uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.RightRotate*
@@ -1752,12 +1752,12 @@ references:
   fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).ValidateSizes(TElement)
   nameWithType: SizedBinaryTreeMethodsBase<TElement>.ValidateSizes(TElement)
   nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).ValidateSizes(TElement)
-- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.ValidateSizes(IntPtr)
+- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.ValidateSizes(System.IntPtr)
   name: ValidateSizes(IntPtr)
-  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_ValidateSizes_IntPtr_
-  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.ValidateSizes(IntPtr)
-  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.ValidateSizes(IntPtr)
-  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).ValidateSizes(IntPtr)
+  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_ValidateSizes_System_IntPtr_
+  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.ValidateSizes(System.IntPtr)
+  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.ValidateSizes(System.IntPtr)
+  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).ValidateSizes(System.IntPtr)
   nameWithType: SizedBinaryTreeMethodsBase<TElement>.ValidateSizes(IntPtr)
   nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).ValidateSizes(IntPtr)
 - uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.ValidateSizes*
