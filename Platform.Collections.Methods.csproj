@@ -29,7 +29,7 @@ Refactoring, issues fix.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Platform.Unsafe" Version="0.1.2" />
+    <PackageReference Include="Platform.Unsafe" Version="0.1.3" />
   </ItemGroup>
 
 </Project>
