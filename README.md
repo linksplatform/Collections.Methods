@@ -17,7 +17,7 @@ NuGet package: [Platform.Collections.Methods](https://www.nuget.org/packages/Pla
 [PDF file](https://linksplatform.github.io/Collections.Methods/Platform.Collections.Methods.pdf) with code for e-readers.
 
 ## Depend on
-*   [Platform.Unsafe](https://github.com/linksplatform/Unsafe)
+*   [Platform.Numbers](https://github.com/linksplatform/Numbers)
 
 ## Dependent libraries
 *   [Platform.Data.Doublets](https://github.com/linksplatform/Data.Doublets)
