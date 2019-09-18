@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Platform.Numbers;
 
@@ -64,9 +63,9 @@ namespace Platform.Collections.Methods
         {
             EqualityComparer = EqualityComparer<TElement>.Default;
             Comparer = Comparer<TElement>.Default;
-            Zero = GetZero();
-            One = Increment(Zero);
-            Two = Increment(One);
+            Zero = GetZero(); //-V3068
+            One = Increment(Zero); //-V3068
+            Two = Increment(One); //-V3068
         }
     }
 }
