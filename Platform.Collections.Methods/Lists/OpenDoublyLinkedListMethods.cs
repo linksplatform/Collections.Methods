@@ -45,8 +45,8 @@ namespace Platform.Collections.Methods.Lists
             {
                 SetFirst(element);
                 SetLast(element);
-                SetPrevious(element, GetZero());
-                SetNext(element, GetZero());
+                SetPrevious(element, Zero);
+                SetNext(element, Zero);
                 IncrementSize();
             }
             else
@@ -88,8 +88,8 @@ namespace Platform.Collections.Methods.Lists
             {
                 SetPrevious(elementNext, elementPrevious);
             }
-            SetPrevious(element, GetZero());
-            SetNext(element, GetZero());
+            SetPrevious(element, Zero);
+            SetNext(element, Zero);
             DecrementSize();
         }
     }

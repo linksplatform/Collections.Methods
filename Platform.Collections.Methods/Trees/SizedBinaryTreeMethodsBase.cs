@@ -8,19 +8,19 @@ using Platform.Numbers;
 
 namespace Platform.Collections.Methods.Trees
 {
-    public unsafe abstract class SizedBinaryTreeMethodsBase<TElement> : GenericCollectionMethodsBase<TElement>
+    public abstract class SizedBinaryTreeMethodsBase<TElement> : GenericCollectionMethodsBase<TElement>
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected abstract IntPtr GetLeftPointer(TElement node);
+        protected abstract ref TElement GetLeftReference(TElement node);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected abstract IntPtr GetRightPointer(TElement node);
+        protected abstract ref TElement GetRightReference(TElement node);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected abstract TElement GetLeftValue(TElement node);
+        protected abstract TElement GetLeft(TElement node);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected abstract TElement GetRightValue(TElement node);
+        protected abstract TElement GetRight(TElement node);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract TElement GetSize(TElement node);
@@ -41,10 +41,10 @@ namespace Platform.Collections.Methods.Trees
         protected abstract bool FirstIsToTheRightOfSecond(TElement first, TElement second);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual TElement GetLeftOrDefault(TElement node) => GetLeftPointer(node) != IntPtr.Zero ? GetLeftValue(node) : default;
+        protected virtual TElement GetLeftOrDefault(TElement node) => IsEquals(node, default) ? default : GetLeft(node);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual TElement GetRightOrDefault(TElement node) => GetRightPointer(node) != IntPtr.Zero ? GetRightValue(node) : default;
+        protected virtual TElement GetRightOrDefault(TElement node) => IsEquals(node, default) ? default : GetRight(node);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected void IncrementSize(TElement node) => SetSize(node, Increment(GetSize(node)));
@@ -59,29 +59,25 @@ namespace Platform.Collections.Methods.Trees
         protected TElement GetRightSize(TElement node) => GetSizeOrZero(GetRightOrDefault(node));
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected TElement GetSizeOrZero(TElement node) => EqualToZero(node) ? GetZero() : GetSize(node);
+        protected TElement GetSizeOrZero(TElement node) => EqualToZero(node) ? Zero : GetSize(node);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected void FixSize(TElement node) => SetSize(node, Increment(Add(GetLeftSize(node), GetRightSize(node))));
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected void LeftRotate(IntPtr root)
-        {
-            var rootPointer = (void*)root;
-            System.Runtime.CompilerServices.Unsafe.Write(rootPointer, LeftRotate(System.Runtime.CompilerServices.Unsafe.Read<TElement>(rootPointer)));
-        }
+        protected void LeftRotate(ref TElement root) => root = LeftRotate(root);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected TElement LeftRotate(TElement root)
         {
-            var right = GetRightValue(root);
+            var right = GetRight(root);
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
             if (EqualToZero(right))
             {
                 throw new Exception("Right is null.");
             }
 #endif
-            SetRight(root, GetLeftValue(right));
+            SetRight(root, GetLeft(right));
             SetLeft(right, root);
             SetSize(right, GetSize(root));
             FixSize(root);
@@ -89,23 +85,19 @@ namespace Platform.Collections.Methods.Trees
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected void RightRotate(IntPtr root)
-        {
-            var rootPointer = (void*)root;
-            System.Runtime.CompilerServices.Unsafe.Write(rootPointer, RightRotate(System.Runtime.CompilerServices.Unsafe.Read<TElement>(rootPointer)));
-        }
+        protected void RightRotate(ref TElement root) => root = RightRotate(root);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected TElement RightRotate(TElement root)
         {
-            var left = GetLeftValue(root);
+            var left = GetLeft(root);
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
             if (EqualToZero(left))
             {
                 throw new Exception("Left is null.");
             }
 #endif
-            SetLeft(root, GetRightValue(left));
+            SetLeft(root, GetRight(left));
             SetRight(left, root);
             SetSize(left, GetSize(root));
             FixSize(root);
@@ -119,11 +111,11 @@ namespace Platform.Collections.Methods.Trees
             {
                 if (FirstIsToTheLeftOfSecond(node, root)) // node.Key < root.Key
                 {
-                    root = GetLeftOrDefault(root);
+                    root = GetLeft(root);
                 }
                 else if (FirstIsToTheRightOfSecond(node, root)) // node.Key > root.Key
                 {
-                    root = GetRightOrDefault(root);
+                    root = GetRight(root);
                 }
                 else // node.Key == root.Key
                 {
@@ -136,12 +128,13 @@ namespace Platform.Collections.Methods.Trees
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual void ClearNode(TElement node)
         {
-            SetLeft(node, GetZero());
-            SetRight(node, GetZero());
-            SetSize(node, GetZero());
+            SetLeft(node, Zero);
+            SetRight(node, Zero);
+            SetSize(node, Zero);
         }
 
-        public void Attach(IntPtr root, TElement node)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void Attach(ref TElement root, TElement node)
         {
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
             ValidateSizes(root);
@@ -150,13 +143,13 @@ namespace Platform.Collections.Methods.Trees
             Debug.WriteLine("----------------");
             var sizeBefore = GetSize(root);
 #endif
-            if (ValueEqualToZero(root))
+            if (EqualToZero(root))
             {
-                SetSize(node, GetOne());
-                System.Runtime.CompilerServices.Unsafe.Write((void*)root, node);
+                SetSize(node, One);
+                root = node;
                 return;
             }
-            AttachCore(root, node);
+            AttachCore(ref root, node);
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
             Debug.WriteLine("--AfterAttach--");
             Debug.WriteLine(PrintNodes(root));
@@ -170,9 +163,10 @@ namespace Platform.Collections.Methods.Trees
 #endif
         }
 
-        protected abstract void AttachCore(IntPtr root, TElement node);
+        protected abstract void AttachCore(ref TElement root, TElement node);
 
-        public void Detach(IntPtr root, TElement node)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void Detach(ref TElement root, TElement node)
         {
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
             ValidateSizes(root);
@@ -185,7 +179,7 @@ namespace Platform.Collections.Methods.Trees
                 throw new Exception($"Элемент с {node} не содержится в дереве.");
             }
 #endif
-            DetachCore(root, node);
+            DetachCore(ref root, node);
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
             Debug.WriteLine("--AfterDetach--");
             Debug.WriteLine(PrintNodes(root));
@@ -199,18 +193,7 @@ namespace Platform.Collections.Methods.Trees
 #endif
         }
 
-        protected abstract void DetachCore(IntPtr root, TElement node);
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public TElement GetSize(IntPtr root) => root == IntPtr.Zero ? GetZero() : GetSizeOrZero(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root));
-
-        public void FixSizes(IntPtr root)
-        {
-            if (root != IntPtr.Zero)
-            {
-                FixSizes(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root));
-            }
-        }
+        protected abstract void DetachCore(ref TElement root, TElement node);
 
         public void FixSizes(TElement node)
         {
@@ -218,17 +201,9 @@ namespace Platform.Collections.Methods.Trees
             {
                 return;
             }
-            FixSizes(GetLeftOrDefault(node));
-            FixSizes(GetRightOrDefault(node));
+            FixSizes(GetLeft(node));
+            FixSizes(GetRight(node));
             FixSize(node);
-        }
-
-        public void ValidateSizes(IntPtr root)
-        {
-            if (root != IntPtr.Zero)
-            {
-                ValidateSizes(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root));
-            }
         }
 
         public void ValidateSizes(TElement node)
@@ -245,8 +220,8 @@ namespace Platform.Collections.Methods.Trees
             {
                 throw new InvalidOperationException($"Size of {node} is not valid. Expected size: {expectedSize}, actual size: {size}.");
             }
-            ValidateSizes(GetLeftOrDefault(node));
-            ValidateSizes(GetRightOrDefault(node));
+            ValidateSizes(GetLeft(node));
+            ValidateSizes(GetRight(node));
         }
 
         public void ValidateSize(TElement node)
@@ -261,17 +236,6 @@ namespace Platform.Collections.Methods.Trees
             }
         }
 
-        public string PrintNodes(IntPtr root)
-        {
-            if (root != IntPtr.Zero)
-            {
-                var sb = new StringBuilder();
-                PrintNodes(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root), sb);
-                return sb.ToString();
-            }
-            return "";
-        }
-
         public string PrintNodes(TElement node)
         {
             var sb = new StringBuilder();
@@ -279,6 +243,7 @@ namespace Platform.Collections.Methods.Trees
             return sb.ToString();
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void PrintNodes(TElement node, StringBuilder sb) => PrintNodes(node, sb, 0);
 
         public void PrintNodes(TElement node, StringBuilder sb, int level)
@@ -287,10 +252,10 @@ namespace Platform.Collections.Methods.Trees
             {
                 return;
             }
-            PrintNodes(GetLeftOrDefault(node), sb, level + 1);
+            PrintNodes(GetLeft(node), sb, level + 1);
             PrintNode(node, sb, level);
             sb.AppendLine();
-            PrintNodes(GetRightOrDefault(node), sb, level + 1);
+            PrintNodes(GetRight(node), sb, level + 1);
         }
 
         public string PrintNode(TElement node)
@@ -300,6 +265,7 @@ namespace Platform.Collections.Methods.Trees
             return sb.ToString();
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected void PrintNode(TElement node, StringBuilder sb) => PrintNode(node, sb, 0);
 
         protected virtual void PrintNode(TElement node, StringBuilder sb, int level)

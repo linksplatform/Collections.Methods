@@ -4,172 +4,173 @@
 
 namespace Platform.Collections.Methods.Trees
 {
-    /// <summary>
-    /// Experimental implementation, don't use it yet.
-    /// </summary>
-    public unsafe abstract class SizeBalancedTreeMethods2<TElement> : SizedBinaryTreeMethodsBase<TElement>
+    public abstract class SizeBalancedTreeMethods2<TElement> : SizedBinaryTreeMethodsBase<TElement>
     {
-        protected override void AttachCore(IntPtr root, TElement newNode)
+        protected override void AttachCore(ref TElement root, TElement newNode)
         {
-            if (ValueEqualToZero(root))
+            if (EqualToZero(root))
             {
-                System.Runtime.CompilerServices.Unsafe.Write((void*)root, newNode);
-                IncrementSize(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root));
+                root = newNode;
+                IncrementSize(root);
             }
             else
             {
-                IncrementSize(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root));
-                if (FirstIsToTheLeftOfSecond(newNode, System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root)))
+                IncrementSize(root);
+                if (FirstIsToTheLeftOfSecond(newNode, root))
                 {
-                    AttachCore(GetLeftPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root)), newNode);
-                    LeftMaintain(root);
+                    AttachCore(ref GetLeftReference(root), newNode);
+                    LeftMaintain(ref root);
                 }
                 else
                 {
-                    AttachCore(GetRightPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root)), newNode);
-                    RightMaintain(root);
+                    AttachCore(ref GetRightReference(root), newNode);
+                    RightMaintain(ref root);
                 }
             }
         }
 
-        protected override void DetachCore(IntPtr root, TElement nodeToDetach)
+        protected override void DetachCore(ref TElement root, TElement nodeToDetach)
         {
-            if (ValueEqualToZero(root))
+            if (EqualToZero(root))
             {
                 return;
             }
-            var currentNode = root;
-            var parent = IntPtr.Zero; /* Изначально зануление, так как родителя может и не быть (Корень дерева). */
-            var replacementNode = GetZero();
-            while (!IsEquals(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)currentNode), nodeToDetach))
+            ref var currentNode = ref root;
+            TElement @null = default;
+            var parentIsSet = false;
+            ref TElement parent = ref @null; /* Изначально зануление, так как родителя может и не быть (Корень дерева). */
+            var replacementNode = Zero;
+            while (!IsEquals(currentNode, nodeToDetach))
             {
-                SetSize(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)currentNode), Decrement(GetSize(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)currentNode))));
-                if (FirstIsToTheLeftOfSecond(nodeToDetach, System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)currentNode)))
+                SetSize(currentNode, Decrement(GetSize(currentNode)));
+                if (FirstIsToTheLeftOfSecond(nodeToDetach, currentNode))
                 {
-                    parent = currentNode;
-                    currentNode = GetLeftPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)currentNode));
+                    parent = ref currentNode;
+                    parentIsSet = true;
+                    currentNode = ref GetLeftReference(currentNode);
                 }
-                else if (FirstIsToTheRightOfSecond(nodeToDetach, System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)currentNode)))
+                else if (FirstIsToTheRightOfSecond(nodeToDetach, currentNode))
                 {
-                    parent = currentNode;
-                    currentNode = GetRightPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)currentNode));
+                    parent = ref currentNode;
+                    parentIsSet = true;
+                    currentNode = ref GetRightReference(currentNode);
                 }
                 else
                 {
                     throw new InvalidOperationException("Duplicate link found in the tree.");
                 }
             }
-            if (!ValueEqualToZero(GetLeftPointer(nodeToDetach)) && !ValueEqualToZero(GetRightPointer(nodeToDetach)))
+            if (!EqualToZero(GetLeft(nodeToDetach)) && !EqualToZero(GetRight(nodeToDetach)))
             {
-                var minNode = GetRightValue(nodeToDetach);
-                while (!EqualToZero(GetLeftValue(minNode)))
+                var minNode = GetRight(nodeToDetach);
+                while (!EqualToZero(GetLeft(minNode)))
                 {
-                    minNode = GetLeftValue(minNode); /* Передвигаемся до минимума */
+                    minNode = GetLeft(minNode); /* Передвигаемся до минимума */
                 }
-                DetachCore(GetRightPointer(nodeToDetach), minNode);
-                SetLeft(minNode, GetLeftValue(nodeToDetach));
-                if (!ValueEqualToZero(GetRightPointer(nodeToDetach)))
+                DetachCore(ref GetRightReference(nodeToDetach), minNode);
+                SetLeft(minNode, GetLeft(nodeToDetach));
+                if (!EqualToZero(GetRight(nodeToDetach)))
                 {
-                    SetRight(minNode, GetRightValue(nodeToDetach));
-                    SetSize(minNode, Increment(Add(GetSize(GetLeftValue(nodeToDetach)), GetSize(GetRightValue(nodeToDetach)))));
+                    SetRight(minNode, GetRight(nodeToDetach));
+                    SetSize(minNode, Increment(Add(GetSize(GetLeft(nodeToDetach)), GetSize(GetRight(nodeToDetach)))));
                 }
                 else
                 {
-                    SetSize(minNode, Increment(GetSize(GetLeftValue(nodeToDetach))));
+                    SetSize(minNode, Increment(GetSize(GetLeft(nodeToDetach))));
                 }
                 replacementNode = minNode;
             }
-            else if (!ValueEqualToZero(GetLeftPointer(nodeToDetach)))
+            else if (!EqualToZero(GetLeft(nodeToDetach)))
             {
-                replacementNode = GetLeftValue(nodeToDetach);
+                replacementNode = GetLeft(nodeToDetach);
             }
-            else if (!ValueEqualToZero(GetRightPointer(nodeToDetach)))
+            else if (!EqualToZero(GetRight(nodeToDetach)))
             {
-                replacementNode = GetRightValue(nodeToDetach);
+                replacementNode = GetRight(nodeToDetach);
             }
-            if (parent == IntPtr.Zero)
+            if (!parentIsSet)
             {
-                System.Runtime.CompilerServices.Unsafe.Write((void*)root, replacementNode);
+                root = replacementNode;
             }
-            else if (IsEquals(GetLeftValue(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)parent)), nodeToDetach))
+            else if (IsEquals(GetLeft(parent), nodeToDetach))
             {
-                SetLeft(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)parent), replacementNode);
+                SetLeft(parent, replacementNode);
             }
-            else if (IsEquals(GetRightValue(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)parent)), nodeToDetach))
+            else if (IsEquals(GetRight(parent), nodeToDetach))
             {
-                SetRight(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)parent), replacementNode);
+                SetRight(parent, replacementNode);
             }
             ClearNode(nodeToDetach);
         }
 
-        private void LeftMaintain(IntPtr root)
+        private void LeftMaintain(ref TElement root)
         {
-            if (!ValueEqualToZero(root))
+            if (!EqualToZero(root))
             {
-                var rootLeftNode = GetLeftPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root));
-                if (!ValueEqualToZero(rootLeftNode))
+                var rootLeftNode = GetLeft(root);
+                if (!EqualToZero(rootLeftNode))
                 {
-                    var rootRightNode = GetRightPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root));
-                    var rootLeftNodeLeftNode = GetLeftPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)rootLeftNode));
-                    if (!ValueEqualToZero(rootLeftNodeLeftNode) &&
-                        (ValueEqualToZero(rootRightNode) || GreaterThan(GetSize(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)rootLeftNodeLeftNode)), GetSize(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)rootRightNode)))))
+                    var rootRightNode = GetRight(root);
+                    var rootLeftNodeLeftNode = GetLeft(rootLeftNode);
+                    if (!EqualToZero(rootLeftNodeLeftNode) &&
+                        (EqualToZero(rootRightNode) || GreaterThan(GetSize(rootLeftNodeLeftNode), GetSize(rootRightNode))))
                     {
-                        RightRotate(root);
+                        RightRotate(ref root);
                     }
                     else
                     {
-                        var rootLeftNodeRightNode = GetRightPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)rootLeftNode));
-                        if (!ValueEqualToZero(rootLeftNodeRightNode) &&
-                            (ValueEqualToZero(rootRightNode) || GreaterThan(GetSize(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)rootLeftNodeRightNode)), GetSize(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)rootRightNode)))))
+                        var rootLeftNodeRightNode = GetRight(rootLeftNode);
+                        if (!EqualToZero(rootLeftNodeRightNode) &&
+                            (EqualToZero(rootRightNode) || GreaterThan(GetSize(rootLeftNodeRightNode), GetSize(rootRightNode))))
                         {
-                            LeftRotate(GetLeftPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root)));
-                            RightRotate(root);
+                            LeftRotate(ref GetLeftReference(root));
+                            RightRotate(ref root);
                         }
                         else
                         {
                             return;
                         }
                     }
-                    LeftMaintain(GetLeftPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root)));
-                    RightMaintain(GetRightPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root)));
-                    LeftMaintain(root);
-                    RightMaintain(root);
+                    LeftMaintain(ref GetLeftReference(root));
+                    RightMaintain(ref GetRightReference(root));
+                    LeftMaintain(ref root);
+                    RightMaintain(ref root);
                 }
             }
         }
 
-        private void RightMaintain(IntPtr root)
+        private void RightMaintain(ref TElement root)
         {
-            if (!ValueEqualToZero(root))
+            if (!EqualToZero(root))
             {
-                var rootRightNode = GetRightPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root));
-                if (!ValueEqualToZero(rootRightNode))
+                var rootRightNode = GetRight(root);
+                if (!EqualToZero(rootRightNode))
                 {
-                    var rootLeftNode = GetLeftPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root));
-                    var rootRightNodeRightNode = GetRightPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)rootRightNode));
-                    if (!ValueEqualToZero(rootRightNodeRightNode) &&
-                        (ValueEqualToZero(rootLeftNode) || GreaterThan(GetSize(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)rootRightNodeRightNode)), GetSize(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)rootLeftNode)))))
+                    var rootLeftNode = GetLeft(root);
+                    var rootRightNodeRightNode = GetRight(rootRightNode);
+                    if (!EqualToZero(rootRightNodeRightNode) &&
+                        (EqualToZero(rootLeftNode) || GreaterThan(GetSize(rootRightNodeRightNode), GetSize(rootLeftNode))))
                     {
-                        LeftRotate(root);
+                        LeftRotate(ref root);
                     }
                     else
                     {
-                        var rootRightNodeLeftNode = GetLeftPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)rootRightNode));
-                        if (!ValueEqualToZero(rootRightNodeLeftNode) &&
-                            (ValueEqualToZero(rootLeftNode) || GreaterThan(GetSize(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)rootRightNodeLeftNode)), GetSize(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)rootLeftNode)))))
+                        var rootRightNodeLeftNode = GetLeft(rootRightNode);
+                        if (!EqualToZero(rootRightNodeLeftNode) &&
+                            (EqualToZero(rootLeftNode) || GreaterThan(GetSize(rootRightNodeLeftNode), GetSize(rootLeftNode))))
                         {
-                            RightRotate(GetRightPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root)));
-                            LeftRotate(root);
+                            RightRotate(ref GetRightReference(root));
+                            LeftRotate(ref root);
                         }
                         else
                         {
                             return;
                         }
                     }
-                    LeftMaintain(GetLeftPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root)));
-                    RightMaintain(GetRightPointer(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)root)));
-                    LeftMaintain(root);
-                    RightMaintain(root);
+                    LeftMaintain(ref GetLeftReference(root));
+                    RightMaintain(ref GetRightReference(root));
+                    LeftMaintain(ref root);
+                    RightMaintain(ref root);
                 }
             }
         }

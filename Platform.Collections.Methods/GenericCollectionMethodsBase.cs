@@ -7,52 +7,40 @@ using Platform.Numbers;
 
 namespace Platform.Collections.Methods
 {
-    public unsafe abstract class GenericCollectionMethodsBase<TElement>
+    public abstract class GenericCollectionMethodsBase<TElement>
     {
-        private static readonly EqualityComparer<TElement> _equalityComparer = EqualityComparer<TElement>.Default;
-        private static readonly Comparer<TElement> _comparer = Comparer<TElement>.Default;
-
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual TElement GetZero() => Integer<TElement>.Zero;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual TElement GetOne() => Integer<TElement>.One;
+        protected virtual bool EqualToZero(TElement value) => EqualityComparer.Equals(value, Zero);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual TElement GetTwo() => Integer<TElement>.Two;
+        protected virtual bool IsEquals(TElement first, TElement second) => EqualityComparer.Equals(first, second);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual bool ValueEqualToZero(IntPtr pointer) => _equalityComparer.Equals(System.Runtime.CompilerServices.Unsafe.Read<TElement>((void*)pointer), GetZero());
+        protected virtual bool GreaterThanZero(TElement value) => Comparer.Compare(value, Zero) > 0;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual bool EqualToZero(TElement value) => _equalityComparer.Equals(value, GetZero());
+        protected virtual bool GreaterThan(TElement first, TElement second) => Comparer.Compare(first, second) > 0;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual bool IsEquals(TElement first, TElement second) => _equalityComparer.Equals(first, second);
+        protected virtual bool GreaterOrEqualThanZero(TElement value) => Comparer.Compare(value, Zero) >= 0;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual bool GreaterThanZero(TElement value) => _comparer.Compare(value, GetZero()) > 0;
+        protected virtual bool GreaterOrEqualThan(TElement first, TElement second) => Comparer.Compare(first, second) >= 0;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual bool GreaterThan(TElement first, TElement second) => _comparer.Compare(first, second) > 0;
+        protected virtual bool LessOrEqualThanZero(TElement value) => Comparer.Compare(value, Zero) <= 0;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual bool GreaterOrEqualThanZero(TElement value) => _comparer.Compare(value, GetZero()) >= 0;
+        protected virtual bool LessOrEqualThan(TElement first, TElement second) => Comparer.Compare(first, second) <= 0;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual bool GreaterOrEqualThan(TElement first, TElement second) => _comparer.Compare(first, second) >= 0;
+        protected virtual bool LessThanZero(TElement value) => Comparer.Compare(value, Zero) < 0;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual bool LessOrEqualThanZero(TElement value) => _comparer.Compare(value, GetZero()) <= 0;
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual bool LessOrEqualThan(TElement first, TElement second) => _comparer.Compare(first, second) <= 0;
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual bool LessThanZero(TElement value) => _comparer.Compare(value, GetZero()) < 0;
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual bool LessThan(TElement first, TElement second) => _comparer.Compare(first, second) < 0;
+        protected virtual bool LessThan(TElement first, TElement second) => Comparer.Compare(first, second) < 0;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual TElement Increment(TElement value) => Arithmetic<TElement>.Increment(value);
@@ -65,5 +53,20 @@ namespace Platform.Collections.Methods
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual TElement Subtract(TElement first, TElement second) => Arithmetic<TElement>.Subtract(first, second);
+
+        protected readonly TElement Zero;
+        protected readonly TElement One;
+        protected readonly TElement Two;
+        protected readonly EqualityComparer<TElement> EqualityComparer;
+        protected readonly Comparer<TElement> Comparer;
+
+        protected GenericCollectionMethodsBase()
+        {
+            EqualityComparer = EqualityComparer<TElement>.Default;
+            Comparer = Comparer<TElement>.Default;
+            Zero = GetZero();
+            One = Increment(Zero);
+            Two = Increment(One);
+        }
     }
 }

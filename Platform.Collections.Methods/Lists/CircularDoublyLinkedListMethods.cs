@@ -68,8 +68,8 @@ namespace Platform.Collections.Methods.Lists
             var elementNext = GetNext(element);
             if (IsEquals(elementNext, element))
             {
-                SetFirst(GetZero());
-                SetLast(GetZero());
+                SetFirst(Zero);
+                SetLast(Zero);
             }
             else
             {
@@ -84,8 +84,8 @@ namespace Platform.Collections.Methods.Lists
                     SetLast(elementPrevious);
                 }
             }
-            SetPrevious(element, GetZero());
-            SetNext(element, GetZero());
+            SetPrevious(element, Zero);
+            SetNext(element, Zero);
             DecrementSize();
         }
     }
