@@ -21,6 +21,26 @@ namespace Platform.Collections.Methods.Trees
         // TODO: Link with size of TElement
         private const int MaxPath = 92;
 
+        public override bool Contains(TElement node, TElement root)
+        {
+            while (!EqualToZero(root))
+            {
+                if (FirstIsToTheLeftOfSecond(node, root)) // node.Key < root.Key
+                {
+                    root = GetLeftOrDefault(root);
+                }
+                else if (FirstIsToTheRightOfSecond(node, root)) // node.Key > root.Key
+                {
+                    root = GetRightOrDefault(root);
+                }
+                else // node.Key == root.Key
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         protected override void PrintNode(TElement node, StringBuilder sb, int level)
         {
             base.PrintNode(node, sb, level);

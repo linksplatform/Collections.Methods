@@ -105,7 +105,7 @@ namespace Platform.Collections.Methods.Trees
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool Contains(TElement node, TElement root)
+        public virtual bool Contains(TElement node, TElement root)
         {
             while (!EqualToZero(root))
             {
