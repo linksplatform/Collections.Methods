@@ -48,7 +48,7 @@ namespace Platform.Collections.Methods.Trees
                         else
                         {
                             IncrementSize(root);
-                            root = left;
+                            root = ref left;
                         }
                     }
                     else // node.Key less than left.Key
@@ -62,7 +62,7 @@ namespace Platform.Collections.Methods.Trees
                         else
                         {
                             IncrementSize(root);
-                            root = left;
+                            root = ref left;
                         }
                     }
                 }
@@ -86,7 +86,7 @@ namespace Platform.Collections.Methods.Trees
                         else
                         {
                             IncrementSize(root);
-                            root = right;
+                            root = ref right;
                         }
                     }
                     else // node.Key less than right.Key
@@ -111,7 +111,7 @@ namespace Platform.Collections.Methods.Trees
                         else
                         {
                             IncrementSize(root);
-                            root = right;
+                            root = ref right;
                         }
                     }
                 }
@@ -145,7 +145,7 @@ namespace Platform.Collections.Methods.Trees
                     else
                     {
                         DecrementSize(root);
-                        root = left;
+                        root = ref left;
                     }
                 }
                 else if (FirstIsToTheRightOfSecond(node, root)) // node.Key greater than root.Key
@@ -167,7 +167,7 @@ namespace Platform.Collections.Methods.Trees
                     else
                     {
                         DecrementSize(root);
-                        root = right;
+                        root = ref right;
                     }
                 }
                 else // key equals to root.Key
