@@ -760,6 +760,19 @@ references:
   isSpec: "True"
   fullName: Platform.Collections.Methods.Tests.TreesTests.MultipleAttachAndDetachTest
   nameWithType: TreesTests.MultipleAttachAndDetachTest
+- uid: Platform.Collections.Methods.Tests.TreesTests.MultipleRandomAttachAndDetachTest
+  name: MultipleRandomAttachAndDetachTest()
+  href: api/Platform.Collections.Methods.Tests.TreesTests.html#Platform_Collections_Methods_Tests_TreesTests_MultipleRandomAttachAndDetachTest
+  commentId: M:Platform.Collections.Methods.Tests.TreesTests.MultipleRandomAttachAndDetachTest
+  fullName: Platform.Collections.Methods.Tests.TreesTests.MultipleRandomAttachAndDetachTest()
+  nameWithType: TreesTests.MultipleRandomAttachAndDetachTest()
+- uid: Platform.Collections.Methods.Tests.TreesTests.MultipleRandomAttachAndDetachTest*
+  name: MultipleRandomAttachAndDetachTest
+  href: api/Platform.Collections.Methods.Tests.TreesTests.html#Platform_Collections_Methods_Tests_TreesTests_MultipleRandomAttachAndDetachTest_
+  commentId: Overload:Platform.Collections.Methods.Tests.TreesTests.MultipleRandomAttachAndDetachTest
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Tests.TreesTests.MultipleRandomAttachAndDetachTest
+  nameWithType: TreesTests.MultipleRandomAttachAndDetachTest
 - uid: Platform.Collections.Methods.Trees
   name: Platform.Collections.Methods.Trees
   href: api/Platform.Collections.Methods.Trees.html
@@ -900,6 +913,23 @@ references:
   fullName.vb: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods(Of TElement).ClearNode
   nameWithType: SizedAndThreadedAVLBalancedTreeMethods<TElement>.ClearNode
   nameWithType.vb: SizedAndThreadedAVLBalancedTreeMethods(Of TElement).ClearNode
+- uid: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods`1.Contains(`0,`0)
+  name: Contains(TElement, TElement)
+  href: api/Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods-1.html#Platform_Collections_Methods_Trees_SizedAndThreadedAVLBalancedTreeMethods_1_Contains__0__0_
+  commentId: M:Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods`1.Contains(`0,`0)
+  fullName: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods<TElement>.Contains(TElement, TElement)
+  fullName.vb: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods(Of TElement).Contains(TElement, TElement)
+  nameWithType: SizedAndThreadedAVLBalancedTreeMethods<TElement>.Contains(TElement, TElement)
+  nameWithType.vb: SizedAndThreadedAVLBalancedTreeMethods(Of TElement).Contains(TElement, TElement)
+- uid: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods`1.Contains*
+  name: Contains
+  href: api/Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods-1.html#Platform_Collections_Methods_Trees_SizedAndThreadedAVLBalancedTreeMethods_1_Contains_
+  commentId: Overload:Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods`1.Contains
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods<TElement>.Contains
+  fullName.vb: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods(Of TElement).Contains
+  nameWithType: SizedAndThreadedAVLBalancedTreeMethods<TElement>.Contains
+  nameWithType.vb: SizedAndThreadedAVLBalancedTreeMethods(Of TElement).Contains
 - uid: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods`1.DecrementBalance(`0)
   name: DecrementBalance(TElement)
   href: api/Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods-1.html#Platform_Collections_Methods_Trees_SizedAndThreadedAVLBalancedTreeMethods_1_DecrementBalance__0_
