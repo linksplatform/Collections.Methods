@@ -4,30 +4,48 @@ namespace Platform.Collections.Methods.Tests
 {
     public static class TreesTests
     {
+        private const int _n = 100;
+
         [Fact]
-        public static void MultipleAttachAndDetachTest()
+        public static void SizeBalancedTreeMultipleAttachAndDetachTest()
         {
             var sizeBalancedTree = new SizeBalancedTree<uint>(10000);
-            sizeBalancedTree.TestMultipleCreationsAndDeletions(sizeBalancedTree.Allocate, sizeBalancedTree.Free, ref sizeBalancedTree.Root, () => sizeBalancedTree.Count, 100);
-
-            var sizeBalancedTree2 = new SizeBalancedTree2<uint>(10000);
-            sizeBalancedTree2.TestMultipleCreationsAndDeletions(sizeBalancedTree2.Allocate, sizeBalancedTree2.Free, ref sizeBalancedTree2.Root, () => sizeBalancedTree2.Count, 100);
-
-            var avlTree = new SizedAndThreadedAVLBalancedTree<uint>(10000);
-            avlTree.TestMultipleCreationsAndDeletions(avlTree.Allocate, avlTree.Free, ref avlTree.Root, () => avlTree.Count, 100);
+            sizeBalancedTree.TestMultipleCreationsAndDeletions(sizeBalancedTree.Allocate, sizeBalancedTree.Free, ref sizeBalancedTree.Root, () => sizeBalancedTree.Count, _n);
         }
 
         [Fact]
-        public static void MultipleRandomAttachAndDetachTest()
+        public static void SizeBalancedTree2MultipleAttachAndDetachTest()
+        {
+            var sizeBalancedTree2 = new SizeBalancedTree2<uint>(10000);
+            sizeBalancedTree2.TestMultipleCreationsAndDeletions(sizeBalancedTree2.Allocate, sizeBalancedTree2.Free, ref sizeBalancedTree2.Root, () => sizeBalancedTree2.Count, _n);
+        }
+
+        [Fact]
+        public static void SizedAndThreadedAVLBalancedTreeMultipleAttachAndDetachTest()
+        {
+            var avlTree = new SizedAndThreadedAVLBalancedTree<uint>(10000);
+            avlTree.TestMultipleCreationsAndDeletions(avlTree.Allocate, avlTree.Free, ref avlTree.Root, () => avlTree.Count, _n);
+        }
+
+        [Fact]
+        public static void SizeBalancedTreeMultipleRandomAttachAndDetachTest()
         {
             var sizeBalancedTree = new SizeBalancedTree<uint>(10000);
-            sizeBalancedTree.TestMultipleRandomCreationsAndDeletions(ref sizeBalancedTree.Root, () => sizeBalancedTree.Count, 100);
+            sizeBalancedTree.TestMultipleRandomCreationsAndDeletions(ref sizeBalancedTree.Root, () => sizeBalancedTree.Count, _n);
+        }
 
+        [Fact]
+        public static void SizeBalancedTree2MultipleRandomAttachAndDetachTest()
+        {
             var sizeBalancedTree2 = new SizeBalancedTree2<uint>(10000);
-            sizeBalancedTree2.TestMultipleRandomCreationsAndDeletions(ref sizeBalancedTree2.Root, () => sizeBalancedTree2.Count, 100);
+            sizeBalancedTree2.TestMultipleRandomCreationsAndDeletions(ref sizeBalancedTree2.Root, () => sizeBalancedTree2.Count, _n);
+        }
 
+        [Fact]
+        public static void SizedAndThreadedAVLBalancedTreeMultipleRandomAttachAndDetachTest()
+        {
             var avlTree = new SizedAndThreadedAVLBalancedTree<uint>(10000);
-            avlTree.TestMultipleRandomCreationsAndDeletions(ref avlTree.Root, () => avlTree.Count, 100);
+            avlTree.TestMultipleRandomCreationsAndDeletions(ref avlTree.Root, () => avlTree.Count, _n);
         }
     }
 }
