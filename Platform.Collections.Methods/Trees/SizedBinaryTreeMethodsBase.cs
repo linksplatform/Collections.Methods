@@ -41,10 +41,10 @@ namespace Platform.Collections.Methods.Trees
         protected abstract bool FirstIsToTheRightOfSecond(TElement first, TElement second);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual TElement GetLeftOrDefault(TElement node) => IsEquals(node, default) ? default : GetLeft(node);
+        protected virtual TElement GetLeftOrDefault(TElement node) => AreEqual(node, default) ? default : GetLeft(node);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual TElement GetRightOrDefault(TElement node) => IsEquals(node, default) ? default : GetRight(node);
+        protected virtual TElement GetRightOrDefault(TElement node) => AreEqual(node, default) ? default : GetRight(node);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected void IncrementSize(TElement node) => SetSize(node, Increment(GetSize(node)));
@@ -197,7 +197,7 @@ namespace Platform.Collections.Methods.Trees
 
         public void FixSizes(TElement node)
         {
-            if (IsEquals(node, default))
+            if (AreEqual(node, default))
             {
                 return;
             }
@@ -208,7 +208,7 @@ namespace Platform.Collections.Methods.Trees
 
         public void ValidateSizes(TElement node)
         {
-            if (IsEquals(node, default))
+            if (AreEqual(node, default))
             {
                 return;
             }
@@ -216,7 +216,7 @@ namespace Platform.Collections.Methods.Trees
             var leftSize = GetLeftSize(node);
             var rightSize = GetRightSize(node);
             var expectedSize = Arithmetic.Increment(Arithmetic.Add(leftSize, rightSize));
-            if (!IsEquals(size, expectedSize))
+            if (!AreEqual(size, expectedSize))
             {
                 throw new InvalidOperationException($"Size of {node} is not valid. Expected size: {expectedSize}, actual size: {size}.");
             }
@@ -230,7 +230,7 @@ namespace Platform.Collections.Methods.Trees
             var leftSize = GetLeftSize(node);
             var rightSize = GetRightSize(node);
             var expectedSize = Arithmetic.Increment(Arithmetic.Add(leftSize, rightSize));
-            if (!IsEquals(size, expectedSize))
+            if (!AreEqual(size, expectedSize))
             {
                 throw new InvalidOperationException($"Size of {node} is not valid. Expected size: {expectedSize}, actual size: {size}.");
             }
@@ -248,7 +248,7 @@ namespace Platform.Collections.Methods.Trees
 
         public void PrintNodes(TElement node, StringBuilder sb, int level)
         {
-            if (IsEquals(node, default))
+            if (AreEqual(node, default))
             {
                 return;
             }

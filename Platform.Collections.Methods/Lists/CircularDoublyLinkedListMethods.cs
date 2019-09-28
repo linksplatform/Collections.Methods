@@ -9,7 +9,7 @@ namespace Platform.Collections.Methods.Lists
             var baseElementPrevious = GetPrevious(baseElement);
             SetPrevious(newElement, baseElementPrevious);
             SetNext(newElement, baseElement);
-            if (IsEquals(baseElement, GetFirst()))
+            if (AreEqual(baseElement, GetFirst()))
             {
                 SetFirst(newElement);
             }
@@ -23,7 +23,7 @@ namespace Platform.Collections.Methods.Lists
             var baseElementNext = GetNext(baseElement);
             SetPrevious(newElement, baseElement);
             SetNext(newElement, baseElementNext);
-            if (IsEquals(baseElement, GetLast()))
+            if (AreEqual(baseElement, GetLast()))
             {
                 SetLast(newElement);
             }
@@ -66,7 +66,7 @@ namespace Platform.Collections.Methods.Lists
         {
             var elementPrevious = GetPrevious(element);
             var elementNext = GetNext(element);
-            if (IsEquals(elementNext, element))
+            if (AreEqual(elementNext, element))
             {
                 SetFirst(Zero);
                 SetLast(Zero);
@@ -75,11 +75,11 @@ namespace Platform.Collections.Methods.Lists
             {
                 SetNext(elementPrevious, elementNext);
                 SetPrevious(elementNext, elementPrevious);
-                if (IsEquals(element, GetFirst()))
+                if (AreEqual(element, GetFirst()))
                 {
                     SetFirst(elementNext);
                 }
-                if (IsEquals(element, GetLast()))
+                if (AreEqual(element, GetLast()))
                 {
                     SetLast(elementPrevious);
                 }

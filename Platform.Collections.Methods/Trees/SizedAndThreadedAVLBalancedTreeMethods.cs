@@ -151,12 +151,12 @@ namespace Platform.Collections.Methods.Trees
                 while (true)
                 {
                     var parent = path[--pathPosition];
-                    var isLeftNode = !IsEquals(parent, default) && IsEquals(currentNode, GetLeft(parent));
+                    var isLeftNode = !AreEqual(parent, default) && AreEqual(currentNode, GetLeft(parent));
                     var currentNodeBalance = GetBalance(currentNode);
                     if (currentNodeBalance < -1 || currentNodeBalance > 1)
                     {
                         currentNode = Balance(currentNode);
-                        if (IsEquals(parent, default))
+                        if (AreEqual(parent, default))
                         {
                             root = currentNode;
                         }
@@ -172,7 +172,7 @@ namespace Platform.Collections.Methods.Trees
                         }
                     }
                     currentNodeBalance = GetBalance(currentNode);
-                    if (currentNodeBalance == 0 || IsEquals(parent, default))
+                    if (currentNodeBalance == 0 || AreEqual(parent, default))
                     {
                         break;
                     }
@@ -393,12 +393,12 @@ namespace Platform.Collections.Methods.Trees
                 }
                 var parent = path[--pathPosition];
                 var balanceNode = parent;
-                var isLeftNode = !IsEquals(parent, default) && IsEquals(currentNode, GetLeft(parent));
+                var isLeftNode = !AreEqual(parent, default) && AreEqual(currentNode, GetLeft(parent));
                 if (!GetLeftIsChild(currentNode))
                 {
                     if (!GetRightIsChild(currentNode)) // node has no children
                     {
-                        if (IsEquals(parent, default))
+                        if (AreEqual(parent, default))
                         {
                             root = Zero;
                         }
@@ -420,7 +420,7 @@ namespace Platform.Collections.Methods.Trees
                         var successor = GetNext(currentNode);
                         SetLeft(successor, GetLeft(currentNode));
                         var right = GetRight(currentNode);
-                        if (IsEquals(parent, default))
+                        if (AreEqual(parent, default))
                         {
                             root = right;
                         }
@@ -443,7 +443,7 @@ namespace Platform.Collections.Methods.Trees
                         var predecessor = GetPrevious(currentNode);
                         SetRight(predecessor, GetRight(currentNode));
                         var leftValue = GetLeft(currentNode);
-                        if (IsEquals(parent, default))
+                        if (AreEqual(parent, default))
                         {
                             root = leftValue;
                         }
@@ -469,7 +469,7 @@ namespace Platform.Collections.Methods.Trees
                         {
                             path[++pathPosition] = successorParent = successor;
                             successor = GetLeft(successor);
-                            if (!IsEquals(successorParent, currentNode))
+                            if (!AreEqual(successorParent, currentNode))
                             {
                                 DecrementSize(successorParent);
                             }
@@ -477,7 +477,7 @@ namespace Platform.Collections.Methods.Trees
                         path[previousPathPosition] = successor;
                         balanceNode = path[pathPosition];
                         // remove 'successor' from the tree
-                        if (!IsEquals(successorParent, currentNode))
+                        if (!AreEqual(successorParent, currentNode))
                         {
                             if (!GetRightIsChild(successor))
                             {
@@ -507,7 +507,7 @@ namespace Platform.Collections.Methods.Trees
                         SetLeft(successor, left);
                         SetBalance(successor, GetBalance(currentNode));
                         FixSize(successor);
-                        if (IsEquals(parent, default))
+                        if (AreEqual(parent, default))
                         {
                             root = successor;
                         }
@@ -522,17 +522,17 @@ namespace Platform.Collections.Methods.Trees
                     }
                 }
                 // restore balance
-                if (!IsEquals(balanceNode, default))
+                if (!AreEqual(balanceNode, default))
                 {
                     while (true)
                     {
                         var balanceParent = path[--pathPosition];
-                        isLeftNode = !IsEquals(balanceParent, default) && IsEquals(balanceNode, GetLeft(balanceParent));
+                        isLeftNode = !AreEqual(balanceParent, default) && AreEqual(balanceNode, GetLeft(balanceParent));
                         var currentNodeBalance = GetBalance(balanceNode);
                         if (currentNodeBalance < -1 || currentNodeBalance > 1)
                         {
                             balanceNode = Balance(balanceNode);
-                            if (IsEquals(balanceParent, default))
+                            if (AreEqual(balanceParent, default))
                             {
                                 root = balanceNode;
                             }
@@ -546,7 +546,7 @@ namespace Platform.Collections.Methods.Trees
                             }
                         }
                         currentNodeBalance = GetBalance(balanceNode);
-                        if (currentNodeBalance != 0 || IsEquals(balanceParent, default))
+                        if (currentNodeBalance != 0 || AreEqual(balanceParent, default))
                         {
                             break;
                         }

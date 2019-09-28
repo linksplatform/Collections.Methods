@@ -15,7 +15,7 @@ namespace Platform.Collections.Methods
         protected virtual bool EqualToZero(TElement value) => EqualityComparer.Equals(value, Zero);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual bool IsEquals(TElement first, TElement second) => EqualityComparer.Equals(first, second);
+        protected virtual bool AreEqual(TElement first, TElement second) => EqualityComparer.Equals(first, second);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual bool GreaterThanZero(TElement value) => Comparer.Compare(value, Zero) > 0;

@@ -4,9 +4,6 @@
 
 namespace Platform.Collections.Methods.Trees
 {
-    /// <summary>
-    /// Experimental implementation, don't use it yet.
-    /// </summary>
     public abstract class SizeBalancedTreeMethods<TElement> : SizedBinaryTreeMethodsBase<TElement>
     {
         protected override void AttachCore(ref TElement root, TElement node)
@@ -24,25 +21,12 @@ namespace Platform.Collections.Methods.Trees
                         IncrementSize(root);
                         SetSize(node, One);
                         left = node;
-                        break;
+                        return;
                     }
-                    if (FirstIsToTheRightOfSecond(node, left)) // node.Key greater than left.Key
+                    if (FirstIsToTheLeftOfSecond(node, left)) // node.Key less than left.Key
                     {
-                        var leftRight = GetRight(left);
-                        var leftRightSize = GetSizeOrZero(leftRight);
-                        if (GreaterThan(Increment(leftRightSize), rightSize))
+                        if (GreaterThan(Increment(leftSize), rightSize))
                         {
-                            if (EqualToZero(leftRightSize) && EqualToZero(rightSize))
-                            {
-                                SetLeft(node, left);
-                                SetRight(node, root);
-                                SetSize(node, Add(GetSize(left), Two)); // Two (2) - размер ветки *root (right) и самого node
-                                SetLeft(root, Zero);
-                                SetSize(root, One);
-                                root = node;
-                                break;
-                            }
-                            LeftRotate(ref left);
                             RightRotate(ref root);
                         }
                         else
@@ -51,12 +35,22 @@ namespace Platform.Collections.Methods.Trees
                             root = ref left;
                         }
                     }
-                    else // node.Key less than left.Key
+                    else  // node.Key greater than left.Key
                     {
-                        var leftLeft = GetLeft(left);
-                        var leftLeftSize = GetSizeOrZero(leftLeft);
-                        if (GreaterThan(Increment(leftLeftSize), rightSize))
+                        var leftRightSize = GetSizeOrZero(GetRight(left));
+                        if (GreaterThan(Increment(leftRightSize), rightSize))
                         {
+                            if (EqualToZero(leftRightSize) && EqualToZero(rightSize))
+                            {
+                                SetLeft(node, left);
+                                SetRight(node, root);
+                                SetSize(node, Add(leftSize, Two)); // Two (2) - node the size of root and a node itself
+                                SetLeft(root, Zero);
+                                SetSize(root, One);
+                                root = node;
+                                return;
+                            }
+                            LeftRotate(ref left);
                             RightRotate(ref root);
                         }
                         else
@@ -73,13 +67,11 @@ namespace Platform.Collections.Methods.Trees
                         IncrementSize(root);
                         SetSize(node, One);
                         right = node;
-                        break;
+                        return;
                     }
                     if (FirstIsToTheRightOfSecond(node, right)) // node.Key greater than right.Key
                     {
-                        var rightRight = GetRight(right);
-                        var rightRightSize = GetSizeOrZero(rightRight);
-                        if (GreaterThan(Increment(rightRightSize), leftSize))
+                        if (GreaterThan(Increment(rightSize), leftSize))
                         {
                             LeftRotate(ref root);
                         }
@@ -91,19 +83,18 @@ namespace Platform.Collections.Methods.Trees
                     }
                     else // node.Key less than right.Key
                     {
-                        var rightLeft = GetLeft(right);
-                        var rightLeftSize = GetSizeOrZero(rightLeft);
+                        var rightLeftSize = GetSizeOrZero(GetLeft(right));
                         if (GreaterThan(Increment(rightLeftSize), leftSize))
                         {
                             if (EqualToZero(rightLeftSize) && EqualToZero(leftSize))
                             {
                                 SetLeft(node, root);
                                 SetRight(node, right);
-                                SetSize(node, Add(GetSize(right), Two)); // Two (2) - размер ветки *root (left) и самого node
+                                SetSize(node, Add(rightSize, Two)); // Two (2) - node the size of root and a node itself
                                 SetRight(root, Zero);
                                 SetSize(root, One);
                                 root = node;
-                                break;
+                                return;
                             }
                             RightRotate(ref right);
                             LeftRotate(ref root);
@@ -128,16 +119,12 @@ namespace Platform.Collections.Methods.Trees
                 var rightSize = GetSizeOrZero(right);
                 if (FirstIsToTheLeftOfSecond(node, root)) // node.Key less than root.Key
                 {
-                    EnsureNodeInTheTree(node, ref left);
-                    var rightLeft = GetLeft(right);
-                    var rightLeftSize = GetSizeOrZero(rightLeft);
-                    var rightRight = GetRight(right);
-                    var rightRightSize = GetSizeOrZero(rightRight);
-                    if (GreaterThan(rightRightSize, Decrement(leftSize)))
+                    var decrementedLeftSize = Decrement(leftSize);
+                    if (GreaterThan(GetSizeOrZero(GetRight(right)), decrementedLeftSize))
                     {
                         LeftRotate(ref root);
                     }
-                    else if (GreaterThan(rightLeftSize, Decrement(leftSize)))
+                    else if (GreaterThan(GetSizeOrZero(GetLeft(right)), decrementedLeftSize))
                     {
                         RightRotate(ref right);
                         LeftRotate(ref root);
@@ -150,16 +137,12 @@ namespace Platform.Collections.Methods.Trees
                 }
                 else if (FirstIsToTheRightOfSecond(node, root)) // node.Key greater than root.Key
                 {
-                    EnsureNodeInTheTree(node, ref right);
-                    var leftLeft = GetLeft(left);
-                    var leftLeftSize = GetSizeOrZero(leftLeft);
-                    var leftRight = GetRight(left);
-                    var leftRightSize = GetSizeOrZero(leftRight);
-                    if (GreaterThan(leftLeftSize, Decrement(rightSize)))
+                    var decrementedRightSize = Decrement(rightSize);
+                    if (GreaterThan(GetSizeOrZero(GetLeft(left)), decrementedRightSize))
                     {
                         RightRotate(ref root);
                     }
-                    else if (GreaterThan(leftRightSize, Decrement(rightSize)))
+                    else if (GreaterThan(GetSizeOrZero(GetRight(left)), decrementedRightSize))
                     {
                         LeftRotate(ref left);
                         RightRotate(ref root);
@@ -174,32 +157,33 @@ namespace Platform.Collections.Methods.Trees
                 {
                     if (GreaterThanZero(leftSize) && GreaterThanZero(rightSize))
                     {
+                        TElement replacement;
                         if (GreaterThan(leftSize, rightSize))
                         {
-                            var replacement = left;
-                            while (!EqualToZero(GetRight(replacement)))
+                            replacement = left;
+                            var replacementRight = GetRight(replacement);
+                            while (!EqualToZero(replacementRight))
                             {
-                                replacement = GetRight(replacement);
+                                replacement = replacementRight;
+                                replacementRight = GetRight(replacement);
                             }
                             DetachCore(ref left, replacement);
-                            SetLeft(replacement, left);
-                            SetRight(replacement, right);
-                            FixSize(replacement);
-                            root = replacement;
                         }
                         else
                         {
-                            var replacement = right;
-                            while (!EqualToZero(GetLeft(replacement)))
+                            replacement = right;
+                            var replacementLeft = GetLeft(replacement);
+                            while (!EqualToZero(replacementLeft))
                             {
-                                replacement = GetLeft(replacement);
+                                replacement = replacementLeft;
+                                replacementLeft = GetLeft(replacement);
                             }
                             DetachCore(ref right, replacement);
-                            SetLeft(replacement, left);
-                            SetRight(replacement, right);
-                            FixSize(replacement);
-                            root = replacement;
                         }
+                        SetLeft(replacement, left);
+                        SetRight(replacement, right);
+                        SetSize(replacement, Add(leftSize, rightSize));
+                        root = replacement;
                     }
                     else if (GreaterThanZero(leftSize))
                     {
@@ -214,16 +198,8 @@ namespace Platform.Collections.Methods.Trees
                         root = Zero;
                     }
                     ClearNode(node);
-                    break;
+                    return;
                 }
-            }
-        }
-
-        private void EnsureNodeInTheTree(TElement node, ref TElement branch)
-        {
-            if (EqualToZero(branch))
-            {
-                throw new InvalidOperationException($"Элемент {node} не содержится в дереве.");
             }
         }
     }

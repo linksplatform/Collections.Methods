@@ -6,24 +6,24 @@ namespace Platform.Collections.Methods.Trees
 {
     public abstract class SizeBalancedTreeMethods2<TElement> : SizedBinaryTreeMethodsBase<TElement>
     {
-        protected override void AttachCore(ref TElement root, TElement newNode)
+        protected override void AttachCore(ref TElement root, TElement node)
         {
             if (EqualToZero(root))
             {
-                root = newNode;
+                root = node;
                 IncrementSize(root);
             }
             else
             {
                 IncrementSize(root);
-                if (FirstIsToTheLeftOfSecond(newNode, root))
+                if (FirstIsToTheLeftOfSecond(node, root))
                 {
-                    AttachCore(ref GetLeftReference(root), newNode);
+                    AttachCore(ref GetLeftReference(root), node);
                     LeftMaintain(ref root);
                 }
                 else
                 {
-                    AttachCore(ref GetRightReference(root), newNode);
+                    AttachCore(ref GetRightReference(root), node);
                     RightMaintain(ref root);
                 }
             }
@@ -31,28 +31,20 @@ namespace Platform.Collections.Methods.Trees
 
         protected override void DetachCore(ref TElement root, TElement nodeToDetach)
         {
-            if (EqualToZero(root))
-            {
-                return;
-            }
             ref var currentNode = ref root;
-            TElement @null = default;
-            var parentIsSet = false;
-            ref TElement parent = ref @null; /* Изначально зануление, так как родителя может и не быть (Корень дерева). */
+            ref var parent = ref root;
             var replacementNode = Zero;
-            while (!IsEquals(currentNode, nodeToDetach))
+            while (!AreEqual(currentNode, nodeToDetach))
             {
                 SetSize(currentNode, Decrement(GetSize(currentNode)));
                 if (FirstIsToTheLeftOfSecond(nodeToDetach, currentNode))
                 {
                     parent = ref currentNode;
-                    parentIsSet = true;
                     currentNode = ref GetLeftReference(currentNode);
                 }
                 else if (FirstIsToTheRightOfSecond(nodeToDetach, currentNode))
                 {
                     parent = ref currentNode;
-                    parentIsSet = true;
                     currentNode = ref GetRightReference(currentNode);
                 }
                 else
@@ -60,43 +52,48 @@ namespace Platform.Collections.Methods.Trees
                     throw new InvalidOperationException("Duplicate link found in the tree.");
                 }
             }
-            if (!EqualToZero(GetLeft(nodeToDetach)) && !EqualToZero(GetRight(nodeToDetach)))
+            var nodeToDetachLeft = GetLeft(nodeToDetach);
+            var node = GetRight(nodeToDetach);
+            if (!EqualToZero(nodeToDetachLeft) && !EqualToZero(node))
             {
-                var minNode = GetRight(nodeToDetach);
-                while (!EqualToZero(GetLeft(minNode)))
+                var minNode = node;
+                var minNodeLeft = GetLeft(minNode);
+                while (!EqualToZero(minNodeLeft))
                 {
-                    minNode = GetLeft(minNode); /* Передвигаемся до минимума */
+                    minNode = minNodeLeft;
+                    minNodeLeft = GetLeft(minNode);
                 }
                 DetachCore(ref GetRightReference(nodeToDetach), minNode);
-                SetLeft(minNode, GetLeft(nodeToDetach));
-                if (!EqualToZero(GetRight(nodeToDetach)))
+                SetLeft(minNode, nodeToDetachLeft);
+                node = GetRight(nodeToDetach);
+                if (!EqualToZero(node))
                 {
-                    SetRight(minNode, GetRight(nodeToDetach));
-                    SetSize(minNode, Increment(Add(GetSize(GetLeft(nodeToDetach)), GetSize(GetRight(nodeToDetach)))));
+                    SetRight(minNode, node);
+                    SetSize(minNode, Increment(Add(GetSize(nodeToDetachLeft), GetSize(node))));
                 }
                 else
                 {
-                    SetSize(minNode, Increment(GetSize(GetLeft(nodeToDetach))));
+                    SetSize(minNode, Increment(GetSize(nodeToDetachLeft)));
                 }
                 replacementNode = minNode;
             }
-            else if (!EqualToZero(GetLeft(nodeToDetach)))
+            else if (!EqualToZero(nodeToDetachLeft))
             {
-                replacementNode = GetLeft(nodeToDetach);
+                replacementNode = nodeToDetachLeft;
             }
-            else if (!EqualToZero(GetRight(nodeToDetach)))
+            else if (!EqualToZero(node))
             {
-                replacementNode = GetRight(nodeToDetach);
+                replacementNode = node;
             }
-            if (!parentIsSet)
+            if (AreEqual(root, nodeToDetach))
             {
                 root = replacementNode;
             }
-            else if (IsEquals(GetLeft(parent), nodeToDetach))
+            else if (AreEqual(GetLeft(parent), nodeToDetach))
             {
                 SetLeft(parent, replacementNode);
             }
-            else if (IsEquals(GetRight(parent), nodeToDetach))
+            else if (AreEqual(GetRight(parent), nodeToDetach))
             {
                 SetRight(parent, replacementNode);
             }
