@@ -50,6 +50,23 @@ references:
   fullName.vb: Platform.Collections.Methods.GenericCollectionMethodsBase(Of TElement).Add
   nameWithType: GenericCollectionMethodsBase<TElement>.Add
   nameWithType.vb: GenericCollectionMethodsBase(Of TElement).Add
+- uid: Platform.Collections.Methods.GenericCollectionMethodsBase`1.AreEqual(`0,`0)
+  name: AreEqual(TElement, TElement)
+  href: api/Platform.Collections.Methods.GenericCollectionMethodsBase-1.html#Platform_Collections_Methods_GenericCollectionMethodsBase_1_AreEqual__0__0_
+  commentId: M:Platform.Collections.Methods.GenericCollectionMethodsBase`1.AreEqual(`0,`0)
+  fullName: Platform.Collections.Methods.GenericCollectionMethodsBase<TElement>.AreEqual(TElement, TElement)
+  fullName.vb: Platform.Collections.Methods.GenericCollectionMethodsBase(Of TElement).AreEqual(TElement, TElement)
+  nameWithType: GenericCollectionMethodsBase<TElement>.AreEqual(TElement, TElement)
+  nameWithType.vb: GenericCollectionMethodsBase(Of TElement).AreEqual(TElement, TElement)
+- uid: Platform.Collections.Methods.GenericCollectionMethodsBase`1.AreEqual*
+  name: AreEqual
+  href: api/Platform.Collections.Methods.GenericCollectionMethodsBase-1.html#Platform_Collections_Methods_GenericCollectionMethodsBase_1_AreEqual_
+  commentId: Overload:Platform.Collections.Methods.GenericCollectionMethodsBase`1.AreEqual
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.GenericCollectionMethodsBase<TElement>.AreEqual
+  fullName.vb: Platform.Collections.Methods.GenericCollectionMethodsBase(Of TElement).AreEqual
+  nameWithType: GenericCollectionMethodsBase<TElement>.AreEqual
+  nameWithType.vb: GenericCollectionMethodsBase(Of TElement).AreEqual
 - uid: Platform.Collections.Methods.GenericCollectionMethodsBase`1.Comparer
   name: Comparer
   href: api/Platform.Collections.Methods.GenericCollectionMethodsBase-1.html#Platform_Collections_Methods_GenericCollectionMethodsBase_1_Comparer
@@ -202,23 +219,6 @@ references:
   fullName.vb: Platform.Collections.Methods.GenericCollectionMethodsBase(Of TElement).Increment
   nameWithType: GenericCollectionMethodsBase<TElement>.Increment
   nameWithType.vb: GenericCollectionMethodsBase(Of TElement).Increment
-- uid: Platform.Collections.Methods.GenericCollectionMethodsBase`1.IsEquals(`0,`0)
-  name: IsEquals(TElement, TElement)
-  href: api/Platform.Collections.Methods.GenericCollectionMethodsBase-1.html#Platform_Collections_Methods_GenericCollectionMethodsBase_1_IsEquals__0__0_
-  commentId: M:Platform.Collections.Methods.GenericCollectionMethodsBase`1.IsEquals(`0,`0)
-  fullName: Platform.Collections.Methods.GenericCollectionMethodsBase<TElement>.IsEquals(TElement, TElement)
-  fullName.vb: Platform.Collections.Methods.GenericCollectionMethodsBase(Of TElement).IsEquals(TElement, TElement)
-  nameWithType: GenericCollectionMethodsBase<TElement>.IsEquals(TElement, TElement)
-  nameWithType.vb: GenericCollectionMethodsBase(Of TElement).IsEquals(TElement, TElement)
-- uid: Platform.Collections.Methods.GenericCollectionMethodsBase`1.IsEquals*
-  name: IsEquals
-  href: api/Platform.Collections.Methods.GenericCollectionMethodsBase-1.html#Platform_Collections_Methods_GenericCollectionMethodsBase_1_IsEquals_
-  commentId: Overload:Platform.Collections.Methods.GenericCollectionMethodsBase`1.IsEquals
-  isSpec: "True"
-  fullName: Platform.Collections.Methods.GenericCollectionMethodsBase<TElement>.IsEquals
-  fullName.vb: Platform.Collections.Methods.GenericCollectionMethodsBase(Of TElement).IsEquals
-  nameWithType: GenericCollectionMethodsBase<TElement>.IsEquals
-  nameWithType.vb: GenericCollectionMethodsBase(Of TElement).IsEquals
 - uid: Platform.Collections.Methods.GenericCollectionMethodsBase`1.LessOrEqualThan(`0,`0)
   name: LessOrEqualThan(TElement, TElement)
   href: api/Platform.Collections.Methods.GenericCollectionMethodsBase-1.html#Platform_Collections_Methods_GenericCollectionMethodsBase_1_LessOrEqualThan__0__0_
