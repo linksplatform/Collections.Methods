@@ -341,3 +341,5 @@ org.kde.konsole.desktop
 *-swp
 *.kate-swp
 .swp.*
+
+*.AssemblyInfo.cpp
