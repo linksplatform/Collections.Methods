@@ -26,7 +26,6 @@ namespace Translator
 
         private static string GetArgOrDefault(string[] args, int index) => args.Length > index ? args[index] : null;
 
-        //private static readonly string _indent = "    ";
         private static readonly RegexOptions _defaultOptions = RegexOptions.Compiled | RegexOptions.Multiline;
 
         private static readonly ValueTuple<Regex, string, Regex>[] _substitutions =
@@ -37,6 +36,8 @@ namespace Translator
             // [MethodImpl(MethodImplOptions.AggressiveInlining)]
             // 
             (new Regex(@"$\s+\[MethodImpl\(MethodImplOptions\.AggressiveInlining\)\]", _defaultOptions), "", null),
+            // {\n\n\n
+            // {
             (new Regex(@"{\s+[\r\n]+", _defaultOptions), "{" + Environment.NewLine, null),
             // Platform.Collections.Methods.Lists
             // Platform::Collections::Methods::Lists
@@ -83,9 +84,6 @@ namespace Translator
             // ref TElement
             // TElement*
             (new Regex(@"ref ([a-zA-Z0-9]+)", _defaultOptions), "$1*", null),
-            // TElement*, TElement*)
-            // TElement, TElement)
-            //(new Regex(@"([a-zA-Z0-9]+)*([,\)])", _defaultOptions), "$1$2"),
             // !AreEqual(parent, default)
             // parent != 0
             (new Regex(@"!AreEqual\(([a-zA-Z]+), default\)", _defaultOptions), "$1 != 0", null),
@@ -187,8 +185,8 @@ namespace Translator
             // using Platform.Numbers;
             // 
             (new Regex(@"([\r\n]{2}|^)\s*?using [\.a-zA-Z0-9]+;\s*?$", _defaultOptions), "", null),
-            // \t}\r\n}
-            // \t};\r\n}
+            // \t}\n}
+            // \t};\n}
             (new Regex(@"([\r\n])(\t|[ ]{4})}([\r\n]+)}", _defaultOptions), "$1$2};$3}", null),
             // Just delete it in SizedBinaryTreeMethodsBase.cs
             (new Regex(@"void FixSizes(.|\s)+};", _defaultOptions), "};", new Regex(@"SizedBinaryTreeMethodsBase\.cs", _defaultOptions)),
