@@ -26,182 +26,369 @@ namespace Translator
 
         private static string GetArgOrDefault(string[] args, int index) => args.Length > index ? args[index] : null;
 
-        private static readonly RegexOptions _defaultOptions = RegexOptions.Compiled | RegexOptions.Multiline;
+        private static readonly RegexOptions _options = RegexOptions.Compiled | RegexOptions.Multiline;
 
-        private static readonly ValueTuple<Regex, string, Regex>[] _substitutions =
+        private static readonly ValueTuple<Regex, string, Regex, int>[] _substitutions =
         {
             // #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
             // 
-            (new Regex(@"^\s*?\#pragma[\sa-zA-Z0-9\/]+$", _defaultOptions), "", null),
+            (new Regex(@"^\s*?\#pragma[\sa-zA-Z0-9\/]+$", _options), "", null, 0),
             // [MethodImpl(MethodImplOptions.AggressiveInlining)]
             // 
-            (new Regex(@"$\s+\[MethodImpl\(MethodImplOptions\.AggressiveInlining\)\]", _defaultOptions), "", null),
+            (new Regex(@"$\s+\[MethodImpl\(MethodImplOptions\.AggressiveInlining\)\]", _options), "", null, 0),
+            // [Fact]
+            // 
+            (new Regex(@"$\s+\[Fact\]", _options), "", null, 0),
             // {\n\n\n
             // {
-            (new Regex(@"{\s+[\r\n]+", _defaultOptions), "{" + Environment.NewLine, null),
+            (new Regex(@"{\s+[\r\n]+", _options), "{" + Environment.NewLine, null, 0),
             // Platform.Collections.Methods.Lists
             // Platform::Collections::Methods::Lists
-            (new Regex(@"(namespace[^\r\n]+?)\.([^\r\n]+?)", _defaultOptions), "$1::$2", null),
-            // => Integer<TElement>.Zero;
-            // { return Integer<TElement>.Zero; }
-            (new Regex(@"\)\s+=>\s+([^;]+)?;", _defaultOptions), ") { return $1; }", null),
+            (new Regex(@"(namespace[^\r\n]+?)\.([^\r\n]+?)", _options), "$1::$2", null, 20),
             // public abstract class
             // class
-            (new Regex(@"public abstract class", _defaultOptions), "class", null),
-            // class GenericCollectionMethodsBase<TElement>
-            // template <typename TElement> class GenericCollectionMethodsBase
-            (new Regex(@"class ([a-zA-Z0-9]+)<([a-zA-Z0-9]+)>", _defaultOptions), "template <typename $2> class $1", null),
-            // protected virtual
-            // virtual
-            (new Regex(@"protected virtual", _defaultOptions), "virtual", null),
-            // protected abstract TElement GetFirst();
-            // virtual TElement GetFirst() = 0;
-            (new Regex(@"protected abstract ([^;]+);", _defaultOptions), "virtual $1 = 0;", null),
-            // public virtual
-            // virtual
-            (new Regex(@"public virtual", _defaultOptions), "virtual", null),
-            // protected readonly
-            // 
-            (new Regex(@"protected readonly ", _defaultOptions), "", null),
-            // protected readonly TElement Zero;
-            // TElement Zero;
-            (new Regex(@"protected readonly ([a-zA-Z<>0-9]+) ([a-zA-Z0-9]+);", _defaultOptions), "$1 $2;", null),
-            // private
-            // 
-            (new Regex(@"(\W)private ", _defaultOptions), "$1", null),
-            // protected 
-            // 
-            (new Regex(@"(\W)protected ", _defaultOptions), "$1", null),
-            // public 
-            // 
-            (new Regex(@"(\W)public ", _defaultOptions), "$1", null),
-            // = ref GetLeftReference
-            // = GetLeftReference
-            (new Regex(@" = ref ([a-zA-Z0-9]+)", _defaultOptions), " = $1", null),
-            // (ref left)
-            // (left)
-            (new Regex(@"\(ref ([a-zA-Z0-9]+)(\)|\(|,)", _defaultOptions), "($1$2", null),
-            // ref TElement
-            // TElement*
-            (new Regex(@"ref ([a-zA-Z0-9]+)", _defaultOptions), "$1*", null),
-            // !AreEqual(parent, default)
-            // parent != 0
-            (new Regex(@"!AreEqual\(([a-zA-Z]+), default\)", _defaultOptions), "$1 != 0", null),
-            // AreEqual(node, default)
-            // node == 0
-            (new Regex(@"AreEqual\(([a-zA-Z]+), default\)", _defaultOptions), "$1 == 0", null),
-            // !AreEqual(size, expectedSize)
-            // size != expectedSize
-            (new Regex(@"!AreEqual\(([a-zA-Z]+), ([a-zA-Z]+)\)", _defaultOptions), "$1 != $2", null),
-            // AreEqual(baseElement, GetFirst())
-            // baseElement == GetFirst()
-            (new Regex(@"AreEqual\(([a-zA-Z]+), ([a-zA-Z]+)\(([a-zA-Z]*)\)\)", _defaultOptions), "$1 == $2($3)", null),
-            // AreEqual(elementNext, element)
-            // elementNext == element
-            (new Regex(@"AreEqual\(([a-zA-Z]+), ([a-zA-Z]+)\)", _defaultOptions), "$1 == $2", null),
-            // AreEqual(GetLeft(parent), nodeToDetach)
-            // GetLeft(parent) = nodeToDetach
-            (new Regex(@"AreEqual\(([a-zA-Z]+)\(([a-zA-Z]*)\), ([a-zA-Z]+)\)", _defaultOptions), "$1($2) == $3", null),
-            // !EqualToZero(root)
-            // root != 0
-            (new Regex(@"!EqualToZero\(([a-zA-Z]+)\)", _defaultOptions), "$1 != 0", null),
-            // EqualToZero(node)
-            // node == 0
-            (new Regex(@"EqualToZero\(([a-zA-Z]+)\)", _defaultOptions), "$1 == 0", null),
-            // default
-            // 0
-            (new Regex(@"(\W)default(\W)", _defaultOptions), "${1}0$2", null),
-            // Arithmetic.Add(leftSize, rightSize)
-            // leftSize + rightSize
-            (new Regex(@"Arithmetic\.Add\(([a-zA-Z0-9]+), ([a-zA-Z0-9]+)\)", _defaultOptions), "$1 + $2", null),
-            // Add(GetLeftSize(node), GetRightSize(node))
-            // GetLeftSize(node) + GetRightSize(node)
-            (new Regex(@"Add\(([a-zA-Z0-9]+)\(([a-zA-Z0-9 \+]+)\), ([a-zA-Z0-9]+)\(([a-zA-Z0-9 \+]+)\)\)", _defaultOptions), "$1($2) + $3($4)", null),
-            // Add(rightSize, 2)
-            // rightSize + 2
-            (new Regex(@"Add\(([a-zA-Z0-9]+), ([a-zA-Z0-9]+)\)", _defaultOptions), "$1 + $2", null),
-            // Arithmetic.Increment(leftSize + rightSize)
-            // leftSize + rightSize + 1
-            (new Regex(@"Arithmetic\.Increment\(([a-zA-Z0-9 \+]+)\)", _defaultOptions), "$1 + 1", null),
-            // Increment(GetSize(node))
-            // GetSize(node) + 1
-            (new Regex(@"Increment\(([a-zA-Z0-9]+)\(([a-zA-Z0-9 \+]*)\)\)", _defaultOptions), "$1($2) + 1", null),
-            // Increment(GetLeftSize(node) + GetRightSize(node))
-            // GetLeftSize(node) + GetRightSize(node) + 1
-            (new Regex(@"Increment\(([a-zA-Z0-9]+)\(([a-zA-Z0-9 \+]*)\) \+ ([a-zA-Z0-9]+)\(([a-zA-Z0-9 \+]*)\)\)", _defaultOptions), "$1($2) + $3($4) + 1", null),
-            // Increment(rightLeftSize)
-            // rightLeftSize + 1
-            (new Regex(@"Increment\(([a-zA-Z0-9]+)\)", _defaultOptions), "$1 + 1", null),
-            // Decrement(GetSize(node))
-            // GetSize(node) - 1
-            (new Regex(@"Decrement\(([a-zA-Z0-9]+)\(([a-zA-Z0-9 \+]*)\)\)", _defaultOptions), "$1($2) - 1", null),
-            // Decrement(rightSize)
-            // rightSize - 1
-            (new Regex(@"Decrement\(([a-zA-Z0-9]+)\)", _defaultOptions), "$1 - 1", null),
-            // GreaterThan(rightLeftSize + 1, leftSize)
-            // (rightLeftSize + 1) > leftSize
-            (new Regex(@"GreaterThan\(([a-zA-Z0-9]+) \+ ([a-zA-Z0-9]+), ([a-zA-Z0-9]+)\)", _defaultOptions), "($1 + $2) > $3", null),
-            // GreaterThan(GetSizeOrZero(GetLeft(left)), decrementedRightSize)
-            // GetSizeOrZero(GetLeft(left)) > decrementedRightSize
-            (new Regex(@"GreaterThan\(([a-zA-Z0-9]+)\(([a-zA-Z0-9]+)\(([a-zA-Z0-9]*)\)\), ([a-zA-Z0-9]+)\)", _defaultOptions), "$1($2($3)) > $4", null),
-            // GreaterThan(GetSize(rootLeftNodeLeftNode), GetSize(rootRightNode))
-            // GetSize(rootLeftNodeLeftNode) > GetSize(rootRightNode)
-            (new Regex(@"GreaterThan\(([a-zA-Z0-9]+)\(([a-zA-Z0-9]+)\), ([a-zA-Z0-9]+)\(([a-zA-Z0-9]*)\)\)", _defaultOptions), "$1($2) > $3($4)", null),
-            // GreaterThanZero(leftSize)
-            // leftSize > 0
-            (new Regex(@"GreaterThanZero\(([a-zA-Z0-9]+)\)", _defaultOptions), "$1 > 0", null),
-            // var
-            // auto
-            (new Regex(@"(\W)var(\W)", _defaultOptions), "$1auto$2", null),
-            // unchecked
-            // 
-            (new Regex(@"[\r\n]{2}\s*?unchecked\s*?$", _defaultOptions), "", null),
-            // $"
-            // "
-            (new Regex(@"\$""", _defaultOptions), "\"", null),
-            // throw new InvalidOperationException
-            // throw std::exception
-            (new Regex(@"throw new (InvalidOperationException|Exception)", _defaultOptions), "throw std::exception", null),
-            // override void PrintNode(TElement node, StringBuilder sb, int level)
-            // void PrintNode(TElement node, StringBuilder sb, int level) override
-            (new Regex(@"override ([a-zA-Z0-9 \+]+)(\([^\)]+?\))", _defaultOptions), "$1$2 override", null),
-            // Zero
-            // 0
-            (new Regex(@"([^\.a-zA-Z0-9])Zero(\W)", _defaultOptions), "${1}0$2", null),
-            // One
-            // 1
-            (new Regex(@"(\W)One(\W)", _defaultOptions), "${1}1$2", null),
-            // Two
-            // 2
-            (new Regex(@"(\W)Two(\W)", _defaultOptions), "${1}2$2", null),
+            (new Regex(@"(public abstract|static) class", _options), "class", null, 0),
+            // class GenericCollectionMethodsBase<TElement> {
+            // template <typename TElement> class GenericCollectionMethodsBase { public:
+            (new Regex(@"class ([a-zA-Z0-9]+)<([a-zA-Z0-9]+)>\s+([^{]+){", _options), "template <typename $2> class $1 $3{ public:", null, 0),
+            // class GenericCollectionMethodsBase {
+            // class GenericCollectionMethodsBase { public:
+            (new Regex(@"class ([a-zA-Z0-9]+)([\s]+){", _options), "class $1$2{ public:", null, 0),
+            // static void TestMultipleCreationsAndDeletions<TElement>(SizedBinaryTreeMethodsBase<TElement> tree, TElement* root)
+            // template<typename T> static void TestMultipleCreationsAndDeletions<TElement>(SizedBinaryTreeMethodsBase<TElement> tree, TElement* root)
+            (new Regex(@"static ([a-zA-Z0-9]+) ([a-zA-Z0-9]+)<([a-zA-Z0-9]+)>\(([^\)]+)\)", _options), "template <typename $3> static $1 $2($4)", null, 0),
+            // (this 
+            // (
+            (new Regex(@"\(this ", _options), "(", null, 20),
+            // Func<TElement> treeCount
+            // TElement (*treeCount)()
+            (new Regex(@"Func<([a-zA-Z0-9]+)> ([a-zA-Z0-9]+)", _options), "$1 (*$2)()", null, 20),
+            // Action<TElement> free
+            // void (*free)(TElement)
+            (new Regex(@"Action<([a-zA-Z0-9]+)> ([a-zA-Z0-9]+)", _options), "void (*$2)($1)", null, 20),
             // private const int MaxPath = 92;
             // static const int MaxPath = 92;
-            (new Regex(@"private const ([a-zA-Z0-9]+) ([a-zA-Z0-9]+) = ([a-zA-Z0-9]+);", _defaultOptions), "static const $1 $2 = $3;", null),
+            (new Regex(@"private const ([a-zA-Z0-9]+) ([_a-zA-Z0-9]+) = ([a-zA-Z0-9]+);", _options), "static const $1 $2 = $3;", null, 0),
+            // protected virtual
+            // virtual
+            (new Regex(@"protected virtual", _options), "virtual", null, 20),
+            // protected abstract TElement GetFirst();
+            // virtual TElement GetFirst() = 0;
+            (new Regex(@"protected abstract ([^;]+);", _options), "virtual $1 = 0;", null, 20),
+            // public virtual
+            // virtual
+            (new Regex(@"public virtual", _options), "virtual", null, 20),
+            // protected readonly
+            // 
+            (new Regex(@"protected readonly ", _options), "", null, 20),
+            // protected readonly TreeElement[] _elements;
+            // TreeElement _elements[N];
+            (new Regex(@"(protected|private) readonly ([a-zA-Z<>0-9]+)([\[\]]+) ([_a-zA-Z0-9]+);", _options), "$2 $4[N];", null, 20),
+            // protected readonly TElement Zero;
+            // TElement Zero;
+            (new Regex(@"(protected|private) readonly ([a-zA-Z<>0-9]+) ([_a-zA-Z0-9]+);", _options), "$2 $3;", null, 20),
+            // private
+            // 
+            (new Regex(@"(\W)(private|protected|public|internal) ", _options), "$1", null, 20),
+            // SizeBalancedTree(int capacity) => a = b;
+            // SizeBalancedTree(int capacity) { a = b; }
+            (new Regex(@"(^\s+)(override )?(void )?([a-zA-Z0-9]+)\(([^\(]+)\)\s+=>\s+([^;]+);", _options), "$1$2$3$4($5) { $6; }", null, 20),
+            // => Integer<TElement>.Zero,
+            // { return Integer<TElement>.Zero; },
+            (new Regex(@"\)\s+=>\s+([^\r\n,]+?),", _options), ") { return $1; },", new Regex(@"TreesTests\.cs", _options), 20),
+            // => Integer<TElement>.Zero;
+            // { return Integer<TElement>.Zero; }
+            (new Regex(@"\)\s+=>\s+([^\r\n;]+?);", _options), ") { return $1; }", null, 20),
+            // () { return avlTree.Count; }
+            // []()-> auto { return avlTree.Count; }
+            (new Regex(@", \(\) { return ([^;]+); }", _options), ", []()-> auto { return $1; }", null, 20),
+            // Count => GetSizeOrZero(Root);
+            // GetCount() { return GetSizeOrZero(Root); }
+            (new Regex(@"([A-Z][a-z]+)\s+=>\s+([^;]+);", _options), "Get$1() { return $2; }", null, 20),
+            // left = node;
+            // *left = node;
+            (new Regex(@"([^*])(left|right|root) = ([a-zA-Z0-9]+);", _options), "$1*$2 = $3;", null, 20),
+            // root = RightRotate(root);
+            // *root = RightRotate(root);
+            (new Regex(@"([^*])(left|right|root) = ([a-zA-Z0-9]+)\(([a-zA-Z0-9]*)\);", _options), "$1*$2 = $3($4);", null, 20),
+            // (left)
+            // (*left)
+            (new Regex(@"(\(|, |= )(left|right|root)(\)|,|;)", _options), "$1*$2$3", null, 20),
+            // ref sizeBalancedTree2.Root
+            // &sizeBalancedTree2.Root
+            (new Regex(@"ref ([a-zA-Z0-9]+)\.([a-zA-Z0-9]+)", _options), "&$1.$2", null, 20),
+            // ref GetElement(node).Right
+            // &GetElement(node).Right
+            (new Regex(@"ref ([a-zA-Z0-9]+)\(([a-zA-Z0-9]+)\)\.([a-zA-Z0-9]+)", _options), "&$1($2).$3", null, 20),
+            // GetElement(node).Right
+            // GetElement(node)->Right
+            (new Regex(@"([a-zA-Z0-9]+)\(([a-zA-Z0-9]+)\)\.([a-zA-Z0-9]+)", _options), "$1($2)->$3", null, 20),
+            // = ref GetLeftReference
+            // = GetLeftReference
+            (new Regex(@" = ref ([a-zA-Z0-9]+)", _options), " = $1", null, 20),
+            // (ref left)
+            // (left)
+            (new Regex(@"\(ref ([a-zA-Z0-9]+)(\)|\(|,)", _options), "($1$2", null, 20),
+            // ref TElement
+            // TElement*
+            (new Regex(@"ref ([a-zA-Z0-9\*]+)", _options), "$1*", null, 20),
+            // return ref _elements[(Integer<TElement>)node];
+            // return &_elements[node];
+            (new Regex(@"return ref ([_a-zA-Z0-9\*]+)\[\(Integer<([a-zA-Z0-9\*]+)>\)([_a-zA-Z0-9\*]+)\];", _options), "return &$1[$3];", null, 20),
+            // Integer<TElement>.Zero
+            // 0
+            (new Regex(@"(\W)Integer<([a-zA-Z0-9]+)>\.Zero(\W)", _options), "${1}0$3", null, 20),
+            // Integer<TElement>.One
+            // 1
+            (new Regex(@"(\W)Integer<([a-zA-Z0-9]+)>\.One(\W)", _options), "${1}1$3", null, 20),
+            // Integer<TElement>.Two
+            // 2
+            (new Regex(@"(\W)Integer<([a-zA-Z0-9]+)>\.Two(\W)", _options), "${1}2$3", null, 20),
+            // (Integer<TElement>)
+            // 
+            (new Regex(@"\(Integer<[a-zA-Z0-9]+>\)", _options), "", null, 20),
+            // Assert.Equal
+            // Assert::Equal
+            (new Regex(@"Assert\.Equal", _options), "Assert::Equal", null, 20),
+            // Comparer.Compare(first, second) < 0
+            // first < second
+            (new Regex(@"Comparer\.Compare\(([_a-zA-Z0-9\*]+), ([_a-zA-Z0-9\*]+)\) (\S{1,2}) 0", _options), "$1 $3 $2", null, 20),
+            // EqualityComparer<TreeElement>.Default.Equals(GetElement(node), default)
+            // iszero(GetElement(node), sizeof(TreeElement))
+            (new Regex(@"EqualityComparer<([a-zA-Z0-9]+)>\.Default\.Equals\(([_a-zA-Z0-9\*]+)\(([_a-zA-Z0-9\*]*)\), default\)", _options), "iszero($2($3), sizeof($1))", null, 20),
+            // !EqualityComparer.Equals(_allocated, 1)
+            // _allocated == 1
+            (new Regex(@"!EqualityComparer\.Equals\(([_a-zA-Z0-9\*]+), ([_a-zA-Z0-9\*]+)\)", _options), "$1 != $2", null, 20),
+            // EqualityComparer.Equals(lastNode, node)
+            // lastNode == node
+            (new Regex(@"EqualityComparer\.Equals\(([_a-zA-Z0-9\*]+), ([_a-zA-Z0-9\*]+)\)", _options), "$1 == $2", null, 20),
+            // EqualityComparer<TreeElement>.Default.Equals(GetElement(node), 0)
+            // GetElement(node) == 0
+            (new Regex(@"!EqualityComparer<[a-zA-Z0-9]+>\.Default\.Equals\(([_a-zA-Z0-9\*]+)\(([_a-zA-Z0-9\*]*)\), ([_a-zA-Z0-9\*]+)\)", _options), "$1($2) != $3", null, 20),
+            // EqualityComparer<TreeElement>.Default.Equals(GetElement(node), 0)
+            // GetElement(node) == 0
+            (new Regex(@"EqualityComparer<[a-zA-Z0-9]+>\.Default\.Equals\(([_a-zA-Z0-9\*]+)\(([_a-zA-Z0-9\*]*)\), ([_a-zA-Z0-9\*]+)\)", _options), "$1($2) == $3", null, 20),
+            // !AreEqual(parent, default)
+            // parent != 0
+            (new Regex(@"!AreEqual\(([a-zA-Z\*]+), default\)", _options), "$1 != 0", null, 20),
+            // AreEqual(node, default)
+            // node == 0
+            (new Regex(@"AreEqual\(([a-zA-Z\*]+), default\)", _options), "$1 == 0", null, 20),
+            // !AreEqual(size, expectedSize)
+            // size != expectedSize
+            (new Regex(@"!AreEqual\(([a-zA-Z\*]+), ([a-zA-Z\*]+)\)", _options), "$1 != $2", null, 20),
+            // AreEqual(baseElement, GetFirst())
+            // baseElement == GetFirst()
+            (new Regex(@"AreEqual\(([a-zA-Z\*]+), ([a-zA-Z\*]+)\(([a-zA-Z\*]*)\)\)", _options), "$1 == $2($3)", null, 20),
+            // AreEqual(elementNext, element)
+            // elementNext == element
+            (new Regex(@"AreEqual\(([a-zA-Z\*]+), ([a-zA-Z\*]+)\)", _options), "$1 == $2", null, 20),
+            // AreEqual(GetLeft(parent), nodeToDetach)
+            // GetLeft(parent) = nodeToDetach
+            (new Regex(@"AreEqual\(([a-zA-Z\*]+)\(([a-zA-Z\*]*)\), ([a-zA-Z\*]+)\)", _options), "$1($2) == $3", null, 20),
+            // !EqualToZero(root)
+            // root != 0
+            (new Regex(@"!EqualToZero\(([a-zA-Z\*]+)\)", _options), "$1 != 0", null, 20),
+            // EqualToZero(node)
+            // node == 0
+            (new Regex(@"EqualToZero\(([a-zA-Z\*]+)\)", _options), "$1 == 0", null, 20),
+            // default
+            // 0
+            (new Regex(@"(\W)default(\W)", _options), "${1}0$2", null, 20),
+            // Arithmetic.Add(leftSize, rightSize)
+            // leftSize + rightSize
+            (new Regex(@"Arithmetic\.Add\(([a-zA-Z0-9\*]+), ([a-zA-Z0-9\*]+)\)", _options), "$1 + $2", null, 20),
+            // Add(GetLeftSize(node), GetRightSize(node))
+            // GetLeftSize(node) + GetRightSize(node)
+            (new Regex(@"Add\(([a-zA-Z0-9\*]+)\(([a-zA-Z0-9 \+\*]+)\), ([a-zA-Z0-9\*]+)\(([a-zA-Z0-9 \+\*]+)\)\)", _options), "$1($2) + $3($4)", null, 20),
+            // Add(rightSize, 2)
+            // rightSize + 2
+            (new Regex(@"Add\(([a-zA-Z0-9\*]+), ([a-zA-Z0-9\*]+)\)", _options), "$1 + $2", null, 20),
+            // Arithmetic.Increment(leftSize + rightSize)
+            // leftSize + rightSize + 1
+            (new Regex(@"Arithmetic\.Increment\(([_a-zA-Z0-9 \+\*]+)\)", _options), "$1 + 1", null, 20),
+            // Increment(GetSize(node))
+            // GetSize(node) + 1
+            (new Regex(@"Increment\(([a-zA-Z0-9\*]+)\(([a-zA-Z0-9 \+\*]*)\)\)", _options), "$1($2) + 1", null, 20),
+            // Increment(GetLeftSize(node) + GetRightSize(node))
+            // GetLeftSize(node) + GetRightSize(node) + 1
+            (new Regex(@"Increment\(([a-zA-Z0-9\*]+)\(([a-zA-Z0-9 \+\*]*)\) \+ ([a-zA-Z0-9\*]+)\(([a-zA-Z0-9 \+\*]*)\)\)", _options), "$1($2) + $3($4) + 1", null, 20),
+            // Increment(rightLeftSize)
+            // rightLeftSize + 1
+            (new Regex(@"Increment\(([a-zA-Z0-9\*]+)\)", _options), "$1 + 1", null, 20),
+            // Arithmetic.Decrement(leftSize + rightSize)
+            // leftSize + rightSize - 1
+            (new Regex(@"Arithmetic\.Decrement\(([_a-zA-Z0-9 \+\*]+)\)", _options), "$1 - 1", null, 20),
+            // Decrement(GetSize(node))
+            // GetSize(node) - 1
+            (new Regex(@"Decrement\(([a-zA-Z0-9\*]+)\(([a-zA-Z0-9 \+\*]*)\)\)", _options), "$1($2) - 1", null, 20),
+            // Decrement(rightSize)
+            // rightSize - 1
+            (new Regex(@"Decrement\(([a-zA-Z0-9\*]+)\)", _options), "$1 - 1", null, 20),
+            // GreaterThan(rightLeftSize + 1, leftSize)
+            // (rightLeftSize + 1) > leftSize
+            (new Regex(@"GreaterThan\(([a-zA-Z0-9\*]+) \+ ([a-zA-Z0-9\*]+), ([a-zA-Z0-9\*]+)\)", _options), "($1 + $2) > $3", null, 0),
+            // GreaterThan(GetSizeOrZero(GetLeft(left)), decrementedRightSize)
+            // GetSizeOrZero(GetLeft(left)) > decrementedRightSize
+            (new Regex(@"GreaterThan\(([a-zA-Z0-9\*]+)\(([a-zA-Z0-9\*]+)\(([a-zA-Z0-9\*]*)\)\), ([a-zA-Z0-9\*]+)\)", _options), "$1($2($3)) > $4", null, 0),
+            // GreaterThan(GetSize(rootLeftNodeLeftNode), GetSize(rootRightNode))
+            // GetSize(rootLeftNodeLeftNode) > GetSize(rootRightNode)
+            (new Regex(@"GreaterThan\(([a-zA-Z0-9\*]+)\(([a-zA-Z0-9\*]+)\), ([a-zA-Z0-9\*]+)\(([a-zA-Z0-9\*]*)\)\)", _options), "$1($2) > $3($4)", null, 0),
+            // GreaterThan(leftSize, rightSize)
+            // leftSize > rightSize
+            (new Regex(@"GreaterThan\(([a-zA-Z0-9\*]+), ([a-zA-Z0-9\*]+)\)", _options), "$1 > $2", null, 0),
+            // GreaterThanZero(leftSize)
+            // leftSize > 0
+            (new Regex(@"GreaterThanZero\(([a-zA-Z0-9\*]+)\)", _options), "$1 > 0", null, 0),
+            // var
+            // auto
+            (new Regex(@"(\W)var(\W)", _options), "$1auto$2", null, 0),
+            // unchecked
+            // 
+            (new Regex(@"[\r\n]{2}\s*?unchecked\s*?$", _options), "", null, 20),
+            // $"
+            // "
+            (new Regex(@"\$""", _options), "\"", null, 20),
+            // throw new InvalidOperationException
+            // throw std::exception
+            (new Regex(@"throw new (InvalidOperationException|Exception)", _options), "throw std::exception", null, 20),
+            // override void PrintNode(TElement node, StringBuilder sb, int level)
+            // void PrintNode(TElement node, StringBuilder sb, int level) override
+            (new Regex(@"override ([a-zA-Z0-9 \*\+]+)(\([^\)]+?\))", _options), "$1$2 override", null, 20),
+            // Zero
+            // 0
+            (new Regex(@"(\W)Zero(\W)", _options), "${1}0$2", null, 0),
+            // One
+            // 1
+            (new Regex(@"(\W)One(\W)", _options), "${1}1$2", null, 0),
+            // Two
+            // 2
+            (new Regex(@"(\W)Two(\W)", _options), "${1}2$2", null, 0),
             // Just delete it
-            (new Regex(@"virtual TElement GetZero\(\)(.|\s)+V3068\s+}", _defaultOptions), "", null),
+            (new Regex(@"virtual TElement GetZero\(\)(.|\s)+V3068\s+}", _options), "", null, 20),
             // sbyte
             // std::int8_t
-            (new Regex(@"(\W)sbyte(\W)", _defaultOptions), "$1std::int8_t$2", null),
+            (new Regex(@"(\W)sbyte(\W)", _options), "$1std::int8_t$2", null, 20),
+            // uint
+            // std::uint32_t
+            (new Regex(@"(\W)uint(\W)", _options), "$1std::uint32_t$2", null, 20),
             // using Platform.Numbers;
             // 
-            (new Regex(@"([\r\n]{2}|^)\s*?using [\.a-zA-Z0-9]+;\s*?$", _defaultOptions), "", null),
+            (new Regex(@"([\r\n]{2}|^)\s*?using [\.a-zA-Z0-9]+;\s*?$", _options), "", null, 20),
+            // struct TreeElement { }
+            // struct TreeElement { };
+            (new Regex(@"struct ([a-zA-Z0-9]+)(\s+){([\sa-zA-Z0-9;:_]+?)}([^;])", _options), "struct $1$2{$3};$4", null, 20),
             // \t}\n}
             // \t};\n}
-            (new Regex(@"([\r\n])(\t|[ ]{4})}([\r\n]+)}", _defaultOptions), "$1$2};$3}", null),
+            (new Regex(@"([\r\n])(\t|[ ]{4})}([\r\n]+)}", _options), "$1$2};$3}", null, 20),
+            // void PrintNodeValue(TElement node, StringBuilder sb) override { sb.Append(node); }
+            //
+            (new Regex(@"[\r\n]{1,2}\s+[\r\n]{1,2}\s+void PrintNodeValue\(TElement node, StringBuilder sb\) override { sb\.Append\(node\); }", _options), "", null, 20),
+
+
             // Just delete it in SizedBinaryTreeMethodsBase.cs
-            (new Regex(@"void FixSizes(.|\s)+};", _defaultOptions), "};", new Regex(@"SizedBinaryTreeMethodsBase\.cs", _defaultOptions)),
+            (new Regex(@"void FixSizes(.|\s)+};", _options), "};", new Regex(@"SizedBinaryTreeMethodsBase\.cs", _options), 20),
             // Just delete it in SizedAndThreadedAVLBalancedTreeMethods.cs
-            (new Regex(@"void PrintNode(.|\s)+?}", _defaultOptions), "", new Regex(@"SizedAndThreadedAVLBalancedTreeMethods\.cs", _defaultOptions)),
+            (new Regex(@"void PrintNode(.|\s)+?}", _options), "", new Regex(@"SizedAndThreadedAVLBalancedTreeMethods\.cs", _options), 20),
             // GetFirst
-            // DoublyLinkedListMethodsBase::GetFirst
-            (new Regex(@"([^:])(GetFirst|GetLast|GetPrevious|GetNext|GetSize|SetFirst|SetLast|SetPrevious|SetNext|SetSize|IncrementSize|DecrementSize)(\()", _defaultOptions), "$1DoublyLinkedListMethodsBase::$2$3", new Regex(@"[a-zA-Z]+DoublyLinkedListMethods\.cs", _defaultOptions)),
+            // DoublyLinkedListMethodsBase<TElement>::GetFirst
+            (new Regex(@"([^:])(GetFirst|GetLast|GetPrevious|GetNext|GetSize|SetFirst|SetLast|SetPrevious|SetNext|SetSize|IncrementSize|DecrementSize)(\()", _options), "$1DoublyLinkedListMethodsBase<TElement>::$2$3", new Regex(@"[a-zA-Z]+DoublyLinkedListMethods\.cs", _options), 20),
             // GetSize
-            // SizedBinaryTreeMethodsBase::GetSize
-            (new Regex(@"([^:])(GetLeftReference|GetRightReference|GetLeft|GetRight|SetLeft|SetRight|FirstIsToTheLeftOfSecond|FirstIsToTheRightOfSecond|GetLeftOrDefault|GetRightOrDefault|GetLeftSize|GetRightSize|GetSizeOrZero|FixSize|LeftRotate|RightRotate|ClearNode|GetSize|SetSize|IncrementSize|DecrementSize)(\()", _defaultOptions), "$1SizedBinaryTreeMethodsBase::$2$3", new Regex(@"Size[a-zA-Z]+(s|2)\.cs", _defaultOptions)),
-            // SizedBinaryTreeMethodsBase::ClearNode
+            // SizedBinaryTreeMethodsBase<TElement>::GetSize
+            (new Regex(@"([^:])(GetLeftOrDefault|GetRightOrDefault|GetLeftSize|GetRightSize|GetSizeOrZero|FixSize|LeftRotate|RightRotate|ClearNode|IncrementSize|DecrementSize)(\()", _options), "$1SizedBinaryTreeMethodsBase<TElement>::$2$3", new Regex(@"Size[a-zA-Z]+Methods2?\.cs", _options), 20),
+            // auto*
+            // TElement*
+            (new Regex(@"auto\*", _options), "TElement*", new Regex(@"Size[a-zA-Z]+Methods2?\.cs", _options), 0),
+            // auto
+            // TElement
+            (new Regex(@"auto", _options), "TElement", new Regex(@"Size[a-zA-Z]+Methods2?\.cs", _options), 0),
+            // public:
+            // public: ...
+            (new Regex(@"public:", _options), @"public:
+
+        virtual TElement* GetLeftReference(TElement node) override = 0;
+
+        virtual TElement* GetRightReference(TElement node) override = 0;
+
+        virtual TElement GetLeft(TElement node) override = 0;
+
+        virtual TElement GetRight(TElement node) override = 0;
+
+        virtual TElement GetSize(TElement node) override = 0;
+
+        virtual void SetLeft(TElement node, TElement left) override = 0;
+
+        virtual void SetRight(TElement node, TElement right) override = 0;
+
+        virtual void SetSize(TElement node, TElement size) override = 0;
+
+        virtual bool FirstIsToTheLeftOfSecond(TElement first, TElement second) override = 0;
+
+        virtual bool FirstIsToTheRightOfSecond(TElement first, TElement second) override = 0;
+", new Regex(@"Size[a-zA-Z]+Methods2?\.cs", _options), 0),
+            // GetSizeOrZero
+            // SizeBalancedTreeMethods<TElement>::GetSizeOrZero
+            (new Regex(@"([^:])(GetSizeOrZero)(\()", _options), "$1Platform::Collections::Methods::Trees::SizeBalancedTreeMethods<TElement>::$2$3", new Regex(@"SizeBalancedTree\.cs", _options), 0),
+            // GetSizeOrZero
+            // SizeBalancedTreeMethods2<TElement>::GetSizeOrZero
+            (new Regex(@"([^:])(GetSizeOrZero)(\()", _options), "$1Platform::Collections::Methods::Trees::SizeBalancedTreeMethods2<TElement>::$2$3", new Regex(@"SizeBalancedTree2\.cs", _options), 0),
+            // GetSizeOrZero
+            // SizedAndThreadedAVLBalancedTreeMethods<TElement>::GetSizeOrZero
+            (new Regex(@"([^:])(GetSizeOrZero)(\()", _options), "$1Platform::Collections::Methods::Trees::SizedAndThreadedAVLBalancedTreeMethods<TElement>::$2$3", new Regex(@"SizedAndThreadedAVLBalancedTree\.cs", _options), 0),
+            // class SizedBinaryTreeMethodsBase : GenericCollectionMethodsBase
+            // class SizedBinaryTreeMethodsBase : public GenericCollectionMethodsBase
+            (new Regex(@"class ([a-zA-Z0-9]+) : ([a-zA-Z0-9]+)", _options), "class $1 : public $2", null, 0),
+            // template <typename TElement> class SizeBalancedTree : SizeBalancedTreeMethods<TElement>
+            // template <typename TElement, std::size_t N> class SizeBalancedTree : Platform::Collections::Methods::Trees::SizeBalancedTreeMethods<TElement>
+            (new Regex(@"template <typename TElement> class ([a-zA-Z0-9]+) : public ([a-zA-Z0-9]+)<TElement>", _options), "template <typename TElement, std::size_t N> class $1 : public Platform::Collections::Methods::Trees::$2<TElement>", new Regex(@"Size[a-zA-Z]+Tree2?\.cs", _options), 0),
+            // SizeBalancedTree(int capacity) { (_elements, _allocated) = (new TreeElement[capacity], 1); }
+            // SizeBalancedTree() { _allocated = 1; }
+            (new Regex(@"([a-zA-Z0-9]+)\(int capacity\) { \(_elements, _allocated\) = \(new TreeElement\[capacity\], 1\); }", _options), "$1() { _allocated = 1; }", new Regex(@"Size[a-zA-Z]+Tree2?\.cs", _options), 0),
+            // *left
+            // left
+            (new Regex(@"(void SetLeft)([\S\s]+?)\*(left|right)([\S\s]+?)(void SetSize)", _options), "$1$2$3$4$5", new Regex(@"Size[a-zA-Z]+Tree2?\.cs", _options), 20),
+            // SizedBinaryTreeMethodsBase<TElement>::ClearNode
             // ClearNode
-            (new Regex(@"SizedBinaryTreeMethodsBase::(ClearNode|GetLeftOrDefault|GetRightOrDefault)", _defaultOptions), "$1", new Regex(@"SizedAndThreadedAVLBalancedTreeMethods\.cs", _defaultOptions)),
-        };
+            (new Regex(@"SizedBinaryTreeMethodsBase<TElement>::(ClearNode|GetLeftOrDefault|GetRightOrDefault)", _options), "$1", new Regex(@"SizedAndThreadedAVLBalancedTreeMethods\.cs", _options), 20),
+            // *root
+            // root
+            (new Regex(@"(virtual bool Contains)([\S\s]+?)\*root([\S\s]+?)(virtual void ClearNode)", _options), "$1$2root$3$4", new Regex(@"SizedBinaryTreeMethodsBase\.cs", _options), 20),
+            (new Regex(@"(TElement RightRotate)([\S\s]+?)\*(root|left)([\S\s]+?)(virtual bool Contains)", _options), "$1$2$3$4$5", new Regex(@"SizedBinaryTreeMethodsBase\.cs", _options), 20),
+            (new Regex(@"(TElement LeftRotate)([\S\s]+?)\*(root|right)([\S\s]+?)(void RightRotate)", _options), "$1$2$3$4$5", new Regex(@"SizedBinaryTreeMethodsBase\.cs", _options), 20),
+            // auto sizeBalancedTree = new SizeBalancedTree<uint>(10000);
+            // SizeBalancedTree<uint, 10000> sizeBalancedTree;
+            (new Regex(@"auto ([a-zA-Z0-9]+) = new ([a-zA-Z0-9]+)<([_a-zA-Z0-9:]+)>\(([0-9]+)\);", _options), "$2<$3, $4> $1;", new Regex(@"TreesTests\.cs", _options), 20),
+            // sizeBalancedTree2.Allocate
+            // []()-> auto { return sizeBalancedTree2.Allocate(); }
+            (new Regex(@"(\(|, )([a-zA-Z0-9]+)\.(Allocate)", _options), "$1[]()-> auto { return $2.$3(); }", new Regex(@"TreesTests\.cs", _options), 0),
+            // sizeBalancedTree2.Free
+            // [](std::uint32_t link)-> auto { sizeBalancedTree2.Free(link); }
+            (new Regex(@"(\(|, )([a-zA-Z0-9]+)\.(Free)", _options), "$1[](std::uint32_t link)-> auto { $2.$3(link); }", new Regex(@"TreesTests\.cs", _options), 0),
+            // sizeBalancedTree.TestMultipleCreationsAndDeletions(
+            // TestExtensions::TestMultipleCreationsAndDeletions(sizeBalancedTree, 
+            (new Regex(@"([a-zA-Z0-9]+)\.(TestMultipleCreationsAndDeletions|TestMultipleRandomCreationsAndDeletions)\(", _options), "TestExtensions::$2($1, ", new Regex(@"TreesTests\.cs", _options), 0),
+            // auto random = new System.Random(0);
+            // 
+            (new Regex(@"[\r\n]{1,4}\s+auto random = new System\.Random\(0\);", _options), "", new Regex(@"TestExtensions\.cs", _options), 20),
+            // random.Next(1, N)
+            // (std::rand() % N) + 1
+            (new Regex(@"random\.Next\(1, N\)", _options), "(std::rand() % N) + 1", new Regex(@"TestExtensions\.cs", _options), 20),
+            // auto added = new HashSet<TElement>();
+            // std::unordered_set<TElement> added;
+            (new Regex(@"auto ([a-zA-Z0-9]+) = new HashSet<([a-zA-Z0-9]+)>\(\);", _options), "std::unordered_set<$2> $1;", new Regex(@"TestExtensions\.cs", _options), 20),
+            // added.Add(node)
+            // added.insert(node)
+            (new Regex(@"added\.Add\(([a-zA-Z0-9]+)\)", _options), "added.insert($1)", new Regex(@"TestExtensions\.cs", _options), 20),
+            // added.Remove(node)
+            // added.erase(node) 
+            (new Regex(@"added\.Remove\(([a-zA-Z0-9]+)\)", _options), "added.erase($1)", new Regex(@"TestExtensions\.cs", _options), 20),
+            // if (added.insert(node)) {
+            // if (added.find(node) == added.end()) { added.insert(node);
+            (new Regex(@"if \(added\.insert\(node\)\)(\s+){", _options), "if (added.find(node) == added.end())$1{ added.insert(node);", new Regex(@"TestExtensions\.cs", _options), 20),
+            // SizedBinaryTreeMethodsBase
+            // Platform::Collections::Methods::Trees::SizedBinaryTreeMethodsBase
+            (new Regex(@"\(SizedBinaryTreeMethodsBase<TElement>", _options), "(Platform::Collections::Methods::Trees::SizedBinaryTreeMethodsBase<TElement>&", new Regex(@"TestExtensions\.cs", _options), 20),
+    };
 
         private static string Translate(string sourceFilename, string source)
         {
@@ -210,17 +397,19 @@ namespace Translator
             {
                 var pattern = _substitutions[i].Item1;
                 var filenamePattern = _substitutions[i].Item3;
+                var maximumRepeatCount = _substitutions[i].Item4;
                 if (filenamePattern == null || filenamePattern.IsMatch(sourceFilename))
                 {
                     var count = 0;
-                    while (pattern.IsMatch(current))
+                    do
                     {
                         current = pattern.Replace(current, _substitutions[i].Item2);
-                        if (count++ > 10)
+                        if (++count > maximumRepeatCount)
                         {
                             break;
                         }
                     }
+                    while (pattern.IsMatch(current));
                 }
             }
             return current;

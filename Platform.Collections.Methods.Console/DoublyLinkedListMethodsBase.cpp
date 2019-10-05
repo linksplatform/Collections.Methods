@@ -5,8 +5,8 @@ namespace Platform::Collections::Methods::Lists
     /// <remarks>
     /// Based on <a href="https://en.wikipedia.org/wiki/Doubly_linked_list">doubly linked list</a> implementation.
     /// </remarks>
-    template <typename TElement> class DoublyLinkedListMethodsBase : GenericCollectionMethodsBase<TElement>
-    {
+    template <typename TElement> class DoublyLinkedListMethodsBase : public GenericCollectionMethodsBase<TElement>
+    { public:
         virtual TElement GetFirst() = 0;
         virtual TElement GetLast() = 0;
         virtual TElement GetPrevious(TElement element) = 0;

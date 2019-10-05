@@ -7,8 +7,8 @@
 
 namespace Platform::Collections::Methods::Trees
 {
-    template <typename TElement> class SizedBinaryTreeMethodsBase : GenericCollectionMethodsBase<TElement>
-    {
+    template <typename TElement> class SizedBinaryTreeMethodsBase : public GenericCollectionMethodsBase<TElement>
+    { public:
         virtual TElement* GetLeftReference(TElement node) = 0;
         virtual TElement* GetRightReference(TElement node) = 0;
         virtual TElement GetLeft(TElement node) = 0;
@@ -21,13 +21,13 @@ namespace Platform::Collections::Methods::Trees
         virtual bool FirstIsToTheRightOfSecond(TElement first, TElement second) = 0;
         virtual TElement GetLeftOrDefault(TElement node) { return node == 0 ? 0 : GetLeft(node); }
         virtual TElement GetRightOrDefault(TElement node) { return node == 0 ? 0 : GetRight(node); }
-        void IncrementSize(TElement node) { return SetSize(node, GetSize(node) + 1); }
-        void DecrementSize(TElement node) { return SetSize(node, GetSize(node) - 1); }
+        void IncrementSize(TElement node) { SetSize(node, GetSize(node) + 1); }
+        void DecrementSize(TElement node) { SetSize(node, GetSize(node) - 1); }
         TElement GetLeftSize(TElement node) { return GetSizeOrZero(GetLeftOrDefault(node)); }
         TElement GetRightSize(TElement node) { return GetSizeOrZero(GetRightOrDefault(node)); }
         TElement GetSizeOrZero(TElement node) { return node == 0 ? 0 : GetSize(node); }
-        void FixSize(TElement node) { return SetSize(node, GetLeftSize(node) + GetRightSize(node) + 1); }
-        void LeftRotate(TElement* root) { return root = LeftRotate(root); }
+        void FixSize(TElement node) { SetSize(node, GetLeftSize(node) + GetRightSize(node) + 1); }
+        void LeftRotate(TElement* root) { *root = LeftRotate(*root); }
         TElement LeftRotate(TElement root)
         {
             auto right = GetRight(root);
@@ -43,7 +43,7 @@ namespace Platform::Collections::Methods::Trees
             FixSize(root);
             return right;
         }
-        void RightRotate(TElement* root) { return root = RightRotate(root); }
+        void RightRotate(TElement* root) { *root = RightRotate(*root); }
         TElement RightRotate(TElement root)
         {
             auto left = GetLeft(root);
@@ -87,25 +87,25 @@ namespace Platform::Collections::Methods::Trees
         void Attach(TElement* root, TElement node)
         {
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
-            ValidateSizes(root);
+            ValidateSizes(*root);
             Debug.WriteLine("--BeforeAttach--");
-            Debug.WriteLine(PrintNodes(root));
+            Debug.WriteLine(PrintNodes(*root));
             Debug.WriteLine("----------------");
-            auto sizeBefore = GetSize(root);
+            auto sizeBefore = GetSize(*root);
 #endif
-            if (root == 0)
+            if (*root == 0)
             {
                 SetSize(node, 1);
-                root = node;
+                *root = node;
                 return;
             }
             AttachCore(root, node);
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
             Debug.WriteLine("--AfterAttach--");
-            Debug.WriteLine(PrintNodes(root));
+            Debug.WriteLine(PrintNodes(*root));
             Debug.WriteLine("----------------");
-            ValidateSizes(root);
-            auto sizeAfter = GetSize(root);
+            ValidateSizes(*root);
+            auto sizeAfter = GetSize(*root);
             if (!IsEquals(MathHelpers.sizeBefore + 1, sizeAfter))
             {
                 throw std::exception("Tree was broken after attach.");
@@ -117,12 +117,12 @@ namespace Platform::Collections::Methods::Trees
         void Detach(TElement* root, TElement node)
         {
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
-            ValidateSizes(root);
+            ValidateSizes(*root);
             Debug.WriteLine("--BeforeDetach--");
-            Debug.WriteLine(PrintNodes(root));
+            Debug.WriteLine(PrintNodes(*root));
             Debug.WriteLine("----------------");
-            auto sizeBefore = GetSize(root);
-            if (Valueroot == 0)
+            auto sizeBefore = GetSize(*root);
+            if (Value*root == 0)
             {
                 throw std::exception("Элемент с {node} не содержится в дереве.");
             }
@@ -130,10 +130,10 @@ namespace Platform::Collections::Methods::Trees
             DetachCore(root, node);
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
             Debug.WriteLine("--AfterDetach--");
-            Debug.WriteLine(PrintNodes(root));
+            Debug.WriteLine(PrintNodes(*root));
             Debug.WriteLine("----------------");
-            ValidateSizes(root);
-            auto sizeAfter = GetSize(root);
+            ValidateSizes(*root);
+            auto sizeAfter = GetSize(*root);
             if (!IsEquals(MathHelpers.sizeBefore - 1, sizeAfter))
             {
                 throw std::exception("Tree was broken after detach.");

@@ -2,26 +2,47 @@
 
 namespace Platform::Collections::Methods::Trees
 {
-    template <typename TElement> class SizeBalancedTreeMethods2 : SizedBinaryTreeMethodsBase<TElement>
-    {
+    template <typename TElement> class SizeBalancedTreeMethods2 : public SizedBinaryTreeMethodsBase<TElement>
+    { public:
+
+        virtual TElement* GetLeftReference(TElement node) override = 0;
+
+        virtual TElement* GetRightReference(TElement node) override = 0;
+
+        virtual TElement GetLeft(TElement node) override = 0;
+
+        virtual TElement GetRight(TElement node) override = 0;
+
+        virtual TElement GetSize(TElement node) override = 0;
+
+        virtual void SetLeft(TElement node, TElement left) override = 0;
+
+        virtual void SetRight(TElement node, TElement right) override = 0;
+
+        virtual void SetSize(TElement node, TElement size) override = 0;
+
+        virtual bool FirstIsToTheLeftOfSecond(TElement first, TElement second) override = 0;
+
+        virtual bool FirstIsToTheRightOfSecond(TElement first, TElement second) override = 0;
+
         void AttachCore(TElement* root, TElement node) override
         {
-            if (root == 0)
+            if (*root == 0)
             {
-                root = node;
-                SizedBinaryTreeMethodsBase::IncrementSize(root);
+                *root = node;
+                SizedBinaryTreeMethodsBase<TElement>::IncrementSize(*root);
             }
             else
             {
-                SizedBinaryTreeMethodsBase::IncrementSize(root);
-                if (SizedBinaryTreeMethodsBase::FirstIsToTheLeftOfSecond(node, root))
+                SizedBinaryTreeMethodsBase<TElement>::IncrementSize(*root);
+                if (FirstIsToTheLeftOfSecond(node, *root))
                 {
-                    AttachCore(SizedBinaryTreeMethodsBase::GetLeftReference(root), node);
+                    AttachCore(GetLeftReference(*root), node);
                     LeftMaintain(root);
                 }
                 else
                 {
-                    AttachCore(SizedBinaryTreeMethodsBase::GetRightReference(root), node);
+                    AttachCore(GetRightReference(*root), node);
                     RightMaintain(root);
                 }
             }
@@ -29,49 +50,49 @@ namespace Platform::Collections::Methods::Trees
 
         void DetachCore(TElement* root, TElement nodeToDetach) override
         {
-            auto* currentNode = root;
-            auto* parent = root;
-            auto replacementNode = 0;
+            TElement* currentNode = root;
+            TElement* parent = root;
+            TElement replacementNode = 0;
             while (currentNode != nodeToDetach)
             {
-                SizedBinaryTreeMethodsBase::SetSize(currentNode, SizedBinaryTreeMethodsBase::GetSize(currentNode) - 1);
-                if (SizedBinaryTreeMethodsBase::FirstIsToTheLeftOfSecond(nodeToDetach, currentNode))
+                SetSize(currentNode, GetSize(currentNode) - 1);
+                if (FirstIsToTheLeftOfSecond(nodeToDetach, currentNode))
                 {
                     parent = currentNode;
-                    currentNode = SizedBinaryTreeMethodsBase::GetLeftReference(currentNode);
+                    currentNode = GetLeftReference(currentNode);
                 }
-                else if (SizedBinaryTreeMethodsBase::FirstIsToTheRightOfSecond(nodeToDetach, currentNode))
+                else if (FirstIsToTheRightOfSecond(nodeToDetach, currentNode))
                 {
                     parent = currentNode;
-                    currentNode = SizedBinaryTreeMethodsBase::GetRightReference(currentNode);
+                    currentNode = GetRightReference(currentNode);
                 }
                 else
                 {
                     throw std::exception("Duplicate link found in the tree.");
                 }
             }
-            auto nodeToDetachLeft = SizedBinaryTreeMethodsBase::GetLeft(nodeToDetach);
-            auto node = SizedBinaryTreeMethodsBase::GetRight(nodeToDetach);
+            TElement nodeToDetachLeft = GetLeft(nodeToDetach);
+            TElement node = GetRight(nodeToDetach);
             if (nodeToDetachLeft != 0 && node != 0)
             {
-                auto minNode = node;
-                auto minNodeLeft = SizedBinaryTreeMethodsBase::GetLeft(minNode);
+                TElement minNode = node;
+                TElement minNodeLeft = GetLeft(minNode);
                 while (minNodeLeft != 0)
                 {
                     minNode = minNodeLeft;
-                    minNodeLeft = SizedBinaryTreeMethodsBase::GetLeft(minNode);
+                    minNodeLeft = GetLeft(minNode);
                 }
-                DetachCore(SizedBinaryTreeMethodsBase::GetRightReference(nodeToDetach), minNode);
-                SizedBinaryTreeMethodsBase::SetLeft(minNode, nodeToDetachLeft);
-                node = SizedBinaryTreeMethodsBase::GetRight(nodeToDetach);
+                DetachCore(GetRightReference(nodeToDetach), minNode);
+                SetLeft(minNode, nodeToDetachLeft);
+                node = GetRight(nodeToDetach);
                 if (node != 0)
                 {
-                    SizedBinaryTreeMethodsBase::SetRight(minNode, node);
-                    SizedBinaryTreeMethodsBase::SetSize(minNode, SizedBinaryTreeMethodsBase::GetSize(nodeToDetachLeft) + SizedBinaryTreeMethodsBase::GetSize(node) + 1);
+                    SetRight(minNode, node);
+                    SetSize(minNode, GetSize(nodeToDetachLeft) + GetSize(node) + 1);
                 }
                 else
                 {
-                    SizedBinaryTreeMethodsBase::SetSize(minNode, SizedBinaryTreeMethodsBase::GetSize(nodeToDetachLeft) + 1);
+                    SetSize(minNode, GetSize(nodeToDetachLeft) + 1);
                 }
                 replacementNode = minNode;
             }
@@ -83,51 +104,51 @@ namespace Platform::Collections::Methods::Trees
             {
                 replacementNode = node;
             }
-            if (root == nodeToDetach)
+            if (*root == nodeToDetach)
             {
-                root = replacementNode;
+                *root = replacementNode;
             }
-            else if (SizedBinaryTreeMethodsBase::GetLeft(parent) == nodeToDetach)
+            else if (GetLeft(parent) == nodeToDetach)
             {
-                SizedBinaryTreeMethodsBase::SetLeft(parent, replacementNode);
+                SetLeft(parent, replacementNode);
             }
-            else if (SizedBinaryTreeMethodsBase::GetRight(parent) == nodeToDetach)
+            else if (GetRight(parent) == nodeToDetach)
             {
-                SizedBinaryTreeMethodsBase::SetRight(parent, replacementNode);
+                SetRight(parent, replacementNode);
             }
-            SizedBinaryTreeMethodsBase::ClearNode(nodeToDetach);
+            SizedBinaryTreeMethodsBase<TElement>::ClearNode(nodeToDetach);
         }
 
         void LeftMaintain(TElement* root)
         {
-            if (root != 0)
+            if (*root != 0)
             {
-                auto rootLeftNode = SizedBinaryTreeMethodsBase::GetLeft(root);
+                TElement rootLeftNode = GetLeft(*root);
                 if (rootLeftNode != 0)
                 {
-                    auto rootRightNode = SizedBinaryTreeMethodsBase::GetRight(root);
-                    auto rootLeftNodeLeftNode = SizedBinaryTreeMethodsBase::GetLeft(rootLeftNode);
+                    TElement rootRightNode = GetRight(*root);
+                    TElement rootLeftNodeLeftNode = GetLeft(rootLeftNode);
                     if (rootLeftNodeLeftNode != 0 &&
-                        (rootRightNode == 0 || SizedBinaryTreeMethodsBase::GetSize(rootLeftNodeLeftNode) > SizedBinaryTreeMethodsBase::GetSize(rootRightNode)))
+                        (rootRightNode == 0 || GetSize(rootLeftNodeLeftNode) > GetSize(rootRightNode)))
                     {
-                        SizedBinaryTreeMethodsBase::RightRotate(root);
+                        SizedBinaryTreeMethodsBase<TElement>::RightRotate(root);
                     }
                     else
                     {
-                        auto rootLeftNodeRightNode = SizedBinaryTreeMethodsBase::GetRight(rootLeftNode);
+                        TElement rootLeftNodeRightNode = GetRight(rootLeftNode);
                         if (rootLeftNodeRightNode != 0 &&
-                            (rootRightNode == 0 || SizedBinaryTreeMethodsBase::GetSize(rootLeftNodeRightNode) > SizedBinaryTreeMethodsBase::GetSize(rootRightNode)))
+                            (rootRightNode == 0 || GetSize(rootLeftNodeRightNode) > GetSize(rootRightNode)))
                         {
-                            SizedBinaryTreeMethodsBase::LeftRotate(SizedBinaryTreeMethodsBase::GetLeftReference(root));
-                            SizedBinaryTreeMethodsBase::RightRotate(root);
+                            SizedBinaryTreeMethodsBase<TElement>::LeftRotate(GetLeftReference(*root));
+                            SizedBinaryTreeMethodsBase<TElement>::RightRotate(root);
                         }
                         else
                         {
                             return;
                         }
                     }
-                    LeftMaintain(SizedBinaryTreeMethodsBase::GetLeftReference(root));
-                    RightMaintain(SizedBinaryTreeMethodsBase::GetRightReference(root));
+                    LeftMaintain(GetLeftReference(*root));
+                    RightMaintain(GetRightReference(*root));
                     LeftMaintain(root);
                     RightMaintain(root);
                 }
@@ -136,34 +157,34 @@ namespace Platform::Collections::Methods::Trees
 
         void RightMaintain(TElement* root)
         {
-            if (root != 0)
+            if (*root != 0)
             {
-                auto rootRightNode = SizedBinaryTreeMethodsBase::GetRight(root);
+                TElement rootRightNode = GetRight(*root);
                 if (rootRightNode != 0)
                 {
-                    auto rootLeftNode = SizedBinaryTreeMethodsBase::GetLeft(root);
-                    auto rootRightNodeRightNode = SizedBinaryTreeMethodsBase::GetRight(rootRightNode);
+                    TElement rootLeftNode = GetLeft(*root);
+                    TElement rootRightNodeRightNode = GetRight(rootRightNode);
                     if (rootRightNodeRightNode != 0 &&
-                        (rootLeftNode == 0 || SizedBinaryTreeMethodsBase::GetSize(rootRightNodeRightNode) > SizedBinaryTreeMethodsBase::GetSize(rootLeftNode)))
+                        (rootLeftNode == 0 || GetSize(rootRightNodeRightNode) > GetSize(rootLeftNode)))
                     {
-                        SizedBinaryTreeMethodsBase::LeftRotate(root);
+                        SizedBinaryTreeMethodsBase<TElement>::LeftRotate(root);
                     }
                     else
                     {
-                        auto rootRightNodeLeftNode = SizedBinaryTreeMethodsBase::GetLeft(rootRightNode);
+                        TElement rootRightNodeLeftNode = GetLeft(rootRightNode);
                         if (rootRightNodeLeftNode != 0 &&
-                            (rootLeftNode == 0 || SizedBinaryTreeMethodsBase::GetSize(rootRightNodeLeftNode) > SizedBinaryTreeMethodsBase::GetSize(rootLeftNode)))
+                            (rootLeftNode == 0 || GetSize(rootRightNodeLeftNode) > GetSize(rootLeftNode)))
                         {
-                            SizedBinaryTreeMethodsBase::RightRotate(SizedBinaryTreeMethodsBase::GetRightReference(root));
-                            SizedBinaryTreeMethodsBase::LeftRotate(root);
+                            SizedBinaryTreeMethodsBase<TElement>::RightRotate(GetRightReference(*root));
+                            SizedBinaryTreeMethodsBase<TElement>::LeftRotate(root);
                         }
                         else
                         {
                             return;
                         }
                     }
-                    LeftMaintain(SizedBinaryTreeMethodsBase::GetLeftReference(root));
-                    RightMaintain(SizedBinaryTreeMethodsBase::GetRightReference(root));
+                    LeftMaintain(GetLeftReference(*root));
+                    RightMaintain(GetRightReference(*root));
                     LeftMaintain(root);
                     RightMaintain(root);
                 }

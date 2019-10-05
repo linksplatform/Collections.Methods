@@ -1,52 +1,52 @@
 
 namespace Platform::Collections::Methods::Lists
 {
-    template <typename TElement> class OpenDoublyLinkedListMethods : DoublyLinkedListMethodsBase<TElement>
-    {
+    template <typename TElement> class OpenDoublyLinkedListMethods : public DoublyLinkedListMethodsBase<TElement>
+    { public:
         void AttachBefore(TElement baseElement, TElement newElement)
         {
-            auto baseElementPrevious = DoublyLinkedListMethodsBase::GetPrevious(baseElement);
-            DoublyLinkedListMethodsBase::SetPrevious(newElement, baseElementPrevious);
-            DoublyLinkedListMethodsBase::SetNext(newElement, baseElement);
+            auto baseElementPrevious = DoublyLinkedListMethodsBase<TElement>::GetPrevious(baseElement);
+            DoublyLinkedListMethodsBase<TElement>::SetPrevious(newElement, baseElementPrevious);
+            DoublyLinkedListMethodsBase<TElement>::SetNext(newElement, baseElement);
             if (baseElementPrevious == 0)
             {
-                DoublyLinkedListMethodsBase::SetFirst(newElement);
+                DoublyLinkedListMethodsBase<TElement>::SetFirst(newElement);
             }
             else
             {
-                DoublyLinkedListMethodsBase::SetNext(baseElementPrevious, newElement);
+                DoublyLinkedListMethodsBase<TElement>::SetNext(baseElementPrevious, newElement);
             }
-            DoublyLinkedListMethodsBase::SetPrevious(baseElement, newElement);
-            DoublyLinkedListMethodsBase::IncrementSize();
+            DoublyLinkedListMethodsBase<TElement>::SetPrevious(baseElement, newElement);
+            DoublyLinkedListMethodsBase<TElement>::IncrementSize();
         }
 
         void AttachAfter(TElement baseElement, TElement newElement)
         {
-            auto baseElementNext = DoublyLinkedListMethodsBase::GetNext(baseElement);
-            DoublyLinkedListMethodsBase::SetPrevious(newElement, baseElement);
-            DoublyLinkedListMethodsBase::SetNext(newElement, baseElementNext);
+            auto baseElementNext = DoublyLinkedListMethodsBase<TElement>::GetNext(baseElement);
+            DoublyLinkedListMethodsBase<TElement>::SetPrevious(newElement, baseElement);
+            DoublyLinkedListMethodsBase<TElement>::SetNext(newElement, baseElementNext);
             if (baseElementNext == 0)
             {
-                DoublyLinkedListMethodsBase::SetLast(newElement);
+                DoublyLinkedListMethodsBase<TElement>::SetLast(newElement);
             }
             else
             {
-                DoublyLinkedListMethodsBase::SetPrevious(baseElementNext, newElement);
+                DoublyLinkedListMethodsBase<TElement>::SetPrevious(baseElementNext, newElement);
             }
-            DoublyLinkedListMethodsBase::SetNext(baseElement, newElement);
-            DoublyLinkedListMethodsBase::IncrementSize();
+            DoublyLinkedListMethodsBase<TElement>::SetNext(baseElement, newElement);
+            DoublyLinkedListMethodsBase<TElement>::IncrementSize();
         }
 
         void AttachAsFirst(TElement element)
         {
-            auto first = DoublyLinkedListMethodsBase::GetFirst();
+            auto first = DoublyLinkedListMethodsBase<TElement>::GetFirst();
             if (first == 0)
             {
-                DoublyLinkedListMethodsBase::SetFirst(element);
-                DoublyLinkedListMethodsBase::SetLast(element);
-                DoublyLinkedListMethodsBase::SetPrevious(element, 0);
-                DoublyLinkedListMethodsBase::SetNext(element, 0);
-                DoublyLinkedListMethodsBase::IncrementSize();
+                DoublyLinkedListMethodsBase<TElement>::SetFirst(element);
+                DoublyLinkedListMethodsBase<TElement>::SetLast(element);
+                DoublyLinkedListMethodsBase<TElement>::SetPrevious(element, 0);
+                DoublyLinkedListMethodsBase<TElement>::SetNext(element, 0);
+                DoublyLinkedListMethodsBase<TElement>::IncrementSize();
             }
             else
             {
@@ -56,7 +56,7 @@ namespace Platform::Collections::Methods::Lists
 
         void AttachAsLast(TElement element)
         {
-            auto last = DoublyLinkedListMethodsBase::GetLast();
+            auto last = DoublyLinkedListMethodsBase<TElement>::GetLast();
             if (last == 0)
             {
                 AttachAsFirst(element);
@@ -69,27 +69,27 @@ namespace Platform::Collections::Methods::Lists
 
         void Detach(TElement element)
         {
-            auto elementPrevious = DoublyLinkedListMethodsBase::GetPrevious(element);
-            auto elementNext = DoublyLinkedListMethodsBase::GetNext(element);
+            auto elementPrevious = DoublyLinkedListMethodsBase<TElement>::GetPrevious(element);
+            auto elementNext = DoublyLinkedListMethodsBase<TElement>::GetNext(element);
             if (elementPrevious == 0)
             {
-                DoublyLinkedListMethodsBase::SetFirst(elementNext);
+                DoublyLinkedListMethodsBase<TElement>::SetFirst(elementNext);
             }
             else
             {
-                DoublyLinkedListMethodsBase::SetNext(elementPrevious, elementNext);
+                DoublyLinkedListMethodsBase<TElement>::SetNext(elementPrevious, elementNext);
             }
             if (elementNext == 0)
             {
-                DoublyLinkedListMethodsBase::SetLast(elementPrevious);
+                DoublyLinkedListMethodsBase<TElement>::SetLast(elementPrevious);
             }
             else
             {
-                DoublyLinkedListMethodsBase::SetPrevious(elementNext, elementPrevious);
+                DoublyLinkedListMethodsBase<TElement>::SetPrevious(elementNext, elementPrevious);
             }
-            DoublyLinkedListMethodsBase::SetPrevious(element, 0);
-            DoublyLinkedListMethodsBase::SetNext(element, 0);
-            DoublyLinkedListMethodsBase::DecrementSize();
+            DoublyLinkedListMethodsBase<TElement>::SetPrevious(element, 0);
+            DoublyLinkedListMethodsBase<TElement>::SetNext(element, 0);
+            DoublyLinkedListMethodsBase<TElement>::DecrementSize();
         }
     };
 }
