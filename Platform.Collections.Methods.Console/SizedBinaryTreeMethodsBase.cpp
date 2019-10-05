@@ -1,14 +1,8 @@
-
-
-
-
-
-//#define ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
-
 namespace Platform::Collections::Methods::Trees
 {
     template <typename TElement> class SizedBinaryTreeMethodsBase : public GenericCollectionMethodsBase<TElement>
-    { public:
+    {
+    public:
         virtual TElement* GetLeftReference(TElement node) = 0;
         virtual TElement* GetRightReference(TElement node) = 0;
         virtual TElement GetLeft(TElement node) = 0;
@@ -122,7 +116,7 @@ namespace Platform::Collections::Methods::Trees
             Debug.WriteLine(PrintNodes(*root));
             Debug.WriteLine("----------------");
             auto sizeBefore = GetSize(*root);
-            if (Value*root == 0)
+            if (ValueEqualToZero(*root))
             {
                 throw std::exception("Элемент с {node} не содержится в дереве.");
             }
@@ -143,5 +137,5 @@ namespace Platform::Collections::Methods::Trees
 
         virtual void DetachCore(TElement* root, TElement node) = 0;
 
-        };
+    };
 }

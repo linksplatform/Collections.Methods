@@ -1,13 +1,8 @@
-
-
-
-
-
-
 namespace Platform::Collections::Methods::Tests
 {
     class TestExtensions
-    { public:
+    {
+    public:
         template <typename TElement> static void TestMultipleCreationsAndDeletions(Platform::Collections::Methods::Trees::SizedBinaryTreeMethodsBase<TElement>& tree, TElement (*allocate)(), void (*free)(TElement), TElement* root, TElement (*treeCount)(), int maximumOperationsPerCycle)
         {
             for (auto N = 1; N < maximumOperationsPerCycle; N++)

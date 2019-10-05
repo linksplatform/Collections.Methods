@@ -1,9 +1,8 @@
-
-
 namespace Platform::Collections::Methods::Tests
 {
     class TreesTests
-    { public:
+    {
+    public:
         static const int _n = 100;
         static void SizeBalancedTreeMultipleAttachAndDetachTest()
         {

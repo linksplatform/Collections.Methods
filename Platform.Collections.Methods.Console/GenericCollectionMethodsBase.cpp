@@ -1,10 +1,8 @@
-
-
-
-
 namespace Platform::Collections::Methods
 {
-    template <typename TElement> class GenericCollectionMethodsBase  { public: public:
+    template <typename TElement> class GenericCollectionMethodsBase
+    {
+    public:
         
     };
 }

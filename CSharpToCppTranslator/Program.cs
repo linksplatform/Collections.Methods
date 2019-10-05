@@ -28,12 +28,12 @@ namespace Translator
             // public abstract class
             // class
             (new Regex(@"(public abstract|static) class", _options), "class", null, 0),
-            // class GenericCollectionMethodsBase<TElement> {
-            // template <typename TElement> class GenericCollectionMethodsBase { public:
-            (new Regex(@"class ([a-zA-Z0-9]+)<([a-zA-Z0-9]+)>\s+([^{]+){", _options), "template <typename $2> class $1 $3{ public:", null, 0),
             // class GenericCollectionMethodsBase {
             // class GenericCollectionMethodsBase { public:
-            (new Regex(@"class ([a-zA-Z0-9]+)([\s]+){", _options), "class $1$2{ public:", null, 0),
+            (new Regex(@"class ([a-zA-Z0-9]+)(\s+){", _options), "class $1$2{" + Environment.NewLine + "    public:", null, 0),
+            // class GenericCollectionMethodsBase<TElement> {
+            // template <typename TElement> class GenericCollectionMethodsBase { public:
+            (new Regex(@"class ([a-zA-Z0-9]+)<([a-zA-Z0-9]+)>([^{]+){", _options), "template <typename $2> class $1$3{"  + Environment.NewLine +  "    public:", null, 0),
             // static void TestMultipleCreationsAndDeletions<TElement>(SizedBinaryTreeMethodsBase<TElement> tree, TElement* root)
             // template<typename T> static void TestMultipleCreationsAndDeletions<TElement>(SizedBinaryTreeMethodsBase<TElement> tree, TElement* root)
             (new Regex(@"static ([a-zA-Z0-9]+) ([a-zA-Z0-9]+)<([a-zA-Z0-9]+)>\(([^\)]+)\)", _options), "template <typename $3> static $1 $2($4)", null, 0),
@@ -171,7 +171,7 @@ namespace Translator
             (new Regex(@"!EqualToZero\(([a-zA-Z\*]+)\)", _options), "$1 != 0", null, 0),
             // EqualToZero(node)
             // node == 0
-            (new Regex(@"EqualToZero\(([a-zA-Z\*]+)\)", _options), "$1 == 0", null, 0),
+            (new Regex(@"(\W)EqualToZero\(([a-zA-Z\*]+)\)", _options), "$1$2 == 0", null, 0),
             // default
             // 0
             (new Regex(@"(\W)default(\W)", _options), "${1}0$2", null, 0),
@@ -260,14 +260,12 @@ namespace Translator
             (new Regex(@"struct ([a-zA-Z0-9]+)(\s+){([\sa-zA-Z0-9;:_]+?)}([^;])", _options), "struct $1$2{$3};$4", null, 0),
             // \t}\n}
             // \t};\n}
-            (new Regex(@"([\r\n])(\t|[ ]{4})}([\r\n]+)}", _options), "$1$2};$3}", null, 0),
+            (new Regex(@"([\r\n])[\t ]{0,8}\}[ \t]*[\r\n]+\}", _options), "$1    };" + Environment.NewLine + "}", null, 0),
             // void PrintNodeValue(TElement node, StringBuilder sb) override { sb.Append(node); }
             //
             (new Regex(@"[\r\n]{1,2}\s+[\r\n]{1,2}\s+void PrintNodeValue\(TElement node, StringBuilder sb\) override { sb\.Append\(node\); }", _options), "", null, 0),
-
-
             // Just delete it in SizedBinaryTreeMethodsBase.cs
-            (new Regex(@"void FixSizes(.|\s)+};", _options), "};", new Regex(@"SizedBinaryTreeMethodsBase\.cs", _options), 0),
+            (new Regex(@"[\t ]+void FixSizes(.|\s)+};", _options), "    };", new Regex(@"SizedBinaryTreeMethodsBase\.cs", _options), 0),
             // Just delete it in SizedAndThreadedAVLBalancedTreeMethods.cs
             (new Regex(@"void PrintNode(.|\s)+?}", _options), "", new Regex(@"SizedAndThreadedAVLBalancedTreeMethods\.cs", _options), 0),
             // GetFirst
@@ -282,7 +280,6 @@ namespace Translator
             // auto
             // TElement
             (new Regex(@"auto", _options), "TElement", new Regex(@"Size[a-zA-Z]+Methods2?\.cs", _options), 0),
-
             // GetSizeOrZero
             // SizeBalancedTreeMethods<TElement>::GetSizeOrZero
             (new Regex(@"([^:])(GetSizeOrZero)(\()", _options), "$1this->$2$3", new Regex(@"SizeBalancedTree\.cs", _options), 0),
@@ -351,6 +348,15 @@ namespace Translator
             // SizedBinaryTreeMethodsBase
             // Platform::Collections::Methods::Trees::SizedBinaryTreeMethodsBase
             (new Regex(@"\(SizedBinaryTreeMethodsBase<TElement>", _options), "(Platform::Collections::Methods::Trees::SizedBinaryTreeMethodsBase<TElement>&", new Regex(@"TestExtensions\.cs", _options), 0),
+            // //#define ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
+            //
+            (new Regex(@"\/\/[ \t]*\#define[ \t]+[_a-zA-Z0-9]+[ \t]*", _options), "", null, 0),
+            // #if USEARRAYPOOL\r\n#endif
+            //
+            (new Regex(@"#if [a-zA-Z0-9]+\s+#endif", _options), "", null, 0),
+            // \n ... namespace
+            // namespace
+            (new Regex(@"(\S[\r\n]{2})?\s+namespace", _options), "$1namespace", null, 0),
         };
 
         static int Main(string[] args)

@@ -1,9 +1,8 @@
-
-
 namespace Platform::Collections::Methods::Trees
 {
     template <typename TElement> class SizeBalancedTreeMethods : public SizedBinaryTreeMethodsBase<TElement>
-    { public:
+    {
+    public:
         void AttachCore(TElement* root, TElement node) override
         {
             while (true)

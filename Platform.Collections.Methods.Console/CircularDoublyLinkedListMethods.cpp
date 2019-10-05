@@ -1,8 +1,8 @@
-
 namespace Platform::Collections::Methods::Lists
 {
     template <typename TElement> class CircularDoublyLinkedListMethods : public DoublyLinkedListMethodsBase<TElement>
-    { public:
+    {
+    public:
         void AttachBefore(TElement baseElement, TElement newElement)
         {
             auto baseElementPrevious = this->GetPrevious(baseElement);

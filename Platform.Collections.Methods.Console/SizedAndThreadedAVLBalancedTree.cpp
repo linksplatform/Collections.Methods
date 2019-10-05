@@ -1,13 +1,8 @@
-
-
-
-
-
-
 namespace Platform::Collections::Methods::Tests
 {
     template <typename TElement, std::size_t N> class SizedAndThreadedAVLBalancedTree : public Platform::Collections::Methods::Trees::SizedAndThreadedAVLBalancedTreeMethods<TElement>
-    { public:
+    {
+    public:
         struct TreeElement
         {
             TElement Size;

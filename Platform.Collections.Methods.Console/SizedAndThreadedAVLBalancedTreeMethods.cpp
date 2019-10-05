@@ -1,9 +1,3 @@
-
-
-
-#if USEARRAYPOOL
-#endif
-
 namespace Platform::Collections::Methods::Trees
 {
     /// <summary>
@@ -14,7 +8,8 @@ namespace Platform::Collections::Methods::Trees
     /// Which itself based on: <a href="https://github.com/GNOME/glib/blob/master/glib/gtree.c">GNOME/glib/gtree</a>.
     /// </remarks>
     template <typename TElement> class SizedAndThreadedAVLBalancedTreeMethods : public SizedBinaryTreeMethodsBase<TElement>
-    { public:
+    {
+    public:
         // TODO: Link with size of TElement
         static const int MaxPath = 92;
 
