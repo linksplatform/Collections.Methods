@@ -74,7 +74,7 @@ public:
 int main()
 {
 	static Platform::Collections::Methods::Tests::SizeBalancedTree<std::uint32_t, 10000> sizeBalancedTree;
-	struct X {
+	struct sbtWrappers {
 		static std::uint32_t Allocate()
 		{
 			return sizeBalancedTree.Allocate();
@@ -88,10 +88,40 @@ int main()
 			return sizeBalancedTree.GetCount();
 		}
 	};
+    static Platform::Collections::Methods::Tests::SizeBalancedTree2<std::uint32_t, 10000> sizeBalancedTree2;
+    struct sbt2Wrappers {
+        static std::uint32_t Allocate()
+        {
+            return sizeBalancedTree2.Allocate();
+        }
+        static void Free(std::uint32_t link)
+        {
+            return sizeBalancedTree2.Free(link);
+        }
+        static std::uint32_t GetCount()
+        {
+            return sizeBalancedTree2.GetCount();
+        }
+    };
+    static Platform::Collections::Methods::Tests::SizedAndThreadedAVLBalancedTree<std::uint32_t, 10000> avlTree;
+    struct avl2Wrappers {
+        static std::uint32_t Allocate()
+        {
+            return avlTree.Allocate();
+        }
+        static void Free(std::uint32_t link)
+        {
+            return avlTree.Free(link);
+        }
+        static std::uint32_t GetCount()
+        {
+            return avlTree.GetCount();
+        }
+    };
 	//X::Allocate();
 	//auto* pointer = &X::Allocate;
-	C<std::uint32_t, 10000> c;
-	c.AttachCore(nullptr, 0);
+	//C<std::uint32_t, 10000> c;
+	//c.AttachCore(nullptr, 0);
 	//Platform::Collections::Methods::Tests::SizeBalancedTree2<std::uint32_t, 10000> sizeBalancedTree2;
 	//Platform::Collections::Methods::Tests::SizedAndThreadedAVLBalancedTree<std::uint32_t, 10000> avlTree;
 
@@ -99,12 +129,22 @@ int main()
 	//Platform::Collections::Methods::Trees::SizedBinaryTreeMethodsBase<std::uint32_t>* base = sbt;
 
 	auto t1 = std::chrono::high_resolution_clock::now();
-	Platform::Collections::Methods::Tests::TestExtensions::TestMultipleCreationsAndDeletions<std::uint32_t>(sizeBalancedTree, &X::Allocate, &X::Free, &sizeBalancedTree.Root, &X::GetCount, 2000);
+	Platform::Collections::Methods::Tests::TestExtensions::TestMultipleCreationsAndDeletions<std::uint32_t>(sizeBalancedTree, &sbtWrappers::Allocate, &sbtWrappers::Free, &sizeBalancedTree.Root, &sbtWrappers::GetCount, 2000);
 	auto t2 = std::chrono::high_resolution_clock::now();
+	auto duration1 = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
+	std::cout << duration1 << "\n";
 
-	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
+    auto t3 = std::chrono::high_resolution_clock::now();
+    Platform::Collections::Methods::Tests::TestExtensions::TestMultipleCreationsAndDeletions<std::uint32_t>(sizeBalancedTree2, &sbt2Wrappers::Allocate, &sbt2Wrappers::Free, &sizeBalancedTree2.Root, &sbt2Wrappers::GetCount, 2000);
+    auto t4 = std::chrono::high_resolution_clock::now();
+    auto duration2 = std::chrono::duration_cast<std::chrono::milliseconds>(t4 - t3).count();
+    std::cout << duration2 << "\n";
 
-	std::cout << duration;
+    auto t5 = std::chrono::high_resolution_clock::now();
+    Platform::Collections::Methods::Tests::TestExtensions::TestMultipleCreationsAndDeletions<std::uint32_t>(avlTree, &avl2Wrappers::Allocate, &avl2Wrappers::Free, &avlTree.Root, &avl2Wrappers::GetCount, 2000);
+    auto t6 = std::chrono::high_resolution_clock::now();
+    auto duration3 = std::chrono::duration_cast<std::chrono::milliseconds>(t6 - t5).count();
+    std::cout << duration3 << "\n";
 
 	Assert::Equal(1, 1);
 	std::cout << "Hello World!\n";

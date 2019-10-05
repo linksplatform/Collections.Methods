@@ -31,18 +31,18 @@ namespace Platform::Collections::Methods::Trees
             TElement* currentNode = root;
             TElement* parent = root;
             TElement replacementNode = 0;
-            while (currentNode != nodeToDetach)
+            while (*currentNode != nodeToDetach)
             {
-                this->SetSize(currentNode, this->GetSize(currentNode) - 1);
-                if (this->FirstIsToTheLeftOfSecond(nodeToDetach, currentNode))
+                this->SetSize(*currentNode, this->GetSize(*currentNode) - 1);
+                if (this->FirstIsToTheLeftOfSecond(nodeToDetach, *currentNode))
                 {
                     parent = currentNode;
-                    currentNode = this->GetLeftReference(currentNode);
+                    currentNode = this->GetLeftReference(*currentNode);
                 }
-                else if (this->FirstIsToTheRightOfSecond(nodeToDetach, currentNode))
+                else if (this->FirstIsToTheRightOfSecond(nodeToDetach, *currentNode))
                 {
                     parent = currentNode;
-                    currentNode = this->GetRightReference(currentNode);
+                    currentNode = this->GetRightReference(*currentNode);
                 }
                 else
                 {
@@ -86,13 +86,13 @@ namespace Platform::Collections::Methods::Trees
             {
                 *root = replacementNode;
             }
-            else if (this->GetLeft(parent) == nodeToDetach)
+            else if (this->GetLeft(*parent) == nodeToDetach)
             {
-                this->SetLeft(parent, replacementNode);
+                this->SetLeft(*parent, replacementNode);
             }
-            else if (this->GetRight(parent) == nodeToDetach)
+            else if (this->GetRight(*parent) == nodeToDetach)
             {
-                this->SetRight(parent, replacementNode);
+                this->SetRight(*parent, replacementNode);
             }
             this->ClearNode(nodeToDetach);
         }

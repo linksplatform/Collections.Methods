@@ -15,15 +15,15 @@ namespace Platform::Collections::Methods::Trees
 
         bool Contains(TElement node, TElement root) override
         {
-            while (*root != 0)
+            while (root != 0)
             {
-                if (this->FirstIsToTheLeftOfSecond(node, *root)) // node.Key < root.Key
+                if (this->FirstIsToTheLeftOfSecond(node, root)) // node.Key < root.Key
                 {
-                    *root = GetLeftOrDefault(*root);
+                    root = GetLeftOrDefault(root);
                 }
-                else if (this->FirstIsToTheRightOfSecond(node, *root)) // node.Key > root.Key
+                else if (this->FirstIsToTheRightOfSecond(node, root)) // node.Key > root.Key
                 {
-                    *root = GetRightOrDefault(*root);
+                    root = GetRightOrDefault(root);
                 }
                 else // node.Key == root.Key
                 {
@@ -55,7 +55,7 @@ namespace Platform::Collections::Methods::Trees
                 TElement pathPosition = 0;
                 path[pathPosition++] = 0;
 #else
-                TElement path = new TElement[MaxPath];
+                TElement path[MaxPath] = { {0} };
                 TElement pathPosition = 1;
 #endif
                 TElement currentNode = *root;
@@ -317,7 +317,7 @@ namespace Platform::Collections::Methods::Trees
                 TElement pathPosition = 0;
                 path[pathPosition++] = 0;
 #else
-                TElement path = new TElement[MaxPath];
+                TElement path[MaxPath] = { {0} };
                 TElement pathPosition = 1;
 #endif
                 TElement currentNode = *root;
