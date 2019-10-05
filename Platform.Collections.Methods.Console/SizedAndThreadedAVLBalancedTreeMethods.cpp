@@ -161,20 +161,20 @@ namespace Platform::Collections::Methods::Trees
                 TElement rootBalance = GetBalance(node);
                 if (rootBalance < -1)
                 {
-                    TElement *left = this->GetLeft(node);
-                    if (GetBalance(*left) > 0)
+                    TElement left = this->GetLeft(node);
+                    if (GetBalance(left) > 0)
                     {
-                        this->SetLeft(node, LeftRotateWithBalance(*left));
+                        this->SetLeft(node, LeftRotateWithBalance(left));
                         this->FixSize(node);
                     }
                     node = RightRotateWithBalance(node);
                 }
                 else if (rootBalance > 1)
                 {
-                    TElement *right = this->GetRight(node);
-                    if (GetBalance(*right) < 0)
+                    TElement right = this->GetRight(node);
+                    if (GetBalance(right) < 0)
                     {
-                        this->SetRight(node, RightRotateWithBalance(*right));
+                        this->SetRight(node, RightRotateWithBalance(right));
                         this->FixSize(node);
                     }
                     node = LeftRotateWithBalance(node);
@@ -186,32 +186,32 @@ namespace Platform::Collections::Methods::Trees
         TElement LeftRotateWithBalance(TElement node)
         {
             {
-                TElement *right = this->GetRight(node);
-                if (GetLeftIsChild(*right))
+                TElement right = this->GetRight(node);
+                if (GetLeftIsChild(right))
                 {
-                    this->SetRight(node, this->GetLeft(*right));
+                    this->SetRight(node, this->GetLeft(right));
                 }
                 else
                 {
                     SetRightIsChild(node, false);
-                    SetLeftIsChild(*right, true);
+                    SetLeftIsChild(right, true);
                 }
-                this->SetLeft(*right, node);
+                this->SetLeft(right, node);
                 // Fix size
-                this->SetSize(*right, this->GetSize(node));
+                this->SetSize(right, this->GetSize(node));
                 this->FixSize(node);
                 // Fix balance
                 TElement rootBalance = GetBalance(node);
-                TElement rightBalance = GetBalance(*right);
+                TElement rightBalance = GetBalance(right);
                 if (rightBalance <= 0)
                 {
                     if (rootBalance >= 1)
                     {
-                        SetBalance(*right, (std::int8_t)(rightBalance - 1));
+                        SetBalance(right, (std::int8_t)(rightBalance - 1));
                     }
                     else
                     {
-                        SetBalance(*right, (std::int8_t)(rootBalance + rightBalance - 2));
+                        SetBalance(right, (std::int8_t)(rootBalance + rightBalance - 2));
                     }
                     SetBalance(node, (std::int8_t)(rootBalance - 1));
                 }
@@ -219,11 +219,11 @@ namespace Platform::Collections::Methods::Trees
                 {
                     if (rootBalance <= rightBalance)
                     {
-                        SetBalance(*right, (std::int8_t)(rootBalance - 2));
+                        SetBalance(right, (std::int8_t)(rootBalance - 2));
                     }
                     else
                     {
-                        SetBalance(*right, (std::int8_t)(rightBalance - 1));
+                        SetBalance(right, (std::int8_t)(rightBalance - 1));
                     }
                     SetBalance(node, (std::int8_t)(rootBalance - rightBalance - 1));
                 }
@@ -234,32 +234,32 @@ namespace Platform::Collections::Methods::Trees
         TElement RightRotateWithBalance(TElement node)
         {
             {
-                TElement *left = this->GetLeft(node);
-                if (GetRightIsChild(*left))
+                TElement left = this->GetLeft(node);
+                if (GetRightIsChild(left))
                 {
-                    this->SetLeft(node, this->GetRight(*left));
+                    this->SetLeft(node, this->GetRight(left));
                 }
                 else
                 {
                     SetLeftIsChild(node, false);
-                    SetRightIsChild(*left, true);
+                    SetRightIsChild(left, true);
                 }
-                this->SetRight(*left, node);
+                this->SetRight(left, node);
                 // Fix size
-                this->SetSize(*left, this->GetSize(node));
+                this->SetSize(left, this->GetSize(node));
                 this->FixSize(node);
                 // Fix balance
                 TElement rootBalance = GetBalance(node);
-                TElement leftBalance = GetBalance(*left);
+                TElement leftBalance = GetBalance(left);
                 if (leftBalance <= 0)
                 {
                     if (leftBalance > rootBalance)
                     {
-                        SetBalance(*left, (std::int8_t)(leftBalance + 1));
+                        SetBalance(left, (std::int8_t)(leftBalance + 1));
                     }
                     else
                     {
-                        SetBalance(*left, (std::int8_t)(rootBalance + 2));
+                        SetBalance(left, (std::int8_t)(rootBalance + 2));
                     }
                     SetBalance(node, (std::int8_t)(rootBalance - leftBalance + 1));
                 }
@@ -267,11 +267,11 @@ namespace Platform::Collections::Methods::Trees
                 {
                     if (rootBalance <= -1)
                     {
-                        SetBalance(*left, (std::int8_t)(leftBalance + 1));
+                        SetBalance(left, (std::int8_t)(leftBalance + 1));
                     }
                     else
                     {
-                        SetBalance(*left, (std::int8_t)(rootBalance + leftBalance + 2));
+                        SetBalance(left, (std::int8_t)(rootBalance + leftBalance + 2));
                     }
                     SetBalance(node, (std::int8_t)(rootBalance + 1));
                 }
@@ -376,19 +376,19 @@ namespace Platform::Collections::Methods::Trees
                     {
                         TElement successor = GetNext(currentNode);
                         this->SetLeft(successor, this->GetLeft(currentNode));
-                        TElement *right = this->GetRight(currentNode);
+                        TElement right = this->GetRight(currentNode);
                         if (parent == 0)
                         {
-                            *root = *right;
+                            *root = right;
                         }
                         else if (isLeftNode)
                         {
-                            this->SetLeft(parent, *right);
+                            this->SetLeft(parent, right);
                             IncrementBalance(parent);
                         }
                         else
                         {
-                            this->SetRight(parent, *right);
+                            this->SetRight(parent, right);
                             DecrementBalance(parent);
                         }
                     }
@@ -459,9 +459,9 @@ namespace Platform::Collections::Methods::Trees
                         }
                         this->SetRight(predecessor, successor);
                         // prepare 'successor' to replace 'node'
-                        TElement *left = this->GetLeft(currentNode);
+                        TElement left = this->GetLeft(currentNode);
                         SetLeftIsChild(successor, true);
-                        this->SetLeft(successor, *left);
+                        this->SetLeft(successor, left);
                         SetBalance(successor, GetBalance(currentNode));
                         this->FixSize(successor);
                         if (parent == 0)

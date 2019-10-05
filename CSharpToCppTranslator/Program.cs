@@ -315,6 +315,8 @@ namespace Translator
             (new Regex(@"(virtual bool Contains)([\S\s]+?)\*root([\S\s]+?)(virtual void ClearNode)", _options), "$1$2root$3$4", new Regex(@"SizedBinaryTreeMethodsBase\.cs", _options), 20),
             (new Regex(@"(TElement RightRotate)([\S\s]+?)\*(root|left)([\S\s]+?)(virtual bool Contains)", _options), "$1$2$3$4$5", new Regex(@"SizedBinaryTreeMethodsBase\.cs", _options), 20),
             (new Regex(@"(TElement LeftRotate)([\S\s]+?)\*(root|right)([\S\s]+?)(void RightRotate)", _options), "$1$2$3$4$5", new Regex(@"SizedBinaryTreeMethodsBase\.cs", _options), 20),
+            (new Regex(@"(TElement Balance)([\S\s]+?)\*(left|right)([\S\s]+?)(TElement GetNext)", _options), "$1$2$3$4$5", new Regex(@"SizedAndThreadedAVLBalancedTreeMethods\.cs", _options), 30),
+            (new Regex(@"(void DetachCore)([\S\s]+?)\*(left|right)([\S\s]+?)(void ClearNode)", _options), "$1$2$3$4$5", new Regex(@"SizedAndThreadedAVLBalancedTreeMethods\.cs", _options), 15),
             // auto sizeBalancedTree = new SizeBalancedTree<uint>(10000);
             // SizeBalancedTree<uint, 10000> sizeBalancedTree;
             (new Regex(@"auto ([a-zA-Z0-9]+) = new ([a-zA-Z0-9]+)<([_a-zA-Z0-9:]+)>\(([0-9]+)\);", _options), "$2<$3, $4> $1;", new Regex(@"TreesTests\.cs", _options), 0),
