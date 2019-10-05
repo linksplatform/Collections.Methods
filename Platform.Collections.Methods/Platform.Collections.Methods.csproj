@@ -40,18 +40,18 @@ This release is not backward compatible with previous 0.0.7 release.</PackageRel
     <PackageReference Include="Platform.Numbers" Version="0.2.1" />
   </ItemGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard'))">
     <CSharpFiles Include="**\*.cs" />
   </ItemGroup>
 
-  <Target Name="CSharpFilesTransform" BeforeTargets="BeforeBuild">
+  <Target Name="CSharpFilesTransform" BeforeTargets="BeforeBuild" Condition="$(TargetFramework.StartsWith('netstandard'))">
     <Exec WorkingDirectory="$(ProjectDir)" Command="..\CSharpToCppTranslator\bin\$(Configuration)\netcoreapp3.0\CSharpToCppTranslator.exe %(CSharpFiles.Identity)" />
     <ItemGroup>
       <CppFiles Include="**\*.cpp" />
     </ItemGroup>
   </Target>
 
-  <Target Name="CppFilesTransform" AfterTargets="AfterBuild">
+  <Target Name="CppFilesTransform" AfterTargets="AfterBuild" Condition="$(TargetFramework.StartsWith('netstandard'))">
     <Exec IgnoreExitCode="true" WorkingDirectory="$(ProjectDir)" Command="move %(CppFiles.Identity) $(SolutionDir)Platform.Collections.Methods.Console\" />
   </Target>
 
