@@ -18,10 +18,10 @@ namespace Platform::Collections::Methods::Tests
             bool RightIsChild;
         };
 
-        TreeElement _elements[N];
+        TreeElement _elements[N] = {{0}};;
         TElement _allocated;
 
-        TElement Root;
+        TElement Root = 0;
 
         TElement GetCount() { return Platform::Collections::Methods::Trees::SizeBalancedTreeMethods<TElement>::GetSizeOrZero(Root); }
 

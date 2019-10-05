@@ -327,6 +327,12 @@ namespace Translator
             // *left
             // left
             (new Regex(@"(void SetLeft)([\S\s]+?)\*(left|right)([\S\s]+?)(void SetSize)", _options), "$1$2$3$4$5", new Regex(@"Size[a-zA-Z]+Tree2?\.cs", _options), 20),
+            // TreeElement _elements[N];
+            // TreeElement _elements[N] = {{0}};
+            (new Regex(@"TreeElement _elements\[N\]", _options), "TreeElement _elements[N] = {{0}};", new Regex(@"Size[a-zA-Z]+Tree2?\.cs", _options), 0),
+            // TElement Root;
+            // TElement Root = 0;
+            (new Regex(@"TElement Root;", _options), "TElement Root = 0;", new Regex(@"Size[a-zA-Z]+Tree2?\.cs", _options), 0),
             // SizedBinaryTreeMethodsBase<TElement>::ClearNode
             // ClearNode
             (new Regex(@"SizedBinaryTreeMethodsBase<TElement>::(ClearNode|GetLeftOrDefault|GetRightOrDefault)", _options), "$1", new Regex(@"SizedAndThreadedAVLBalancedTreeMethods\.cs", _options), 0),

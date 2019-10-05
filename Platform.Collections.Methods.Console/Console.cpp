@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <unordered_set>
+#include <chrono>
 
 bool iszero(void* ptr, int bytes)
 {
@@ -15,15 +16,15 @@ bool iszero(void* ptr, int bytes)
 
 class Assert
 {
-	public:
-		template<typename T1, typename T2>
-		static void Equal(T1 a, T2 b)
+public:
+	template<typename T1, typename T2>
+	static void Equal(T1 a, T2 b)
+	{
+		if (a != b)
 		{
-			if (a != b)
-			{
-				throw std::exception("Values are not equal");
-			}
+			throw std::exception("Values are not equal");
 		}
+	}
 };
 
 #include "GenericCollectionMethodsBase.cpp"
@@ -87,8 +88,8 @@ int main()
 			return sizeBalancedTree.GetCount();
 		}
 	};
-	X::Allocate();
-	auto* pointer = &X::Allocate;
+	//X::Allocate();
+	//auto* pointer = &X::Allocate;
 	//C<std::uint32_t, 10000> c;
 	//c.AttachCore(nullptr, 0);
 	//Platform::Collections::Methods::Tests::SizeBalancedTree2<std::uint32_t, 10000> sizeBalancedTree2;
@@ -97,10 +98,16 @@ int main()
 	//Platform::Collections::Methods::Trees::SizeBalancedTreeMethods<std::uint32_t>* sbt = &sizeBalancedTree;
 	//Platform::Collections::Methods::Trees::SizedBinaryTreeMethodsBase<std::uint32_t>* base = sbt;
 
-	Platform::Collections::Methods::Tests::TestExtensions::TestMultipleCreationsAndDeletions<std::uint32_t>(sizeBalancedTree, &X::Allocate, &X::Free, &sizeBalancedTree.Root, &X::GetCount, 100);
+	auto t1 = std::chrono::high_resolution_clock::now();
+	Platform::Collections::Methods::Tests::TestExtensions::TestMultipleCreationsAndDeletions<std::uint32_t>(sizeBalancedTree, &X::Allocate, &X::Free, &sizeBalancedTree.Root, &X::GetCount, 2000);
+	auto t2 = std::chrono::high_resolution_clock::now();
+
+	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
+
+	std::cout << duration;
 
 	Assert::Equal(1, 1);
-    std::cout << "Hello World!\n";
+	std::cout << "Hello World!\n";
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
