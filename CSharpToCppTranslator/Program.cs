@@ -272,49 +272,26 @@ namespace Translator
             (new Regex(@"void PrintNode(.|\s)+?}", _options), "", new Regex(@"SizedAndThreadedAVLBalancedTreeMethods\.cs", _options), 0),
             // GetFirst
             // DoublyLinkedListMethodsBase<TElement>::GetFirst
-            (new Regex(@"([^:])(GetFirst|GetLast|GetPrevious|GetNext|GetSize|SetFirst|SetLast|SetPrevious|SetNext|SetSize|IncrementSize|DecrementSize)(\()", _options), "$1DoublyLinkedListMethodsBase<TElement>::$2$3", new Regex(@"[a-zA-Z]+DoublyLinkedListMethods\.cs", _options), 0),
+            (new Regex(@"([^>])(GetFirst|GetLast|GetPrevious|GetNext|GetSize|SetFirst|SetLast|SetPrevious|SetNext|SetSize|IncrementSize|DecrementSize)(\()", _options), "$1this->$2$3", new Regex(@"[a-zA-Z]+DoublyLinkedListMethods\.cs", _options), 1),
             // GetSize
             // SizedBinaryTreeMethodsBase<TElement>::GetSize
-            (new Regex(@"([^:])(GetLeftOrDefault|GetRightOrDefault|GetLeftSize|GetRightSize|GetSizeOrZero|FixSize|LeftRotate|RightRotate|ClearNode|IncrementSize|DecrementSize)(\()", _options), "$1SizedBinaryTreeMethodsBase<TElement>::$2$3", new Regex(@"Size[a-zA-Z]+Methods2?\.cs", _options), 0),
+            (new Regex(@"([^>])(GetLeftReference|GetRightReference|GetLeft|GetRight|SetLeft|SetRight|FirstIsToTheLeftOfSecond|FirstIsToTheRightOfSecond|GetLeftOrDefault|GetRightOrDefault|GetLeftSize|GetRightSize|GetSizeOrZero|FixSize|LeftRotate|RightRotate|ClearNode|GetSize|SetSize|IncrementSize|DecrementSize)(\()", _options), "$1this->$2$3", new Regex(@"Size[a-zA-Z]+Methods2?\.cs", _options), 1),
             // auto*
             // TElement*
             (new Regex(@"auto\*", _options), "TElement*", new Regex(@"Size[a-zA-Z]+Methods2?\.cs", _options), 0),
             // auto
             // TElement
             (new Regex(@"auto", _options), "TElement", new Regex(@"Size[a-zA-Z]+Methods2?\.cs", _options), 0),
-            // public:
-            // public: ...
-            (new Regex(@"public:", _options), @"public:
 
-        virtual TElement* GetLeftReference(TElement node) override = 0;
-
-        virtual TElement* GetRightReference(TElement node) override = 0;
-
-        virtual TElement GetLeft(TElement node) override = 0;
-
-        virtual TElement GetRight(TElement node) override = 0;
-
-        virtual TElement GetSize(TElement node) override = 0;
-
-        virtual void SetLeft(TElement node, TElement left) override = 0;
-
-        virtual void SetRight(TElement node, TElement right) override = 0;
-
-        virtual void SetSize(TElement node, TElement size) override = 0;
-
-        virtual bool FirstIsToTheLeftOfSecond(TElement first, TElement second) override = 0;
-
-        virtual bool FirstIsToTheRightOfSecond(TElement first, TElement second) override = 0;
-", new Regex(@"Size[a-zA-Z]+Methods2?\.cs", _options), 0),
             // GetSizeOrZero
             // SizeBalancedTreeMethods<TElement>::GetSizeOrZero
-            (new Regex(@"([^:])(GetSizeOrZero)(\()", _options), "$1Platform::Collections::Methods::Trees::SizeBalancedTreeMethods<TElement>::$2$3", new Regex(@"SizeBalancedTree\.cs", _options), 0),
+            (new Regex(@"([^:])(GetSizeOrZero)(\()", _options), "$1this->$2$3", new Regex(@"SizeBalancedTree\.cs", _options), 0),
             // GetSizeOrZero
             // SizeBalancedTreeMethods2<TElement>::GetSizeOrZero
-            (new Regex(@"([^:])(GetSizeOrZero)(\()", _options), "$1Platform::Collections::Methods::Trees::SizeBalancedTreeMethods2<TElement>::$2$3", new Regex(@"SizeBalancedTree2\.cs", _options), 0),
+            (new Regex(@"([^:])(GetSizeOrZero)(\()", _options), "$1this->$2$3", new Regex(@"SizeBalancedTree2\.cs", _options), 0),
             // GetSizeOrZero
             // SizedAndThreadedAVLBalancedTreeMethods<TElement>::GetSizeOrZero
-            (new Regex(@"([^:])(GetSizeOrZero)(\()", _options), "$1Platform::Collections::Methods::Trees::SizedAndThreadedAVLBalancedTreeMethods<TElement>::$2$3", new Regex(@"SizedAndThreadedAVLBalancedTree\.cs", _options), 0),
+            (new Regex(@"([^:])(GetSizeOrZero)(\()", _options), "$1this->$2$3", new Regex(@"SizedAndThreadedAVLBalancedTree\.cs", _options), 0),
             // class SizedBinaryTreeMethodsBase : GenericCollectionMethodsBase
             // class SizedBinaryTreeMethodsBase : public GenericCollectionMethodsBase
             (new Regex(@"class ([a-zA-Z0-9]+) : ([a-zA-Z0-9]+)", _options), "class $1 : public $2", null, 0),
@@ -335,7 +312,7 @@ namespace Translator
             (new Regex(@"TElement Root;", _options), "TElement Root = 0;", new Regex(@"Size[a-zA-Z]+Tree2?\.cs", _options), 0),
             // SizedBinaryTreeMethodsBase<TElement>::ClearNode
             // ClearNode
-            (new Regex(@"SizedBinaryTreeMethodsBase<TElement>::(ClearNode|GetLeftOrDefault|GetRightOrDefault)", _options), "$1", new Regex(@"SizedAndThreadedAVLBalancedTreeMethods\.cs", _options), 0),
+            (new Regex(@"this->(ClearNode|GetLeftOrDefault|GetRightOrDefault)", _options), "$1", new Regex(@"SizedAndThreadedAVLBalancedTreeMethods\.cs", _options), 0),
             // *root
             // root
             (new Regex(@"(virtual bool Contains)([\S\s]+?)\*root([\S\s]+?)(virtual void ClearNode)", _options), "$1$2root$3$4", new Regex(@"SizedBinaryTreeMethodsBase\.cs", _options), 20),

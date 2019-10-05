@@ -58,9 +58,9 @@ template<typename TElement> class B : public A<TElement>
 public:
 	void AttachCore(TElement* root, TElement node) override
 	{
-		GetLeftReference(0);
+		this->GetLeftReference(0);
 	}
-	virtual TElement* GetLeftReference(TElement node) override = 0;
+	//virtual TElement* GetLeftReference(TElement node) override = 0;
 };
 
 // template <typename TElement, std::size_t N> class SizeBalancedTree : Platform::Collections::Methods::Trees::SizeBalancedTreeMethods<TElement>
@@ -90,8 +90,8 @@ int main()
 	};
 	//X::Allocate();
 	//auto* pointer = &X::Allocate;
-	//C<std::uint32_t, 10000> c;
-	//c.AttachCore(nullptr, 0);
+	C<std::uint32_t, 10000> c;
+	c.AttachCore(nullptr, 0);
 	//Platform::Collections::Methods::Tests::SizeBalancedTree2<std::uint32_t, 10000> sizeBalancedTree2;
 	//Platform::Collections::Methods::Tests::SizedAndThreadedAVLBalancedTree<std::uint32_t, 10000> avlTree;
 

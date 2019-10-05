@@ -4,45 +4,24 @@ namespace Platform::Collections::Methods::Trees
 {
     template <typename TElement> class SizeBalancedTreeMethods2 : public SizedBinaryTreeMethodsBase<TElement>
     { public:
-
-        virtual TElement* GetLeftReference(TElement node) override = 0;
-
-        virtual TElement* GetRightReference(TElement node) override = 0;
-
-        virtual TElement GetLeft(TElement node) override = 0;
-
-        virtual TElement GetRight(TElement node) override = 0;
-
-        virtual TElement GetSize(TElement node) override = 0;
-
-        virtual void SetLeft(TElement node, TElement left) override = 0;
-
-        virtual void SetRight(TElement node, TElement right) override = 0;
-
-        virtual void SetSize(TElement node, TElement size) override = 0;
-
-        virtual bool FirstIsToTheLeftOfSecond(TElement first, TElement second) override = 0;
-
-        virtual bool FirstIsToTheRightOfSecond(TElement first, TElement second) override = 0;
-
         void AttachCore(TElement* root, TElement node) override
         {
             if (*root == 0)
             {
                 *root = node;
-                SizedBinaryTreeMethodsBase<TElement>::IncrementSize(*root);
+                this->IncrementSize(*root);
             }
             else
             {
-                SizedBinaryTreeMethodsBase<TElement>::IncrementSize(*root);
-                if (FirstIsToTheLeftOfSecond(node, *root))
+                this->IncrementSize(*root);
+                if (this->FirstIsToTheLeftOfSecond(node, *root))
                 {
-                    AttachCore(GetLeftReference(*root), node);
+                    AttachCore(this->GetLeftReference(*root), node);
                     LeftMaintain(root);
                 }
                 else
                 {
-                    AttachCore(GetRightReference(*root), node);
+                    AttachCore(this->GetRightReference(*root), node);
                     RightMaintain(root);
                 }
             }
@@ -55,44 +34,44 @@ namespace Platform::Collections::Methods::Trees
             TElement replacementNode = 0;
             while (currentNode != nodeToDetach)
             {
-                SetSize(currentNode, GetSize(currentNode) - 1);
-                if (FirstIsToTheLeftOfSecond(nodeToDetach, currentNode))
+                this->SetSize(currentNode, this->GetSize(currentNode) - 1);
+                if (this->FirstIsToTheLeftOfSecond(nodeToDetach, currentNode))
                 {
                     parent = currentNode;
-                    currentNode = GetLeftReference(currentNode);
+                    currentNode = this->GetLeftReference(currentNode);
                 }
-                else if (FirstIsToTheRightOfSecond(nodeToDetach, currentNode))
+                else if (this->FirstIsToTheRightOfSecond(nodeToDetach, currentNode))
                 {
                     parent = currentNode;
-                    currentNode = GetRightReference(currentNode);
+                    currentNode = this->GetRightReference(currentNode);
                 }
                 else
                 {
                     throw std::exception("Duplicate link found in the tree.");
                 }
             }
-            TElement nodeToDetachLeft = GetLeft(nodeToDetach);
-            TElement node = GetRight(nodeToDetach);
+            TElement nodeToDetachLeft = this->GetLeft(nodeToDetach);
+            TElement node = this->GetRight(nodeToDetach);
             if (nodeToDetachLeft != 0 && node != 0)
             {
                 TElement minNode = node;
-                TElement minNodeLeft = GetLeft(minNode);
+                TElement minNodeLeft = this->GetLeft(minNode);
                 while (minNodeLeft != 0)
                 {
                     minNode = minNodeLeft;
-                    minNodeLeft = GetLeft(minNode);
+                    minNodeLeft = this->GetLeft(minNode);
                 }
-                DetachCore(GetRightReference(nodeToDetach), minNode);
-                SetLeft(minNode, nodeToDetachLeft);
-                node = GetRight(nodeToDetach);
+                DetachCore(this->GetRightReference(nodeToDetach), minNode);
+                this->SetLeft(minNode, nodeToDetachLeft);
+                node = this->GetRight(nodeToDetach);
                 if (node != 0)
                 {
-                    SetRight(minNode, node);
-                    SetSize(minNode, GetSize(nodeToDetachLeft) + GetSize(node) + 1);
+                    this->SetRight(minNode, node);
+                    this->SetSize(minNode, this->GetSize(nodeToDetachLeft) + this->GetSize(node) + 1);
                 }
                 else
                 {
-                    SetSize(minNode, GetSize(nodeToDetachLeft) + 1);
+                    this->SetSize(minNode, this->GetSize(nodeToDetachLeft) + 1);
                 }
                 replacementNode = minNode;
             }
@@ -108,47 +87,47 @@ namespace Platform::Collections::Methods::Trees
             {
                 *root = replacementNode;
             }
-            else if (GetLeft(parent) == nodeToDetach)
+            else if (this->GetLeft(parent) == nodeToDetach)
             {
-                SetLeft(parent, replacementNode);
+                this->SetLeft(parent, replacementNode);
             }
-            else if (GetRight(parent) == nodeToDetach)
+            else if (this->GetRight(parent) == nodeToDetach)
             {
-                SetRight(parent, replacementNode);
+                this->SetRight(parent, replacementNode);
             }
-            SizedBinaryTreeMethodsBase<TElement>::ClearNode(nodeToDetach);
+            this->ClearNode(nodeToDetach);
         }
 
         void LeftMaintain(TElement* root)
         {
             if (*root != 0)
             {
-                TElement rootLeftNode = GetLeft(*root);
+                TElement rootLeftNode = this->GetLeft(*root);
                 if (rootLeftNode != 0)
                 {
-                    TElement rootRightNode = GetRight(*root);
-                    TElement rootLeftNodeLeftNode = GetLeft(rootLeftNode);
+                    TElement rootRightNode = this->GetRight(*root);
+                    TElement rootLeftNodeLeftNode = this->GetLeft(rootLeftNode);
                     if (rootLeftNodeLeftNode != 0 &&
-                        (rootRightNode == 0 || GetSize(rootLeftNodeLeftNode) > GetSize(rootRightNode)))
+                        (rootRightNode == 0 || this->GetSize(rootLeftNodeLeftNode) > this->GetSize(rootRightNode)))
                     {
-                        SizedBinaryTreeMethodsBase<TElement>::RightRotate(root);
+                        this->RightRotate(root);
                     }
                     else
                     {
-                        TElement rootLeftNodeRightNode = GetRight(rootLeftNode);
+                        TElement rootLeftNodeRightNode = this->GetRight(rootLeftNode);
                         if (rootLeftNodeRightNode != 0 &&
-                            (rootRightNode == 0 || GetSize(rootLeftNodeRightNode) > GetSize(rootRightNode)))
+                            (rootRightNode == 0 || this->GetSize(rootLeftNodeRightNode) > this->GetSize(rootRightNode)))
                         {
-                            SizedBinaryTreeMethodsBase<TElement>::LeftRotate(GetLeftReference(*root));
-                            SizedBinaryTreeMethodsBase<TElement>::RightRotate(root);
+                            this->LeftRotate(this->GetLeftReference(*root));
+                            this->RightRotate(root);
                         }
                         else
                         {
                             return;
                         }
                     }
-                    LeftMaintain(GetLeftReference(*root));
-                    RightMaintain(GetRightReference(*root));
+                    LeftMaintain(this->GetLeftReference(*root));
+                    RightMaintain(this->GetRightReference(*root));
                     LeftMaintain(root);
                     RightMaintain(root);
                 }
@@ -159,32 +138,32 @@ namespace Platform::Collections::Methods::Trees
         {
             if (*root != 0)
             {
-                TElement rootRightNode = GetRight(*root);
+                TElement rootRightNode = this->GetRight(*root);
                 if (rootRightNode != 0)
                 {
-                    TElement rootLeftNode = GetLeft(*root);
-                    TElement rootRightNodeRightNode = GetRight(rootRightNode);
+                    TElement rootLeftNode = this->GetLeft(*root);
+                    TElement rootRightNodeRightNode = this->GetRight(rootRightNode);
                     if (rootRightNodeRightNode != 0 &&
-                        (rootLeftNode == 0 || GetSize(rootRightNodeRightNode) > GetSize(rootLeftNode)))
+                        (rootLeftNode == 0 || this->GetSize(rootRightNodeRightNode) > this->GetSize(rootLeftNode)))
                     {
-                        SizedBinaryTreeMethodsBase<TElement>::LeftRotate(root);
+                        this->LeftRotate(root);
                     }
                     else
                     {
-                        TElement rootRightNodeLeftNode = GetLeft(rootRightNode);
+                        TElement rootRightNodeLeftNode = this->GetLeft(rootRightNode);
                         if (rootRightNodeLeftNode != 0 &&
-                            (rootLeftNode == 0 || GetSize(rootRightNodeLeftNode) > GetSize(rootLeftNode)))
+                            (rootLeftNode == 0 || this->GetSize(rootRightNodeLeftNode) > this->GetSize(rootLeftNode)))
                         {
-                            SizedBinaryTreeMethodsBase<TElement>::RightRotate(GetRightReference(*root));
-                            SizedBinaryTreeMethodsBase<TElement>::LeftRotate(root);
+                            this->RightRotate(this->GetRightReference(*root));
+                            this->LeftRotate(root);
                         }
                         else
                         {
                             return;
                         }
                     }
-                    LeftMaintain(GetLeftReference(*root));
-                    RightMaintain(GetRightReference(*root));
+                    LeftMaintain(this->GetLeftReference(*root));
+                    RightMaintain(this->GetRightReference(*root));
                     LeftMaintain(root);
                     RightMaintain(root);
                 }

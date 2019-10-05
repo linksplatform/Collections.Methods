@@ -5,48 +5,48 @@ namespace Platform::Collections::Methods::Lists
     { public:
         void AttachBefore(TElement baseElement, TElement newElement)
         {
-            auto baseElementPrevious = DoublyLinkedListMethodsBase<TElement>::GetPrevious(baseElement);
-            DoublyLinkedListMethodsBase<TElement>::SetPrevious(newElement, baseElementPrevious);
-            DoublyLinkedListMethodsBase<TElement>::SetNext(newElement, baseElement);
+            auto baseElementPrevious = this->GetPrevious(baseElement);
+            this->SetPrevious(newElement, baseElementPrevious);
+            this->SetNext(newElement, baseElement);
             if (baseElementPrevious == 0)
             {
-                DoublyLinkedListMethodsBase<TElement>::SetFirst(newElement);
+                this->SetFirst(newElement);
             }
             else
             {
-                DoublyLinkedListMethodsBase<TElement>::SetNext(baseElementPrevious, newElement);
+                this->SetNext(baseElementPrevious, newElement);
             }
-            DoublyLinkedListMethodsBase<TElement>::SetPrevious(baseElement, newElement);
-            DoublyLinkedListMethodsBase<TElement>::IncrementSize();
+            this->SetPrevious(baseElement, newElement);
+            this->IncrementSize();
         }
 
         void AttachAfter(TElement baseElement, TElement newElement)
         {
-            auto baseElementNext = DoublyLinkedListMethodsBase<TElement>::GetNext(baseElement);
-            DoublyLinkedListMethodsBase<TElement>::SetPrevious(newElement, baseElement);
-            DoublyLinkedListMethodsBase<TElement>::SetNext(newElement, baseElementNext);
+            auto baseElementNext = this->GetNext(baseElement);
+            this->SetPrevious(newElement, baseElement);
+            this->SetNext(newElement, baseElementNext);
             if (baseElementNext == 0)
             {
-                DoublyLinkedListMethodsBase<TElement>::SetLast(newElement);
+                this->SetLast(newElement);
             }
             else
             {
-                DoublyLinkedListMethodsBase<TElement>::SetPrevious(baseElementNext, newElement);
+                this->SetPrevious(baseElementNext, newElement);
             }
-            DoublyLinkedListMethodsBase<TElement>::SetNext(baseElement, newElement);
-            DoublyLinkedListMethodsBase<TElement>::IncrementSize();
+            this->SetNext(baseElement, newElement);
+            this->IncrementSize();
         }
 
         void AttachAsFirst(TElement element)
         {
-            auto first = DoublyLinkedListMethodsBase<TElement>::GetFirst();
+            auto first = this->GetFirst();
             if (first == 0)
             {
-                DoublyLinkedListMethodsBase<TElement>::SetFirst(element);
-                DoublyLinkedListMethodsBase<TElement>::SetLast(element);
-                DoublyLinkedListMethodsBase<TElement>::SetPrevious(element, 0);
-                DoublyLinkedListMethodsBase<TElement>::SetNext(element, 0);
-                DoublyLinkedListMethodsBase<TElement>::IncrementSize();
+                this->SetFirst(element);
+                this->SetLast(element);
+                this->SetPrevious(element, 0);
+                this->SetNext(element, 0);
+                this->IncrementSize();
             }
             else
             {
@@ -56,7 +56,7 @@ namespace Platform::Collections::Methods::Lists
 
         void AttachAsLast(TElement element)
         {
-            auto last = DoublyLinkedListMethodsBase<TElement>::GetLast();
+            auto last = this->GetLast();
             if (last == 0)
             {
                 AttachAsFirst(element);
@@ -69,27 +69,27 @@ namespace Platform::Collections::Methods::Lists
 
         void Detach(TElement element)
         {
-            auto elementPrevious = DoublyLinkedListMethodsBase<TElement>::GetPrevious(element);
-            auto elementNext = DoublyLinkedListMethodsBase<TElement>::GetNext(element);
+            auto elementPrevious = this->GetPrevious(element);
+            auto elementNext = this->GetNext(element);
             if (elementPrevious == 0)
             {
-                DoublyLinkedListMethodsBase<TElement>::SetFirst(elementNext);
+                this->SetFirst(elementNext);
             }
             else
             {
-                DoublyLinkedListMethodsBase<TElement>::SetNext(elementPrevious, elementNext);
+                this->SetNext(elementPrevious, elementNext);
             }
             if (elementNext == 0)
             {
-                DoublyLinkedListMethodsBase<TElement>::SetLast(elementPrevious);
+                this->SetLast(elementPrevious);
             }
             else
             {
-                DoublyLinkedListMethodsBase<TElement>::SetPrevious(elementNext, elementPrevious);
+                this->SetPrevious(elementNext, elementPrevious);
             }
-            DoublyLinkedListMethodsBase<TElement>::SetPrevious(element, 0);
-            DoublyLinkedListMethodsBase<TElement>::SetNext(element, 0);
-            DoublyLinkedListMethodsBase<TElement>::DecrementSize();
+            this->SetPrevious(element, 0);
+            this->SetNext(element, 0);
+            this->DecrementSize();
         }
     };
 }

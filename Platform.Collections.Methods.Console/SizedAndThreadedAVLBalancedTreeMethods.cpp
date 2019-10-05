@@ -15,27 +15,6 @@ namespace Platform::Collections::Methods::Trees
     /// </remarks>
     template <typename TElement> class SizedAndThreadedAVLBalancedTreeMethods : public SizedBinaryTreeMethodsBase<TElement>
     { public:
-
-        virtual TElement* GetLeftReference(TElement node) override = 0;
-
-        virtual TElement* GetRightReference(TElement node) override = 0;
-
-        virtual TElement GetLeft(TElement node) override = 0;
-
-        virtual TElement GetRight(TElement node) override = 0;
-
-        virtual TElement GetSize(TElement node) override = 0;
-
-        virtual void SetLeft(TElement node, TElement left) override = 0;
-
-        virtual void SetRight(TElement node, TElement right) override = 0;
-
-        virtual void SetSize(TElement node, TElement size) override = 0;
-
-        virtual bool FirstIsToTheLeftOfSecond(TElement first, TElement second) override = 0;
-
-        virtual bool FirstIsToTheRightOfSecond(TElement first, TElement second) override = 0;
-
         // TODO: Link with size of TElement
         static const int MaxPath = 92;
 
@@ -43,11 +22,11 @@ namespace Platform::Collections::Methods::Trees
         {
             while (*root != 0)
             {
-                if (FirstIsToTheLeftOfSecond(node, *root)) // node.Key < root.Key
+                if (this->FirstIsToTheLeftOfSecond(node, *root)) // node.Key < root.Key
                 {
                     *root = GetLeftOrDefault(*root);
                 }
-                else if (FirstIsToTheRightOfSecond(node, *root)) // node.Key > root.Key
+                else if (this->FirstIsToTheRightOfSecond(node, *root)) // node.Key > root.Key
                 {
                     *root = GetRightOrDefault(*root);
                 }
@@ -62,8 +41,8 @@ namespace Platform::Collections::Methods::Trees
         
         void IncrementBalance(TElement node) { SetBalance(node, (std::int8_t)(GetBalance(node) + 1)); }
         void DecrementBalance(TElement node) { SetBalance(node, (std::int8_t)(GetBalance(node) - 1)); }
-        TElement GetLeftOrDefault(TElement node) override { return GetLeftIsChild(node) ? GetLeft(node) : 0; }
-        TElement GetRightOrDefault(TElement node) override { return GetRightIsChild(node) ? GetRight(node) : 0; }
+        TElement GetLeftOrDefault(TElement node) override { return GetLeftIsChild(node) ? this->GetLeft(node) : 0; }
+        TElement GetRightOrDefault(TElement node) override { return GetRightIsChild(node) ? this->GetRight(node) : 0; }
         virtual bool GetLeftIsChild(TElement node) = 0;
         virtual void SetLeftIsChild(TElement node, bool value) = 0;
         virtual bool GetRightIsChild(TElement node) = 0;
@@ -87,45 +66,45 @@ namespace Platform::Collections::Methods::Trees
                 TElement currentNode = *root;
                 while (true)
                 {
-                    if (FirstIsToTheLeftOfSecond(node, currentNode))
+                    if (this->FirstIsToTheLeftOfSecond(node, currentNode))
                     {
                         if (GetLeftIsChild(currentNode))
                         {
-                            SizedBinaryTreeMethodsBase<TElement>::IncrementSize(currentNode);
+                            this->IncrementSize(currentNode);
                             path[pathPosition++] = currentNode;
-                            currentNode = GetLeft(currentNode);
+                            currentNode = this->GetLeft(currentNode);
                         }
                         else
                         {
                             // Threads
-                            SetLeft(node, GetLeft(currentNode));
-                            SetRight(node, currentNode);
-                            SetLeft(currentNode, node);
+                            this->SetLeft(node, this->GetLeft(currentNode));
+                            this->SetRight(node, currentNode);
+                            this->SetLeft(currentNode, node);
                             SetLeftIsChild(currentNode, true);
                             DecrementBalance(currentNode);
-                            SetSize(node, 1);
-                            SizedBinaryTreeMethodsBase<TElement>::FixSize(currentNode); // Should be incremented already
+                            this->SetSize(node, 1);
+                            this->FixSize(currentNode); // Should be incremented already
                             break;
                         }
                     }
-                    else if (FirstIsToTheRightOfSecond(node, currentNode))
+                    else if (this->FirstIsToTheRightOfSecond(node, currentNode))
                     {
                         if (GetRightIsChild(currentNode))
                         {
-                            SizedBinaryTreeMethodsBase<TElement>::IncrementSize(currentNode);
+                            this->IncrementSize(currentNode);
                             path[pathPosition++] = currentNode;
-                            currentNode = GetRight(currentNode);
+                            currentNode = this->GetRight(currentNode);
                         }
                         else
                         {
                             // Threads
-                            SetRight(node, GetRight(currentNode));
-                            SetLeft(node, currentNode);
-                            SetRight(currentNode, node);
+                            this->SetRight(node, this->GetRight(currentNode));
+                            this->SetLeft(node, currentNode);
+                            this->SetRight(currentNode, node);
                             SetRightIsChild(currentNode, true);
                             IncrementBalance(currentNode);
-                            SetSize(node, 1);
-                            SizedBinaryTreeMethodsBase<TElement>::FixSize(currentNode); // Should be incremented already
+                            this->SetSize(node, 1);
+                            this->FixSize(currentNode); // Should be incremented already
                             break;
                         }
                     }
@@ -140,7 +119,7 @@ namespace Platform::Collections::Methods::Trees
                 while (true)
                 {
                     TElement parent = path[--pathPosition];
-                    TElement isLeftNode = parent != 0 && currentNode == GetLeft(parent);
+                    TElement isLeftNode = parent != 0 && currentNode == this->GetLeft(parent);
                     TElement currentNodeBalance = GetBalance(currentNode);
                     if (currentNodeBalance < -1 || currentNodeBalance > 1)
                     {
@@ -151,13 +130,13 @@ namespace Platform::Collections::Methods::Trees
                         }
                         else if (isLeftNode)
                         {
-                            SetLeft(parent, currentNode);
-                            SizedBinaryTreeMethodsBase<TElement>::FixSize(parent);
+                            this->SetLeft(parent, currentNode);
+                            this->FixSize(parent);
                         }
                         else
                         {
-                            SetRight(parent, currentNode);
-                            SizedBinaryTreeMethodsBase<TElement>::FixSize(parent);
+                            this->SetRight(parent, currentNode);
+                            this->FixSize(parent);
                         }
                     }
                     currentNodeBalance = GetBalance(currentNode);
@@ -187,21 +166,21 @@ namespace Platform::Collections::Methods::Trees
                 TElement rootBalance = GetBalance(node);
                 if (rootBalance < -1)
                 {
-                    TElement *left = GetLeft(node);
+                    TElement *left = this->GetLeft(node);
                     if (GetBalance(*left) > 0)
                     {
-                        SetLeft(node, LeftRotateWithBalance(*left));
-                        SizedBinaryTreeMethodsBase<TElement>::FixSize(node);
+                        this->SetLeft(node, LeftRotateWithBalance(*left));
+                        this->FixSize(node);
                     }
                     node = RightRotateWithBalance(node);
                 }
                 else if (rootBalance > 1)
                 {
-                    TElement *right = GetRight(node);
+                    TElement *right = this->GetRight(node);
                     if (GetBalance(*right) < 0)
                     {
-                        SetRight(node, RightRotateWithBalance(*right));
-                        SizedBinaryTreeMethodsBase<TElement>::FixSize(node);
+                        this->SetRight(node, RightRotateWithBalance(*right));
+                        this->FixSize(node);
                     }
                     node = LeftRotateWithBalance(node);
                 }
@@ -212,20 +191,20 @@ namespace Platform::Collections::Methods::Trees
         TElement LeftRotateWithBalance(TElement node)
         {
             {
-                TElement *right = GetRight(node);
+                TElement *right = this->GetRight(node);
                 if (GetLeftIsChild(*right))
                 {
-                    SetRight(node, GetLeft(*right));
+                    this->SetRight(node, this->GetLeft(*right));
                 }
                 else
                 {
                     SetRightIsChild(node, false);
                     SetLeftIsChild(*right, true);
                 }
-                SetLeft(*right, node);
+                this->SetLeft(*right, node);
                 // Fix size
-                SetSize(*right, GetSize(node));
-                SizedBinaryTreeMethodsBase<TElement>::FixSize(node);
+                this->SetSize(*right, this->GetSize(node));
+                this->FixSize(node);
                 // Fix balance
                 TElement rootBalance = GetBalance(node);
                 TElement rightBalance = GetBalance(*right);
@@ -260,20 +239,20 @@ namespace Platform::Collections::Methods::Trees
         TElement RightRotateWithBalance(TElement node)
         {
             {
-                TElement *left = GetLeft(node);
+                TElement *left = this->GetLeft(node);
                 if (GetRightIsChild(*left))
                 {
-                    SetLeft(node, GetRight(*left));
+                    this->SetLeft(node, this->GetRight(*left));
                 }
                 else
                 {
                     SetLeftIsChild(node, false);
                     SetRightIsChild(*left, true);
                 }
-                SetRight(*left, node);
+                this->SetRight(*left, node);
                 // Fix size
-                SetSize(*left, GetSize(node));
-                SizedBinaryTreeMethodsBase<TElement>::FixSize(node);
+                this->SetSize(*left, this->GetSize(node));
+                this->FixSize(node);
                 // Fix balance
                 TElement rootBalance = GetBalance(node);
                 TElement leftBalance = GetBalance(*left);
@@ -308,12 +287,12 @@ namespace Platform::Collections::Methods::Trees
         TElement GetNext(TElement node)
         {
             {
-                TElement current = GetRight(node);
+                TElement current = this->GetRight(node);
                 if (GetRightIsChild(node))
                 {
                     while (GetLeftIsChild(current))
                     {
-                        current = GetLeft(current);
+                        current = this->GetLeft(current);
                     }
                 }
                 return current;
@@ -323,12 +302,12 @@ namespace Platform::Collections::Methods::Trees
         TElement GetPrevious(TElement node)
         {
             {
-                TElement current = GetLeft(node);
+                TElement current = this->GetLeft(node);
                 if (GetLeftIsChild(node))
                 {
                     while (GetRightIsChild(current))
                     {
-                        current = GetRight(current);
+                        current = this->GetRight(current);
                     }
                 }
                 return current;
@@ -349,25 +328,25 @@ namespace Platform::Collections::Methods::Trees
                 TElement currentNode = *root;
                 while (true)
                 {
-                    if (FirstIsToTheLeftOfSecond(node, currentNode))
+                    if (this->FirstIsToTheLeftOfSecond(node, currentNode))
                     {
                         if (!GetLeftIsChild(currentNode))
                         {
                             throw std::exception("Cannot find a node.");
                         }
-                        SizedBinaryTreeMethodsBase<TElement>::DecrementSize(currentNode);
+                        this->DecrementSize(currentNode);
                         path[pathPosition++] = currentNode;
-                        currentNode = GetLeft(currentNode);
+                        currentNode = this->GetLeft(currentNode);
                     }
-                    else if (FirstIsToTheRightOfSecond(node, currentNode))
+                    else if (this->FirstIsToTheRightOfSecond(node, currentNode))
                     {
                         if (!GetRightIsChild(currentNode))
                         {
                             throw std::exception("Cannot find a node.");
                         }
-                        SizedBinaryTreeMethodsBase<TElement>::DecrementSize(currentNode);
+                        this->DecrementSize(currentNode);
                         path[pathPosition++] = currentNode;
-                        currentNode = GetRight(currentNode);
+                        currentNode = this->GetRight(currentNode);
                     }
                     else
                     {
@@ -376,7 +355,7 @@ namespace Platform::Collections::Methods::Trees
                 }
                 TElement parent = path[--pathPosition];
                 TElement balanceNode = parent;
-                TElement isLeftNode = parent != 0 && currentNode == GetLeft(parent);
+                TElement isLeftNode = parent != 0 && currentNode == this->GetLeft(parent);
                 if (!GetLeftIsChild(currentNode))
                 {
                     if (!GetRightIsChild(currentNode)) // node has no children
@@ -388,33 +367,33 @@ namespace Platform::Collections::Methods::Trees
                         else if (isLeftNode)
                         {
                             SetLeftIsChild(parent, false);
-                            SetLeft(parent, GetLeft(currentNode));
+                            this->SetLeft(parent, this->GetLeft(currentNode));
                             IncrementBalance(parent);
                         }
                         else
                         {
                             SetRightIsChild(parent, false);
-                            SetRight(parent, GetRight(currentNode));
+                            this->SetRight(parent, this->GetRight(currentNode));
                             DecrementBalance(parent);
                         }
                     }
                     else // node has a right child
                     {
                         TElement successor = GetNext(currentNode);
-                        SetLeft(successor, GetLeft(currentNode));
-                        TElement *right = GetRight(currentNode);
+                        this->SetLeft(successor, this->GetLeft(currentNode));
+                        TElement *right = this->GetRight(currentNode);
                         if (parent == 0)
                         {
                             *root = *right;
                         }
                         else if (isLeftNode)
                         {
-                            SetLeft(parent, *right);
+                            this->SetLeft(parent, *right);
                             IncrementBalance(parent);
                         }
                         else
                         {
-                            SetRight(parent, *right);
+                            this->SetRight(parent, *right);
                             DecrementBalance(parent);
                         }
                     }
@@ -424,37 +403,37 @@ namespace Platform::Collections::Methods::Trees
                     if (!GetRightIsChild(currentNode))
                     {
                         TElement predecessor = GetPrevious(currentNode);
-                        SetRight(predecessor, GetRight(currentNode));
-                        TElement leftValue = GetLeft(currentNode);
+                        this->SetRight(predecessor, this->GetRight(currentNode));
+                        TElement leftValue = this->GetLeft(currentNode);
                         if (parent == 0)
                         {
                             *root = leftValue;
                         }
                         else if (isLeftNode)
                         {
-                            SetLeft(parent, leftValue);
+                            this->SetLeft(parent, leftValue);
                             IncrementBalance(parent);
                         }
                         else
                         {
-                            SetRight(parent, leftValue);
+                            this->SetRight(parent, leftValue);
                             DecrementBalance(parent);
                         }
                     }
                     else // node has a both children (left and right)
                     {
-                        TElement predecessor = GetLeft(currentNode);
-                        TElement successor = GetRight(currentNode);
+                        TElement predecessor = this->GetLeft(currentNode);
+                        TElement successor = this->GetRight(currentNode);
                         TElement successorParent = currentNode;
                         int previousPathPosition = ++pathPosition;
                         // find the immediately next node (and its parent)
                         while (GetLeftIsChild(successor))
                         {
                             path[++pathPosition] = successorParent = successor;
-                            successor = GetLeft(successor);
+                            successor = this->GetLeft(successor);
                             if (successorParent != currentNode)
                             {
-                                SizedBinaryTreeMethodsBase<TElement>::DecrementSize(successorParent);
+                                this->DecrementSize(successorParent);
                             }
                         }
                         path[previousPathPosition] = successor;
@@ -468,11 +447,11 @@ namespace Platform::Collections::Methods::Trees
                             }
                             else
                             {
-                                SetLeft(successorParent, GetRight(successor));
+                                this->SetLeft(successorParent, this->GetRight(successor));
                             }
                             IncrementBalance(successorParent);
                             SetRightIsChild(successor, true);
-                            SetRight(successor, GetRight(currentNode));
+                            this->SetRight(successor, this->GetRight(currentNode));
                         }
                         else
                         {
@@ -481,26 +460,26 @@ namespace Platform::Collections::Methods::Trees
                         // set the predecessor's successor link to point to the right place
                         while (GetRightIsChild(predecessor))
                         {
-                            predecessor = GetRight(predecessor);
+                            predecessor = this->GetRight(predecessor);
                         }
-                        SetRight(predecessor, successor);
+                        this->SetRight(predecessor, successor);
                         // prepare 'successor' to replace 'node'
-                        TElement *left = GetLeft(currentNode);
+                        TElement *left = this->GetLeft(currentNode);
                         SetLeftIsChild(successor, true);
-                        SetLeft(successor, *left);
+                        this->SetLeft(successor, *left);
                         SetBalance(successor, GetBalance(currentNode));
-                        SizedBinaryTreeMethodsBase<TElement>::FixSize(successor);
+                        this->FixSize(successor);
                         if (parent == 0)
                         {
                             *root = successor;
                         }
                         else if (isLeftNode)
                         {
-                            SetLeft(parent, successor);
+                            this->SetLeft(parent, successor);
                         }
                         else
                         {
-                            SetRight(parent, successor);
+                            this->SetRight(parent, successor);
                         }
                     }
                 }
@@ -510,7 +489,7 @@ namespace Platform::Collections::Methods::Trees
                     while (true)
                     {
                         TElement balanceParent = path[--pathPosition];
-                        isLeftNode = balanceParent != 0 && balanceNode == GetLeft(balanceParent);
+                        isLeftNode = balanceParent != 0 && balanceNode == this->GetLeft(balanceParent);
                         TElement currentNodeBalance = GetBalance(balanceNode);
                         if (currentNodeBalance < -1 || currentNodeBalance > 1)
                         {
@@ -521,11 +500,11 @@ namespace Platform::Collections::Methods::Trees
                             }
                             else if (isLeftNode)
                             {
-                                SetLeft(balanceParent, balanceNode);
+                                this->SetLeft(balanceParent, balanceNode);
                             }
                             else
                             {
-                                SetRight(balanceParent, balanceNode);
+                                this->SetRight(balanceParent, balanceNode);
                             }
                         }
                         currentNodeBalance = GetBalance(balanceNode);
@@ -552,9 +531,9 @@ namespace Platform::Collections::Methods::Trees
         }
         void ClearNode(TElement node) override
         {
-            SetLeft(node, 0);
-            SetRight(node, 0);
-            SetSize(node, 0);
+            this->SetLeft(node, 0);
+            this->SetRight(node, 0);
+            this->SetSize(node, 0);
             SetLeftIsChild(node, false);
             SetRightIsChild(node, false);
             SetBalance(node, 0);

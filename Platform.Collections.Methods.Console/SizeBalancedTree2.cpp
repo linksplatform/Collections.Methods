@@ -23,7 +23,7 @@ namespace Platform::Collections::Methods::Tests
 
         TElement Root = 0;
 
-        TElement GetCount() { return Platform::Collections::Methods::Trees::SizeBalancedTreeMethods2<TElement>::GetSizeOrZero(Root); }
+        TElement GetCount() { return this->GetSizeOrZero(Root); }
 
         SizeBalancedTree2() { _allocated = 1; }
 
