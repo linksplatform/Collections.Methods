@@ -7,24 +7,24 @@
 
 bool iszero(void* ptr, int bytes)
 {
-	char* bptr = (char*)ptr;
-	while (bytes--)
-		if (*bptr++)
-			return false;
-	return true;
+    char* bptr = (char*)ptr;
+    while (bytes--)
+        if (*bptr++)
+            return false;
+    return true;
 }
 
 class Assert
 {
 public:
-	template<typename T1, typename T2>
-	static void Equal(T1 a, T2 b)
-	{
-		if (a != b)
-		{
-			throw std::exception("Values are not equal");
-		}
-	}
+    template<typename T1, typename T2>
+    static void Equal(T1 a, T2 b)
+    {
+        if (a != b)
+        {
+            throw std::exception("Values are not equal");
+        }
+    }
 };
 
 #include "GenericCollectionMethodsBase.cpp"
@@ -48,46 +48,46 @@ public:
 template<typename TElement> class A // : A<TElement>
 {
 public:
-	virtual TElement* GetLeftReference(TElement node) = 0;
-	virtual void AttachCore(TElement* root, TElement node) = 0;
+    virtual TElement* GetLeftReference(TElement node) = 0;
+    virtual void AttachCore(TElement* root, TElement node) = 0;
 };
 
 // template <typename TElement> class SizeBalancedTreeMethods : SizedBinaryTreeMethodsBase<TElement>
 template<typename TElement> class B : public A<TElement>
 {
 public:
-	void AttachCore(TElement* root, TElement node) override
-	{
-		this->GetLeftReference(0);
-	}
-	//virtual TElement* GetLeftReference(TElement node) override = 0;
+    void AttachCore(TElement* root, TElement node) override
+    {
+        this->GetLeftReference(0);
+    }
+    //virtual TElement* GetLeftReference(TElement node) override = 0;
 };
 
 // template <typename TElement, std::size_t N> class SizeBalancedTree : Platform::Collections::Methods::Trees::SizeBalancedTreeMethods<TElement>
 template<typename TElement, std::size_t N> class C : public B<TElement>
 {
 public:
-	TElement* GetLeftReference(TElement node) override { return nullptr; }
+    TElement* GetLeftReference(TElement node) override { return nullptr; }
 };
 
 
 int main()
 {
-	static Platform::Collections::Methods::Tests::SizeBalancedTree<std::uint32_t, 10000> sizeBalancedTree;
-	struct sbtWrappers {
-		static std::uint32_t Allocate()
-		{
-			return sizeBalancedTree.Allocate();
-		}
-		static void Free(std::uint32_t link)
-		{
-			return sizeBalancedTree.Free(link);
-		}
-		static std::uint32_t GetCount()
-		{
-			return sizeBalancedTree.GetCount();
-		}
-	};
+    static Platform::Collections::Methods::Tests::SizeBalancedTree<std::uint32_t, 10000> sizeBalancedTree;
+    struct sbtWrappers {
+        static std::uint32_t Allocate()
+        {
+            return sizeBalancedTree.Allocate();
+        }
+        static void Free(std::uint32_t link)
+        {
+            return sizeBalancedTree.Free(link);
+        }
+        static std::uint32_t GetCount()
+        {
+            return sizeBalancedTree.GetCount();
+        }
+    };
     static Platform::Collections::Methods::Tests::SizeBalancedTree2<std::uint32_t, 10000> sizeBalancedTree2;
     struct sbt2Wrappers {
         static std::uint32_t Allocate()
@@ -118,21 +118,21 @@ int main()
             return avlTree.GetCount();
         }
     };
-	//X::Allocate();
-	//auto* pointer = &X::Allocate;
-	//C<std::uint32_t, 10000> c;
-	//c.AttachCore(nullptr, 0);
-	//Platform::Collections::Methods::Tests::SizeBalancedTree2<std::uint32_t, 10000> sizeBalancedTree2;
-	//Platform::Collections::Methods::Tests::SizedAndThreadedAVLBalancedTree<std::uint32_t, 10000> avlTree;
+    //X::Allocate();
+    //auto* pointer = &X::Allocate;
+    //C<std::uint32_t, 10000> c;
+    //c.AttachCore(nullptr, 0);
+    //Platform::Collections::Methods::Tests::SizeBalancedTree2<std::uint32_t, 10000> sizeBalancedTree2;
+    //Platform::Collections::Methods::Tests::SizedAndThreadedAVLBalancedTree<std::uint32_t, 10000> avlTree;
 
-	//Platform::Collections::Methods::Trees::SizeBalancedTreeMethods<std::uint32_t>* sbt = &sizeBalancedTree;
-	//Platform::Collections::Methods::Trees::SizedBinaryTreeMethodsBase<std::uint32_t>* base = sbt;
+    //Platform::Collections::Methods::Trees::SizeBalancedTreeMethods<std::uint32_t>* sbt = &sizeBalancedTree;
+    //Platform::Collections::Methods::Trees::SizedBinaryTreeMethodsBase<std::uint32_t>* base = sbt;
 
-	auto t1 = std::chrono::high_resolution_clock::now();
-	Platform::Collections::Methods::Tests::TestExtensions::TestMultipleCreationsAndDeletions<std::uint32_t>(sizeBalancedTree, &sbtWrappers::Allocate, &sbtWrappers::Free, &sizeBalancedTree.Root, &sbtWrappers::GetCount, 2000);
-	auto t2 = std::chrono::high_resolution_clock::now();
-	auto duration1 = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
-	std::cout << duration1 << "\n";
+    auto t1 = std::chrono::high_resolution_clock::now();
+    Platform::Collections::Methods::Tests::TestExtensions::TestMultipleCreationsAndDeletions<std::uint32_t>(sizeBalancedTree, &sbtWrappers::Allocate, &sbtWrappers::Free, &sizeBalancedTree.Root, &sbtWrappers::GetCount, 2000);
+    auto t2 = std::chrono::high_resolution_clock::now();
+    auto duration1 = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
+    std::cout << duration1 << "\n";
 
     auto t3 = std::chrono::high_resolution_clock::now();
     Platform::Collections::Methods::Tests::TestExtensions::TestMultipleCreationsAndDeletions<std::uint32_t>(sizeBalancedTree2, &sbt2Wrappers::Allocate, &sbt2Wrappers::Free, &sizeBalancedTree2.Root, &sbt2Wrappers::GetCount, 2000);
@@ -146,8 +146,8 @@ int main()
     auto duration3 = std::chrono::duration_cast<std::chrono::milliseconds>(t6 - t5).count();
     std::cout << duration3 << "\n";
 
-	Assert::Equal(1, 1);
-	std::cout << "Hello World!\n";
+    Assert::Equal(1, 1);
+    std::cout << "Hello World!\n";
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
