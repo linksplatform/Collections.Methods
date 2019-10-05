@@ -41,8 +41,8 @@ namespace Translator
             // (
             (new Regex(@"\(this ", _options), "(", null, 0),
             // Func<TElement> treeCount
-            // TElement (*treeCount)()
-            (new Regex(@"Func<([a-zA-Z0-9]+)> ([a-zA-Z0-9]+)", _options), "$1 (*$2)()", null, 0),
+            // TElement(*treeCount)()
+            (new Regex(@"Func<([a-zA-Z0-9]+)> ([a-zA-Z0-9]+)", _options), "$1(*$2)()", null, 0),
             // Action<TElement> free
             // void (*free)(TElement)
             (new Regex(@"Action<([a-zA-Z0-9]+)> ([a-zA-Z0-9]+)", _options), "void (*$2)($1)", null, 0),
@@ -302,8 +302,8 @@ namespace Translator
             // left
             (new Regex(@"(void SetLeft)([\S\s]+?)\*(left|right)([\S\s]+?)(void SetSize)", _options), "$1$2$3$4$5", new Regex(@"Size[a-zA-Z]+Tree2?\.cs", _options), 20),
             // TreeElement _elements[N];
-            // TreeElement _elements[N] = {{0}};
-            (new Regex(@"TreeElement _elements\[N\];", _options), "TreeElement _elements[N] = {{0}};", new Regex(@"Size[a-zA-Z]+Tree2?\.cs", _options), 0),
+            // TreeElement _elements[N] = { {0} };
+            (new Regex(@"TreeElement _elements\[N\];", _options), "TreeElement _elements[N] = { {0} };", new Regex(@"Size[a-zA-Z]+Tree2?\.cs", _options), 0),
             // TElement Root;
             // TElement Root = 0;
             (new Regex(@"TElement Root;", _options), "TElement Root = 0;", new Regex(@"Size[a-zA-Z]+Tree2?\.cs", _options), 0),
@@ -344,7 +344,7 @@ namespace Translator
             (new Regex(@"added\.Remove\(([a-zA-Z0-9]+)\)", _options), "added.erase($1)", new Regex(@"TestExtensions\.cs", _options), 0),
             // if (added.insert(node)) {
             // if (added.find(node) == added.end()) { added.insert(node);
-            (new Regex(@"if \(added\.insert\(node\)\)(\s+){", _options), "if (added.find(node) == added.end())$1{ added.insert(node);", new Regex(@"TestExtensions\.cs", _options), 0),
+            (new Regex(@"if \(added\.insert\(node\)\)([\t ]*[\r\n]+)([\t ]*){", _options), "if (added.find(node) == added.end())$1$2{" + Environment.NewLine + "$2    added.insert(node);", new Regex(@"TestExtensions\.cs", _options), 0),
             // SizedBinaryTreeMethodsBase
             // Platform::Collections::Methods::Trees::SizedBinaryTreeMethodsBase
             (new Regex(@"\(SizedBinaryTreeMethodsBase<TElement>", _options), "(Platform::Collections::Methods::Trees::SizedBinaryTreeMethodsBase<TElement>&", new Regex(@"TestExtensions\.cs", _options), 0),
@@ -364,7 +364,7 @@ namespace Translator
             var sourceFilename = GetArgOrDefault(args, 0);
             if (!File.Exists(sourceFilename))
             {
-                Console.WriteLine($"{sourceFilename} file does not exists.");
+                Console.WriteLine($"{sourceFilename} file does not exist.");
                 return 0;
             }
             var targetFilename = GetArgOrDefault(args, 1);
@@ -373,7 +373,7 @@ namespace Translator
                 targetFilename = Path.ChangeExtension(sourceFilename, ".cpp");
             }
             File.WriteAllText(targetFilename, Translate(sourceFilename, File.ReadAllText(sourceFilename)));
-            Console.WriteLine($"{targetFilename} file writen.");
+            Console.WriteLine($"{targetFilename} file written.");
             return 0;
         }
 

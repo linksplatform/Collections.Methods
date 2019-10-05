@@ -13,7 +13,7 @@ namespace Platform::Collections::Methods::Tests
             bool RightIsChild;
         };
 
-        TreeElement _elements[N] = {{0}};
+        TreeElement _elements[N] = { {0} };
         TElement _allocated;
 
         TElement Root = 0;

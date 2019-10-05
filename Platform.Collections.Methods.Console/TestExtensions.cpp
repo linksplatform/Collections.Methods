@@ -3,7 +3,7 @@ namespace Platform::Collections::Methods::Tests
     class TestExtensions
     {
     public:
-        template <typename TElement> static void TestMultipleCreationsAndDeletions(Platform::Collections::Methods::Trees::SizedBinaryTreeMethodsBase<TElement>& tree, TElement (*allocate)(), void (*free)(TElement), TElement* root, TElement (*treeCount)(), int maximumOperationsPerCycle)
+        template <typename TElement> static void TestMultipleCreationsAndDeletions(Platform::Collections::Methods::Trees::SizedBinaryTreeMethodsBase<TElement>& tree, TElement(*allocate)(), void (*free)(TElement), TElement* root, TElement(*treeCount)(), int maximumOperationsPerCycle)
         {
             for (auto N = 1; N < maximumOperationsPerCycle; N++)
             {
@@ -29,7 +29,7 @@ namespace Platform::Collections::Methods::Tests
             }
         }
 
-        template <typename TElement> static void TestMultipleRandomCreationsAndDeletions(Platform::Collections::Methods::Trees::SizedBinaryTreeMethodsBase<TElement>& tree, TElement* root, TElement (*treeCount)(), int maximumOperationsPerCycle)
+        template <typename TElement> static void TestMultipleRandomCreationsAndDeletions(Platform::Collections::Methods::Trees::SizedBinaryTreeMethodsBase<TElement>& tree, TElement* root, TElement(*treeCount)(), int maximumOperationsPerCycle)
         {
             std::unordered_set<TElement> added;
             auto currentCount = 0;
@@ -39,7 +39,8 @@ namespace Platform::Collections::Methods::Tests
                 {
                     auto node = (std::rand() % N) + 1;
                     if (added.find(node) == added.end())
-                    { added.insert(node);
+                    {
+                        added.insert(node);
                         tree.Attach(root, node);
                         currentCount++;
                         Assert::Equal(currentCount, (int)treeCount());
