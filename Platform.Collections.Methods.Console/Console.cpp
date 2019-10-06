@@ -105,5 +105,5 @@ int main()
     Platform::Collections::Methods::Tests::TestExtensions::TestMultipleCreationsAndDeletions<std::uint32_t>(avlTree, &avl2Wrappers::Allocate, &avl2Wrappers::Free, &avlTree.Root, &avl2Wrappers::GetCount, 2000);
     auto t6 = std::chrono::high_resolution_clock::now();
     auto duration3 = std::chrono::duration_cast<std::chrono::milliseconds>(t6 - t5).count();
-    std::cout << duration3 << "ms SizedAndThreadedAVLBalancedTreeMethods\n";
+    std::cout << duration3 << "ms for SizedAndThreadedAVLBalancedTreeMethods\n";
 }
