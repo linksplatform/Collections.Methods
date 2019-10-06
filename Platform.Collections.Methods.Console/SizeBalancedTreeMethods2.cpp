@@ -28,9 +28,9 @@ namespace Platform::Collections::Methods::Trees
 
         void DetachCore(TElement* root, TElement nodeToDetach) override
         {
-            TElement* currentNode = root;
-            TElement* parent = root;
-            TElement replacementNode = 0;
+            auto* currentNode = root;
+            auto* parent = root;
+            auto replacementNode = 0;
             while (*currentNode != nodeToDetach)
             {
                 this->SetSize(*currentNode, this->GetSize(*currentNode) - 1);
@@ -49,12 +49,12 @@ namespace Platform::Collections::Methods::Trees
                     throw std::exception("Duplicate link found in the tree.");
                 }
             }
-            TElement nodeToDetachLeft = this->GetLeft(nodeToDetach);
-            TElement node = this->GetRight(nodeToDetach);
+            auto nodeToDetachLeft = this->GetLeft(nodeToDetach);
+            auto node = this->GetRight(nodeToDetach);
             if (nodeToDetachLeft != 0 && node != 0)
             {
-                TElement minNode = node;
-                TElement minNodeLeft = this->GetLeft(minNode);
+                auto minNode = node;
+                auto minNodeLeft = this->GetLeft(minNode);
                 while (minNodeLeft != 0)
                 {
                     minNode = minNodeLeft;
@@ -101,11 +101,11 @@ namespace Platform::Collections::Methods::Trees
         {
             if (*root != 0)
             {
-                TElement rootLeftNode = this->GetLeft(*root);
+                auto rootLeftNode = this->GetLeft(*root);
                 if (rootLeftNode != 0)
                 {
-                    TElement rootRightNode = this->GetRight(*root);
-                    TElement rootLeftNodeLeftNode = this->GetLeft(rootLeftNode);
+                    auto rootRightNode = this->GetRight(*root);
+                    auto rootLeftNodeLeftNode = this->GetLeft(rootLeftNode);
                     if (rootLeftNodeLeftNode != 0 &&
                         (rootRightNode == 0 || this->GetSize(rootLeftNodeLeftNode) > this->GetSize(rootRightNode)))
                     {
@@ -113,7 +113,7 @@ namespace Platform::Collections::Methods::Trees
                     }
                     else
                     {
-                        TElement rootLeftNodeRightNode = this->GetRight(rootLeftNode);
+                        auto rootLeftNodeRightNode = this->GetRight(rootLeftNode);
                         if (rootLeftNodeRightNode != 0 &&
                             (rootRightNode == 0 || this->GetSize(rootLeftNodeRightNode) > this->GetSize(rootRightNode)))
                         {
@@ -137,11 +137,11 @@ namespace Platform::Collections::Methods::Trees
         {
             if (*root != 0)
             {
-                TElement rootRightNode = this->GetRight(*root);
+                auto rootRightNode = this->GetRight(*root);
                 if (rootRightNode != 0)
                 {
-                    TElement rootLeftNode = this->GetLeft(*root);
-                    TElement rootRightNodeRightNode = this->GetRight(rootRightNode);
+                    auto rootLeftNode = this->GetLeft(*root);
+                    auto rootRightNodeRightNode = this->GetRight(rootRightNode);
                     if (rootRightNodeRightNode != 0 &&
                         (rootLeftNode == 0 || this->GetSize(rootRightNodeRightNode) > this->GetSize(rootLeftNode)))
                     {
@@ -149,7 +149,7 @@ namespace Platform::Collections::Methods::Trees
                     }
                     else
                     {
-                        TElement rootRightNodeLeftNode = this->GetLeft(rootRightNode);
+                        auto rootRightNodeLeftNode = this->GetLeft(rootRightNode);
                         if (rootRightNodeLeftNode != 0 &&
                             (rootLeftNode == 0 || this->GetSize(rootRightNodeLeftNode) > this->GetSize(rootLeftNode)))
                         {

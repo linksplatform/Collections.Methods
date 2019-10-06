@@ -274,12 +274,6 @@ namespace Translator
             // GetSize
             // SizedBinaryTreeMethodsBase<TElement>::GetSize
             (new Regex(@"([^>])(GetLeftReference|GetRightReference|GetLeft|GetRight|SetLeft|SetRight|FirstIsToTheLeftOfSecond|FirstIsToTheRightOfSecond|GetLeftOrDefault|GetRightOrDefault|GetLeftSize|GetRightSize|GetSizeOrZero|FixSize|LeftRotate|RightRotate|ClearNode|GetSize|SetSize|IncrementSize|DecrementSize)(\()", _options), "$1this->$2$3", new Regex(@"Size[a-zA-Z]+Methods2?\.cs", _options), 1),
-            // auto*
-            // TElement*
-            (new Regex(@"auto\*", _options), "TElement*", new Regex(@"Size[a-zA-Z]+Methods2?\.cs", _options), 0),
-            // auto
-            // TElement
-            (new Regex(@"auto", _options), "TElement", new Regex(@"Size[a-zA-Z]+Methods2?\.cs", _options), 0),
             // GetSizeOrZero
             // SizeBalancedTreeMethods<TElement>::GetSizeOrZero
             (new Regex(@"([^:])(GetSizeOrZero)(\()", _options), "$1this->$2$3", new Regex(@"SizeBalancedTree\.cs", _options), 0),

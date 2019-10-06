@@ -7,10 +7,10 @@ namespace Platform::Collections::Methods::Trees
         {
             while (true)
             {
-                TElement* left = this->GetLeftReference(*root);
-                TElement leftSize = this->GetSizeOrZero(*left);
-                TElement* right = this->GetRightReference(*root);
-                TElement rightSize = this->GetSizeOrZero(*right);
+                auto* left = this->GetLeftReference(*root);
+                auto leftSize = this->GetSizeOrZero(*left);
+                auto* right = this->GetRightReference(*root);
+                auto rightSize = this->GetSizeOrZero(*right);
                 if (this->FirstIsToTheLeftOfSecond(node, *root)) // node.Key less than root.Key
                 {
                     if (*left == 0)
@@ -34,7 +34,7 @@ namespace Platform::Collections::Methods::Trees
                     }
                     else  // node.Key greater than left.Key
                     {
-                        TElement leftRightSize = this->GetSizeOrZero(this->GetRight(*left));
+                        auto leftRightSize = this->GetSizeOrZero(this->GetRight(*left));
                         if ((leftRightSize + 1) > rightSize)
                         {
                             if (leftRightSize == 0 && rightSize == 0)
@@ -80,7 +80,7 @@ namespace Platform::Collections::Methods::Trees
                     }
                     else // node.Key less than right.Key
                     {
-                        TElement rightLeftSize = this->GetSizeOrZero(this->GetLeft(*right));
+                        auto rightLeftSize = this->GetSizeOrZero(this->GetLeft(*right));
                         if ((rightLeftSize + 1) > leftSize)
                         {
                             if (rightLeftSize == 0 && leftSize == 0)
@@ -110,13 +110,13 @@ namespace Platform::Collections::Methods::Trees
         {
             while (true)
             {
-                TElement* left = this->GetLeftReference(*root);
-                TElement leftSize = this->GetSizeOrZero(*left);
-                TElement* right = this->GetRightReference(*root);
-                TElement rightSize = this->GetSizeOrZero(*right);
+                auto* left = this->GetLeftReference(*root);
+                auto leftSize = this->GetSizeOrZero(*left);
+                auto* right = this->GetRightReference(*root);
+                auto rightSize = this->GetSizeOrZero(*right);
                 if (this->FirstIsToTheLeftOfSecond(node, *root)) // node.Key less than root.Key
                 {
-                    TElement decrementedLeftSize = leftSize - 1;
+                    auto decrementedLeftSize = leftSize - 1;
                     if (this->GetSizeOrZero(this->GetRight(*right)) > decrementedLeftSize)
                     {
                         this->LeftRotate(root);
@@ -134,7 +134,7 @@ namespace Platform::Collections::Methods::Trees
                 }
                 else if (this->FirstIsToTheRightOfSecond(node, *root)) // node.Key greater than root.Key
                 {
-                    TElement decrementedRightSize = rightSize - 1;
+                    auto decrementedRightSize = rightSize - 1;
                     if (this->GetSizeOrZero(this->GetLeft(*left)) > decrementedRightSize)
                     {
                         this->RightRotate(root);
@@ -158,7 +158,7 @@ namespace Platform::Collections::Methods::Trees
                         if (leftSize > rightSize)
                         {
                             replacement = *left;
-                            TElement replacementRight = this->GetRight(replacement);
+                            auto replacementRight = this->GetRight(replacement);
                             while (replacementRight != 0)
                             {
                                 replacement = replacementRight;
@@ -169,7 +169,7 @@ namespace Platform::Collections::Methods::Trees
                         else
                         {
                             replacement = *right;
-                            TElement replacementLeft = this->GetLeft(replacement);
+                            auto replacementLeft = this->GetLeft(replacement);
                             while (replacementLeft != 0)
                             {
                                 replacement = replacementLeft;

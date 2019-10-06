@@ -51,14 +51,14 @@ namespace Platform::Collections::Methods::Trees
                 // TODO: Check what is faster to use simple array or array from array pool
                 // TODO: Try to use stackalloc as an optimization (requires code generation, because of generics)
 #if USEARRAYPOOL
-                TElement path = ArrayPool.Allocate<TElement>(MaxPath);
-                TElement pathPosition = 0;
+                auto path = ArrayPool.Allocate<TElement>(MaxPath);
+                auto pathPosition = 0;
                 path[pathPosition++] = 0;
 #else
-                TElement path[MaxPath] = { {0} };
-                TElement pathPosition = 1;
+                auto path = new TElement[MaxPath];
+                auto pathPosition = 1;
 #endif
-                TElement currentNode = *root;
+                auto currentNode = *root;
                 while (true)
                 {
                     if (this->FirstIsToTheLeftOfSecond(node, currentNode))
@@ -113,9 +113,9 @@ namespace Platform::Collections::Methods::Trees
                 // the loop and we are done.
                 while (true)
                 {
-                    TElement parent = path[--pathPosition];
-                    TElement isLeftNode = parent != 0 && currentNode == this->GetLeft(parent);
-                    TElement currentNodeBalance = GetBalance(currentNode);
+                    auto parent = path[--pathPosition];
+                    auto isLeftNode = parent != 0 && currentNode == this->GetLeft(parent);
+                    auto currentNodeBalance = GetBalance(currentNode);
                     if (currentNodeBalance < -1 || currentNodeBalance > 1)
                     {
                         currentNode = Balance(currentNode);
@@ -158,10 +158,10 @@ namespace Platform::Collections::Methods::Trees
         TElement Balance(TElement node)
         {
             {
-                TElement rootBalance = GetBalance(node);
+                auto rootBalance = GetBalance(node);
                 if (rootBalance < -1)
                 {
-                    TElement left = this->GetLeft(node);
+                    auto left = this->GetLeft(node);
                     if (GetBalance(left) > 0)
                     {
                         this->SetLeft(node, LeftRotateWithBalance(left));
@@ -171,7 +171,7 @@ namespace Platform::Collections::Methods::Trees
                 }
                 else if (rootBalance > 1)
                 {
-                    TElement right = this->GetRight(node);
+                    auto right = this->GetRight(node);
                     if (GetBalance(right) < 0)
                     {
                         this->SetRight(node, RightRotateWithBalance(right));
@@ -186,7 +186,7 @@ namespace Platform::Collections::Methods::Trees
         TElement LeftRotateWithBalance(TElement node)
         {
             {
-                TElement right = this->GetRight(node);
+                auto right = this->GetRight(node);
                 if (GetLeftIsChild(right))
                 {
                     this->SetRight(node, this->GetLeft(right));
@@ -201,8 +201,8 @@ namespace Platform::Collections::Methods::Trees
                 this->SetSize(right, this->GetSize(node));
                 this->FixSize(node);
                 // Fix balance
-                TElement rootBalance = GetBalance(node);
-                TElement rightBalance = GetBalance(right);
+                auto rootBalance = GetBalance(node);
+                auto rightBalance = GetBalance(right);
                 if (rightBalance <= 0)
                 {
                     if (rootBalance >= 1)
@@ -234,7 +234,7 @@ namespace Platform::Collections::Methods::Trees
         TElement RightRotateWithBalance(TElement node)
         {
             {
-                TElement left = this->GetLeft(node);
+                auto left = this->GetLeft(node);
                 if (GetRightIsChild(left))
                 {
                     this->SetLeft(node, this->GetRight(left));
@@ -249,8 +249,8 @@ namespace Platform::Collections::Methods::Trees
                 this->SetSize(left, this->GetSize(node));
                 this->FixSize(node);
                 // Fix balance
-                TElement rootBalance = GetBalance(node);
-                TElement leftBalance = GetBalance(left);
+                auto rootBalance = GetBalance(node);
+                auto leftBalance = GetBalance(left);
                 if (leftBalance <= 0)
                 {
                     if (leftBalance > rootBalance)
@@ -282,7 +282,7 @@ namespace Platform::Collections::Methods::Trees
         TElement GetNext(TElement node)
         {
             {
-                TElement current = this->GetRight(node);
+                auto current = this->GetRight(node);
                 if (GetRightIsChild(node))
                 {
                     while (GetLeftIsChild(current))
@@ -297,7 +297,7 @@ namespace Platform::Collections::Methods::Trees
         TElement GetPrevious(TElement node)
         {
             {
-                TElement current = this->GetLeft(node);
+                auto current = this->GetLeft(node);
                 if (GetLeftIsChild(node))
                 {
                     while (GetRightIsChild(current))
@@ -313,14 +313,14 @@ namespace Platform::Collections::Methods::Trees
         {
             {
 #if USEARRAYPOOL
-                TElement path = ArrayPool.Allocate<TElement>(MaxPath);
-                TElement pathPosition = 0;
+                auto path = ArrayPool.Allocate<TElement>(MaxPath);
+                auto pathPosition = 0;
                 path[pathPosition++] = 0;
 #else
-                TElement path[MaxPath] = { {0} };
-                TElement pathPosition = 1;
+                auto path = new TElement[MaxPath];
+                auto pathPosition = 1;
 #endif
-                TElement currentNode = *root;
+                auto currentNode = *root;
                 while (true)
                 {
                     if (this->FirstIsToTheLeftOfSecond(node, currentNode))
@@ -348,9 +348,9 @@ namespace Platform::Collections::Methods::Trees
                         break;
                     }
                 }
-                TElement parent = path[--pathPosition];
-                TElement balanceNode = parent;
-                TElement isLeftNode = parent != 0 && currentNode == this->GetLeft(parent);
+                auto parent = path[--pathPosition];
+                auto balanceNode = parent;
+                auto isLeftNode = parent != 0 && currentNode == this->GetLeft(parent);
                 if (!GetLeftIsChild(currentNode))
                 {
                     if (!GetRightIsChild(currentNode)) // node has no children
@@ -374,9 +374,9 @@ namespace Platform::Collections::Methods::Trees
                     }
                     else // node has a right child
                     {
-                        TElement successor = GetNext(currentNode);
+                        auto successor = GetNext(currentNode);
                         this->SetLeft(successor, this->GetLeft(currentNode));
-                        TElement right = this->GetRight(currentNode);
+                        auto right = this->GetRight(currentNode);
                         if (parent == 0)
                         {
                             *root = right;
@@ -397,9 +397,9 @@ namespace Platform::Collections::Methods::Trees
                 {
                     if (!GetRightIsChild(currentNode))
                     {
-                        TElement predecessor = GetPrevious(currentNode);
+                        auto predecessor = GetPrevious(currentNode);
                         this->SetRight(predecessor, this->GetRight(currentNode));
-                        TElement leftValue = this->GetLeft(currentNode);
+                        auto leftValue = this->GetLeft(currentNode);
                         if (parent == 0)
                         {
                             *root = leftValue;
@@ -417,9 +417,9 @@ namespace Platform::Collections::Methods::Trees
                     }
                     else // node has a both children (left and right)
                     {
-                        TElement predecessor = this->GetLeft(currentNode);
-                        TElement successor = this->GetRight(currentNode);
-                        TElement successorParent = currentNode;
+                        auto predecessor = this->GetLeft(currentNode);
+                        auto successor = this->GetRight(currentNode);
+                        auto successorParent = currentNode;
                         int previousPathPosition = ++pathPosition;
                         // find the immediately next node (and its parent)
                         while (GetLeftIsChild(successor))
@@ -459,7 +459,7 @@ namespace Platform::Collections::Methods::Trees
                         }
                         this->SetRight(predecessor, successor);
                         // prepare 'successor' to replace 'node'
-                        TElement left = this->GetLeft(currentNode);
+                        auto left = this->GetLeft(currentNode);
                         SetLeftIsChild(successor, true);
                         this->SetLeft(successor, left);
                         SetBalance(successor, GetBalance(currentNode));
@@ -483,9 +483,9 @@ namespace Platform::Collections::Methods::Trees
                 {
                     while (true)
                     {
-                        TElement balanceParent = path[--pathPosition];
+                        auto balanceParent = path[--pathPosition];
                         isLeftNode = balanceParent != 0 && balanceNode == this->GetLeft(balanceParent);
-                        TElement currentNodeBalance = GetBalance(balanceNode);
+                        auto currentNodeBalance = GetBalance(balanceNode);
                         if (currentNodeBalance < -1 || currentNodeBalance > 1)
                         {
                             balanceNode = Balance(balanceNode);
