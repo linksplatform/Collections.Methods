@@ -55,7 +55,7 @@ namespace Platform::Collections::Methods::Trees
                 auto pathPosition = 0;
                 path[pathPosition++] = 0;
 #else
-                auto path = new TElement[MaxPath];
+                TElement path[MaxPath] = { {0} };
                 auto pathPosition = 1;
 #endif
                 auto currentNode = *root;
@@ -317,7 +317,7 @@ namespace Platform::Collections::Methods::Trees
                 auto pathPosition = 0;
                 path[pathPosition++] = 0;
 #else
-                auto path = new TElement[MaxPath];
+                TElement path[MaxPath] = { {0} };
                 auto pathPosition = 1;
 #endif
                 auto currentNode = *root;

@@ -313,9 +313,9 @@ namespace Translator
             (new Regex(@"(void DetachCore)([\S\s]+?)\*(left|right|currentNode|parent)([\S\s]+?)(void ClearNode)", _options), "$1$2$3$4$5", new Regex(@"SizedAndThreadedAVLBalancedTreeMethods\.cs", _options), 60),
             (new Regex(@"(void AttachCore)([\S\s]+?)\*(currentNode|parent)([\S\s]+?)(TElement Balance)", _options), "$1$2$3$4$5", new Regex(@"SizedAndThreadedAVLBalancedTreeMethods\.cs", _options), 45),
             (new Regex(@"(bool Contains)([\S\s]+?)\*(root|parent)([\S\s]+?)(void IncrementBalance)", _options), "$1$2$3$4$5", new Regex(@"SizedAndThreadedAVLBalancedTreeMethods\.cs", _options), 10),
-            // TElement path = new TElement[MaxPath];
+            // auto path = new TElement[MaxPath];
             // TElement path[MaxPath] = { {0} };
-            (new Regex(@"TElement path = new TElement\[MaxPath\];", _options), "TElement path[MaxPath] = { {0} };", new Regex(@"SizedAndThreadedAVLBalancedTreeMethods\.cs", _options), 0),
+            (new Regex(@"auto path = new TElement\[MaxPath\];", _options), "TElement path[MaxPath] = { {0} };", new Regex(@"SizedAndThreadedAVLBalancedTreeMethods\.cs", _options), 0),
             // auto sizeBalancedTree = new SizeBalancedTree<uint>(10000);
             // SizeBalancedTree<uint, 10000> sizeBalancedTree;
             (new Regex(@"auto ([a-zA-Z0-9]+) = new ([a-zA-Z0-9]+)<([_a-zA-Z0-9:]+)>\(([0-9]+)\);", _options), "$2<$3, $4> $1;", new Regex(@"TreesTests\.cs", _options), 0),
