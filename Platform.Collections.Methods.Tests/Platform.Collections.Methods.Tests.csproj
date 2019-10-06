@@ -25,14 +25,7 @@
   </ItemGroup>
 
   <Target Name="CSharpFilesTransform" BeforeTargets="BeforeBuild" Condition="$(TargetFramework.StartsWith('netcoreapp'))">
-    <Exec WorkingDirectory="$(ProjectDir)" Command="..\CSharpToCppTranslator\bin\$(Configuration)\netcoreapp3.0\CSharpToCppTranslator.exe %(CSharpFiles.Identity)" />
-    <ItemGroup>
-      <CppFiles Include="**\*.cpp" />
-    </ItemGroup>
-  </Target>
-
-  <Target Name="CppFilesTransform" AfterTargets="AfterBuild" Condition="$(TargetFramework.StartsWith('netcoreapp'))">
-    <Exec IgnoreExitCode="true" WorkingDirectory="$(ProjectDir)" Command="move %(CppFiles.Identity) $(SolutionDir)Platform.Collections.Methods.Console\" />
+    <Exec WorkingDirectory="$(ProjectDir)" IgnoreExitCode="true" Command="..\CSharpToCppTranslator\bin\$(Configuration)\netcoreapp3.0\CSharpToCppTranslator.exe %(CSharpFiles.Identity) $(SolutionDir)Platform.Collections.Methods.Console\" />
   </Target>
 
 </Project>

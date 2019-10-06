@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
 
@@ -362,21 +363,36 @@ namespace Translator
 
         static int Main(string[] args)
         {
-            var sourceFilename = GetArgOrDefault(args, 0);
-            if (!File.Exists(sourceFilename))
+            var sourcePath = GetArgOrDefault(args, 0);
+            if (!File.Exists(sourcePath))
             {
-                Console.WriteLine($"{sourceFilename} file does not exist.");
-                return 0;
+                Console.WriteLine($"{sourcePath} file does not exist.");
+                return -1;
             }
-            var targetFilename = GetArgOrDefault(args, 1);
-            if (string.IsNullOrWhiteSpace(targetFilename))
+            var targetPath = GetArgOrDefault(args, 1);
+            if (string.IsNullOrWhiteSpace(targetPath))
             {
-                targetFilename = Path.ChangeExtension(sourceFilename, ".cpp");
+                targetPath = Path.ChangeExtension(sourcePath, ".cpp");
             }
-            File.WriteAllText(targetFilename, Translate(sourceFilename, File.ReadAllText(sourceFilename)));
-            Console.WriteLine($"{targetFilename} file written.");
+            else if ((Directory.Exists(targetPath) && File.GetAttributes(targetPath).HasFlag(FileAttributes.Directory)) || LooksLikeDirectoryPath(targetPath))
+            {
+                targetPath = Path.Combine(targetPath, Path.ChangeExtension(Path.GetFileName(sourcePath), ".cpp"));
+            }
+            if (File.Exists(targetPath))
+            {
+                var applicationPath = Process.GetCurrentProcess().MainModule.FileName;
+                var targetFileLastUpdateDateTime = new FileInfo(targetPath).LastWriteTimeUtc;
+                if (new FileInfo(sourcePath).LastWriteTimeUtc < targetFileLastUpdateDateTime && new FileInfo(applicationPath).LastWriteTimeUtc < targetFileLastUpdateDateTime)
+                {
+                    return 0;
+                }
+            }
+            File.WriteAllText(targetPath, Translate(sourcePath, File.ReadAllText(sourcePath)));
+            Console.WriteLine($"{targetPath} file written.");
             return 0;
         }
+
+        private static bool LooksLikeDirectoryPath(string targetPath) => targetPath.EndsWith(Path.DirectorySeparatorChar) || targetPath.EndsWith(Path.AltDirectorySeparatorChar);
 
         private static string GetArgOrDefault(string[] args, int index) => args.Length > index ? args[index] : null;
 
