@@ -1,4 +1,4 @@
-namespace Platform::Collections::Methods::Tests
+﻿namespace Platform::Collections::Methods::Tests
 {
     class TreesTests
     {

@@ -1,4 +1,4 @@
-namespace Platform::Collections::Methods
+﻿namespace Platform::Collections::Methods
 {
     template <typename TElement> class GenericCollectionMethodsBase
     {

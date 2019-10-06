@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Translator
@@ -387,7 +388,7 @@ namespace Translator
                     return 0;
                 }
             }
-            File.WriteAllText(targetPath, Translate(sourcePath, File.ReadAllText(sourcePath)));
+            File.WriteAllText(targetPath, Translate(sourcePath, File.ReadAllText(sourcePath, Encoding.UTF8)), Encoding.UTF8);
             Console.WriteLine($"{targetPath} file written.");
             return 0;
         }

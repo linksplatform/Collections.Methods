@@ -1,4 +1,4 @@
-namespace Platform::Collections::Methods::Lists
+﻿namespace Platform::Collections::Methods::Lists
 {
     /// <remarks>
     /// Based on <a href="https://en.wikipedia.org/wiki/Doubly_linked_list">doubly linked list</a> implementation.

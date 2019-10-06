@@ -1,4 +1,4 @@
-namespace Platform::Collections::Methods::Lists
+﻿namespace Platform::Collections::Methods::Lists
 {
     template <typename TElement> class CircularDoublyLinkedListMethods : public DoublyLinkedListMethodsBase<TElement>
     {

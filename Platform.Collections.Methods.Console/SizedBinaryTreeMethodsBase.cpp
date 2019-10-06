@@ -1,4 +1,4 @@
-namespace Platform::Collections::Methods::Trees
+﻿namespace Platform::Collections::Methods::Trees
 {
     template <typename TElement> class SizedBinaryTreeMethodsBase : public GenericCollectionMethodsBase<TElement>
     {

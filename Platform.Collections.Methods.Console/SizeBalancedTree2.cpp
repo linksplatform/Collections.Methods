@@ -1,4 +1,4 @@
-namespace Platform::Collections::Methods::Tests
+﻿namespace Platform::Collections::Methods::Tests
 {
     template <typename TElement, std::size_t N> class SizeBalancedTree2 : public Platform::Collections::Methods::Trees::SizeBalancedTreeMethods2<TElement>
     {

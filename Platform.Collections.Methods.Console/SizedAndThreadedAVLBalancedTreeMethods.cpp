@@ -1,4 +1,4 @@
-namespace Platform::Collections::Methods::Trees
+﻿namespace Platform::Collections::Methods::Trees
 {
     /// <summary>
     /// Combination of Size, Height (AVL), and threads.
