@@ -7,6 +7,11 @@ namespace CSharpToCppTranslator
     {
         static int Main(string[] args)
         {
+            //for (int i = 0; i < args.Length; i++)
+            //{
+            //    Console.WriteLine(args[i]);
+            //}
+            //args = new string[] { @"C:\Code\Links\Collections.Methods\Platform.Collections.Methods\GenericCollectionMethodsBase.cs", @"C:\Code\Links\Collections.Methods\Platform.Collections.Methods.Console\" };
             var csharpToCpp = new CustomCSharpToCppTransformer();
             var cli = new TransformerCLI(csharpToCpp);
             if (cli.Run(args, out string message))

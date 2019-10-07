@@ -1,31 +1,23 @@
 ﻿namespace Platform::Collections::Methods::Trees
 {
-    /// <summary>
-    /// Combination of Size, Height (AVL), and threads.
-    /// </summary>
-    /// <remarks>
-    /// Based on: <a href="https://github.com/programmatom/TreeLib/blob/master/TreeLib/TreeLib/Generated/AVLTreeList.cs">TreeLib.AVLTreeList</a>.
-    /// Which itself based on: <a href="https://github.com/GNOME/glib/blob/master/glib/gtree.c">GNOME/glib/gtree</a>.
-    /// </remarks>
     template <typename TElement> class SizedAndThreadedAVLBalancedTreeMethods : public SizedBinaryTreeMethodsBase<TElement>
     {
     public:
-        // TODO: Link with size of TElement
         static const int MaxPath = 92;
 
         bool Contains(TElement node, TElement root) override
         {
             while (root != 0)
             {
-                if (this->FirstIsToTheLeftOfSecond(node, root)) // node.Key < root.Key
+                if (this->FirstIsToTheLeftOfSecond(node, root))
                 {
                     root = GetLeftOrDefault(root);
                 }
-                else if (this->FirstIsToTheRightOfSecond(node, root)) // node.Key > root.Key
+                else if (this->FirstIsToTheRightOfSecond(node, root))
                 {
                     root = GetRightOrDefault(root);
                 }
-                else // node.Key == root.Key
+                else
                 {
                     return true;
                 }
@@ -48,8 +40,6 @@
         void AttachCore(TElement* root, TElement node) override
         {
             {
-                // TODO: Check what is faster to use simple array or array from array pool
-                // TODO: Try to use stackalloc as an optimization (requires code generation, because of generics)
 #if USEARRAYPOOL
                 auto path = ArrayPool.Allocate<TElement>(MaxPath);
                 auto pathPosition = 0;
@@ -71,14 +61,13 @@
                         }
                         else
                         {
-                            // Threads
                             this->SetLeft(node, this->GetLeft(currentNode));
                             this->SetRight(node, currentNode);
                             this->SetLeft(currentNode, node);
                             SetLeftIsChild(currentNode, true);
                             DecrementBalance(currentNode);
                             this->SetSize(node, 1);
-                            this->FixSize(currentNode); // Should be incremented already
+                            this->FixSize(currentNode);
                             break;
                         }
                     }
@@ -92,14 +81,13 @@
                         }
                         else
                         {
-                            // Threads
                             this->SetRight(node, this->GetRight(currentNode));
                             this->SetLeft(node, currentNode);
                             this->SetRight(currentNode, node);
                             SetRightIsChild(currentNode, true);
                             IncrementBalance(currentNode);
                             this->SetSize(node, 1);
-                            this->FixSize(currentNode); // Should be incremented already
+                            this->FixSize(currentNode);
                             break;
                         }
                     }
@@ -108,9 +96,6 @@
                         throw std::exception("Node with the same key already attached to a tree.");
                     }
                 }
-                // Restore balance. This is the goodness of a non-recursive
-                // implementation, when we are done with balancing we 'break'
-                // the loop and we are done.
                 while (true)
                 {
                     auto parent = path[--pathPosition];
@@ -197,10 +182,8 @@
                     SetLeftIsChild(right, true);
                 }
                 this->SetLeft(right, node);
-                // Fix size
                 this->SetSize(right, this->GetSize(node));
                 this->FixSize(node);
-                // Fix balance
                 auto rootBalance = GetBalance(node);
                 auto rightBalance = GetBalance(right);
                 if (rightBalance <= 0)
@@ -245,10 +228,8 @@
                     SetRightIsChild(left, true);
                 }
                 this->SetRight(left, node);
-                // Fix size
                 this->SetSize(left, this->GetSize(node));
                 this->FixSize(node);
-                // Fix balance
                 auto rootBalance = GetBalance(node);
                 auto leftBalance = GetBalance(left);
                 if (leftBalance <= 0)
@@ -353,7 +334,7 @@
                 auto isLeftNode = parent != 0 && currentNode == this->GetLeft(parent);
                 if (!GetLeftIsChild(currentNode))
                 {
-                    if (!GetRightIsChild(currentNode)) // node has no children
+                    if (!GetRightIsChild(currentNode))
                     {
                         if (parent == 0)
                         {
@@ -372,7 +353,7 @@
                             DecrementBalance(parent);
                         }
                     }
-                    else // node has a right child
+                    else
                     {
                         auto successor = GetNext(currentNode);
                         this->SetLeft(successor, this->GetLeft(currentNode));
@@ -393,7 +374,7 @@
                         }
                     }
                 }
-                else // node has a left child
+                else
                 {
                     if (!GetRightIsChild(currentNode))
                     {
@@ -415,13 +396,12 @@
                             DecrementBalance(parent);
                         }
                     }
-                    else // node has a both children (left and right)
+                    else
                     {
                         auto predecessor = this->GetLeft(currentNode);
                         auto successor = this->GetRight(currentNode);
                         auto successorParent = currentNode;
                         int previousPathPosition = ++pathPosition;
-                        // find the immediately next node (and its parent)
                         while (GetLeftIsChild(successor))
                         {
                             path[++pathPosition] = successorParent = successor;
@@ -433,7 +413,6 @@
                         }
                         path[previousPathPosition] = successor;
                         balanceNode = path[pathPosition];
-                        // remove 'successor' from the tree
                         if (successorParent != currentNode)
                         {
                             if (!GetRightIsChild(successor))
@@ -452,13 +431,11 @@
                         {
                             DecrementBalance(currentNode);
                         }
-                        // set the predecessor's successor link to point to the right place
                         while (GetRightIsChild(predecessor))
                         {
                             predecessor = this->GetRight(predecessor);
                         }
                         this->SetRight(predecessor, successor);
-                        // prepare 'successor' to replace 'node'
                         auto left = this->GetLeft(currentNode);
                         SetLeftIsChild(successor, true);
                         this->SetLeft(successor, left);
@@ -478,7 +455,6 @@
                         }
                     }
                 }
-                // restore balance
                 if (balanceNode != 0)
                 {
                     while (true)

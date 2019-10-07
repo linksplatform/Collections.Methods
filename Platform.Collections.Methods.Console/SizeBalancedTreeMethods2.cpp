@@ -66,7 +66,7 @@
                 if (node != 0)
                 {
                     this->SetRight(minNode, node);
-                    this->SetSize(minNode, this->GetSize(nodeToDetachLeft) + this->GetSize(node) + 1);
+                    this->SetSize(minNode, (this->GetSize(nodeToDetachLeft) + this->GetSize(node)) + 1);
                 }
                 else
                 {

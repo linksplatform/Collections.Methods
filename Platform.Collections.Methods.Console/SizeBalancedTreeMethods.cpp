@@ -11,7 +11,7 @@
                 auto leftSize = this->GetSizeOrZero(*left);
                 auto* right = this->GetRightReference(*root);
                 auto rightSize = this->GetSizeOrZero(*right);
-                if (this->FirstIsToTheLeftOfSecond(node, *root)) // node.Key less than root.Key
+                if (this->FirstIsToTheLeftOfSecond(node, *root))
                 {
                     if (*left == 0)
                     {
@@ -20,7 +20,7 @@
                         *left = node;
                         return;
                     }
-                    if (this->FirstIsToTheLeftOfSecond(node, *left)) // node.Key less than left.Key
+                    if (this->FirstIsToTheLeftOfSecond(node, *left))
                     {
                         if ((leftSize + 1) > rightSize)
                         {
@@ -32,7 +32,7 @@
                             root = left;
                         }
                     }
-                    else  // node.Key greater than left.Key
+                    else
                     {
                         auto leftRightSize = this->GetSizeOrZero(this->GetRight(*left));
                         if ((leftRightSize + 1) > rightSize)
@@ -41,7 +41,7 @@
                             {
                                 this->SetLeft(node, *left);
                                 this->SetRight(node, *root);
-                                this->SetSize(node, leftSize + 2); // 2 (2) - node the size of root and a node itself
+                                this->SetSize(node, leftSize + 2);
                                 this->SetLeft(*root, 0);
                                 this->SetSize(*root, 1);
                                 *root = node;
@@ -57,7 +57,7 @@
                         }
                     }
                 }
-                else // node.Key greater than root.Key
+                else
                 {
                     if (*right == 0)
                     {
@@ -66,7 +66,7 @@
                         *right = node;
                         return;
                     }
-                    if (this->FirstIsToTheRightOfSecond(node, *right)) // node.Key greater than right.Key
+                    if (this->FirstIsToTheRightOfSecond(node, *right))
                     {
                         if ((rightSize + 1) > leftSize)
                         {
@@ -78,7 +78,7 @@
                             root = right;
                         }
                     }
-                    else // node.Key less than right.Key
+                    else
                     {
                         auto rightLeftSize = this->GetSizeOrZero(this->GetLeft(*right));
                         if ((rightLeftSize + 1) > leftSize)
@@ -87,7 +87,7 @@
                             {
                                 this->SetLeft(node, *root);
                                 this->SetRight(node, *right);
-                                this->SetSize(node, rightSize + 2); // 2 (2) - node the size of root and a node itself
+                                this->SetSize(node, rightSize + 2);
                                 this->SetRight(*root, 0);
                                 this->SetSize(*root, 1);
                                 *root = node;
@@ -114,7 +114,7 @@
                 auto leftSize = this->GetSizeOrZero(*left);
                 auto* right = this->GetRightReference(*root);
                 auto rightSize = this->GetSizeOrZero(*right);
-                if (this->FirstIsToTheLeftOfSecond(node, *root)) // node.Key less than root.Key
+                if (this->FirstIsToTheLeftOfSecond(node, *root))
                 {
                     auto decrementedLeftSize = leftSize - 1;
                     if (this->GetSizeOrZero(this->GetRight(*right)) > decrementedLeftSize)
@@ -132,7 +132,7 @@
                         root = left;
                     }
                 }
-                else if (this->FirstIsToTheRightOfSecond(node, *root)) // node.Key greater than root.Key
+                else if (this->FirstIsToTheRightOfSecond(node, *root))
                 {
                     auto decrementedRightSize = rightSize - 1;
                     if (this->GetSizeOrZero(this->GetLeft(*left)) > decrementedRightSize)
@@ -150,7 +150,7 @@
                         root = right;
                     }
                 }
-                else // key equals to root.Key
+                else
                 {
                     if (leftSize > 0 && rightSize > 0)
                     {

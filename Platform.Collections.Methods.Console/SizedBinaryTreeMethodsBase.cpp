@@ -20,7 +20,7 @@
         TElement GetLeftSize(TElement node) { return GetSizeOrZero(GetLeftOrDefault(node)); }
         TElement GetRightSize(TElement node) { return GetSizeOrZero(GetRightOrDefault(node)); }
         TElement GetSizeOrZero(TElement node) { return node == 0 ? 0 : GetSize(node); }
-        void FixSize(TElement node) { SetSize(node, GetLeftSize(node) + GetRightSize(node) + 1); }
+        void FixSize(TElement node) { SetSize(node, (GetLeftSize(node) + GetRightSize(node)) + 1); }
         void LeftRotate(TElement* root) { *root = LeftRotate(*root); }
         TElement LeftRotate(TElement root)
         {
@@ -57,15 +57,15 @@
         {
             while (root != 0)
             {
-                if (FirstIsToTheLeftOfSecond(node, root)) // node.Key < root.Key
+                if (FirstIsToTheLeftOfSecond(node, root))
                 {
                     root = GetLeft(root);
                 }
-                else if (FirstIsToTheRightOfSecond(node, root)) // node.Key > root.Key
+                else if (FirstIsToTheRightOfSecond(node, root))
                 {
                     root = GetRight(root);
                 }
-                else // node.Key == root.Key
+                else
                 {
                     return true;
                 }
@@ -100,7 +100,7 @@
             Debug.WriteLine("----------------");
             ValidateSizes(*root);
             auto sizeAfter = GetSize(*root);
-            if (!IsEquals(MathHelpers.sizeBefore + 1, sizeAfter))
+            if (!IsEquals(MathHelpers.(sizeBefore) + 1, sizeAfter))
             {
                 throw std::exception("Tree was broken after attach.");
             }
@@ -128,7 +128,7 @@
             Debug.WriteLine("----------------");
             ValidateSizes(*root);
             auto sizeAfter = GetSize(*root);
-            if (!IsEquals(MathHelpers.sizeBefore - 1, sizeAfter))
+            if (!IsEquals(MathHelpers.(sizeBefore) - 1, sizeAfter))
             {
                 throw std::exception("Tree was broken after detach.");
             }

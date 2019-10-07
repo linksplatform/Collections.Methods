@@ -11,6 +11,22 @@ namespace CSharpToCppTranslator
     {
         public static readonly IList<ISubstitutionRule> Rules = new List<SubstitutionRule>()
         {
+            // // ...
+            // 
+            (new Regex(@"(\r?\n)?[ \t]+//+.+"), "", null, 0),
+
+            
+            // Just delete it in GenericCollectionMethodsBase.cs
+            (new Regex(@"virtual TElement GetZero(.|\s)+Increment\(One\)(.|\s)+?}"), "", new Regex(@"GenericCollectionMethodsBase\.cs"), 0),
+            // Just delete it in SizedBinaryTreeMethodsBase.cs
+            (new Regex(@"[\t ]+void FixSizes(.|\s)+};"), "    };", new Regex(@"SizedBinaryTreeMethodsBase\.cs"), 0),
+            // Just delete it in SizedAndThreadedAVLBalancedTreeMethods.cs
+            (new Regex(@"void PrintNode(.|\s)+?}"), "", new Regex(@"SizedAndThreadedAVLBalancedTreeMethods\.cs"), 0),
+
+            // EqualityComparer<TreeElement>.Default.Equals(GetElement(node), default)
+            // iszero(GetElement(node), sizeof(TreeElement))
+            (new Regex(@"EqualityComparer<TreeElement>\.Default\.Equals\(GetElement\(node\), default\)"), "iszero(GetElement(node), sizeof(TreeElement))", new Regex(@"Size[a-zA-Z]+Tree2?\.cs"), 0),
+
             // left = node;
             // *left = node;
             (new Regex(@"([^*])(left|right|root) = ([a-zA-Z0-9]+);"), "$1*$2 = $3;", null, 0),
@@ -20,128 +36,58 @@ namespace CSharpToCppTranslator
             // (left)
             // (*left)
             (new Regex(@"(\(|, |= )(left|right|root|currentNode|parent)(\)|,|;)"), "$1*$2$3", null, 0),
-            // Integer<TElement>.Zero
+            // Zero
             // 0
-            (new Regex(@"(\W)Integer<([a-zA-Z0-9]+)>\.Zero(\W)"), "${1}0$3", null, 0),
-            // Integer<TElement>.One
+            (new Regex(@"(\W)(Zero|Integer<[a-zA-Z0-9]+>\.Zero)(\W)"), "${1}0$3", null, 0),
+            // One
             // 1
-            (new Regex(@"(\W)Integer<([a-zA-Z0-9]+)>\.One(\W)"), "${1}1$3", null, 0),
-            // Integer<TElement>.Two
+            (new Regex(@"(\W)(One|Integer<[a-zA-Z0-9]+>\.One)(\W)"), "${1}1$3", null, 0),
+            // Two
             // 2
-            (new Regex(@"(\W)Integer<([a-zA-Z0-9]+)>\.Two(\W)"), "${1}2$3", null, 0),
+            (new Regex(@"(\W)(Two|Integer<[a-zA-Z0-9]+>\.Two)(\W)"), "${1}2$3", null, 0),
             // (Integer<TElement>)
             // 
             (new Regex(@"\(Integer<[a-zA-Z0-9]+>\)"), "", null, 0),
             // Assert.Equal
             // Assert::Equal
             (new Regex(@"Assert\.Equal"), "Assert::Equal", null, 0),
-            // Comparer.Compare(first, second) < 0
-            // first < second
-            (new Regex(@"Comparer\.Compare\(([_a-zA-Z0-9\*]+), ([_a-zA-Z0-9\*]+)\) (\S{1,2}) 0"), "$1 $3 $2", null, 0),
-            // EqualityComparer<TreeElement>.Default.Equals(GetElement(node), default)
-            // iszero(GetElement(node), sizeof(TreeElement))
-            (new Regex(@"EqualityComparer<([a-zA-Z0-9]+)>\.Default\.Equals\(([_a-zA-Z0-9\*]+)\(([_a-zA-Z0-9\*]*)\), default\)"), "iszero($2($3), sizeof($1))", null, 0),
-            // !EqualityComparer.Equals(_allocated, 1)
-            // _allocated == 1
-            (new Regex(@"!EqualityComparer\.Equals\(([_a-zA-Z0-9\*]+), ([_a-zA-Z0-9\*]+)\)"), "$1 != $2", null, 0),
-            // EqualityComparer.Equals(lastNode, node)
-            // lastNode == node
-            (new Regex(@"EqualityComparer\.Equals\(([_a-zA-Z0-9\*]+), ([_a-zA-Z0-9\*]+)\)"), "$1 == $2", null, 0),
-            // EqualityComparer<TreeElement>.Default.Equals(GetElement(node), 0)
-            // GetElement(node) == 0
-            (new Regex(@"!EqualityComparer<[a-zA-Z0-9]+>\.Default\.Equals\(([_a-zA-Z0-9\*]+)\(([_a-zA-Z0-9\*]*)\), ([_a-zA-Z0-9\*]+)\)"), "$1($2) != $3", null, 0),
-            // EqualityComparer<TreeElement>.Default.Equals(GetElement(node), 0)
-            // GetElement(node) == 0
-            (new Regex(@"EqualityComparer<[a-zA-Z0-9]+>\.Default\.Equals\(([_a-zA-Z0-9\*]+)\(([_a-zA-Z0-9\*]*)\), ([_a-zA-Z0-9\*]+)\)"), "$1($2) == $3", null, 0),
-            // !AreEqual(parent, default)
-            // parent != 0
-            (new Regex(@"!AreEqual\(([a-zA-Z\*]+), default\)"), "$1 != 0", null, 0),
-            // AreEqual(node, default)
-            // node == 0
-            (new Regex(@"AreEqual\(([a-zA-Z\*]+), default\)"), "$1 == 0", null, 0),
-            // !AreEqual(size, expectedSize)
-            // size != expectedSize
-            (new Regex(@"!AreEqual\(([a-zA-Z\*]+), ([a-zA-Z\*]+)\)"), "$1 != $2", null, 0),
-            // AreEqual(baseElement, GetFirst())
-            // baseElement == GetFirst()
-            (new Regex(@"AreEqual\(([a-zA-Z\*]+), ([a-zA-Z\*]+)\(([a-zA-Z\*]*)\)\)"), "$1 == $2($3)", null, 0),
-            // AreEqual(elementNext, element)
-            // elementNext == element
-            (new Regex(@"AreEqual\(([a-zA-Z\*]+), ([a-zA-Z\*]+)\)"), "$1 == $2", null, 0),
-            // AreEqual(GetLeft(parent), nodeToDetach)
-            // GetLeft(parent) = nodeToDetach
-            (new Regex(@"AreEqual\(([a-zA-Z\*]+)\(([a-zA-Z\*]*)\), ([a-zA-Z\*]+)\)"), "$1($2) == $3", null, 0),
-            // !EqualToZero(root)
-            // root != 0
-            (new Regex(@"!EqualToZero\(([a-zA-Z\*]+)\)"), "$1 != 0", null, 0),
-            // EqualToZero(node)
-            // node == 0
-            (new Regex(@"(\W)EqualToZero\(([a-zA-Z\*]+)\)"), "$1$2 == 0", null, 0),
-            // Arithmetic.Add(leftSize, rightSize)
-            // leftSize + rightSize
-            (new Regex(@"Arithmetic\.Add\(([a-zA-Z0-9\*]+), ([a-zA-Z0-9\*]+)\)"), "$1 + $2", null, 0),
-            // Add(GetLeftSize(node), GetRightSize(node))
-            // GetLeftSize(node) + GetRightSize(node)
-            (new Regex(@"Add\(([a-zA-Z0-9\*]+)\(([a-zA-Z0-9 \+\*]+)\), ([a-zA-Z0-9\*]+)\(([a-zA-Z0-9 \+\*]+)\)\)"), "$1($2) + $3($4)", null, 0),
-            // Add(rightSize, 2)
-            // rightSize + 2
-            (new Regex(@"Add\(([a-zA-Z0-9\*]+), ([a-zA-Z0-9\*]+)\)"), "$1 + $2", null, 0),
-            // Arithmetic.Increment(leftSize + rightSize)
-            // leftSize + rightSize + 1
-            (new Regex(@"Arithmetic\.Increment\(([_a-zA-Z0-9 \+\*]+)\)"), "$1 + 1", null, 0),
-            // Increment(GetSize(node))
-            // GetSize(node) + 1
-            (new Regex(@"Increment\(([a-zA-Z0-9\*]+)\(([a-zA-Z0-9 \+\*]*)\)\)"), "$1($2) + 1", null, 0),
-            // Increment(GetLeftSize(node) + GetRightSize(node))
-            // GetLeftSize(node) + GetRightSize(node) + 1
-            (new Regex(@"Increment\(([a-zA-Z0-9\*]+)\(([a-zA-Z0-9 \+\*]*)\) \+ ([a-zA-Z0-9\*]+)\(([a-zA-Z0-9 \+\*]*)\)\)"), "$1($2) + $3($4) + 1", null, 0),
-            // Increment(rightLeftSize)
-            // rightLeftSize + 1
-            (new Regex(@"Increment\(([a-zA-Z0-9\*]+)\)"), "$1 + 1", null, 0),
-            // Arithmetic.Decrement(leftSize + rightSize)
-            // leftSize + rightSize - 1
-            (new Regex(@"Arithmetic\.Decrement\(([_a-zA-Z0-9 \+\*]+)\)"), "$1 - 1", null, 0),
-            // Decrement(GetSize(node))
-            // GetSize(node) - 1
-            (new Regex(@"Decrement\(([a-zA-Z0-9\*]+)\(([a-zA-Z0-9 \+\*]*)\)\)"), "$1($2) - 1", null, 0),
-            // Decrement(rightSize)
-            // rightSize - 1
-            (new Regex(@"Decrement\(([a-zA-Z0-9\*]+)\)"), "$1 - 1", null, 0),
-            // GreaterThan(rightLeftSize + 1, leftSize)
-            // (rightLeftSize + 1) > leftSize
-            (new Regex(@"GreaterThan\(([a-zA-Z0-9\*]+) \+ ([a-zA-Z0-9\*]+), ([a-zA-Z0-9\*]+)\)"), "($1 + $2) > $3", null, 0),
-            // GreaterThan(GetSizeOrZero(GetLeft(left)), decrementedRightSize)
-            // GetSizeOrZero(GetLeft(left)) > decrementedRightSize
-            (new Regex(@"GreaterThan\(([a-zA-Z0-9\*]+)\(([a-zA-Z0-9\*]+)\(([a-zA-Z0-9\*]*)\)\), ([a-zA-Z0-9\*]+)\)"), "$1($2($3)) > $4", null, 0),
-            // GreaterThan(GetSize(rootLeftNodeLeftNode), GetSize(rootRightNode))
-            // GetSize(rootLeftNodeLeftNode) > GetSize(rootRightNode)
-            (new Regex(@"GreaterThan\(([a-zA-Z0-9\*]+)\(([a-zA-Z0-9\*]+)\), ([a-zA-Z0-9\*]+)\(([a-zA-Z0-9\*]*)\)\)"), "$1($2) > $3($4)", null, 0),
-            // GreaterThan(leftSize, rightSize)
-            // leftSize > rightSize
-            (new Regex(@"GreaterThan\(([a-zA-Z0-9\*]+), ([a-zA-Z0-9\*]+)\)"), "$1 > $2", null, 0),
-            // GreaterThanZero(leftSize)
-            // leftSize > 0
-            (new Regex(@"GreaterThanZero\(([a-zA-Z0-9\*]+)\)"), "$1 > 0", null, 0),
-            // Zero
-            // 0
-            (new Regex(@"(\W)Zero(\W)"), "${1}0$2", null, 0),
-            // One
-            // 1
-            (new Regex(@"(\W)One(\W)"), "${1}1$2", null, 0),
-            // Two
-            // 2
-            (new Regex(@"(\W)Two(\W)"), "${1}2$2", null, 0),
-            // Just delete it
-            (new Regex(@"virtual TElement GetZero\(\)(.|\s)+V3068\s+}"), "", new Regex(@"GenericCollectionMethodsBase\.cs"), 0),
-            // Just delete it in SizedBinaryTreeMethodsBase.cs
-            (new Regex(@"[\t ]+void FixSizes(.|\s)+};"), "    };", new Regex(@"SizedBinaryTreeMethodsBase\.cs"), 0),
-            // Just delete it in SizedAndThreadedAVLBalancedTreeMethods.cs
-            (new Regex(@"void PrintNode(.|\s)+?}"), "", new Regex(@"SizedAndThreadedAVLBalancedTreeMethods\.cs"), 0),
+            // Comparer.Compare(firstArgument, secondArgument) < 0
+            // (firstArgument) < (secondArgument)
+            (new Regex(@"(?<separator>\W)Comparer\.Compare\((?<firstArgument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+), (?<secondArgument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+)\) (?<operator>\S{1,2}) 0"), "${separator}(${firstArgument}) ${operator} (${secondArgument})", null, 0),
+            // !AreEqual(firstArgument, secondArgument)
+            // (firstArgument) != (secondArgument)
+            (new Regex(@"(?<separator>\W)!(AreEqual|EqualityComparer\.Equals|EqualityComparer<[a-zA-Z0-9]+>\.Default\.Equals)\((?<firstArgument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+), (?<secondArgument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+)\)"), "${separator}(${firstArgument}) != (${secondArgument})", null, 0),
+            // AreEqual(firstArgument, secondArgument)
+            // (firstArgument) == (secondArgument)
+            (new Regex(@"(?<separator>\W)(AreEqual|EqualityComparer\.Equals|EqualityComparer<[a-zA-Z0-9]+>\.Default\.Equals)\((?<firstArgument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+), (?<secondArgument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+)\)"), "${separator}(${firstArgument}) == (${secondArgument})", null, 0),
+            // !EqualToZero(argument)
+            // (argument) != 0
+            (new Regex(@"(?<separator>\W)!EqualToZero\((?<argument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+)\)"), "${separator}(${argument}) != 0", null, 0),
+            // EqualToZero(argument)
+            // (argument) == 0
+            (new Regex(@"(?<separator>\W)EqualToZero\((?<argument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+)\)"), "${separator}(${argument}) == 0", null, 0),
+            // Add(firstArgument, secondArgument)
+            // (firstArgument) + (secondArgument)
+            (new Regex(@"(?<separator>\W)(Arithmetic\.Add|Add)\((?<firstArgument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+), (?<secondArgument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+)\)"), "${separator}(${firstArgument}) + (${secondArgument})", null, 0),
+            // Increment(argument)
+            // (argument) + 1
+            (new Regex(@"(?<separator>\W)(Arithmetic\.Increment|Increment)\((?<argument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+)\)"), "${separator}(${argument}) + 1", null, 0),
+            // Decrement(argument)
+            // (argument) - 1;
+            (new Regex(@"(?<separator>\W)(Arithmetic\.Decrement|Decrement)\((?<argument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+)\)"), "${separator}(${argument}) - 1", null, 0),
+            // GreaterThan(firstArgument, secondArgument)
+            // (firstArgument) > (secondArgument)
+            (new Regex(@"(?<separator>\W)GreaterThan\((?<firstArgument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+), (?<secondArgument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+)\)"), "${separator}(${firstArgument}) > (${secondArgument})", null, 0),
+            // GreaterThanZero(argument)
+            // (argument) > 0
+            //(new Regex(@"GreaterThanZero\(([a-zA-Z0-9\*]+)\)"), "$1 > 0", null, 0),
+            (new Regex(@"(?<separator>\W)GreaterThanZero\((?<argument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+)\)"), "${separator}(${argument}) > 0", null, 0),
+
             // GetFirst
-            // DoublyLinkedListMethodsBase<TElement>::GetFirst
+            // this->GetFirst
             (new Regex(@"([^>])(GetFirst|GetLast|GetPrevious|GetNext|GetSize|SetFirst|SetLast|SetPrevious|SetNext|SetSize|IncrementSize|DecrementSize)(\()"), "$1this->$2$3", new Regex(@"[a-zA-Z]+DoublyLinkedListMethods\.cs"), 1),
             // GetSize
-            // SizedBinaryTreeMethodsBase<TElement>::GetSize
+            // this->GetSize
             (new Regex(@"([^>])(GetLeftReference|GetRightReference|GetLeft|GetRight|SetLeft|SetRight|FirstIsToTheLeftOfSecond|FirstIsToTheRightOfSecond|GetLeftOrDefault|GetRightOrDefault|GetLeftSize|GetRightSize|GetSizeOrZero|FixSize|LeftRotate|RightRotate|ClearNode|GetSize|SetSize|IncrementSize|DecrementSize)(\()"), "$1this->$2$3", new Regex(@"Size[a-zA-Z]+Methods2?\.cs"), 1),
             // GetSizeOrZero
             // SizeBalancedTreeMethods<TElement>::GetSizeOrZero
@@ -218,6 +164,14 @@ namespace CSharpToCppTranslator
             // SizedBinaryTreeMethodsBase
             // Platform::Collections::Methods::Trees::SizedBinaryTreeMethodsBase
             (new Regex(@"\(SizedBinaryTreeMethodsBase<TElement>"), "(Platform::Collections::Methods::Trees::SizedBinaryTreeMethodsBase<TElement>&", new Regex(@"TestExtensions\.cs"), 0),
+
+
+            // (expression)
+            // expression
+            (new Regex(@"(\(| )\(([a-zA-Z0-9_\*:]+)\)(,| |;|\))"), "$1$2$3", null, 0),
+            // (method(expression))
+            // method(expression)
+            (new Regex(@"(?<firstSeparator>(\(| ))\((?<method>[a-zA-Z0-9_\->\*:]+)\((?<expression>((?<parenthesis>\()|(?<-parenthesis>\))|[a-zA-Z0-9_\->\*:]*)+)(?(parenthesis)(?!))\)\)(?<lastSeparator>(,| |;|\)))"), "${firstSeparator}${method}(${expression})${lastSeparator}", null, 0),
         }.Cast<ISubstitutionRule>().ToList();
 
         public CustomCSharpToCppTransformer() : base(Rules) { }
