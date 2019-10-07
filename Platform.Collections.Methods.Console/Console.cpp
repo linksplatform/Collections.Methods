@@ -15,6 +15,15 @@ bool iszero(void* ptr, int bytes)
     return true;
 }
 
+class Program
+{
+public:
+    static void Main(char* args[])
+    {
+        printf("Hello, world!\n");
+    }
+};
+
 class Assert
 {
 public:
