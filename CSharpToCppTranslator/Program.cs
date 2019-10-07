@@ -7,7 +7,7 @@ namespace CSharpToCppTranslator
     {
         static int Main(string[] args)
         {
-            var csharpToCpp = new CSharpToCppTransformer();
+            var csharpToCpp = new CustomCSharpToCppTransformer();
             var cli = new TransformerCLI(csharpToCpp);
             if (cli.Run(args, out string message))
             {
