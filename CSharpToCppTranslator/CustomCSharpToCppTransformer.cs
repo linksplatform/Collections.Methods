@@ -9,7 +9,7 @@ namespace CSharpToCppTranslator
 {
     public class CustomCSharpToCppTransformer : CSharpToCppTransformer
     {
-        public static readonly IList<ISubstitutionRule> Rules = new List<SubstitutionRule>()
+        public static readonly IList<ISubstitutionRule> Rules = new List<SubstitutionRule>
         {
             // // ...
             // 
