@@ -10,12 +10,7 @@ namespace CSharpToCppTranslator
     public class CustomCSharpToCppTransformer : CSharpToCppTransformer
     {
         public static readonly IList<ISubstitutionRule> Rules = new List<SubstitutionRule>
-        {
-            // // ...
-            // 
-            (new Regex(@"(\r?\n)?[ \t]+//+.+"), "", null, 0),
-
-            
+        {   
             // Just delete it in GenericCollectionMethodsBase.cs
             (new Regex(@"virtual TElement GetZero(.|\s)+Increment\(One\)(.|\s)+?}"), "", new Regex(@"GenericCollectionMethodsBase\.cs"), 0),
             // Just delete it in SizedBinaryTreeMethodsBase.cs
@@ -164,14 +159,6 @@ namespace CSharpToCppTranslator
             // SizedBinaryTreeMethodsBase
             // Platform::Collections::Methods::Trees::SizedBinaryTreeMethodsBase
             (new Regex(@"\(SizedBinaryTreeMethodsBase<TElement>"), "(Platform::Collections::Methods::Trees::SizedBinaryTreeMethodsBase<TElement>&", new Regex(@"TestExtensions\.cs"), 0),
-
-
-            // (expression)
-            // expression
-            (new Regex(@"(\(| )\(([a-zA-Z0-9_\*:]+)\)(,| |;|\))"), "$1$2$3", null, 0),
-            // (method(expression))
-            // method(expression)
-            (new Regex(@"(?<firstSeparator>(\(| ))\((?<method>[a-zA-Z0-9_\->\*:]+)\((?<expression>((?<parenthesis>\()|(?<-parenthesis>\))|[a-zA-Z0-9_\->\*:]*)+)(?(parenthesis)(?!))\)\)(?<lastSeparator>(,| |;|\)))"), "${firstSeparator}${method}(${expression})${lastSeparator}", null, 0),
         }.Cast<ISubstitutionRule>().ToList();
 
         public CustomCSharpToCppTransformer() : base(Rules) { }
