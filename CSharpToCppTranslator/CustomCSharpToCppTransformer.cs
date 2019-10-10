@@ -7,9 +7,8 @@ using Platform.RegularExpressions.Transformer.CSharpToCpp;
 
 namespace CSharpToCppTranslator
 {
-    public class CustomCSharpToCppTransformer : CSharpToCppTransformer // Transformer
+    public class CustomCSharpToCppTransformer : Transformer // CSharpToCppTransformer
     {
-        /*
         public static readonly IList<ISubstitutionRule> FirstStage = new List<SubstitutionRule>
         {
             // // ...
@@ -46,11 +45,11 @@ namespace CSharpToCppTranslator
             // (
             (new Regex(@"\(this "), "(", null, 0),
             // Func<TElement> treeCount
-            // TElement(*treeCount)()
-            (new Regex(@"Func<([a-zA-Z0-9]+)> ([a-zA-Z0-9]+)"), "$1(*$2)()", null, 0),
+            // std::function<TElement()> treeCount
+            (new Regex(@"Func<([a-zA-Z0-9]+)> ([a-zA-Z0-9]+)"), "std::function<$1()> $2", null, 0),
             // Action<TElement> free
-            // void (*free)(TElement)
-            (new Regex(@"Action<([a-zA-Z0-9]+)> ([a-zA-Z0-9]+)"), "void (*$2)($1)", null, 0),
+            // std::function<void(TElement)> free
+            (new Regex(@"Action<([a-zA-Z0-9]+)> ([a-zA-Z0-9]+)"), "std::function<void($1)> $2", null, 0),
             // private const int MaxPath = 92;
             // static const int MaxPath = 92;
             (new Regex(@"private const ([a-zA-Z0-9]+) ([_a-zA-Z0-9]+) = ([a-zA-Z0-9]+);"), "static const $1 $2 = $3;", null, 0),
@@ -85,8 +84,8 @@ namespace CSharpToCppTranslator
             // { return Integer<TElement>.Zero; }
             (new Regex(@"\)\s+=>\s+([^\r\n;]+?);"), ") { return $1; }", null, 0),
             // () { return avlTree.Count; }
-            // []()-> auto { return avlTree.Count; }
-            (new Regex(@", \(\) { return ([^;]+); }"), ", []()-> auto { return $1; }", null, 0),
+            // [&]()-> auto { return avlTree.Count; }
+            (new Regex(@", \(\) { return ([^;]+); }"), ", [&]()-> auto { return $1; }", null, 0),
             // Count => GetSizeOrZero(Root);
             // GetCount() { return GetSizeOrZero(Root); }
             (new Regex(@"([A-Z][a-z]+)\s+=>\s+([^;]+);"), "Get$1() { return $2; }", null, 0),
@@ -133,7 +132,6 @@ namespace CSharpToCppTranslator
             // class SizedBinaryTreeMethodsBase : public GenericCollectionMethodsBase
             (new Regex(@"class ([a-zA-Z0-9]+) : ([a-zA-Z0-9]+)"), "class $1 : public $2", null, 0),
         }.Cast<ISubstitutionRule>().ToList();
-        */
 
         public static readonly IList<ISubstitutionRule> Rules = new List<SubstitutionRule>
         {   
@@ -267,15 +265,21 @@ namespace CSharpToCppTranslator
             // auto sizeBalancedTree = new SizeBalancedTree<uint>(10000);
             // SizeBalancedTree<uint, 10000> sizeBalancedTree;
             (new Regex(@"auto ([a-zA-Z0-9]+) = new ([a-zA-Z0-9]+)<([_a-zA-Z0-9:]+)>\(([0-9]+)\);"), "$2<$3, $4> $1;", new Regex(@"TreesTests\.cs"), 0),
+            // &sizeBalancedTree2->Root
+            // &sizeBalancedTree2.Root
+            (new Regex(@"&([a-zA-Z0-9]+)->([a-zA-Z0-9]+)"), "&$1.$2", new Regex(@"TreesTests\.cs"), 0),
+            // sizeBalancedTree.Count
+            // sizeBalancedTree.GetCount()
+            (new Regex(@"([a-zA-Z0-9]+).Count"), "$1.GetCount()", new Regex(@"TreesTests\.cs"), 0),
             // sizeBalancedTree2.Allocate
-            // []()-> auto { return sizeBalancedTree2.Allocate(); }
-            (new Regex(@"(\(|, )([a-zA-Z0-9]+)\.(Allocate)"), "$1[]()-> auto { return $2.$3(); }", new Regex(@"TreesTests\.cs"), 0),
+            // [&]()-> auto { return sizeBalancedTree2.Allocate(); }
+            (new Regex(@"(\(|, )([a-zA-Z0-9]+)\.(Allocate)"), "$1[&]()-> auto { return $2.$3(); }", new Regex(@"TreesTests\.cs"), 0),
             // sizeBalancedTree2.Free
-            // [](std::uint32_t link)-> auto { sizeBalancedTree2.Free(link); }
-            (new Regex(@"(\(|, )([a-zA-Z0-9]+)\.(Free)"), "$1[](std::uint32_t link)-> auto { $2.$3(link); }", new Regex(@"TreesTests\.cs"), 0),
+            // [&](std::uint32_t link)-> auto { sizeBalancedTree2.Free(link); }
+            (new Regex(@"(\(|, )([a-zA-Z0-9]+)\.(Free)"), "$1[&](std::uint32_t link)-> auto { $2.$3(link); }", new Regex(@"TreesTests\.cs"), 0),
             // sizeBalancedTree.TestMultipleCreationsAndDeletions(
             // TestExtensions::TestMultipleCreationsAndDeletions(sizeBalancedTree, 
-            (new Regex(@"([a-zA-Z0-9]+)\.(TestMultipleCreationsAndDeletions|TestMultipleRandomCreationsAndDeletions)\("), "TestExtensions::$2($1, ", new Regex(@"TreesTests\.cs"), 0),
+            (new Regex(@"([a-zA-Z0-9]+)\.(TestMultipleCreationsAndDeletions|TestMultipleRandomCreationsAndDeletions)\("), "TestExtensions::$2<std::uint32_t>($1, ", new Regex(@"TreesTests\.cs"), 0),
             // auto random = new System.Random(0);
             // 
             (new Regex(@"[\r\n]{1,4}\s+auto random = new System\.Random\(0\);"), "", new Regex(@"TestExtensions\.cs"), 0),
@@ -299,7 +303,6 @@ namespace CSharpToCppTranslator
             (new Regex(@"\(SizedBinaryTreeMethodsBase<TElement>"), "(Platform::Collections::Methods::Trees::SizedBinaryTreeMethodsBase<TElement>&", new Regex(@"TestExtensions\.cs"), 0),
         }.Cast<ISubstitutionRule>().ToList();
 
-        /*
         public static readonly IList<ISubstitutionRule> LastStage = new List<SubstitutionRule>
         {
             //// (expression)
@@ -327,10 +330,9 @@ namespace CSharpToCppTranslator
             // class
             (new Regex(@"(\S[\r\n]{1,2})?[\r\n]+class"), "$1class", null, 0),
         }.Cast<ISubstitutionRule>().ToList();
-        */
 
-        public CustomCSharpToCppTransformer() : base(Rules) { }
+        //public CustomCSharpToCppTransformer() : base(Rules) { }
 
-        //public CustomCSharpToCppTransformer() : base(FirstStage.Concat(Rules).Concat(LastStage).ToList()) { }
+        public CustomCSharpToCppTransformer() : base(FirstStage.Concat(Rules).Concat(LastStage).ToList()) { }
     }
 }
