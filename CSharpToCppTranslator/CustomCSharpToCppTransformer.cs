@@ -7,8 +7,9 @@ using Platform.RegularExpressions.Transformer.CSharpToCpp;
 
 namespace CSharpToCppTranslator
 {
-    public class CustomCSharpToCppTransformer : Transformer // CSharpToCppTransformer
+    public class CustomCSharpToCppTransformer : CSharpToCppTransformer // Transformer
     {
+        /*
         public static readonly IList<ISubstitutionRule> FirstStage = new List<SubstitutionRule>
         {
             // // ...
@@ -165,6 +166,7 @@ namespace CSharpToCppTranslator
             // GetElement(node)->Right
             (new Regex(@"([a-zA-Z0-9]+)\(([a-zA-Z0-9\*]+)\)\.([a-zA-Z0-9]+)"), "$1($2)->$3", null, 0),
         }.Cast<ISubstitutionRule>().ToList();
+        */
 
         public static readonly IList<ISubstitutionRule> Rules = new List<SubstitutionRule>
         {   
@@ -301,6 +303,7 @@ namespace CSharpToCppTranslator
             (new Regex(@"\(SizedBinaryTreeMethodsBase<TElement>"), "(Platform::Collections::Methods::Trees::SizedBinaryTreeMethodsBase<TElement>&", new Regex(@"TestExtensions\.cs"), 0),
         }.Cast<ISubstitutionRule>().ToList();
 
+        /*
         public static readonly IList<ISubstitutionRule> LastStage = new List<SubstitutionRule>
         {
             // (expression)
@@ -328,9 +331,10 @@ namespace CSharpToCppTranslator
             // class
             (new Regex(@"(\S[\r\n]{1,2})?[\r\n]+class"), "$1class", null, 0),
         }.Cast<ISubstitutionRule>().ToList();
+        */
 
-        //public CustomCSharpToCppTransformer() : base(Rules) { }
+        public CustomCSharpToCppTransformer() : base(Rules) { }
 
-        public CustomCSharpToCppTransformer() : base(FirstStage.Concat(Rules).Concat(LastStage).ToList()) { }
+        //public CustomCSharpToCppTransformer() : base(FirstStage.Concat(Rules).Concat(LastStage).ToList()) { }
     }
 }
