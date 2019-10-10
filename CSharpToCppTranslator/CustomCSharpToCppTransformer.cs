@@ -131,10 +131,6 @@ namespace CSharpToCppTranslator
             // class SizedBinaryTreeMethodsBase : GenericCollectionMethodsBase
             // class SizedBinaryTreeMethodsBase : public GenericCollectionMethodsBase
             (new Regex(@"class ([a-zA-Z0-9]+) : ([a-zA-Z0-9]+)"), "class $1 : public $2", null, 0),
-        }.Cast<ISubstitutionRule>().ToList();
-
-        public static readonly IList<ISubstitutionRule> Rules = new List<SubstitutionRule>
-        {   
             // Insert scope borders.
             // ref TElement root
             // ~!root!~ref TElement root
@@ -168,8 +164,10 @@ namespace CSharpToCppTranslator
             // GetElement(node).Right
             // GetElement(node)->Right
             (new Regex(@"([a-zA-Z0-9]+)\(([a-zA-Z0-9\*]+)\)\.([a-zA-Z0-9]+)"), "$1($2)->$3", null, 0),
+        }.Cast<ISubstitutionRule>().ToList();
 
-
+        public static readonly IList<ISubstitutionRule> Rules = new List<SubstitutionRule>
+        {   
             // Just delete it in GenericCollectionMethodsBase.cs
             (new Regex(@"virtual TElement GetZero(.|\s)+Increment\(One\)(.|\s)+?}"), "", new Regex(@"GenericCollectionMethodsBase\.cs"), 0),
             // Just delete it in SizedBinaryTreeMethodsBase.cs
@@ -305,11 +303,11 @@ namespace CSharpToCppTranslator
 
         public static readonly IList<ISubstitutionRule> LastStage = new List<SubstitutionRule>
         {
-            //// (expression)
-            //// expression
+            // (expression)
+            // expression
             (new Regex(@"(\(| )\(([a-zA-Z0-9_\*:]+)\)(,| |;|\))"), "$1$2$3", null, 0),
-            //// (method(expression))
-            //// method(expression)
+            // (method(expression))
+            // method(expression)
             (new Regex(@"(?<firstSeparator>(\(| ))\((?<method>[a-zA-Z0-9_\->\*:]+)\((?<expression>((?<parenthesis>\()|(?<-parenthesis>\))|[a-zA-Z0-9_\->\*:]*)+)(?(parenthesis)(?!))\)\)(?<lastSeparator>(,| |;|\)))"), "${firstSeparator}${method}(${expression})${lastSeparator}", null, 0),
             // return ref _elements[node];
             // return &_elements[node];
