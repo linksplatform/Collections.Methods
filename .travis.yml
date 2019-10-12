@@ -8,7 +8,7 @@ before_install:
   - export TRAVIS_REPO_NAME=$(echo "${TRAVIS_REPO_SLUG#*/}" | sed 's/.*/\u&/')
   - export SOURCE_BRANCH="master"
 script:
-  - dotnet sln "Platform.$TRAVIS_REPO_NAME.sln" remove **.vcxproj
+  - dotnet sln "Platform.$TRAVIS_REPO_NAME.sln" remove **/**.vcxproj
   - dotnet build -c Release
   - dotnet test -c Release -f netcoreapp3.0
 after_success:
