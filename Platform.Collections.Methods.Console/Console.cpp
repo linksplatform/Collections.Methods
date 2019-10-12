@@ -29,22 +29,13 @@ public:
     }
 };
 
-#include "GenericCollectionMethodsBase.cpp"
+#include <Platform.Collections.Methods.h>
 
-#include "DoublyLinkedListMethodsBase.cpp"
-#include "CircularDoublyLinkedListMethods.cpp"
-#include "OpenDoublyLinkedListMethods.cpp"
-
-#include "SizedBinaryTreeMethodsBase.cpp"
-#include "SizeBalancedTreeMethods.cpp"
-#include "SizeBalancedTreeMethods2.cpp"
-#include "SizedAndThreadedAVLBalancedTreeMethods.cpp"
-
-#include "SizeBalancedTree.cpp"
-#include "SizeBalancedTree2.cpp"
-#include "SizedAndThreadedAVLBalancedTree.cpp"
-#include "TestExtensions.cpp"
-#include "TreesTests.cpp"
+#include <SizeBalancedTree.cpp>
+#include <SizeBalancedTree2.cpp>
+#include <SizedAndThreadedAVLBalancedTree.cpp>
+#include <TestExtensions.cpp>
+#include <TreesTests.cpp>
 
 int main()
 {
