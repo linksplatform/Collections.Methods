@@ -17,9 +17,6 @@ namespace CSharpToCppTranslator
             // #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
             // 
             (new Regex(@"^\s*?\#pragma[\sa-zA-Z0-9]+$"), "", null, 0),
-            // [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            // 
-            (new Regex(@"$\s+\[MethodImpl\(MethodImplOptions\.AggressiveInlining\)\]"), "", null, 0),
             // {\n\n\n
             // {
             (new Regex(@"{\s+[\r\n]+"), "{" + Environment.NewLine, null, 0),
@@ -325,6 +322,9 @@ namespace CSharpToCppTranslator
             // #if USEARRAYPOOL\r\n#endif
             //
             (new Regex(@"#if [a-zA-Z0-9]+\s+#endif"), "", null, 0),
+            // [Fact]
+            // 
+            (new Regex(@"(?<firstNewLine>\r?\n|\A)(?<indent>[^\n]+)\[[a-zA-Z0-9]+(\((?<expression>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+)(?(parenthesis)(?!))\))?\]\s*(\r?\n\k<indent>)?"), "${firstNewLine}${indent}", null, 5),
             // \n ... namespace
             // namespace
             (new Regex(@"(\S[\r\n]{1,2})?[\r\n]+namespace"), "$1namespace", null, 0),
