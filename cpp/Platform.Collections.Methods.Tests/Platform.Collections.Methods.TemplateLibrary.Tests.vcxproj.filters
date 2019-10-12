@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Platform.Collections.Methods.TemplateLibrary.Tests.cpp">
+    <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="pch.cpp">
+    <ClCompile Include="AllTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

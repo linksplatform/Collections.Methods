@@ -7,9 +7,8 @@ using Platform.RegularExpressions.Transformer.CSharpToCpp;
 
 namespace CSharpToCppTranslator
 {
-    public class CustomCSharpToCppTransformer : CSharpToCppTransformer // Transformer
+    public class CustomCSharpToCppTransformer : Transformer // CSharpToCppTransformer
     {
-        /*
         public static readonly IList<ISubstitutionRule> FirstStage = new List<SubstitutionRule>
         {
             // // ...
@@ -21,9 +20,6 @@ namespace CSharpToCppTranslator
             // [MethodImpl(MethodImplOptions.AggressiveInlining)]
             // 
             (new Regex(@"$\s+\[MethodImpl\(MethodImplOptions\.AggressiveInlining\)\]"), "", null, 0),
-            // [Fact]
-            // 
-            (new Regex(@"$\s+\[Fact\]"), "", null, 0),
             // {\n\n\n
             // {
             (new Regex(@"{\s+[\r\n]+"), "{" + Environment.NewLine, null, 0),
@@ -166,10 +162,16 @@ namespace CSharpToCppTranslator
             // GetElement(node)->Right
             (new Regex(@"([a-zA-Z0-9]+)\(([a-zA-Z0-9\*]+)\)\.([a-zA-Z0-9]+)"), "$1($2)->$3", null, 0),
         }.Cast<ISubstitutionRule>().ToList();
-        */
 
         public static readonly IList<ISubstitutionRule> Rules = new List<SubstitutionRule>
         {   
+            // [Fact]\npublic static void SizeBalancedTreeMultipleAttachAndDetachTest()
+            // TEST_METHOD(SizeBalancedTreeMultipleAttachAndDetachTest)
+            (new Regex(@"\[Fact\][\s\n]+(static )?void ([a-zA-Z0-9]+)\(\)"), "TEST_METHOD($2)", null, 0),
+            // class TreesTests
+            // TEST_CLASS(TreesTests)
+            (new Regex(@"class ([a-zA-Z0-9]+)Tests"), "TEST_CLASS($1)", null, 0),
+
             // Just delete it in GenericCollectionMethodsBase.cs
             (new Regex(@"virtual TElement GetZero(.|\s)+Increment\(One\)(.|\s)+?}"), "", new Regex(@"GenericCollectionMethodsBase\.cs"), 0),
             // Just delete it in SizedBinaryTreeMethodsBase.cs
@@ -193,8 +195,8 @@ namespace CSharpToCppTranslator
             // 
             (new Regex(@"\(Integer<[a-zA-Z0-9]+>\)"), "", null, 0),
             // Assert.Equal
-            // Assert::Equal
-            (new Regex(@"Assert\.Equal"), "Assert::Equal", null, 0),
+            // Assert::AreEqual
+            (new Regex(@"Assert\.Equal"), "Assert::AreEqual", null, 0),
             // Comparer.Compare(firstArgument, secondArgument) < 0
             // (firstArgument) < (secondArgument)
             (new Regex(@"(?<separator>\W)Comparer\.Compare\((?<firstArgument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+), (?<secondArgument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+)\) (?<operator>\S{1,2}) 0"), "${separator}(${firstArgument}) ${operator} (${secondArgument})", null, 0),
@@ -203,7 +205,7 @@ namespace CSharpToCppTranslator
             (new Regex(@"(?<separator>\W)!(AreEqual|EqualityComparer\.Equals|EqualityComparer<[a-zA-Z0-9]+>\.Default\.Equals)\((?<firstArgument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+), (?<secondArgument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+)\)"), "${separator}(${firstArgument}) != (${secondArgument})", null, 0),
             // AreEqual(firstArgument, secondArgument)
             // (firstArgument) == (secondArgument)
-            (new Regex(@"(?<separator>\W)(AreEqual|EqualityComparer\.Equals|EqualityComparer<[a-zA-Z0-9]+>\.Default\.Equals)\((?<firstArgument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+), (?<secondArgument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+)\)"), "${separator}(${firstArgument}) == (${secondArgument})", null, 0),
+            (new Regex(@"(?<separator>\W)(?<!::)(AreEqual|EqualityComparer\.Equals|EqualityComparer<[a-zA-Z0-9]+>\.Default\.Equals)\((?<firstArgument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+), (?<secondArgument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+)\)"), "${separator}(${firstArgument}) == (${secondArgument})", null, 0),
             // !EqualToZero(argument)
             // (argument) != 0
             (new Regex(@"(?<separator>\W)!EqualToZero\((?<argument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+)\)"), "${separator}(${argument}) != 0", null, 0),
@@ -303,7 +305,6 @@ namespace CSharpToCppTranslator
             (new Regex(@"\(SizedBinaryTreeMethodsBase<TElement>"), "(Platform::Collections::Methods::Trees::SizedBinaryTreeMethodsBase<TElement>&", new Regex(@"TestExtensions\.cs"), 0),
         }.Cast<ISubstitutionRule>().ToList();
 
-        /*
         public static readonly IList<ISubstitutionRule> LastStage = new List<SubstitutionRule>
         {
             // (expression)
@@ -331,10 +332,9 @@ namespace CSharpToCppTranslator
             // class
             (new Regex(@"(\S[\r\n]{1,2})?[\r\n]+class"), "$1class", null, 0),
         }.Cast<ISubstitutionRule>().ToList();
-        */
 
-        public CustomCSharpToCppTransformer() : base(Rules) { }
+        //public CustomCSharpToCppTransformer() : base(Rules) { }
 
-        //public CustomCSharpToCppTransformer() : base(FirstStage.Concat(Rules).Concat(LastStage).ToList()) { }
+        public CustomCSharpToCppTransformer() : base(FirstStage.Concat(Rules).Concat(LastStage).ToList()) { }
     }
 }

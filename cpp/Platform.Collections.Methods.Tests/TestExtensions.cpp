@@ -13,7 +13,7 @@
                     auto node = allocate();
                     tree.Attach(root, node);
                     currentCount++;
-                    Assert::Equal(currentCount, (int)treeCount());
+                    Assert::AreEqual(currentCount, (int)treeCount());
                 }
                 for (auto i = 1; i <= N; i++)
                 {
@@ -23,7 +23,7 @@
                         tree.Detach(root, node);
                         free(node);
                         currentCount--;
-                        Assert::Equal(currentCount, (int)treeCount());
+                        Assert::AreEqual(currentCount, (int)treeCount());
                     }
                 }
             }
@@ -43,7 +43,7 @@
                         added.insert(node);
                         tree.Attach(root, node);
                         currentCount++;
-                        Assert::Equal(currentCount, (int)treeCount());
+                        Assert::AreEqual(currentCount, (int)treeCount());
                     }
                 }
                 for (auto i = 1; i <= N; i++)
@@ -53,7 +53,7 @@
                     {
                         tree.Detach(root, node);
                         currentCount--;
-                        Assert::Equal(currentCount, (int)treeCount());
+                        Assert::AreEqual(currentCount, (int)treeCount());
                         added.erase(node);
                     }
                 }
