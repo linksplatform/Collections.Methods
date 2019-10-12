@@ -4,7 +4,7 @@
 
 | [![NuGet Version and Downloads count](https://buildstats.info/nuget/Platform.Collections.Methods)](https://www.nuget.org/packages/Platform.Collections.Methods) | C# |
 |-|-|
-| [![NuGet Version and Downloads count](https://buildstats.info/nuget/Platform.Collections.Methods.TemplateLibrary)](https://www.nuget.org/packages/Platform.Collections.Methods.TemplateLibrary)  | C++  |
+| [![NuGet Version and Downloads count](https://buildstats.info/nuget/Platform.Collections.Methods.TemplateLibrary)](https://www.nuget.org/packages/Platform.Collections.Methods.TemplateLibrary)  | __C++__  |
 
 # [Collections.Methods](https://github.com/linksplatform/Collections.Methods)
 
