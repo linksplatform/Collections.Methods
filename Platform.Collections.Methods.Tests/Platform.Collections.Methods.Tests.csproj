@@ -20,4 +20,12 @@
     <ProjectReference Include="..\Platform.Collections.Methods\Platform.Collections.Methods.csproj" />
   </ItemGroup>
 
+  <ItemGroup Condition="$(TargetFramework.StartsWith('netcoreapp'))">
+    <CSharpFiles Include="**\*.cs" />
+  </ItemGroup>
+
+  <Target Name="CSharpFilesTransform" BeforeTargets="BeforeBuild" Condition="$(TargetFramework.StartsWith('netcoreapp'))">
+    <Exec WorkingDirectory="$(ProjectDir)" IgnoreExitCode="true" Command="..\CSharpToCppTranslator\bin\$(Configuration)\netcoreapp3.0\CSharpToCppTranslator.exe %(CSharpFiles.Identity) $(SolutionDir)cpp\Platform.Collections.Methods.Tests\" />
+  </Target>
+
 </Project>

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>LinksPlatform's Platform.Collections.Methods Class Library</Description>
+    <Description> </Description>
     <Copyright>Konstantin Diachenko</Copyright>
     <AssemblyTitle>Platform.Collections.Methods</AssemblyTitle>
     <VersionPrefix>0.1.0</VersionPrefix>
@@ -32,12 +32,20 @@ Tests added.
 This release is not backward compatible with previous 0.0.7 release.</PackageReleaseNotes>
   </PropertyGroup>
 
-  <ItemGroup Condition="$(TargetFramework.StartsWith('net4')) AND '$(MSBuildRuntimeType)' == 'Core' AND '$(OS)' != 'Windows_NT'">
+  <ItemGroup Condition="$(TargetFramework.StartsWith('net4')) AND '$(MSBuildRuntimeType)' == 'Core' AND '$(OS)' != 'Windows_NT'"> 
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0-preview.2" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Platform.Numbers" Version="0.2.1" />
   </ItemGroup>
+
+  <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard'))">
+    <CSharpFiles Include="**\*.cs" />
+  </ItemGroup>
+
+  <Target Name="CSharpFilesTransform" BeforeTargets="BeforeBuild" Condition="$(TargetFramework.StartsWith('netstandard'))">
+    <Exec WorkingDirectory="$(ProjectDir)" IgnoreExitCode="true" Command="..\CSharpToCppTranslator\bin\$(Configuration)\netcoreapp3.0\CSharpToCppTranslator.exe %(CSharpFiles.Identity) $(SolutionDir)cpp\Platform.Collections.Methods\" />
+  </Target>
 
 </Project>
