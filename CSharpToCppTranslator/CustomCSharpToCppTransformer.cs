@@ -172,9 +172,9 @@ namespace CSharpToCppTranslator
             // Just delete it in GenericCollectionMethodsBase.cs
             (new Regex(@"virtual TElement GetZero(.|\s)+Increment\(One\)(.|\s)+?}"), "", new Regex(@"GenericCollectionMethodsBase\.cs"), 0),
             // Just delete it in SizedBinaryTreeMethodsBase.cs
-            (new Regex(@"[\t ]+void FixSizes(.|\s)+};"), "    };", new Regex(@"SizedBinaryTreeMethodsBase\.cs"), 0),
+            (new Regex(@"\r?\n[\t ]+void FixSizes(.|\s)+};"), "    };", new Regex(@"SizedBinaryTreeMethodsBase\.cs"), 0),
             // Just delete it in SizedAndThreadedAVLBalancedTreeMethods.cs
-            (new Regex(@"void PrintNode(.|\s)+?}"), "", new Regex(@"SizedAndThreadedAVLBalancedTreeMethods\.cs"), 0),
+            (new Regex(@"\r?\n[\t ]+void PrintNode(.|\s)+?}[\t ]*\r?\n"), "", new Regex(@"SizedAndThreadedAVLBalancedTreeMethods\.cs"), 0),
 
             // EqualityComparer<TreeElement>.Default.Equals(GetElement(node), default)
             // iszero(GetElement(node), sizeof(TreeElement))

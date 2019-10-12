@@ -161,6 +161,5 @@
         }
 
         virtual void DetachCore(TElement* root, TElement node) = 0;
-
     };
 }

@@ -25,7 +25,6 @@
             return false;
         }
 
-        
 
         void IncrementBalance(TElement node) { SetBalance(node, (std::int8_t)(GetBalance(node) + 1)); }
 
