@@ -1,6 +1,55 @@
 ### YamlMime:XRefMap
 sorted: true
 references:
+- uid: CSharpToCppTranslator
+  name: CSharpToCppTranslator
+  href: api/CSharpToCppTranslator.html
+  commentId: N:CSharpToCppTranslator
+  fullName: CSharpToCppTranslator
+  nameWithType: CSharpToCppTranslator
+- uid: CSharpToCppTranslator.CustomCSharpToCppTransformer
+  name: CustomCSharpToCppTransformer
+  href: api/CSharpToCppTranslator.CustomCSharpToCppTransformer.html
+  commentId: T:CSharpToCppTranslator.CustomCSharpToCppTransformer
+  fullName: CSharpToCppTranslator.CustomCSharpToCppTransformer
+  nameWithType: CustomCSharpToCppTransformer
+- uid: CSharpToCppTranslator.CustomCSharpToCppTransformer.#ctor
+  name: CustomCSharpToCppTransformer()
+  href: api/CSharpToCppTranslator.CustomCSharpToCppTransformer.html#CSharpToCppTranslator_CustomCSharpToCppTransformer__ctor
+  commentId: M:CSharpToCppTranslator.CustomCSharpToCppTransformer.#ctor
+  fullName: CSharpToCppTranslator.CustomCSharpToCppTransformer.CustomCSharpToCppTransformer()
+  nameWithType: CustomCSharpToCppTransformer.CustomCSharpToCppTransformer()
+- uid: CSharpToCppTranslator.CustomCSharpToCppTransformer.#ctor*
+  name: CustomCSharpToCppTransformer
+  href: api/CSharpToCppTranslator.CustomCSharpToCppTransformer.html#CSharpToCppTranslator_CustomCSharpToCppTransformer__ctor_
+  commentId: Overload:CSharpToCppTranslator.CustomCSharpToCppTransformer.#ctor
+  isSpec: "True"
+  fullName: CSharpToCppTranslator.CustomCSharpToCppTransformer.CustomCSharpToCppTransformer
+  nameWithType: CustomCSharpToCppTransformer.CustomCSharpToCppTransformer
+- uid: CSharpToCppTranslator.CustomCSharpToCppTransformer.FirstStage
+  name: FirstStage
+  href: api/CSharpToCppTranslator.CustomCSharpToCppTransformer.html#CSharpToCppTranslator_CustomCSharpToCppTransformer_FirstStage
+  commentId: F:CSharpToCppTranslator.CustomCSharpToCppTransformer.FirstStage
+  fullName: CSharpToCppTranslator.CustomCSharpToCppTransformer.FirstStage
+  nameWithType: CustomCSharpToCppTransformer.FirstStage
+- uid: CSharpToCppTranslator.CustomCSharpToCppTransformer.LastStage
+  name: LastStage
+  href: api/CSharpToCppTranslator.CustomCSharpToCppTransformer.html#CSharpToCppTranslator_CustomCSharpToCppTransformer_LastStage
+  commentId: F:CSharpToCppTranslator.CustomCSharpToCppTransformer.LastStage
+  fullName: CSharpToCppTranslator.CustomCSharpToCppTransformer.LastStage
+  nameWithType: CustomCSharpToCppTransformer.LastStage
+- uid: CSharpToCppTranslator.CustomCSharpToCppTransformer.Rules
+  name: Rules
+  href: api/CSharpToCppTranslator.CustomCSharpToCppTransformer.html#CSharpToCppTranslator_CustomCSharpToCppTransformer_Rules
+  commentId: F:CSharpToCppTranslator.CustomCSharpToCppTransformer.Rules
+  fullName: CSharpToCppTranslator.CustomCSharpToCppTransformer.Rules
+  nameWithType: CustomCSharpToCppTransformer.Rules
+- uid: CSharpToCppTranslator.Program
+  name: Program
+  href: api/CSharpToCppTranslator.Program.html
+  commentId: T:CSharpToCppTranslator.Program
+  fullName: CSharpToCppTranslator.Program
+  nameWithType: Program
 - uid: Platform.Collections.Methods
   name: Platform.Collections.Methods
   href: api/Platform.Collections.Methods.html

@@ -18,7 +18,43 @@
       "output": {
         ".html": {
           "relative_path": "README.html",
-          "hash": "ati4AnFmk64yi6O9oFe5+Q=="
+          "hash": "kzxQmjiwUxX0lr1IZcNU0Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/CSharpToCppTranslator.CustomCSharpToCppTransformer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CSharpToCppTranslator.CustomCSharpToCppTransformer.html",
+          "hash": "ZWGo4cbTDt9iC5UBjR6/Rw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/CSharpToCppTranslator.Program.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CSharpToCppTranslator.Program.html",
+          "hash": "PqGpKRdv6TJNe0XtGtoTtw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/CSharpToCppTranslator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CSharpToCppTranslator.html",
+          "hash": "NawlPdBuQ6y1vktXla+seA=="
         }
       },
       "is_incremental": false,
@@ -30,7 +66,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.GenericCollectionMethodsBase-1.html",
-          "hash": "qKzoGjSterd5Z6VaMxceag=="
+          "hash": "GszRjABpM3JfJygHfP0y6w=="
         }
       },
       "is_incremental": false,
@@ -42,7 +78,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods-1.html",
-          "hash": "rPCUSlU0RRgtNywtDC4KZQ=="
+          "hash": "7vxhzG5QdnSfRc9qeMbDbA=="
         }
       },
       "is_incremental": false,
@@ -54,7 +90,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase-1.html",
-          "hash": "i6BzZghAOWYjy0Zfc/Pp+A=="
+          "hash": "qcptFq3+cAYpPM19gFW3Ug=="
         }
       },
       "is_incremental": false,
@@ -66,7 +102,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods-1.html",
-          "hash": "mv+RFc/VdgaA/it8KAy9YQ=="
+          "hash": "qVGejnNn1W8g05jCJBMzYA=="
         }
       },
       "is_incremental": false,
@@ -90,7 +126,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.Tests.TreesTests.html",
-          "hash": "jxhxP2ShmMBrLgZnJCdwmQ=="
+          "hash": "H8We1PgGsj4GmQJ6Wzc3UA=="
         }
       },
       "is_incremental": false,
@@ -114,7 +150,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.Trees.SizeBalancedTreeMethods-1.html",
-          "hash": "ZbJ3d1KUcbGKJDNx+vaJbA=="
+          "hash": "RbXBzF1/xTeTgKMHn/G0bA=="
         }
       },
       "is_incremental": false,
@@ -126,7 +162,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2-1.html",
-          "hash": "/Yj6dHUbVr6SqCa17kHQlQ=="
+          "hash": "QkI/G+L9AQLYNC5YMz8Yyw=="
         }
       },
       "is_incremental": false,
@@ -138,7 +174,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods-1.html",
-          "hash": "5ItATo2gZkg+uYGVL4bijQ=="
+          "hash": "NsGP21V49VoMwDx2pfSWLg=="
         }
       },
       "is_incremental": false,
@@ -150,7 +186,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html",
-          "hash": "sxA6zdewu0kEW/rB2wI2Gg=="
+          "hash": "R0FAkDuZSlcgHdhISNaeDQ=="
         }
       },
       "is_incremental": false,
@@ -186,7 +222,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "zhQD+XK7OLM1ydBozOwssQ=="
+          "hash": "BQ8+5guD2DVPNDzDA8epww=="
         }
       },
       "is_incremental": false,
@@ -228,7 +264,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 13,
+          "total_file_count": 16,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
