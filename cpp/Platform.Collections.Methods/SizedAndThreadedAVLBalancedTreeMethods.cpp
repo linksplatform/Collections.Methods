@@ -25,16 +25,26 @@
             return false;
         }
 
-        
-        void IncrementBalance(TElement node) { SetBalance(node, (std::int8_t)(GetBalance(node) + 1)); }
-        void DecrementBalance(TElement node) { SetBalance(node, (std::int8_t)(GetBalance(node) - 1)); }
-        TElement GetLeftOrDefault(TElement node) override { return GetLeftIsChild(node) ? this->GetLeft(node) : 0; }
-        TElement GetRightOrDefault(TElement node) override { return GetRightIsChild(node) ? this->GetRight(node) : 0; }
-        virtual bool GetLeftIsChild(TElement node) = 0;
-        virtual void SetLeftIsChild(TElement node, bool value) = 0;
-        virtual bool GetRightIsChild(TElement node) = 0;
-        virtual void SetRightIsChild(TElement node, bool value) = 0;
-        virtual std::int8_t GetBalance(TElement node) = 0;
+        
+
+        void IncrementBalance(TElement node) { SetBalance(node, (std::int8_t)(GetBalance(node) + 1)); }
+
+        void DecrementBalance(TElement node) { SetBalance(node, (std::int8_t)(GetBalance(node) - 1)); }
+
+        TElement GetLeftOrDefault(TElement node) override { return GetLeftIsChild(node) ? this->GetLeft(node) : 0; }
+
+        TElement GetRightOrDefault(TElement node) override { return GetRightIsChild(node) ? this->GetRight(node) : 0; }
+
+        virtual bool GetLeftIsChild(TElement node) = 0;
+
+        virtual void SetLeftIsChild(TElement node, bool value) = 0;
+
+        virtual bool GetRightIsChild(TElement node) = 0;
+
+        virtual void SetRightIsChild(TElement node, bool value) = 0;
+
+        virtual std::int8_t GetBalance(TElement node) = 0;
+
         virtual void SetBalance(TElement node, std::int8_t value) = 0;
 
         void AttachCore(TElement* root, TElement node) override
@@ -499,7 +509,8 @@
                 ArrayPool.Free(path);
 #endif
             }
-        }
+        }
+
         void ClearNode(TElement node) override
         {
             this->SetLeft(node, 0);

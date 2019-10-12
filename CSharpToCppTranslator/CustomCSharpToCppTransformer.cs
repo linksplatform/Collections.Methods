@@ -324,7 +324,7 @@ namespace CSharpToCppTranslator
             (new Regex(@"#if [a-zA-Z0-9]+\s+#endif"), "", null, 0),
             // [Fact]
             // 
-            (new Regex(@"(?<firstNewLine>\r?\n|\A)(?<indent>[^\n]+)\[[a-zA-Z0-9]+(\((?<expression>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+)(?(parenthesis)(?!))\))?\]\s*(\r?\n\k<indent>)?"), "${firstNewLine}${indent}", null, 5),
+            (new Regex(@"(?<firstNewLine>\r?\n|\A)(?<indent>[\t ]+)\[[a-zA-Z0-9]+(\((?<expression>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+)(?(parenthesis)(?!))\))?\]\s*(\r?\n\k<indent>)?"), "${firstNewLine}${indent}", null, 5),
             // \n ... namespace
             // namespace
             (new Regex(@"(\S[\r\n]{1,2})?[\r\n]+namespace"), "$1namespace", null, 0),
