@@ -1,11 +1,9 @@
-
 [![Build Status](https://travis-ci.com/linksplatform/Collections.Methods.svg?branch=master)](https://travis-ci.com/linksplatform/Collections.Methods)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f095ae6c0742405399a34ad50ec6ab8d)](https://app.codacy.com/app/drakonard/Collections.Methods?utm_source=github.com&utm_medium=referral&utm_content=linksplatform/Collections.Methods&utm_campaign=Badge_Grade_Dashboard)
 [![CodeFactor](https://www.codefactor.io/repository/github/linksplatform/collections.methods/badge)](https://www.codefactor.io/repository/github/linksplatform/collections.methods)
 
-| NuGet package  | Language |
-| ------------- | ------------- |
-| [![NuGet Version and Downloads count](https://buildstats.info/nuget/Platform.Collections.Methods)](https://www.nuget.org/packages/Platform.Collections.Methods)  | C#  |
+| [![NuGet Version and Downloads count](https://buildstats.info/nuget/Platform.Collections.Methods)](https://www.nuget.org/packages/Platform.Collections.Methods) | C# |
+|-|-|
 | [![NuGet Version and Downloads count](https://buildstats.info/nuget/Platform.Collections.Methods.TemplateLibrary)](https://www.nuget.org/packages/Platform.Collections.Methods.TemplateLibrary)  | C++  |
 
 # [Collections.Methods](https://github.com/linksplatform/Collections.Methods)
