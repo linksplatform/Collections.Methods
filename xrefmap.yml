@@ -1791,32 +1791,32 @@ references:
   commentId: T:Platform.Collections.Methods.Tests.TreesTests
   fullName: Platform.Collections.Methods.Tests.TreesTests
   nameWithType: TreesTests
-- uid: Platform.Collections.Methods.Tests.TreesTests.SizeBalancedTree2MultipleAttachAndDetachTest
-  name: SizeBalancedTree2MultipleAttachAndDetachTest()
-  href: api/Platform.Collections.Methods.Tests.TreesTests.html#Platform_Collections_Methods_Tests_TreesTests_SizeBalancedTree2MultipleAttachAndDetachTest
-  commentId: M:Platform.Collections.Methods.Tests.TreesTests.SizeBalancedTree2MultipleAttachAndDetachTest
-  fullName: Platform.Collections.Methods.Tests.TreesTests.SizeBalancedTree2MultipleAttachAndDetachTest()
-  nameWithType: TreesTests.SizeBalancedTree2MultipleAttachAndDetachTest()
-- uid: Platform.Collections.Methods.Tests.TreesTests.SizeBalancedTree2MultipleAttachAndDetachTest*
-  name: SizeBalancedTree2MultipleAttachAndDetachTest
-  href: api/Platform.Collections.Methods.Tests.TreesTests.html#Platform_Collections_Methods_Tests_TreesTests_SizeBalancedTree2MultipleAttachAndDetachTest_
-  commentId: Overload:Platform.Collections.Methods.Tests.TreesTests.SizeBalancedTree2MultipleAttachAndDetachTest
+- uid: Platform.Collections.Methods.Tests.TreesTests.RecursionlessSizeBalancedTreeMultipleAttachAndDetachTest
+  name: RecursionlessSizeBalancedTreeMultipleAttachAndDetachTest()
+  href: api/Platform.Collections.Methods.Tests.TreesTests.html#Platform_Collections_Methods_Tests_TreesTests_RecursionlessSizeBalancedTreeMultipleAttachAndDetachTest
+  commentId: M:Platform.Collections.Methods.Tests.TreesTests.RecursionlessSizeBalancedTreeMultipleAttachAndDetachTest
+  fullName: Platform.Collections.Methods.Tests.TreesTests.RecursionlessSizeBalancedTreeMultipleAttachAndDetachTest()
+  nameWithType: TreesTests.RecursionlessSizeBalancedTreeMultipleAttachAndDetachTest()
+- uid: Platform.Collections.Methods.Tests.TreesTests.RecursionlessSizeBalancedTreeMultipleAttachAndDetachTest*
+  name: RecursionlessSizeBalancedTreeMultipleAttachAndDetachTest
+  href: api/Platform.Collections.Methods.Tests.TreesTests.html#Platform_Collections_Methods_Tests_TreesTests_RecursionlessSizeBalancedTreeMultipleAttachAndDetachTest_
+  commentId: Overload:Platform.Collections.Methods.Tests.TreesTests.RecursionlessSizeBalancedTreeMultipleAttachAndDetachTest
   isSpec: "True"
-  fullName: Platform.Collections.Methods.Tests.TreesTests.SizeBalancedTree2MultipleAttachAndDetachTest
-  nameWithType: TreesTests.SizeBalancedTree2MultipleAttachAndDetachTest
-- uid: Platform.Collections.Methods.Tests.TreesTests.SizeBalancedTree2MultipleRandomAttachAndDetachTest
-  name: SizeBalancedTree2MultipleRandomAttachAndDetachTest()
-  href: api/Platform.Collections.Methods.Tests.TreesTests.html#Platform_Collections_Methods_Tests_TreesTests_SizeBalancedTree2MultipleRandomAttachAndDetachTest
-  commentId: M:Platform.Collections.Methods.Tests.TreesTests.SizeBalancedTree2MultipleRandomAttachAndDetachTest
-  fullName: Platform.Collections.Methods.Tests.TreesTests.SizeBalancedTree2MultipleRandomAttachAndDetachTest()
-  nameWithType: TreesTests.SizeBalancedTree2MultipleRandomAttachAndDetachTest()
-- uid: Platform.Collections.Methods.Tests.TreesTests.SizeBalancedTree2MultipleRandomAttachAndDetachTest*
-  name: SizeBalancedTree2MultipleRandomAttachAndDetachTest
-  href: api/Platform.Collections.Methods.Tests.TreesTests.html#Platform_Collections_Methods_Tests_TreesTests_SizeBalancedTree2MultipleRandomAttachAndDetachTest_
-  commentId: Overload:Platform.Collections.Methods.Tests.TreesTests.SizeBalancedTree2MultipleRandomAttachAndDetachTest
+  fullName: Platform.Collections.Methods.Tests.TreesTests.RecursionlessSizeBalancedTreeMultipleAttachAndDetachTest
+  nameWithType: TreesTests.RecursionlessSizeBalancedTreeMultipleAttachAndDetachTest
+- uid: Platform.Collections.Methods.Tests.TreesTests.RecursionlessSizeBalancedTreeMultipleRandomAttachAndDetachTest
+  name: RecursionlessSizeBalancedTreeMultipleRandomAttachAndDetachTest()
+  href: api/Platform.Collections.Methods.Tests.TreesTests.html#Platform_Collections_Methods_Tests_TreesTests_RecursionlessSizeBalancedTreeMultipleRandomAttachAndDetachTest
+  commentId: M:Platform.Collections.Methods.Tests.TreesTests.RecursionlessSizeBalancedTreeMultipleRandomAttachAndDetachTest
+  fullName: Platform.Collections.Methods.Tests.TreesTests.RecursionlessSizeBalancedTreeMultipleRandomAttachAndDetachTest()
+  nameWithType: TreesTests.RecursionlessSizeBalancedTreeMultipleRandomAttachAndDetachTest()
+- uid: Platform.Collections.Methods.Tests.TreesTests.RecursionlessSizeBalancedTreeMultipleRandomAttachAndDetachTest*
+  name: RecursionlessSizeBalancedTreeMultipleRandomAttachAndDetachTest
+  href: api/Platform.Collections.Methods.Tests.TreesTests.html#Platform_Collections_Methods_Tests_TreesTests_RecursionlessSizeBalancedTreeMultipleRandomAttachAndDetachTest_
+  commentId: Overload:Platform.Collections.Methods.Tests.TreesTests.RecursionlessSizeBalancedTreeMultipleRandomAttachAndDetachTest
   isSpec: "True"
-  fullName: Platform.Collections.Methods.Tests.TreesTests.SizeBalancedTree2MultipleRandomAttachAndDetachTest
-  nameWithType: TreesTests.SizeBalancedTree2MultipleRandomAttachAndDetachTest
+  fullName: Platform.Collections.Methods.Tests.TreesTests.RecursionlessSizeBalancedTreeMultipleRandomAttachAndDetachTest
+  nameWithType: TreesTests.RecursionlessSizeBalancedTreeMultipleRandomAttachAndDetachTest
 - uid: Platform.Collections.Methods.Tests.TreesTests.SizeBalancedTreeMultipleAttachAndDetachTest
   name: SizeBalancedTreeMultipleAttachAndDetachTest()
   href: api/Platform.Collections.Methods.Tests.TreesTests.html#Platform_Collections_Methods_Tests_TreesTests_SizeBalancedTreeMultipleAttachAndDetachTest
