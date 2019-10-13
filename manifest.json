@@ -30,7 +30,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSharpToCppTranslator.CustomCSharpToCppTransformer.html",
-          "hash": "UeRRlTQ8Z9N+MLfa1AFDAQ=="
+          "hash": "ukBjV1sRDoCqbb5+Cg0KIw=="
         }
       },
       "is_incremental": false,
@@ -42,7 +42,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CSharpToCppTranslator.Program.html",
-          "hash": "2LCVO/AJdFlMnPEfqM0wog=="
+          "hash": "bSLosPIp0puRNfl1xiBM7g=="
         }
       },
       "is_incremental": false,
@@ -66,7 +66,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.GenericCollectionMethodsBase-1.html",
-          "hash": "MofP5a8+dFlny19FHlFTXw=="
+          "hash": "HHOEhyIKBEGWZRBpYX8SyA=="
         }
       },
       "is_incremental": false,
@@ -78,7 +78,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods-1.html",
-          "hash": "9J1qG+JyTKGKDAYw9dtfcA=="
+          "hash": "V8d5w10EpjzFd2ek15AiMg=="
         }
       },
       "is_incremental": false,
@@ -90,7 +90,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase-1.html",
-          "hash": "MK2A7o7VeZy7f2oBNGaJEw=="
+          "hash": "159PZUiv2Q21pvYQrAGd5w=="
         }
       },
       "is_incremental": false,
@@ -102,7 +102,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods-1.html",
-          "hash": "FUWNOeE9RnFUlVREgD0gLw=="
+          "hash": "fW6SrFJUbTdvJXMFsrFfbg=="
         }
       },
       "is_incremental": false,
@@ -122,11 +122,59 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Platform.Collections.Methods.Tests.SizeBalancedTree-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Platform.Collections.Methods.Tests.SizeBalancedTree-1.html",
+          "hash": "+Rs3ArMp2tDm2L5+Q+IJeQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html",
+          "hash": "XzkGDZRUQ3SujXIllrHaZw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Platform.Collections.Methods.Tests.SizedAndThreadedAVLBalancedTree-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Platform.Collections.Methods.Tests.SizedAndThreadedAVLBalancedTree-1.html",
+          "hash": "h5yKfPLKSUB+H08vV74Scg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Platform.Collections.Methods.Tests.TestExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Platform.Collections.Methods.Tests.TestExtensions.html",
+          "hash": "MAcRvSWXbpqozemyPJLavQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Platform.Collections.Methods.Tests.TreesTests.yml",
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.Tests.TreesTests.html",
-          "hash": "e5MIiexnMfAXp3b8Pu2Dng=="
+          "hash": "L15roS/PVeyQxfDPcRgvmQ=="
         }
       },
       "is_incremental": false,
@@ -138,7 +186,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.Tests.html",
-          "hash": "k/84GewoMtK9MavuOYLeHA=="
+          "hash": "HRLEkOSfueyqxYtL7JqSdQ=="
         }
       },
       "is_incremental": false,
@@ -150,7 +198,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.Trees.SizeBalancedTreeMethods-1.html",
-          "hash": "PQftOoHPLzIfnYNTfklAGQ=="
+          "hash": "eseKm4VyZoS9FUSo92779Q=="
         }
       },
       "is_incremental": false,
@@ -162,7 +210,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2-1.html",
-          "hash": "GQ2J9qmT3AkqBR9r7Vxi1g=="
+          "hash": "JEl5pNnLl0QtXzF3rwY6ng=="
         }
       },
       "is_incremental": false,
@@ -174,7 +222,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods-1.html",
-          "hash": "h98Abz2JnI5PuG1xzSlSjg=="
+          "hash": "DDa3PINGDoowSrhHHN+Okw=="
         }
       },
       "is_incremental": false,
@@ -186,7 +234,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html",
-          "hash": "LuM8Ani5NYK6mTGPF13hbg=="
+          "hash": "d66BnTkOLbQRQ3ib3RcPTg=="
         }
       },
       "is_incremental": false,
@@ -222,7 +270,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "BQ8+5guD2DVPNDzDA8epww=="
+          "hash": "5VQpRfl0jXSE5IFtWW68Yw=="
         }
       },
       "is_incremental": false,
@@ -262,16 +310,16 @@
           "total_file_count": 0,
           "skipped_file_count": 0
         },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 20,
+          "skipped_file_count": 0
+        },
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 1,
-          "skipped_file_count": 0
-        },
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
-          "incrementalPhase": "build",
-          "total_file_count": 16,
           "skipped_file_count": 0
         }
       }

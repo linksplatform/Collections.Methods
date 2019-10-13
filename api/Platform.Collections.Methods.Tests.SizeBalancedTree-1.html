@@ -1,0 +1,1027 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class SizeBalancedTree&lt;TElement&gt;
+   | LinksPlatform's Platform.Collections.Methods Library </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class SizeBalancedTree&lt;TElement&gt;
+   | LinksPlatform's Platform.Collections.Methods Library ">
+    <meta name="generator" content="docfx 2.45.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1">
+  
+  
+  <h1 id="Platform_Collections_Methods_Tests_SizeBalancedTree_1" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1" class="text-break">Class SizeBalancedTree&lt;TElement&gt;
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><a class="xref" href="Platform.Collections.Methods.GenericCollectionMethodsBase-1.html">GenericCollectionMethodsBase</a>&lt;TElement&gt;</div>
+    <div class="level2"><a class="xref" href="Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html">SizedBinaryTreeMethodsBase</a>&lt;TElement&gt;</div>
+    <div class="level3"><a class="xref" href="Platform.Collections.Methods.Trees.SizeBalancedTreeMethods-1.html">SizeBalancedTreeMethods</a>&lt;TElement&gt;</div>
+    <div class="level4"><span class="xref">SizeBalancedTree&lt;TElement&gt;</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.Trees.SizeBalancedTreeMethods-1.html#Platform_Collections_Methods_Trees_SizeBalancedTreeMethods_1_AttachCore__0___0_">SizeBalancedTreeMethods&lt;TElement&gt;.AttachCore(TElement, TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.Trees.SizeBalancedTreeMethods-1.html#Platform_Collections_Methods_Trees_SizeBalancedTreeMethods_1_DetachCore__0___0_">SizeBalancedTreeMethods&lt;TElement&gt;.DetachCore(TElement, TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_GetLeftOrDefault__0_">SizedBinaryTreeMethodsBase&lt;TElement&gt;.GetLeftOrDefault(TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_GetRightOrDefault__0_">SizedBinaryTreeMethodsBase&lt;TElement&gt;.GetRightOrDefault(TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_IncrementSize__0_">SizedBinaryTreeMethodsBase&lt;TElement&gt;.IncrementSize(TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_DecrementSize__0_">SizedBinaryTreeMethodsBase&lt;TElement&gt;.DecrementSize(TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_GetLeftSize__0_">SizedBinaryTreeMethodsBase&lt;TElement&gt;.GetLeftSize(TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_GetRightSize__0_">SizedBinaryTreeMethodsBase&lt;TElement&gt;.GetRightSize(TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_GetSizeOrZero__0_">SizedBinaryTreeMethodsBase&lt;TElement&gt;.GetSizeOrZero(TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_FixSize__0_">SizedBinaryTreeMethodsBase&lt;TElement&gt;.FixSize(TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_LeftRotate__0__">SizedBinaryTreeMethodsBase&lt;TElement&gt;.LeftRotate(TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_LeftRotate__0_">SizedBinaryTreeMethodsBase&lt;TElement&gt;.LeftRotate(TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_RightRotate__0__">SizedBinaryTreeMethodsBase&lt;TElement&gt;.RightRotate(TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_RightRotate__0_">SizedBinaryTreeMethodsBase&lt;TElement&gt;.RightRotate(TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_Contains__0__0_">SizedBinaryTreeMethodsBase&lt;TElement&gt;.Contains(TElement, TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_ClearNode__0_">SizedBinaryTreeMethodsBase&lt;TElement&gt;.ClearNode(TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_Attach__0___0_">SizedBinaryTreeMethodsBase&lt;TElement&gt;.Attach(TElement, TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_Detach__0___0_">SizedBinaryTreeMethodsBase&lt;TElement&gt;.Detach(TElement, TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_FixSizes__0_">SizedBinaryTreeMethodsBase&lt;TElement&gt;.FixSizes(TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_ValidateSizes__0_">SizedBinaryTreeMethodsBase&lt;TElement&gt;.ValidateSizes(TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_ValidateSize__0_">SizedBinaryTreeMethodsBase&lt;TElement&gt;.ValidateSize(TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_PrintNodes__0_">SizedBinaryTreeMethodsBase&lt;TElement&gt;.PrintNodes(TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_PrintNodes__0_System_Text_StringBuilder_">SizedBinaryTreeMethodsBase&lt;TElement&gt;.PrintNodes(TElement, StringBuilder)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_PrintNodes__0_System_Text_StringBuilder_System_Int32_">SizedBinaryTreeMethodsBase&lt;TElement&gt;.PrintNodes(TElement, StringBuilder, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_PrintNode__0_">SizedBinaryTreeMethodsBase&lt;TElement&gt;.PrintNode(TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_PrintNode__0_System_Text_StringBuilder_">SizedBinaryTreeMethodsBase&lt;TElement&gt;.PrintNode(TElement, StringBuilder)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_PrintNode__0_System_Text_StringBuilder_System_Int32_">SizedBinaryTreeMethodsBase&lt;TElement&gt;.PrintNode(TElement, StringBuilder, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_PrintNodeValue__0_System_Text_StringBuilder_">SizedBinaryTreeMethodsBase&lt;TElement&gt;.PrintNodeValue(TElement, StringBuilder)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.GenericCollectionMethodsBase-1.html#Platform_Collections_Methods_GenericCollectionMethodsBase_1_GetZero">GenericCollectionMethodsBase&lt;TElement&gt;.GetZero()</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.GenericCollectionMethodsBase-1.html#Platform_Collections_Methods_GenericCollectionMethodsBase_1_EqualToZero__0_">GenericCollectionMethodsBase&lt;TElement&gt;.EqualToZero(TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.GenericCollectionMethodsBase-1.html#Platform_Collections_Methods_GenericCollectionMethodsBase_1_AreEqual__0__0_">GenericCollectionMethodsBase&lt;TElement&gt;.AreEqual(TElement, TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.GenericCollectionMethodsBase-1.html#Platform_Collections_Methods_GenericCollectionMethodsBase_1_GreaterThanZero__0_">GenericCollectionMethodsBase&lt;TElement&gt;.GreaterThanZero(TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.GenericCollectionMethodsBase-1.html#Platform_Collections_Methods_GenericCollectionMethodsBase_1_GreaterThan__0__0_">GenericCollectionMethodsBase&lt;TElement&gt;.GreaterThan(TElement, TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.GenericCollectionMethodsBase-1.html#Platform_Collections_Methods_GenericCollectionMethodsBase_1_GreaterOrEqualThanZero__0_">GenericCollectionMethodsBase&lt;TElement&gt;.GreaterOrEqualThanZero(TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.GenericCollectionMethodsBase-1.html#Platform_Collections_Methods_GenericCollectionMethodsBase_1_GreaterOrEqualThan__0__0_">GenericCollectionMethodsBase&lt;TElement&gt;.GreaterOrEqualThan(TElement, TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.GenericCollectionMethodsBase-1.html#Platform_Collections_Methods_GenericCollectionMethodsBase_1_LessOrEqualThanZero__0_">GenericCollectionMethodsBase&lt;TElement&gt;.LessOrEqualThanZero(TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.GenericCollectionMethodsBase-1.html#Platform_Collections_Methods_GenericCollectionMethodsBase_1_LessOrEqualThan__0__0_">GenericCollectionMethodsBase&lt;TElement&gt;.LessOrEqualThan(TElement, TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.GenericCollectionMethodsBase-1.html#Platform_Collections_Methods_GenericCollectionMethodsBase_1_LessThanZero__0_">GenericCollectionMethodsBase&lt;TElement&gt;.LessThanZero(TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.GenericCollectionMethodsBase-1.html#Platform_Collections_Methods_GenericCollectionMethodsBase_1_LessThan__0__0_">GenericCollectionMethodsBase&lt;TElement&gt;.LessThan(TElement, TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.GenericCollectionMethodsBase-1.html#Platform_Collections_Methods_GenericCollectionMethodsBase_1_Increment__0_">GenericCollectionMethodsBase&lt;TElement&gt;.Increment(TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.GenericCollectionMethodsBase-1.html#Platform_Collections_Methods_GenericCollectionMethodsBase_1_Decrement__0_">GenericCollectionMethodsBase&lt;TElement&gt;.Decrement(TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.GenericCollectionMethodsBase-1.html#Platform_Collections_Methods_GenericCollectionMethodsBase_1_Add__0__0_">GenericCollectionMethodsBase&lt;TElement&gt;.Add(TElement, TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.GenericCollectionMethodsBase-1.html#Platform_Collections_Methods_GenericCollectionMethodsBase_1_Subtract__0__0_">GenericCollectionMethodsBase&lt;TElement&gt;.Subtract(TElement, TElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.GenericCollectionMethodsBase-1.html#Platform_Collections_Methods_GenericCollectionMethodsBase_1_Zero">GenericCollectionMethodsBase&lt;TElement&gt;.Zero</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.GenericCollectionMethodsBase-1.html#Platform_Collections_Methods_GenericCollectionMethodsBase_1_One">GenericCollectionMethodsBase&lt;TElement&gt;.One</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.GenericCollectionMethodsBase-1.html#Platform_Collections_Methods_GenericCollectionMethodsBase_1_Two">GenericCollectionMethodsBase&lt;TElement&gt;.Two</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.GenericCollectionMethodsBase-1.html#Platform_Collections_Methods_GenericCollectionMethodsBase_1_EqualityComparer">GenericCollectionMethodsBase&lt;TElement&gt;.EqualityComparer</a>
+    </div>
+    <div>
+      <a class="xref" href="Platform.Collections.Methods.GenericCollectionMethodsBase-1.html#Platform_Collections_Methods_GenericCollectionMethodsBase_1_Comparer">GenericCollectionMethodsBase&lt;TElement&gt;.Comparer</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Platform.Collections.Methods.Tests.html">Platform.Collections.Methods.Tests</a></h6>
+  <h6><strong>Assembly</strong>: Platform.Collections.Methods.Tests.dll</h6>
+  <h5 id="Platform_Collections_Methods_Tests_SizeBalancedTree_1_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class SizeBalancedTree&lt;TElement&gt; : SizeBalancedTreeMethods&lt;TElement&gt;</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TElement</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/linksplatform/Collections.Methods/new/master/apiSpec/new?filename=Platform_Collections_Methods_Tests_SizeBalancedTree_1__ctor_System_Int32_.md&amp;value=---%0Auid%3A%20Platform.Collections.Methods.Tests.SizeBalancedTree%601.%23ctor(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/linksplatform/Collections.Methods/blob/ac05038853d2ef9692f6083911929e8b7640082e/Platform.Collections.Methods.Tests/SizeBalancedTree.cs/#L28">View Source</a>
+  </span>
+  <a id="Platform_Collections_Methods_Tests_SizeBalancedTree_1__ctor_" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1.#ctor*"></a>
+  <h4 id="Platform_Collections_Methods_Tests_SizeBalancedTree_1__ctor_System_Int32_" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1.#ctor(System.Int32)">SizeBalancedTree(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SizeBalancedTree(int capacity)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">capacity</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/linksplatform/Collections.Methods/new/master/apiSpec/new?filename=Platform_Collections_Methods_Tests_SizeBalancedTree_1_Root.md&amp;value=---%0Auid%3A%20Platform.Collections.Methods.Tests.SizeBalancedTree%601.Root%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/linksplatform/Collections.Methods/blob/ac05038853d2ef9692f6083911929e8b7640082e/Platform.Collections.Methods.Tests/SizeBalancedTree.cs/#L24">View Source</a>
+  </span>
+  <h4 id="Platform_Collections_Methods_Tests_SizeBalancedTree_1_Root" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1.Root">Root</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TElement Root</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TElement</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/linksplatform/Collections.Methods/new/master/apiSpec/new?filename=Platform_Collections_Methods_Tests_SizeBalancedTree_1_Count.md&amp;value=---%0Auid%3A%20Platform.Collections.Methods.Tests.SizeBalancedTree%601.Count%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/linksplatform/Collections.Methods/blob/ac05038853d2ef9692f6083911929e8b7640082e/Platform.Collections.Methods.Tests/SizeBalancedTree.cs/#L26">View Source</a>
+  </span>
+  <a id="Platform_Collections_Methods_Tests_SizeBalancedTree_1_Count_" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1.Count*"></a>
+  <h4 id="Platform_Collections_Methods_Tests_SizeBalancedTree_1_Count" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1.Count">Count</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TElement Count { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TElement</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/linksplatform/Collections.Methods/new/master/apiSpec/new?filename=Platform_Collections_Methods_Tests_SizeBalancedTree_1_Allocate.md&amp;value=---%0Auid%3A%20Platform.Collections.Methods.Tests.SizeBalancedTree%601.Allocate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/linksplatform/Collections.Methods/blob/ac05038853d2ef9692f6083911929e8b7640082e/Platform.Collections.Methods.Tests/SizeBalancedTree.cs/#L30">View Source</a>
+  </span>
+  <a id="Platform_Collections_Methods_Tests_SizeBalancedTree_1_Allocate_" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1.Allocate*"></a>
+  <h4 id="Platform_Collections_Methods_Tests_SizeBalancedTree_1_Allocate" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1.Allocate">Allocate()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TElement Allocate()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TElement</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/linksplatform/Collections.Methods/new/master/apiSpec/new?filename=Platform_Collections_Methods_Tests_SizeBalancedTree_1_FirstIsToTheLeftOfSecond__0__0_.md&amp;value=---%0Auid%3A%20Platform.Collections.Methods.Tests.SizeBalancedTree%601.FirstIsToTheLeftOfSecond(%600%2C%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/linksplatform/Collections.Methods/blob/ac05038853d2ef9692f6083911929e8b7640082e/Platform.Collections.Methods.Tests/SizeBalancedTree.cs/#L63">View Source</a>
+  </span>
+  <a id="Platform_Collections_Methods_Tests_SizeBalancedTree_1_FirstIsToTheLeftOfSecond_" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1.FirstIsToTheLeftOfSecond*"></a>
+  <h4 id="Platform_Collections_Methods_Tests_SizeBalancedTree_1_FirstIsToTheLeftOfSecond__0__0_" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1.FirstIsToTheLeftOfSecond(`0,`0)">FirstIsToTheLeftOfSecond(TElement, TElement)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override bool FirstIsToTheLeftOfSecond(TElement first, TElement second)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TElement</span></td>
+        <td><span class="parametername">first</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">TElement</span></td>
+        <td><span class="parametername">second</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase&lt;TElement&gt;.FirstIsToTheLeftOfSecond(TElement, TElement)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/linksplatform/Collections.Methods/new/master/apiSpec/new?filename=Platform_Collections_Methods_Tests_SizeBalancedTree_1_FirstIsToTheRightOfSecond__0__0_.md&amp;value=---%0Auid%3A%20Platform.Collections.Methods.Tests.SizeBalancedTree%601.FirstIsToTheRightOfSecond(%600%2C%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/linksplatform/Collections.Methods/blob/ac05038853d2ef9692f6083911929e8b7640082e/Platform.Collections.Methods.Tests/SizeBalancedTree.cs/#L65">View Source</a>
+  </span>
+  <a id="Platform_Collections_Methods_Tests_SizeBalancedTree_1_FirstIsToTheRightOfSecond_" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1.FirstIsToTheRightOfSecond*"></a>
+  <h4 id="Platform_Collections_Methods_Tests_SizeBalancedTree_1_FirstIsToTheRightOfSecond__0__0_" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1.FirstIsToTheRightOfSecond(`0,`0)">FirstIsToTheRightOfSecond(TElement, TElement)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override bool FirstIsToTheRightOfSecond(TElement first, TElement second)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TElement</span></td>
+        <td><span class="parametername">first</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">TElement</span></td>
+        <td><span class="parametername">second</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase&lt;TElement&gt;.FirstIsToTheRightOfSecond(TElement, TElement)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/linksplatform/Collections.Methods/new/master/apiSpec/new?filename=Platform_Collections_Methods_Tests_SizeBalancedTree_1_Free__0_.md&amp;value=---%0Auid%3A%20Platform.Collections.Methods.Tests.SizeBalancedTree%601.Free(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/linksplatform/Collections.Methods/blob/ac05038853d2ef9692f6083911929e8b7640082e/Platform.Collections.Methods.Tests/SizeBalancedTree.cs/#L44">View Source</a>
+  </span>
+  <a id="Platform_Collections_Methods_Tests_SizeBalancedTree_1_Free_" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1.Free*"></a>
+  <h4 id="Platform_Collections_Methods_Tests_SizeBalancedTree_1_Free__0_" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1.Free(`0)">Free(TElement)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Free(TElement node)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TElement</span></td>
+        <td><span class="parametername">node</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/linksplatform/Collections.Methods/new/master/apiSpec/new?filename=Platform_Collections_Methods_Tests_SizeBalancedTree_1_GetLeft__0_.md&amp;value=---%0Auid%3A%20Platform.Collections.Methods.Tests.SizeBalancedTree%601.GetLeft(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/linksplatform/Collections.Methods/blob/ac05038853d2ef9692f6083911929e8b7640082e/Platform.Collections.Methods.Tests/SizeBalancedTree.cs/#L69">View Source</a>
+  </span>
+  <a id="Platform_Collections_Methods_Tests_SizeBalancedTree_1_GetLeft_" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1.GetLeft*"></a>
+  <h4 id="Platform_Collections_Methods_Tests_SizeBalancedTree_1_GetLeft__0_" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1.GetLeft(`0)">GetLeft(TElement)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override TElement GetLeft(TElement node)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TElement</span></td>
+        <td><span class="parametername">node</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TElement</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase&lt;TElement&gt;.GetLeft(TElement)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/linksplatform/Collections.Methods/new/master/apiSpec/new?filename=Platform_Collections_Methods_Tests_SizeBalancedTree_1_GetLeftReference__0_.md&amp;value=---%0Auid%3A%20Platform.Collections.Methods.Tests.SizeBalancedTree%601.GetLeftReference(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/linksplatform/Collections.Methods/blob/ac05038853d2ef9692f6083911929e8b7640082e/Platform.Collections.Methods.Tests/SizeBalancedTree.cs/#L67">View Source</a>
+  </span>
+  <a id="Platform_Collections_Methods_Tests_SizeBalancedTree_1_GetLeftReference_" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1.GetLeftReference*"></a>
+  <h4 id="Platform_Collections_Methods_Tests_SizeBalancedTree_1_GetLeftReference__0_" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1.GetLeftReference(`0)">GetLeftReference(TElement)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override TElement GetLeftReference(TElement node)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TElement</span></td>
+        <td><span class="parametername">node</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TElement</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase&lt;TElement&gt;.GetLeftReference(TElement)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/linksplatform/Collections.Methods/new/master/apiSpec/new?filename=Platform_Collections_Methods_Tests_SizeBalancedTree_1_GetRight__0_.md&amp;value=---%0Auid%3A%20Platform.Collections.Methods.Tests.SizeBalancedTree%601.GetRight(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/linksplatform/Collections.Methods/blob/ac05038853d2ef9692f6083911929e8b7640082e/Platform.Collections.Methods.Tests/SizeBalancedTree.cs/#L73">View Source</a>
+  </span>
+  <a id="Platform_Collections_Methods_Tests_SizeBalancedTree_1_GetRight_" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1.GetRight*"></a>
+  <h4 id="Platform_Collections_Methods_Tests_SizeBalancedTree_1_GetRight__0_" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1.GetRight(`0)">GetRight(TElement)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override TElement GetRight(TElement node)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TElement</span></td>
+        <td><span class="parametername">node</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TElement</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase&lt;TElement&gt;.GetRight(TElement)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/linksplatform/Collections.Methods/new/master/apiSpec/new?filename=Platform_Collections_Methods_Tests_SizeBalancedTree_1_GetRightReference__0_.md&amp;value=---%0Auid%3A%20Platform.Collections.Methods.Tests.SizeBalancedTree%601.GetRightReference(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/linksplatform/Collections.Methods/blob/ac05038853d2ef9692f6083911929e8b7640082e/Platform.Collections.Methods.Tests/SizeBalancedTree.cs/#L71">View Source</a>
+  </span>
+  <a id="Platform_Collections_Methods_Tests_SizeBalancedTree_1_GetRightReference_" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1.GetRightReference*"></a>
+  <h4 id="Platform_Collections_Methods_Tests_SizeBalancedTree_1_GetRightReference__0_" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1.GetRightReference(`0)">GetRightReference(TElement)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override TElement GetRightReference(TElement node)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TElement</span></td>
+        <td><span class="parametername">node</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TElement</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase&lt;TElement&gt;.GetRightReference(TElement)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/linksplatform/Collections.Methods/new/master/apiSpec/new?filename=Platform_Collections_Methods_Tests_SizeBalancedTree_1_GetSize__0_.md&amp;value=---%0Auid%3A%20Platform.Collections.Methods.Tests.SizeBalancedTree%601.GetSize(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/linksplatform/Collections.Methods/blob/ac05038853d2ef9692f6083911929e8b7640082e/Platform.Collections.Methods.Tests/SizeBalancedTree.cs/#L75">View Source</a>
+  </span>
+  <a id="Platform_Collections_Methods_Tests_SizeBalancedTree_1_GetSize_" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1.GetSize*"></a>
+  <h4 id="Platform_Collections_Methods_Tests_SizeBalancedTree_1_GetSize__0_" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1.GetSize(`0)">GetSize(TElement)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override TElement GetSize(TElement node)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TElement</span></td>
+        <td><span class="parametername">node</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TElement</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase&lt;TElement&gt;.GetSize(TElement)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/linksplatform/Collections.Methods/new/master/apiSpec/new?filename=Platform_Collections_Methods_Tests_SizeBalancedTree_1_IsEmpty__0_.md&amp;value=---%0Auid%3A%20Platform.Collections.Methods.Tests.SizeBalancedTree%601.IsEmpty(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/linksplatform/Collections.Methods/blob/ac05038853d2ef9692f6083911929e8b7640082e/Platform.Collections.Methods.Tests/SizeBalancedTree.cs/#L61">View Source</a>
+  </span>
+  <a id="Platform_Collections_Methods_Tests_SizeBalancedTree_1_IsEmpty_" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1.IsEmpty*"></a>
+  <h4 id="Platform_Collections_Methods_Tests_SizeBalancedTree_1_IsEmpty__0_" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1.IsEmpty(`0)">IsEmpty(TElement)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsEmpty(TElement node)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TElement</span></td>
+        <td><span class="parametername">node</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/linksplatform/Collections.Methods/new/master/apiSpec/new?filename=Platform_Collections_Methods_Tests_SizeBalancedTree_1_PrintNodeValue__0_StringBuilder_.md&amp;value=---%0Auid%3A%20Platform.Collections.Methods.Tests.SizeBalancedTree%601.PrintNodeValue(%600%2CStringBuilder)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/linksplatform/Collections.Methods/blob/ac05038853d2ef9692f6083911929e8b7640082e/Platform.Collections.Methods.Tests/SizeBalancedTree.cs/#L77">View Source</a>
+  </span>
+  <a id="Platform_Collections_Methods_Tests_SizeBalancedTree_1_PrintNodeValue_" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1.PrintNodeValue*"></a>
+  <h4 id="Platform_Collections_Methods_Tests_SizeBalancedTree_1_PrintNodeValue__0_StringBuilder_" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1.PrintNodeValue(`0,StringBuilder)">PrintNodeValue(TElement, StringBuilder)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void PrintNodeValue(TElement node, StringBuilder sb)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TElement</span></td>
+        <td><span class="parametername">node</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">StringBuilder</span></td>
+        <td><span class="parametername">sb</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/linksplatform/Collections.Methods/new/master/apiSpec/new?filename=Platform_Collections_Methods_Tests_SizeBalancedTree_1_SetLeft__0__0_.md&amp;value=---%0Auid%3A%20Platform.Collections.Methods.Tests.SizeBalancedTree%601.SetLeft(%600%2C%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/linksplatform/Collections.Methods/blob/ac05038853d2ef9692f6083911929e8b7640082e/Platform.Collections.Methods.Tests/SizeBalancedTree.cs/#L79">View Source</a>
+  </span>
+  <a id="Platform_Collections_Methods_Tests_SizeBalancedTree_1_SetLeft_" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1.SetLeft*"></a>
+  <h4 id="Platform_Collections_Methods_Tests_SizeBalancedTree_1_SetLeft__0__0_" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1.SetLeft(`0,`0)">SetLeft(TElement, TElement)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void SetLeft(TElement node, TElement left)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TElement</span></td>
+        <td><span class="parametername">node</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">TElement</span></td>
+        <td><span class="parametername">left</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase&lt;TElement&gt;.SetLeft(TElement, TElement)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/linksplatform/Collections.Methods/new/master/apiSpec/new?filename=Platform_Collections_Methods_Tests_SizeBalancedTree_1_SetRight__0__0_.md&amp;value=---%0Auid%3A%20Platform.Collections.Methods.Tests.SizeBalancedTree%601.SetRight(%600%2C%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/linksplatform/Collections.Methods/blob/ac05038853d2ef9692f6083911929e8b7640082e/Platform.Collections.Methods.Tests/SizeBalancedTree.cs/#L81">View Source</a>
+  </span>
+  <a id="Platform_Collections_Methods_Tests_SizeBalancedTree_1_SetRight_" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1.SetRight*"></a>
+  <h4 id="Platform_Collections_Methods_Tests_SizeBalancedTree_1_SetRight__0__0_" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1.SetRight(`0,`0)">SetRight(TElement, TElement)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void SetRight(TElement node, TElement right)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TElement</span></td>
+        <td><span class="parametername">node</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">TElement</span></td>
+        <td><span class="parametername">right</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase&lt;TElement&gt;.SetRight(TElement, TElement)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/linksplatform/Collections.Methods/new/master/apiSpec/new?filename=Platform_Collections_Methods_Tests_SizeBalancedTree_1_SetSize__0__0_.md&amp;value=---%0Auid%3A%20Platform.Collections.Methods.Tests.SizeBalancedTree%601.SetSize(%600%2C%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/linksplatform/Collections.Methods/blob/ac05038853d2ef9692f6083911929e8b7640082e/Platform.Collections.Methods.Tests/SizeBalancedTree.cs/#L83">View Source</a>
+  </span>
+  <a id="Platform_Collections_Methods_Tests_SizeBalancedTree_1_SetSize_" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1.SetSize*"></a>
+  <h4 id="Platform_Collections_Methods_Tests_SizeBalancedTree_1_SetSize__0__0_" data-uid="Platform.Collections.Methods.Tests.SizeBalancedTree`1.SetSize(`0,`0)">SetSize(TElement, TElement)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void SetSize(TElement node, TElement size)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TElement</span></td>
+        <td><span class="parametername">node</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">TElement</span></td>
+        <td><span class="parametername">size</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase&lt;TElement&gt;.SetSize(TElement, TElement)</span></div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="Platform.Collections.Methods.Tests.TestExtensions.html#Platform_Collections_Methods_Tests_TestExtensions_TestMultipleCreationsAndDeletions__1_Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase___0__Func___0__Action___0____0__Func___0__System_Int32_">TestExtensions.TestMultipleCreationsAndDeletions&lt;TElement&gt;(SizedBinaryTreeMethodsBase&lt;TElement&gt;, Func&lt;TElement&gt;, Action&lt;TElement&gt;, ref TElement, Func&lt;TElement&gt;, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="Platform.Collections.Methods.Tests.TestExtensions.html#Platform_Collections_Methods_Tests_TestExtensions_TestMultipleRandomCreationsAndDeletions__1_Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase___0____0__Func___0__System_Int32_">TestExtensions.TestMultipleRandomCreationsAndDeletions&lt;TElement&gt;(SizedBinaryTreeMethodsBase&lt;TElement&gt;, ref TElement, Func&lt;TElement&gt;, Int32)</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/linksplatform/Collections.Methods/new/master/apiSpec/new?filename=Platform_Collections_Methods_Tests_SizeBalancedTree_1.md&amp;value=---%0Auid%3A%20Platform.Collections.Methods.Tests.SizeBalancedTree%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/linksplatform/Collections.Methods/blob/ac05038853d2ef9692f6083911929e8b7640082e/Platform.Collections.Methods.Tests/SizeBalancedTree.cs/#L9" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
