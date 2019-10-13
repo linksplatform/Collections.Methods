@@ -6,7 +6,7 @@ using Platform.Collections.Methods.Trees;
 
 namespace Platform.Collections.Methods.Tests
 {
-    internal class SizedAndThreadedAVLBalancedTree<TElement> : SizedAndThreadedAVLBalancedTreeMethods<TElement>
+    public class SizedAndThreadedAVLBalancedTree<TElement> : SizedAndThreadedAVLBalancedTreeMethods<TElement>
     {
         private struct TreeElement
         {

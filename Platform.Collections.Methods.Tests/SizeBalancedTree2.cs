@@ -6,7 +6,7 @@ using Platform.Collections.Methods.Trees;
 
 namespace Platform.Collections.Methods.Tests
 {
-    internal class SizeBalancedTree2<TElement> : SizeBalancedTreeMethods2<TElement>
+    public class SizeBalancedTree2<TElement> : SizeBalancedTreeMethods2<TElement>
     {
         private struct TreeElement
         {

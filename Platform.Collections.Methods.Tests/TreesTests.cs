@@ -4,7 +4,7 @@ namespace Platform.Collections.Methods.Tests
 {
     public static class TreesTests
     {
-        private const int _n = 100;
+        private const int _n = 500;
 
         [Fact]
         public static void SizeBalancedTreeMultipleAttachAndDetachTest()

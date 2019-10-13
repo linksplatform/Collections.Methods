@@ -6,7 +6,7 @@ using Platform.Collections.Methods.Trees;
 
 namespace Platform.Collections.Methods.Tests
 {
-    internal static class TestExtensions
+    public static class TestExtensions
     {
         public static void TestMultipleCreationsAndDeletions<TElement>(this SizedBinaryTreeMethodsBase<TElement> tree, Func<TElement> allocate, Action<TElement> free, ref TElement root, Func<TElement> treeCount, int maximumOperationsPerCycle)
         {

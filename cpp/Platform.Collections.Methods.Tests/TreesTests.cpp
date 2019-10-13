@@ -3,7 +3,7 @@
     TEST_CLASS(Trees)
     {
     public:
-        static const int _n = 100;
+        static const int _n = 500;
 
         TEST_METHOD(SizeBalancedTreeMultipleAttachAndDetachTest)
         {
