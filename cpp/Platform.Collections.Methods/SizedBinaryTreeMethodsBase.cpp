@@ -23,55 +23,55 @@
 
         virtual bool FirstIsToTheRightOfSecond(TElement first, TElement second) = 0;
 
-        virtual TElement GetLeftOrDefault(TElement node) { return node == 0 ? 0 : GetLeft(node); }
+        virtual TElement GetLeftOrDefault(TElement node) { return node == 0 ? 0 : this->GetLeft(node); }
 
-        virtual TElement GetRightOrDefault(TElement node) { return node == 0 ? 0 : GetRight(node); }
+        virtual TElement GetRightOrDefault(TElement node) { return node == 0 ? 0 : this->GetRight(node); }
 
-        void IncrementSize(TElement node) { SetSize(node, GetSize(node) + 1); }
+        void IncrementSize(TElement node) { this->SetSize(node, this->GetSize(node) + 1); }
 
-        void DecrementSize(TElement node) { SetSize(node, GetSize(node) - 1); }
+        void DecrementSize(TElement node) { this->SetSize(node, this->GetSize(node) - 1); }
 
-        TElement GetLeftSize(TElement node) { return GetSizeOrZero(GetLeftOrDefault(node)); }
+        TElement GetLeftSize(TElement node) { return this->GetSizeOrZero(this->GetLeftOrDefault(node)); }
 
-        TElement GetRightSize(TElement node) { return GetSizeOrZero(GetRightOrDefault(node)); }
+        TElement GetRightSize(TElement node) { return this->GetSizeOrZero(this->GetRightOrDefault(node)); }
 
-        TElement GetSizeOrZero(TElement node) { return node == 0 ? 0 : GetSize(node); }
+        TElement GetSizeOrZero(TElement node) { return node == 0 ? 0 : this->GetSize(node); }
 
-        void FixSize(TElement node) { SetSize(node, (GetLeftSize(node) + GetRightSize(node)) + 1); }
+        void FixSize(TElement node) { this->SetSize(node, (this->GetLeftSize(node) + this->GetRightSize(node)) + 1); }
 
-        void LeftRotate(TElement* root) { *root = LeftRotate(*root); }
+        void LeftRotate(TElement* root) { *root = this->LeftRotate(*root); }
 
         TElement LeftRotate(TElement root)
         {
-            auto right = GetRight(root);
+            auto right = this->GetRight(root);
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
             if (right == 0)
             {
                 throw std::exception("Right is null.");
             }
 #endif
-            SetRight(root, GetLeft(right));
-            SetLeft(right, root);
-            SetSize(right, GetSize(root));
-            FixSize(root);
+            this->SetRight(root, this->GetLeft(right));
+            this->SetLeft(right, root);
+            this->SetSize(right, this->GetSize(root));
+            this->FixSize(root);
             return right;
         }
 
-        void RightRotate(TElement* root) { *root = RightRotate(*root); }
+        void RightRotate(TElement* root) { *root = this->RightRotate(*root); }
 
         TElement RightRotate(TElement root)
         {
-            auto left = GetLeft(root);
+            auto left = this->GetLeft(root);
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
             if (left == 0)
             {
                 throw std::exception("Left is null.");
             }
 #endif
-            SetLeft(root, GetRight(left));
-            SetRight(left, root);
-            SetSize(left, GetSize(root));
-            FixSize(root);
+            this->SetLeft(root, this->GetRight(left));
+            this->SetRight(left, root);
+            this->SetSize(left, this->GetSize(root));
+            this->FixSize(root);
             return left;
         }
 
@@ -79,13 +79,13 @@
         {
             while (root != 0)
             {
-                if (FirstIsToTheLeftOfSecond(node, root))
+                if (this->FirstIsToTheLeftOfSecond(node, root))
                 {
-                    root = GetLeft(root);
+                    root = this->GetLeft(root);
                 }
-                else if (FirstIsToTheRightOfSecond(node, root))
+                else if (this->FirstIsToTheRightOfSecond(node, root))
                 {
-                    root = GetRight(root);
+                    root = this->GetRight(root);
                 }
                 else
                 {
@@ -97,33 +97,33 @@
 
         virtual void ClearNode(TElement node)
         {
-            SetLeft(node, 0);
-            SetRight(node, 0);
-            SetSize(node, 0);
+            this->SetLeft(node, 0);
+            this->SetRight(node, 0);
+            this->SetSize(node, 0);
         }
 
         void Attach(TElement* root, TElement node)
         {
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
-            ValidateSizes(*root);
+            this->ValidateSizes(*root);
             Debug.WriteLine("--BeforeAttach--");
-            Debug.WriteLine(PrintNodes(*root));
+            Debug.WriteLine(this->PrintNodes(*root));
             Debug.WriteLine("----------------");
-            auto sizeBefore = GetSize(*root);
+            auto sizeBefore = this->GetSize(*root);
 #endif
             if (*root == 0)
             {
-                SetSize(node, 1);
+                this->SetSize(node, 1);
                 *root = node;
                 return;
             }
-            AttachCore(root, node);
+            this->AttachCore(root, node);
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
             Debug.WriteLine("--AfterAttach--");
-            Debug.WriteLine(PrintNodes(*root));
+            Debug.WriteLine(this->PrintNodes(*root));
             Debug.WriteLine("----------------");
-            ValidateSizes(*root);
-            auto sizeAfter = GetSize(*root);
+            this->ValidateSizes(*root);
+            auto sizeAfter = this->GetSize(*root);
             if (!IsEquals(MathHelpers.(sizeBefore) + 1, sizeAfter))
             {
                 throw std::exception("Tree was broken after attach.");
@@ -136,23 +136,23 @@
         void Detach(TElement* root, TElement node)
         {
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
-            ValidateSizes(*root);
+            this->ValidateSizes(*root);
             Debug.WriteLine("--BeforeDetach--");
-            Debug.WriteLine(PrintNodes(*root));
+            Debug.WriteLine(this->PrintNodes(*root));
             Debug.WriteLine("----------------");
-            auto sizeBefore = GetSize(*root);
-            if (ValueEqualToZero(*root))
+            auto sizeBefore = this->GetSize(*root);
+            if (this->ValueEqualToZero(*root))
             {
                 throw std::exception("Элемент с {node} не содержится в дереве.");
             }
 #endif
-            DetachCore(root, node);
+            this->DetachCore(root, node);
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
             Debug.WriteLine("--AfterDetach--");
-            Debug.WriteLine(PrintNodes(*root));
+            Debug.WriteLine(this->PrintNodes(*root));
             Debug.WriteLine("----------------");
-            ValidateSizes(*root);
-            auto sizeAfter = GetSize(*root);
+            this->ValidateSizes(*root);
+            auto sizeAfter = this->GetSize(*root);
             if (!IsEquals(MathHelpers.(sizeBefore) - 1, sizeAfter))
             {
                 throw std::exception("Tree was broken after detach.");

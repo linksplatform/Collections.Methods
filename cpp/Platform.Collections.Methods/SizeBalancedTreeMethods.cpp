@@ -154,7 +154,7 @@
                 {
                     if (leftSize > 0 && rightSize > 0)
                     {
-                        TElement replacement;
+                        TElement replacement = 0;
                         if (leftSize > rightSize)
                         {
                             replacement = *left;
@@ -164,7 +164,7 @@
                                 replacement = replacementRight;
                                 replacementRight = this->GetRight(replacement);
                             }
-                            DetachCore(left, replacement);
+                            this->DetachCore(left, replacement);
                         }
                         else
                         {
@@ -175,7 +175,7 @@
                                 replacement = replacementLeft;
                                 replacementLeft = this->GetLeft(replacement);
                             }
-                            DetachCore(right, replacement);
+                            this->DetachCore(right, replacement);
                         }
                         this->SetLeft(replacement, *left);
                         this->SetRight(replacement, *right);

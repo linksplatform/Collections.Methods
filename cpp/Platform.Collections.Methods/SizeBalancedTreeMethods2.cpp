@@ -15,13 +15,13 @@
                 this->IncrementSize(*root);
                 if (this->FirstIsToTheLeftOfSecond(node, *root))
                 {
-                    AttachCore(this->GetLeftReference(*root), node);
-                    LeftMaintain(root);
+                    this->AttachCore(this->GetLeftReference(*root), node);
+                    this->LeftMaintain(root);
                 }
                 else
                 {
-                    AttachCore(this->GetRightReference(*root), node);
-                    RightMaintain(root);
+                    this->AttachCore(this->GetRightReference(*root), node);
+                    this->RightMaintain(root);
                 }
             }
         }
@@ -60,7 +60,7 @@
                     minNode = minNodeLeft;
                     minNodeLeft = this->GetLeft(minNode);
                 }
-                DetachCore(this->GetRightReference(nodeToDetach), minNode);
+                this->DetachCore(this->GetRightReference(nodeToDetach), minNode);
                 this->SetLeft(minNode, nodeToDetachLeft);
                 node = this->GetRight(nodeToDetach);
                 if (node != 0)
@@ -125,10 +125,10 @@
                             return;
                         }
                     }
-                    LeftMaintain(this->GetLeftReference(*root));
-                    RightMaintain(this->GetRightReference(*root));
-                    LeftMaintain(root);
-                    RightMaintain(root);
+                    this->LeftMaintain(this->GetLeftReference(*root));
+                    this->RightMaintain(this->GetRightReference(*root));
+                    this->LeftMaintain(root);
+                    this->RightMaintain(root);
                 }
             }
         }
@@ -161,10 +161,10 @@
                             return;
                         }
                     }
-                    LeftMaintain(this->GetLeftReference(*root));
-                    RightMaintain(this->GetRightReference(*root));
-                    LeftMaintain(root);
-                    RightMaintain(root);
+                    this->LeftMaintain(this->GetLeftReference(*root));
+                    this->RightMaintain(this->GetRightReference(*root));
+                    this->LeftMaintain(root);
+                    this->RightMaintain(root);
                 }
             }
         }

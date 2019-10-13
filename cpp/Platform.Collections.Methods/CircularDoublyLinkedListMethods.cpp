@@ -44,7 +44,7 @@
             }
             else
             {
-                AttachBefore(first, element);
+                this->AttachBefore(first, element);
             }
         }
 
@@ -53,11 +53,11 @@
             auto last = this->GetLast();
             if (last == 0)
             {
-                AttachAsFirst(element);
+                this->AttachAsFirst(element);
             }
             else
             {
-                AttachAfter(last, element);
+                this->AttachAfter(last, element);
             }
         }
 

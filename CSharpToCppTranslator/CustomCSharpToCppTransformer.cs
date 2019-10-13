@@ -7,9 +7,8 @@ using Platform.RegularExpressions.Transformer.CSharpToCpp;
 
 namespace CSharpToCppTranslator
 {
-    public class CustomCSharpToCppTransformer : CSharpToCppTransformer // Transformer
+    public class CustomCSharpToCppTransformer : Transformer // CSharpToCppTransformer
     {
-        /*
         public static readonly IList<ISubstitutionRule> FirstStage = new List<SubstitutionRule>
         {
             // // ...
@@ -159,18 +158,59 @@ namespace CSharpToCppTranslator
             // GetElement(node).Right
             // GetElement(node)->Right
             (new Regex(@"([a-zA-Z0-9]+)\(([a-zA-Z0-9\*]+)\)\.([a-zA-Z0-9]+)"), "$1($2)->$3", null, 0),
-        }.Cast<ISubstitutionRule>().ToList();
-        */
-
-        public static readonly IList<ISubstitutionRule> Rules = new List<SubstitutionRule>
-        {   
             // [Fact]\npublic static void SizeBalancedTreeMultipleAttachAndDetachTest()
             // TEST_METHOD(SizeBalancedTreeMultipleAttachAndDetachTest)
             (new Regex(@"\[Fact\][\s\n]+(static )?void ([a-zA-Z0-9]+)\(\)"), "TEST_METHOD($2)", null, 0),
             // class TreesTests
             // TEST_CLASS(TreesTests)
             (new Regex(@"class ([a-zA-Z0-9]+)Tests"), "TEST_CLASS($1)", null, 0),
+            // Assert.Equal
+            // Assert::AreEqual
+            (new Regex(@"Assert\.Equal"), "Assert::AreEqual", null, 0),
+            // TElement Root;
+            // TElement Root = 0;
+            (new Regex(@"(\r?\n[\t ]+)([a-zA-Z0-9:_]+(?<!return)) ([_a-zA-Z0-9]+);"), "$1$2 $3 = 0;", null, 0),
+            // TreeElement _elements[N];
+            // TreeElement _elements[N] = { {0} };
+            (new Regex(@"(\r?\n[\t ]+)([a-zA-Z0-9]+) ([_a-zA-Z0-9]+)\[([_a-zA-Z0-9]+)\];"), "$1$2 $3[$4] = { {0} };", null, 0),
+            // auto path = new TElement[MaxPath];
+            // TElement path[MaxPath] = { {0} };
+            (new Regex(@"(\r?\n[\t ]+)[a-zA-Z0-9]+ ([a-zA-Z0-9]+) = new ([a-zA-Z0-9]+)\[([a-zA-Z0-9]+)\];"), "$1$3 $2[$4] = { {0} };", null, 0),
+            // Insert scope borders.
+            // auto added = new HashSet<TElement>();
+            // ~!added!~std::unordered_set<TElement> added;
+            (new Regex(@"auto (?<variable>[a-zA-Z0-9]+) = new HashSet<(?<element>[a-zA-Z0-9]+)>\(\);"), "~!${variable}!~std::unordered_set<${element}> ${variable};", null, 0),
+            // Inside the scope of ~!added!~ replace:
+            // added.Add(node)
+            // added.insert(node)
+            (new Regex(@"(?<scope>~!(?<variable>[a-zA-Z0-9]+)!~)(?<separator>.|\n)(?<before>((?<!~!\k<variable>!~)(.|\n))*?)\k<variable>\.Add\((?<argument>[a-zA-Z0-9]+)\)"), "${scope}${separator}${before}${variable}.insert(${argument})", null, 10),
+            // Inside the scope of ~!added!~ replace:
+            // added.Remove(node)
+            // added.erase(node)
+            (new Regex(@"(?<scope>~!(?<variable>[a-zA-Z0-9]+)!~)(?<separator>.|\n)(?<before>((?<!~!\k<variable>!~)(.|\n))*?)\k<variable>\.Remove\((?<argument>[a-zA-Z0-9]+)\)"), "${scope}${separator}${before}${variable}.erase(${argument})", null, 10),
+            // if (added.insert(node)) {
+            // if (!added.contains(node)) { added.insert(node);
+            (new Regex(@"if \((?<variable>[a-zA-Z0-9]+)\.insert\((?<argument>[a-zA-Z0-9]+)\)\)(?<separator>[\t ]*[\r\n]+)(?<indent>[\t ]*){"), "if (!${variable}.contains(${argument}))${separator}${indent}{" + Environment.NewLine + "${indent}    ${variable}.insert(${argument});", null, 0),
+            // Remove scope borders.
+            // ~!added!~
+            // 
+            (new Regex(@"~!(?<pointer>[a-zA-Z0-9]+)!~"), "", null, 5),
+            // Insert scope borders.
+            // auto random = new System.Random(0);
+            // std::srand(0);
+            (new Regex(@"[a-zA-Z0-9\.]+ ([a-zA-Z0-9]+) = new (System\.)?Random\(([a-zA-Z0-9]+)\);"), "~!$1!~std::srand($3);", null, 0),
+            // Inside the scope of ~!random!~ replace:
+            // random.Next(1, N)
+            // (std::rand() % N) + 1
+            (new Regex(@"(?<scope>~!(?<variable>[a-zA-Z0-9]+)!~)(?<separator>.|\n)(?<before>((?<!~!\k<variable>!~)(.|\n))*?)\k<variable>\.Next\((?<from>[a-zA-Z0-9]+), (?<to>[a-zA-Z0-9]+)\)"), "${scope}${separator}${before}(std::rand() % ${to}) + ${from}", null, 10),
+            // Remove scope borders.
+            // ~!random!~
+            // 
+            (new Regex(@"~!(?<pointer>[a-zA-Z0-9]+)!~"), "", null, 5),
+        }.Cast<ISubstitutionRule>().ToList();
 
+        public static readonly IList<ISubstitutionRule> Rules = new List<SubstitutionRule>
+        {   
             // Just delete it in GenericCollectionMethodsBase.cs
             (new Regex(@"virtual TElement GetZero(.|\s)+Increment\(One\)(.|\s)+?}"), "", new Regex(@"GenericCollectionMethodsBase\.cs"), 0),
             // Just delete it in SizedBinaryTreeMethodsBase.cs
@@ -193,9 +233,6 @@ namespace CSharpToCppTranslator
             // (Integer<TElement>)
             // 
             (new Regex(@"\(Integer<[a-zA-Z0-9]+>\)"), "", null, 0),
-            // Assert.Equal
-            // Assert::AreEqual
-            (new Regex(@"Assert\.Equal"), "Assert::AreEqual", null, 0),
             // Comparer.Compare(firstArgument, secondArgument) < 0
             // (firstArgument) < (secondArgument)
             (new Regex(@"(?<separator>\W)Comparer\.Compare\((?<firstArgument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+), (?<secondArgument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+)\) (?<operator>\S{1,2}) 0"), "${separator}(${firstArgument}) ${operator} (${secondArgument})", null, 0),
@@ -227,42 +264,21 @@ namespace CSharpToCppTranslator
             // (argument) > 0
             //(new Regex(@"GreaterThanZero\(([a-zA-Z0-9\*]+)\)"), "$1 > 0", null, 0),
             (new Regex(@"(?<separator>\W)GreaterThanZero\((?<argument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+)\)"), "${separator}(${argument}) > 0", null, 0),
-            // GetFirst
-            // this->GetFirst
-            (new Regex(@"([^>])(GetFirst|GetLast|GetPrevious|GetNext|GetSize|SetFirst|SetLast|SetPrevious|SetNext|SetSize|IncrementSize|DecrementSize)(\()"), "$1this->$2$3", new Regex(@"[a-zA-Z]+DoublyLinkedListMethods\.cs"), 1),
-            // GetSize
-            // this->GetSize
-            (new Regex(@"([^>])(GetLeftReference|GetRightReference|GetLeft|GetRight|SetLeft|SetRight|FirstIsToTheLeftOfSecond|FirstIsToTheRightOfSecond|GetLeftOrDefault|GetRightOrDefault|GetLeftSize|GetRightSize|GetSizeOrZero|FixSize|LeftRotate|RightRotate|ClearNode|GetSize|SetSize|IncrementSize|DecrementSize)(\()"), "$1this->$2$3", new Regex(@"Size[a-zA-Z]+Methods2?\.cs"), 1),
-            // GetSizeOrZero
-            // SizeBalancedTreeMethods<TElement>::GetSizeOrZero
-            (new Regex(@"([^:])(GetSizeOrZero)(\()"), "$1this->$2$3", new Regex(@"SizeBalancedTree\.cs"), 0),
-            // GetSizeOrZero
-            // SizeBalancedTreeMethods2<TElement>::GetSizeOrZero
-            (new Regex(@"([^:])(GetSizeOrZero)(\()"), "$1this->$2$3", new Regex(@"SizeBalancedTree2\.cs"), 0),
-            // GetSizeOrZero
-            // SizedAndThreadedAVLBalancedTreeMethods<TElement>::GetSizeOrZero
-            (new Regex(@"([^:])(GetSizeOrZero)(\()"), "$1this->$2$3", new Regex(@"SizedAndThreadedAVLBalancedTree\.cs"), 0),
-            // template <typename TElement> class SizeBalancedTree : SizeBalancedTreeMethods<TElement>
-            // template <typename TElement, std::size_t N> class SizeBalancedTree : Platform::Collections::Methods::Trees::SizeBalancedTreeMethods<TElement>
+            // template <typename TElement> class SizeBalancedTree : public SizeBalancedTreeMethods<TElement>
+            // template <typename TElement, std::size_t N> class SizeBalancedTree : public Platform::Collections::Methods::Trees::SizeBalancedTreeMethods<TElement>
             (new Regex(@"template <typename TElement> class ([a-zA-Z0-9]+) : public ([a-zA-Z0-9]+)<TElement>"), "template <typename TElement, std::size_t N> class $1 : public Platform::Collections::Methods::Trees::$2<TElement>", new Regex(@"Size[a-zA-Z]+Tree2?\.cs"), 0),
             // SizeBalancedTree(int capacity) { (_elements, _allocated) = (new TreeElement[capacity], 1); }
             // SizeBalancedTree() { _allocated = 1; }
             (new Regex(@"([a-zA-Z0-9]+)\(int capacity\) { \(_elements, _allocated\) = \(new TreeElement\[capacity\], 1\); }"), "$1() { _allocated = 1; }", new Regex(@"Size[a-zA-Z]+Tree2?\.cs"), 0),
-            // TreeElement _elements[N];
-            // TreeElement _elements[N] = { {0} };
-            (new Regex(@"TreeElement _elements\[N\];"), "TreeElement _elements[N] = { {0} };", new Regex(@"Size[a-zA-Z]+Tree2?\.cs"), 0),
             // void PrintNodeValue(TElement node, StringBuilder sb) override { sb.Append(node); }
             //
             (new Regex(@"[\r\n]{1,2}\s+[\r\n]{1,2}\s+void PrintNodeValue\(TElement node, StringBuilder sb\) override { sb\.Append\(node\); }"), "", new Regex(@"Size[a-zA-Z]+Tree2?\.cs"), 0),
-            // TElement Root;
-            // TElement Root = 0;
-            (new Regex(@"TElement Root;"), "TElement Root = 0;", new Regex(@"Size[a-zA-Z]+Tree2?\.cs"), 0),
-            // SizedBinaryTreeMethodsBase<TElement>::ClearNode
-            // ClearNode
-            (new Regex(@"this->(ClearNode|GetLeftOrDefault|GetRightOrDefault)"), "$1", new Regex(@"SizedAndThreadedAVLBalancedTreeMethods\.cs"), 0),
-            // auto path = new TElement[MaxPath];
-            // TElement path[MaxPath] = { {0} };
-            (new Regex(@"auto path = new TElement\[MaxPath\];"), "TElement path[MaxPath] = { {0} };", new Regex(@"SizedAndThreadedAVLBalancedTreeMethods\.cs"), 0),
+            // GetFirst(
+            // this->GetFirst(
+            (new Regex(@"(?<separator>(\(|, |(\W) |return ))(?<!(->|\* ))(?<method>(?!sizeof)[a-zA-Z0-9]+)\((?!\) \{)"), "${separator}this->${method}(", null, 1),
+            // this->allocate(
+            // allocate(
+            (new Regex(@"this->(allocate|free|iszero)\("), "$1(", null, 0),
             // auto sizeBalancedTree = new SizeBalancedTree<uint>(10000);
             // SizeBalancedTree<uint, 10000> sizeBalancedTree;
             (new Regex(@"auto ([a-zA-Z0-9]+) = new ([a-zA-Z0-9]+)<([_a-zA-Z0-9:]+)>\(([0-9]+)\);"), "$2<$3, $4> $1;", new Regex(@"TreesTests\.cs"), 0),
@@ -281,30 +297,11 @@ namespace CSharpToCppTranslator
             // sizeBalancedTree.TestMultipleCreationsAndDeletions(
             // TestExtensions::TestMultipleCreationsAndDeletions(sizeBalancedTree, 
             (new Regex(@"([a-zA-Z0-9]+)\.(TestMultipleCreationsAndDeletions|TestMultipleRandomCreationsAndDeletions)\("), "TestExtensions::$2<std::uint32_t>($1, ", new Regex(@"TreesTests\.cs"), 0),
-            // auto random = new System.Random(0);
-            // 
-            (new Regex(@"[\r\n]{1,4}\s+auto random = new System\.Random\(0\);"), "", new Regex(@"TestExtensions\.cs"), 0),
-            // random.Next(1, N)
-            // (std::rand() % N) + 1
-            (new Regex(@"random\.Next\(1, N\)"), "(std::rand() % N) + 1", new Regex(@"TestExtensions\.cs"), 0),
-            // auto added = new HashSet<TElement>();
-            // std::unordered_set<TElement> added;
-            (new Regex(@"auto ([a-zA-Z0-9]+) = new HashSet<([a-zA-Z0-9]+)>\(\);"), "std::unordered_set<$2> $1;", new Regex(@"TestExtensions\.cs"), 0),
-            // added.Add(node)
-            // added.insert(node)
-            (new Regex(@"added\.Add\(([a-zA-Z0-9]+)\)"), "added.insert($1)", new Regex(@"TestExtensions\.cs"), 0),
-            // added.Remove(node)
-            // added.erase(node) 
-            (new Regex(@"added\.Remove\(([a-zA-Z0-9]+)\)"), "added.erase($1)", new Regex(@"TestExtensions\.cs"), 0),
-            // if (added.insert(node)) {
-            // if (added.find(node) == added.end()) { added.insert(node);
-            (new Regex(@"if \(added\.insert\(node\)\)([\t ]*[\r\n]+)([\t ]*){"), "if (added.find(node) == added.end())$1$2{" + Environment.NewLine + "$2    added.insert(node);", new Regex(@"TestExtensions\.cs"), 0),
             // SizedBinaryTreeMethodsBase
             // Platform::Collections::Methods::Trees::SizedBinaryTreeMethodsBase
             (new Regex(@"\(SizedBinaryTreeMethodsBase<TElement>"), "(Platform::Collections::Methods::Trees::SizedBinaryTreeMethodsBase<TElement>&", new Regex(@"TestExtensions\.cs"), 0),
         }.Cast<ISubstitutionRule>().ToList();
 
-        /*
         public static readonly IList<ISubstitutionRule> LastStage = new List<SubstitutionRule>
         {
             // (expression)
@@ -335,10 +332,9 @@ namespace CSharpToCppTranslator
             // class
             (new Regex(@"(\S[\r\n]{1,2})?[\r\n]+class"), "$1class", null, 0),
         }.Cast<ISubstitutionRule>().ToList();
-        */
 
-        public CustomCSharpToCppTransformer() : base(Rules) { }
+        //public CustomCSharpToCppTransformer() : base(Rules) { }
 
-        //public CustomCSharpToCppTransformer() : base(FirstStage.Concat(Rules).Concat(LastStage).ToList()) { }
+        public CustomCSharpToCppTransformer() : base(FirstStage.Concat(Rules).Concat(LastStage).ToList()) { }
     }
 }

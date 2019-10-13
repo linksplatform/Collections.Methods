@@ -23,8 +23,8 @@
 
         virtual void SetSize(TElement size) = 0;
 
-        void IncrementSize() { return SetSize(GetSize() + 1); }
+        void IncrementSize() { return this->SetSize(this->GetSize() + 1); }
 
-        void DecrementSize() { return SetSize(GetSize() - 1); }
+        void DecrementSize() { return this->SetSize(this->GetSize() - 1); }
     };
 }

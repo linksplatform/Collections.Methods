@@ -31,6 +31,7 @@
 
         template <typename TElement> static void TestMultipleRandomCreationsAndDeletions(Platform::Collections::Methods::Trees::SizedBinaryTreeMethodsBase<TElement>& tree, TElement* root, std::function<TElement()> treeCount, int maximumOperationsPerCycle)
         {
+            std::srand(0);
             std::unordered_set<TElement> added;
             auto currentCount = 0;
             for (auto N = 1; N < maximumOperationsPerCycle; N++)
@@ -38,7 +39,7 @@
                 for (auto i = 0; i < N; i++)
                 {
                     auto node = (std::rand() % N) + 1;
-                    if (added.find(node) == added.end())
+                    if (!added.contains(node))
                     {
                         added.insert(node);
                         tree.Attach(root, node);
