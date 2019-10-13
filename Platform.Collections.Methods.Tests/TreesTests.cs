@@ -7,14 +7,14 @@ namespace Platform.Collections.Methods.Tests
         private const int _n = 500;
 
         [Fact]
-        public static void SizeBalancedTreeMultipleAttachAndDetachTest()
+        public static void RecursionlessSizeBalancedTreeMultipleAttachAndDetachTest()
         {
             var recursionlessSizeBalancedTree = new RecursionlessSizeBalancedTree<uint>(10000);
             recursionlessSizeBalancedTree.TestMultipleCreationsAndDeletions(recursionlessSizeBalancedTree.Allocate, recursionlessSizeBalancedTree.Free, ref recursionlessSizeBalancedTree.Root, () => recursionlessSizeBalancedTree.Count, _n);
         }
 
         [Fact]
-        public static void SizeBalancedTree2MultipleAttachAndDetachTest()
+        public static void SizeBalancedTreeMultipleAttachAndDetachTest()
         {
             var sizeBalancedTree = new SizeBalancedTree<uint>(10000);
             sizeBalancedTree.TestMultipleCreationsAndDeletions(sizeBalancedTree.Allocate, sizeBalancedTree.Free, ref sizeBalancedTree.Root, () => sizeBalancedTree.Count, _n);
@@ -28,14 +28,14 @@ namespace Platform.Collections.Methods.Tests
         }
 
         [Fact]
-        public static void SizeBalancedTreeMultipleRandomAttachAndDetachTest()
+        public static void RecursionlessSizeBalancedTreeMultipleRandomAttachAndDetachTest()
         {
             var recursionlessSizeBalancedTree = new RecursionlessSizeBalancedTree<uint>(10000);
             recursionlessSizeBalancedTree.TestMultipleRandomCreationsAndDeletions(ref recursionlessSizeBalancedTree.Root, () => recursionlessSizeBalancedTree.Count, _n);
         }
 
         [Fact]
-        public static void SizeBalancedTree2MultipleRandomAttachAndDetachTest()
+        public static void SizeBalancedTreeMultipleRandomAttachAndDetachTest()
         {
             var sizeBalancedTree = new SizeBalancedTree<uint>(10000);
             sizeBalancedTree.TestMultipleRandomCreationsAndDeletions(ref sizeBalancedTree.Root, () => sizeBalancedTree.Count, _n);

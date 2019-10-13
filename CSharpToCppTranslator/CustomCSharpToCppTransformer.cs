@@ -221,7 +221,7 @@ namespace CSharpToCppTranslator
 
             // EqualityComparer<TreeElement>.Default.Equals(GetElement(node), default)
             // iszero(GetElement(node), sizeof(TreeElement))
-            (new Regex(@"EqualityComparer<TreeElement>\.Default\.Equals\(GetElement\(node\), default\)"), "iszero(GetElement(node), sizeof(TreeElement))", new Regex(@"Size[a-zA-Z]+Tree2?\.cs"), 0),
+            (new Regex(@"EqualityComparer<TreeElement>\.Default\.Equals\(GetElement\(node\), default\)"), "iszero(GetElement(node), sizeof(TreeElement))", new Regex(@"Size[a-zA-Z]+Tree\.cs"), 0),
             // Zero
             // 0
             (new Regex(@"(\W)(Zero|Integer<[a-zA-Z0-9]+>\.Zero)(\W)"), "${1}0$3", null, 0),
@@ -267,13 +267,13 @@ namespace CSharpToCppTranslator
             (new Regex(@"(?<separator>\W)GreaterThanZero\((?<argument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+)\)"), "${separator}(${argument}) > 0", null, 0),
             // template <typename TElement> class SizeBalancedTree : public SizeBalancedTreeMethods<TElement>
             // template <typename TElement, std::size_t N> class SizeBalancedTree : public Platform::Collections::Methods::Trees::SizeBalancedTreeMethods<TElement>
-            (new Regex(@"template <typename TElement> class ([a-zA-Z0-9]+) : public ([a-zA-Z0-9]+)<TElement>"), "template <typename TElement, std::size_t N> class $1 : public Platform::Collections::Methods::Trees::$2<TElement>", new Regex(@"Size[a-zA-Z]+Tree2?\.cs"), 0),
+            (new Regex(@"template <typename TElement> class ([a-zA-Z0-9]+) : public ([a-zA-Z0-9]+)<TElement>"), "template <typename TElement, std::size_t N> class $1 : public Platform::Collections::Methods::Trees::$2<TElement>", new Regex(@"Size[a-zA-Z]+Tree\.cs"), 0),
             // SizeBalancedTree(int capacity) { (_elements, _allocated) = (new TreeElement[capacity], 1); }
             // SizeBalancedTree() { _allocated = 1; }
-            (new Regex(@"([a-zA-Z0-9]+)\(int capacity\) { \(_elements, _allocated\) = \(new TreeElement\[capacity\], 1\); }"), "$1() { _allocated = 1; }", new Regex(@"Size[a-zA-Z]+Tree2?\.cs"), 0),
+            (new Regex(@"([a-zA-Z0-9]+)\(int capacity\) { \(_elements, _allocated\) = \(new TreeElement\[capacity\], 1\); }"), "$1() { _allocated = 1; }", new Regex(@"Size[a-zA-Z]+Tree\.cs"), 0),
             // void PrintNodeValue(TElement node, StringBuilder sb) override { sb.Append(node); }
             //
-            (new Regex(@"[\r\n]{1,2}\s+[\r\n]{1,2}\s+void PrintNodeValue\(TElement node, StringBuilder sb\) override { sb\.Append\(node\); }"), "", new Regex(@"Size[a-zA-Z]+Tree2?\.cs"), 0),
+            (new Regex(@"[\r\n]{1,2}\s+[\r\n]{1,2}\s+void PrintNodeValue\(TElement node, StringBuilder sb\) override { sb\.Append\(node\); }"), "", new Regex(@"Size[a-zA-Z]+Tree\.cs"), 0),
             // GetFirst(
             // this->GetFirst(
             (new Regex(@"(?<separator>(\(|, |(\W) |return ))(?<!(->|\* ))(?<method>(?!sizeof)[a-zA-Z0-9]+)\((?!\) \{)"), "${separator}this->${method}(", null, 1),
