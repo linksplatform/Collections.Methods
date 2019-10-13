@@ -33,7 +33,7 @@
             auto replacementNode = 0;
             while (*currentNode != nodeToDetach)
             {
-                this->SetSize(*currentNode, this->GetSize(*currentNode) - 1);
+                this->DecrementSize(*currentNode);
                 if (this->FirstIsToTheLeftOfSecond(nodeToDetach, *currentNode))
                 {
                     parent = currentNode;

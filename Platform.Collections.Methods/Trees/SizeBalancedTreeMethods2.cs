@@ -36,7 +36,7 @@ namespace Platform.Collections.Methods.Trees
             var replacementNode = Zero;
             while (!AreEqual(currentNode, nodeToDetach))
             {
-                SetSize(currentNode, Decrement(GetSize(currentNode)));
+                DecrementSize(currentNode);
                 if (FirstIsToTheLeftOfSecond(nodeToDetach, currentNode))
                 {
                     parent = ref currentNode;
