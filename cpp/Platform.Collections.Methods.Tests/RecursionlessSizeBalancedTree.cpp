@@ -1,6 +1,6 @@
 ﻿namespace Platform::Collections::Methods::Tests
 {
-    template <typename TElement, std::size_t N> class SizeBalancedTree2 : public Platform::Collections::Methods::Trees::SizeBalancedTreeMethods2<TElement>
+    template <typename TElement, std::size_t N> class RecursionlessSizeBalancedTree : public Platform::Collections::Methods::Trees::RecursionlessSizeBalancedTreeMethods<TElement>
     {
     public:
         struct TreeElement
@@ -17,7 +17,7 @@
 
         TElement GetCount() { return this->GetSizeOrZero(Root); }
 
-        SizeBalancedTree2() { _allocated = 1; }
+        RecursionlessSizeBalancedTree() { _allocated = 1; }
 
         TElement Allocate()
         {

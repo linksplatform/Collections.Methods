@@ -5,197 +5,162 @@
     public:
         void AttachCore(TElement* root, TElement node) override
         {
-            while (true)
+            if (*root == 0)
             {
-                auto* left = this->GetLeftReference(*root);
-                auto leftSize = this->GetSizeOrZero(*left);
-                auto* right = this->GetRightReference(*root);
-                auto rightSize = this->GetSizeOrZero(*right);
+                *root = node;
+                this->IncrementSize(*root);
+            }
+            else
+            {
+                this->IncrementSize(*root);
                 if (this->FirstIsToTheLeftOfSecond(node, *root))
                 {
-                    if (*left == 0)
-                    {
-                        this->IncrementSize(*root);
-                        this->SetSize(node, 1);
-                        *left = node;
-                        return;
-                    }
-                    if (this->FirstIsToTheLeftOfSecond(node, *left))
-                    {
-                        if ((leftSize + 1) > rightSize)
-                        {
-                            this->RightRotate(root);
-                        }
-                        else
-                        {
-                            this->IncrementSize(*root);
-                            root = left;
-                        }
-                    }
-                    else
-                    {
-                        auto leftRightSize = this->GetSizeOrZero(this->GetRight(*left));
-                        if ((leftRightSize + 1) > rightSize)
-                        {
-                            if (leftRightSize == 0 && rightSize == 0)
-                            {
-                                this->SetLeft(node, *left);
-                                this->SetRight(node, *root);
-                                this->SetSize(node, leftSize + 2);
-                                this->SetLeft(*root, 0);
-                                this->SetSize(*root, 1);
-                                *root = node;
-                                return;
-                            }
-                            this->LeftRotate(left);
-                            this->RightRotate(root);
-                        }
-                        else
-                        {
-                            this->IncrementSize(*root);
-                            root = left;
-                        }
-                    }
+                    this->AttachCore(this->GetLeftReference(*root), node);
+                    this->LeftMaintain(root);
                 }
                 else
                 {
-                    if (*right == 0)
-                    {
-                        this->IncrementSize(*root);
-                        this->SetSize(node, 1);
-                        *right = node;
-                        return;
-                    }
-                    if (this->FirstIsToTheRightOfSecond(node, *right))
-                    {
-                        if ((rightSize + 1) > leftSize)
-                        {
-                            this->LeftRotate(root);
-                        }
-                        else
-                        {
-                            this->IncrementSize(*root);
-                            root = right;
-                        }
-                    }
-                    else
-                    {
-                        auto rightLeftSize = this->GetSizeOrZero(this->GetLeft(*right));
-                        if ((rightLeftSize + 1) > leftSize)
-                        {
-                            if (rightLeftSize == 0 && leftSize == 0)
-                            {
-                                this->SetLeft(node, *root);
-                                this->SetRight(node, *right);
-                                this->SetSize(node, rightSize + 2);
-                                this->SetRight(*root, 0);
-                                this->SetSize(*root, 1);
-                                *root = node;
-                                return;
-                            }
-                            this->RightRotate(right);
-                            this->LeftRotate(root);
-                        }
-                        else
-                        {
-                            this->IncrementSize(*root);
-                            root = right;
-                        }
-                    }
+                    this->AttachCore(this->GetRightReference(*root), node);
+                    this->RightMaintain(root);
                 }
             }
         }
 
-        void DetachCore(TElement* root, TElement node) override
+        void DetachCore(TElement* root, TElement nodeToDetach) override
         {
-            while (true)
+            auto* currentNode = root;
+            auto* parent = root;
+            auto replacementNode = 0;
+            while (*currentNode != nodeToDetach)
             {
-                auto* left = this->GetLeftReference(*root);
-                auto leftSize = this->GetSizeOrZero(*left);
-                auto* right = this->GetRightReference(*root);
-                auto rightSize = this->GetSizeOrZero(*right);
-                if (this->FirstIsToTheLeftOfSecond(node, *root))
+                this->DecrementSize(*currentNode);
+                if (this->FirstIsToTheLeftOfSecond(nodeToDetach, *currentNode))
                 {
-                    auto decrementedLeftSize = leftSize - 1;
-                    if (this->GetSizeOrZero(this->GetRight(*right)) > decrementedLeftSize)
-                    {
-                        this->LeftRotate(root);
-                    }
-                    else if (this->GetSizeOrZero(this->GetLeft(*right)) > decrementedLeftSize)
-                    {
-                        this->RightRotate(right);
-                        this->LeftRotate(root);
-                    }
-                    else
-                    {
-                        this->DecrementSize(*root);
-                        root = left;
-                    }
+                    parent = currentNode;
+                    currentNode = this->GetLeftReference(*currentNode);
                 }
-                else if (this->FirstIsToTheRightOfSecond(node, *root))
+                else if (this->FirstIsToTheRightOfSecond(nodeToDetach, *currentNode))
                 {
-                    auto decrementedRightSize = rightSize - 1;
-                    if (this->GetSizeOrZero(this->GetLeft(*left)) > decrementedRightSize)
-                    {
-                        this->RightRotate(root);
-                    }
-                    else if (this->GetSizeOrZero(this->GetRight(*left)) > decrementedRightSize)
-                    {
-                        this->LeftRotate(left);
-                        this->RightRotate(root);
-                    }
-                    else
-                    {
-                        this->DecrementSize(*root);
-                        root = right;
-                    }
+                    parent = currentNode;
+                    currentNode = this->GetRightReference(*currentNode);
                 }
                 else
                 {
-                    if (leftSize > 0 && rightSize > 0)
+                    throw std::exception("Duplicate link found in the tree.");
+                }
+            }
+            auto nodeToDetachLeft = this->GetLeft(nodeToDetach);
+            auto node = this->GetRight(nodeToDetach);
+            if (nodeToDetachLeft != 0 && node != 0)
+            {
+                auto leftestNode = this->GetLeftest(node);
+                this->DetachCore(this->GetRightReference(nodeToDetach), leftestNode);
+                this->SetLeft(leftestNode, nodeToDetachLeft);
+                node = this->GetRight(nodeToDetach);
+                if (node != 0)
+                {
+                    this->SetRight(leftestNode, node);
+                    this->SetSize(leftestNode, (this->GetSize(nodeToDetachLeft) + this->GetSize(node)) + 1);
+                }
+                else
+                {
+                    this->SetSize(leftestNode, this->GetSize(nodeToDetachLeft) + 1);
+                }
+                replacementNode = leftestNode;
+            }
+            else if (nodeToDetachLeft != 0)
+            {
+                replacementNode = nodeToDetachLeft;
+            }
+            else if (node != 0)
+            {
+                replacementNode = node;
+            }
+            if (*root == nodeToDetach)
+            {
+                *root = replacementNode;
+            }
+            else if (this->GetLeft(*parent) == nodeToDetach)
+            {
+                this->SetLeft(*parent, replacementNode);
+            }
+            else if (this->GetRight(*parent) == nodeToDetach)
+            {
+                this->SetRight(*parent, replacementNode);
+            }
+            this->ClearNode(nodeToDetach);
+        }
+
+        void LeftMaintain(TElement* root)
+        {
+            if (*root != 0)
+            {
+                auto rootLeftNode = this->GetLeft(*root);
+                if (rootLeftNode != 0)
+                {
+                    auto rootRightNode = this->GetRight(*root);
+                    auto rootRightNodeSize = this->GetSize(rootRightNode);
+                    auto rootLeftNodeLeftNode = this->GetLeft(rootLeftNode);
+                    if (rootLeftNodeLeftNode != 0 &&
+                        (rootRightNode == 0 || this->GetSize(rootLeftNodeLeftNode) > rootRightNodeSize))
                     {
-                        TElement replacement = 0;
-                        if (leftSize > rightSize)
-                        {
-                            replacement = *left;
-                            auto replacementRight = this->GetRight(replacement);
-                            while (replacementRight != 0)
-                            {
-                                replacement = replacementRight;
-                                replacementRight = this->GetRight(replacement);
-                            }
-                            this->DetachCore(left, replacement);
-                        }
-                        else
-                        {
-                            replacement = *right;
-                            auto replacementLeft = this->GetLeft(replacement);
-                            while (replacementLeft != 0)
-                            {
-                                replacement = replacementLeft;
-                                replacementLeft = this->GetLeft(replacement);
-                            }
-                            this->DetachCore(right, replacement);
-                        }
-                        this->SetLeft(replacement, *left);
-                        this->SetRight(replacement, *right);
-                        this->SetSize(replacement, leftSize + rightSize);
-                        *root = replacement;
-                    }
-                    else if (leftSize > 0)
-                    {
-                        *root = *left;
-                    }
-                    else if (rightSize > 0)
-                    {
-                        *root = *right;
+                        this->RightRotate(root);
                     }
                     else
                     {
-                        *root = 0;
+                        auto rootLeftNodeRightNode = this->GetRight(rootLeftNode);
+                        if (rootLeftNodeRightNode != 0 &&
+                            (rootRightNode == 0 || this->GetSize(rootLeftNodeRightNode) > rootRightNodeSize))
+                        {
+                            this->LeftRotate(this->GetLeftReference(*root));
+                            this->RightRotate(root);
+                        }
+                        else
+                        {
+                            return;
+                        }
                     }
-                    this->ClearNode(node);
-                    return;
+                    this->LeftMaintain(this->GetLeftReference(*root));
+                    this->RightMaintain(this->GetRightReference(*root));
+                    this->LeftMaintain(root);
+                    this->RightMaintain(root);
+                }
+            }
+        }
+
+        void RightMaintain(TElement* root)
+        {
+            if (*root != 0)
+            {
+                auto rootRightNode = this->GetRight(*root);
+                if (rootRightNode != 0)
+                {
+                    auto rootLeftNode = this->GetLeft(*root);
+                    auto rootLeftNodeSize = this->GetSize(rootLeftNode);
+                    auto rootRightNodeRightNode = this->GetRight(rootRightNode);
+                    if (rootRightNodeRightNode != 0 &&
+                        (rootLeftNode == 0 || this->GetSize(rootRightNodeRightNode) > rootLeftNodeSize))
+                    {
+                        this->LeftRotate(root);
+                    }
+                    else
+                    {
+                        auto rootRightNodeLeftNode = this->GetLeft(rootRightNode);
+                        if (rootRightNodeLeftNode != 0 &&
+                            (rootLeftNode == 0 || this->GetSize(rootRightNodeLeftNode) > rootLeftNodeSize))
+                        {
+                            this->RightRotate(this->GetRightReference(*root));
+                            this->LeftRotate(root);
+                        }
+                        else
+                        {
+                            return;
+                        }
+                    }
+                    this->LeftMaintain(this->GetLeftReference(*root));
+                    this->RightMaintain(this->GetRightReference(*root));
+                    this->LeftMaintain(root);
+                    this->RightMaintain(root);
                 }
             }
         }

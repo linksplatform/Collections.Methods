@@ -21,8 +21,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)DoublyLinkedListMethodsBase.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)GenericCollectionMethodsBase.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)OpenDoublyLinkedListMethods.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)RecursionlessSizeBalancedTreeMethods.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)SizeBalancedTreeMethods.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)SizeBalancedTreeMethods2.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)SizedAndThreadedAVLBalancedTreeMethods.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)SizedBinaryTreeMethodsBase.cpp" />
   </ItemGroup>

@@ -149,8 +149,8 @@ namespace CSharpToCppTranslator
             //  ref TElement 
             //  TElement* 
             (new Regex(@"( |\()ref ([a-zA-Z0-9]+) "), "$1$2* ", null, 0),
-            // ref sizeBalancedTree2.Root
-            // &sizeBalancedTree2->Root
+            // ref sizeBalancedTree.Root
+            // &sizeBalancedTree->Root
             (new Regex(@"ref ([a-zA-Z0-9]+)\.([a-zA-Z0-9\*]+)"), "&$1->$2", null, 0),
             // ref GetElement(node).Right
             // &GetElement(node)->Right
@@ -283,17 +283,17 @@ namespace CSharpToCppTranslator
             // auto sizeBalancedTree = new SizeBalancedTree<uint>(10000);
             // SizeBalancedTree<uint, 10000> sizeBalancedTree;
             (new Regex(@"auto ([a-zA-Z0-9]+) = new ([a-zA-Z0-9]+)<([_a-zA-Z0-9:]+)>\(([0-9]+)\);"), "$2<$3, $4> $1;", new Regex(@"TreesTests\.cs"), 0),
-            // &sizeBalancedTree2->Root
-            // &sizeBalancedTree2.Root
+            // &sizeBalancedTree->Root
+            // &sizeBalancedTree.Root
             (new Regex(@"&([a-zA-Z0-9]+)->([a-zA-Z0-9]+)"), "&$1.$2", new Regex(@"TreesTests\.cs"), 0),
             // sizeBalancedTree.Count
             // sizeBalancedTree.GetCount()
             (new Regex(@"([a-zA-Z0-9]+).Count"), "$1.GetCount()", new Regex(@"TreesTests\.cs"), 0),
-            // sizeBalancedTree2.Allocate
-            // [&]()-> auto { return sizeBalancedTree2.Allocate(); }
+            // sizeBalancedTree.Allocate
+            // [&]()-> auto { return sizeBalancedTree.Allocate(); }
             (new Regex(@"(\(|, )([a-zA-Z0-9]+)\.(Allocate)"), "$1[&]()-> auto { return $2.$3(); }", new Regex(@"TreesTests\.cs"), 0),
-            // sizeBalancedTree2.Free
-            // [&](std::uint32_t link)-> auto { sizeBalancedTree2.Free(link); }
+            // sizeBalancedTree.Free
+            // [&](std::uint32_t link)-> auto { sizeBalancedTree.Free(link); }
             (new Regex(@"(\(|, )([a-zA-Z0-9]+)\.(Free)"), "$1[&](std::uint32_t link)-> auto { $2.$3(link); }", new Regex(@"TreesTests\.cs"), 0),
             // sizeBalancedTree.TestMultipleCreationsAndDeletions(
             // TestExtensions::TestMultipleCreationsAndDeletions(sizeBalancedTree, 

@@ -7,14 +7,14 @@
 
         TEST_METHOD(SizeBalancedTreeMultipleAttachAndDetachTest)
         {
-            SizeBalancedTree<std::uint32_t, 10000> sizeBalancedTree;
-            TestExtensions::TestMultipleCreationsAndDeletions<std::uint32_t>(sizeBalancedTree, [&]()-> auto { return sizeBalancedTree.Allocate(); }, [&](std::uint32_t link)-> auto { sizeBalancedTree.Free(link); }, &sizeBalancedTree.Root, [&]()-> auto { return sizeBalancedTree.GetCount(); }, _n);
+            RecursionlessSizeBalancedTree<std::uint32_t, 10000> recursionlessSizeBalancedTree;
+            TestExtensions::TestMultipleCreationsAndDeletions<std::uint32_t>(recursionlessSizeBalancedTree, [&]()-> auto { return recursionlessSizeBalancedTree.Allocate(); }, [&](std::uint32_t link)-> auto { recursionlessSizeBalancedTree.Free(link); }, &recursionlessSizeBalancedTree.Root, [&]()-> auto { return recursionlessSizeBalancedTree.GetCount(); }, _n);
         }
 
         TEST_METHOD(SizeBalancedTree2MultipleAttachAndDetachTest)
         {
-            SizeBalancedTree2<std::uint32_t, 10000> sizeBalancedTree2;
-            TestExtensions::TestMultipleCreationsAndDeletions<std::uint32_t>(sizeBalancedTree2, [&]()-> auto { return sizeBalancedTree2.Allocate(); }, [&](std::uint32_t link)-> auto { sizeBalancedTree2.Free(link); }, &sizeBalancedTree2.Root, [&]()-> auto { return sizeBalancedTree2.GetCount(); }, _n);
+            SizeBalancedTree<std::uint32_t, 10000> sizeBalancedTree;
+            TestExtensions::TestMultipleCreationsAndDeletions<std::uint32_t>(sizeBalancedTree, [&]()-> auto { return sizeBalancedTree.Allocate(); }, [&](std::uint32_t link)-> auto { sizeBalancedTree.Free(link); }, &sizeBalancedTree.Root, [&]()-> auto { return sizeBalancedTree.GetCount(); }, _n);
         }
 
         TEST_METHOD(SizedAndThreadedAVLBalancedTreeMultipleAttachAndDetachTest)
@@ -25,14 +25,14 @@
 
         TEST_METHOD(SizeBalancedTreeMultipleRandomAttachAndDetachTest)
         {
-            SizeBalancedTree<std::uint32_t, 10000> sizeBalancedTree;
-            TestExtensions::TestMultipleRandomCreationsAndDeletions<std::uint32_t>(sizeBalancedTree, &sizeBalancedTree.Root, [&]()-> auto { return sizeBalancedTree.GetCount(); }, _n);
+            RecursionlessSizeBalancedTree<std::uint32_t, 10000> recursionlessSizeBalancedTree;
+            TestExtensions::TestMultipleRandomCreationsAndDeletions<std::uint32_t>(recursionlessSizeBalancedTree, &recursionlessSizeBalancedTree.Root, [&]()-> auto { return recursionlessSizeBalancedTree.GetCount(); }, _n);
         }
 
         TEST_METHOD(SizeBalancedTree2MultipleRandomAttachAndDetachTest)
         {
-            SizeBalancedTree2<std::uint32_t, 10000> sizeBalancedTree2;
-            TestExtensions::TestMultipleRandomCreationsAndDeletions<std::uint32_t>(sizeBalancedTree2, &sizeBalancedTree2.Root, [&]()-> auto { return sizeBalancedTree2.GetCount(); }, _n);
+            SizeBalancedTree<std::uint32_t, 10000> sizeBalancedTree;
+            TestExtensions::TestMultipleRandomCreationsAndDeletions<std::uint32_t>(sizeBalancedTree, &sizeBalancedTree.Root, [&]()-> auto { return sizeBalancedTree.GetCount(); }, _n);
         }
 
         TEST_METHOD(SizedAndThreadedAVLBalancedTreeMultipleRandomAttachAndDetachTest)

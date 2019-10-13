@@ -5,6 +5,28 @@
     public:
         static const int MaxPath = 92;
 
+        TElement GetRightest(TElement current) override
+        {
+            auto currentRight = this->GetRightOrDefault(current);
+            while (currentRight != 0)
+            {
+                current = currentRight;
+                currentRight = this->GetRightOrDefault(current);
+            }
+            return current;
+        }
+
+        TElement GetLeftest(TElement current) override
+        {
+            auto currentLeft = this->GetLeftOrDefault(current);
+            while (currentLeft != 0)
+            {
+                current = currentLeft;
+                currentLeft = this->GetLeftOrDefault(current);
+            }
+            return current;
+        }
+
         bool Contains(TElement node, TElement root) override
         {
             while (root != 0)
@@ -268,34 +290,24 @@
             }
         }
 
-        TElement GetNext(TElement node)
+        TElement GetNext(TElement node) override
         {
+            auto current = this->GetRight(node);
+            if (this->GetRightIsChild(node))
             {
-                auto current = this->GetRight(node);
-                if (this->GetRightIsChild(node))
-                {
-                    while (this->GetLeftIsChild(current))
-                    {
-                        current = this->GetLeft(current);
-                    }
-                }
-                return current;
+                return this->GetLeftest(current);
             }
+            return current;
         }
 
-        TElement GetPrevious(TElement node)
+        TElement GetPrevious(TElement node) override
         {
+            auto current = this->GetLeft(node);
+            if (this->GetLeftIsChild(node))
             {
-                auto current = this->GetLeft(node);
-                if (this->GetLeftIsChild(node))
-                {
-                    while (this->GetRightIsChild(current))
-                    {
-                        current = this->GetRight(current);
-                    }
-                }
-                return current;
+                return this->GetRightest(current);
             }
+            return current;
         }
 
         void DetachCore(TElement* root, TElement node) override

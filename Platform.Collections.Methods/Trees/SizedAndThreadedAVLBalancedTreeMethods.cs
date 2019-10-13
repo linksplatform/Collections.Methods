@@ -18,8 +18,31 @@ namespace Platform.Collections.Methods.Trees
     /// </remarks>
     public abstract class SizedAndThreadedAVLBalancedTreeMethods<TElement> : SizedBinaryTreeMethodsBase<TElement>
     {
-        // TODO: Link with size of TElement
         private const int MaxPath = 92;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected override TElement GetRightest(TElement current)
+        {
+            var currentRight = GetRightOrDefault(current);
+            while (!EqualToZero(currentRight))
+            {
+                current = currentRight;
+                currentRight = GetRightOrDefault(current);
+            }
+            return current;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected override TElement GetLeftest(TElement current)
+        {
+            var currentLeft = GetLeftOrDefault(current);
+            while (!EqualToZero(currentLeft))
+            {
+                current = currentLeft;
+                currentLeft = GetLeftOrDefault(current);
+            }
+            return current;
+        }
 
         public override bool Contains(TElement node, TElement root)
         {
@@ -319,36 +342,26 @@ namespace Platform.Collections.Methods.Trees
             }
         }
 
-        protected TElement GetNext(TElement node)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected override TElement GetNext(TElement node)
         {
-            unchecked
+            var current = GetRight(node);
+            if (GetRightIsChild(node))
             {
-                var current = GetRight(node);
-                if (GetRightIsChild(node))
-                {
-                    while (GetLeftIsChild(current))
-                    {
-                        current = GetLeft(current);
-                    }
-                }
-                return current;
+                return GetLeftest(current);
             }
+            return current;
         }
 
-        protected TElement GetPrevious(TElement node)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected override TElement GetPrevious(TElement node)
         {
-            unchecked
+            var current = GetLeft(node);
+            if (GetLeftIsChild(node))
             {
-                var current = GetLeft(node);
-                if (GetLeftIsChild(node))
-                {
-                    while (GetRightIsChild(current))
-                    {
-                        current = GetRight(current);
-                    }
-                }
-                return current;
+                return GetRightest(current);
             }
+            return current;
         }
 
         protected override void DetachCore(ref TElement root, TElement node)

@@ -105,6 +105,36 @@ namespace Platform.Collections.Methods.Trees
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected virtual TElement GetRightest(TElement current)
+        {
+            var currentRight = GetRight(current);
+            while (!EqualToZero(currentRight))
+            {
+                current = currentRight;
+                currentRight = GetRight(current);
+            }
+            return current;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected virtual TElement GetLeftest(TElement current)
+        {
+            var currentLeft = GetLeft(current);
+            while (!EqualToZero(currentLeft))
+            {
+                current = currentLeft;
+                currentLeft = GetLeft(current);
+            }
+            return current;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected virtual TElement GetNext(TElement node) => GetLeftest(GetRight(node));
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected virtual TElement GetPrevious(TElement node) => GetRightest(GetLeft(node));
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public virtual bool Contains(TElement node, TElement root)
         {
             while (!EqualToZero(root))

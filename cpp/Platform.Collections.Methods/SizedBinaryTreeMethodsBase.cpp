@@ -75,6 +75,32 @@
             return left;
         }
 
+        virtual TElement GetRightest(TElement current)
+        {
+            auto currentRight = this->GetRight(current);
+            while (currentRight != 0)
+            {
+                current = currentRight;
+                currentRight = this->GetRight(current);
+            }
+            return current;
+        }
+
+        virtual TElement GetLeftest(TElement current)
+        {
+            auto currentLeft = this->GetLeft(current);
+            while (currentLeft != 0)
+            {
+                current = currentLeft;
+                currentLeft = this->GetLeft(current);
+            }
+            return current;
+        }
+
+        virtual TElement GetNext(TElement node) { return this->GetLeftest(this->GetRight(node)); }
+
+        virtual TElement GetPrevious(TElement node) { return this->GetRightest(this->GetLeft(node)); }
+
         virtual bool Contains(TElement node, TElement root)
         {
             while (root != 0)

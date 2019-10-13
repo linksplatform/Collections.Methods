@@ -12,8 +12,8 @@
 #include "OpenDoublyLinkedListMethods.cpp"
 
 #include "SizedBinaryTreeMethodsBase.cpp"
+#include "RecursionlessSizeBalancedTreeMethods.cpp"
 #include "SizeBalancedTreeMethods.cpp"
-#include "SizeBalancedTreeMethods2.cpp"
 #include "SizedAndThreadedAVLBalancedTreeMethods.cpp"
 
 #endif // Platform_Collections_Methods

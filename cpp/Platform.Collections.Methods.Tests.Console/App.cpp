@@ -25,18 +25,18 @@ public:
 int main()
 {
     static const int _n = 2000;
+    RecursionlessSizeBalancedTree<std::uint32_t, 10000> recursionlessSizeBalancedTree;
     SizeBalancedTree<std::uint32_t, 10000> sizeBalancedTree;
-    SizeBalancedTree2<std::uint32_t, 10000> sizeBalancedTree2;
     SizedAndThreadedAVLBalancedTree<std::uint32_t, 10000> avlTree;
 
     auto t1 = std::chrono::high_resolution_clock::now();
-    TestExtensions::TestMultipleCreationsAndDeletions<std::uint32_t>(sizeBalancedTree, [&]()-> auto { return sizeBalancedTree.Allocate(); }, [&](std::uint32_t link)-> auto { sizeBalancedTree.Free(link); }, & sizeBalancedTree.Root, [&]()-> auto { return sizeBalancedTree.GetCount(); }, _n);
+    TestExtensions::TestMultipleCreationsAndDeletions<std::uint32_t>(recursionlessSizeBalancedTree, [&]()-> auto { return recursionlessSizeBalancedTree.Allocate(); }, [&](std::uint32_t link)-> auto { recursionlessSizeBalancedTree.Free(link); }, & recursionlessSizeBalancedTree.Root, [&]()-> auto { return recursionlessSizeBalancedTree.GetCount(); }, _n);
     auto t2 = std::chrono::high_resolution_clock::now();
     auto duration1 = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
     std::cout << duration1 << "ms (in order) for SizeBalancedTreeMethods\n";
 
     auto t3 = std::chrono::high_resolution_clock::now();
-    TestExtensions::TestMultipleCreationsAndDeletions<std::uint32_t>(sizeBalancedTree2, [&]()-> auto { return sizeBalancedTree2.Allocate(); }, [&](std::uint32_t link)-> auto { sizeBalancedTree2.Free(link); }, & sizeBalancedTree2.Root, [&]()-> auto { return sizeBalancedTree2.GetCount(); }, _n);
+    TestExtensions::TestMultipleCreationsAndDeletions<std::uint32_t>(sizeBalancedTree, [&]()-> auto { return sizeBalancedTree.Allocate(); }, [&](std::uint32_t link)-> auto { sizeBalancedTree.Free(link); }, & sizeBalancedTree.Root, [&]()-> auto { return sizeBalancedTree.GetCount(); }, _n);
     auto t4 = std::chrono::high_resolution_clock::now();
     auto duration2 = std::chrono::duration_cast<std::chrono::milliseconds>(t4 - t3).count();
     std::cout << duration2 << "ms (in order) for SizeBalancedTreeMethods2\n";
@@ -48,13 +48,13 @@ int main()
     std::cout << duration3 << "ms (in order) for SizedAndThreadedAVLBalancedTreeMethods\n";
 
     auto t7 = std::chrono::high_resolution_clock::now();
-    TestExtensions::TestMultipleRandomCreationsAndDeletions<std::uint32_t>(sizeBalancedTree, &sizeBalancedTree.Root, [&]()-> auto { return sizeBalancedTree.GetCount(); }, _n);
+    TestExtensions::TestMultipleRandomCreationsAndDeletions<std::uint32_t>(recursionlessSizeBalancedTree, &recursionlessSizeBalancedTree.Root, [&]()-> auto { return recursionlessSizeBalancedTree.GetCount(); }, _n);
     auto t8 = std::chrono::high_resolution_clock::now();
     auto duration4 = std::chrono::duration_cast<std::chrono::milliseconds>(t8 - t7).count();
     std::cout << duration4 << "ms (random) for SizeBalancedTreeMethods\n";
 
     auto t9 = std::chrono::high_resolution_clock::now();
-    TestExtensions::TestMultipleRandomCreationsAndDeletions<std::uint32_t>(sizeBalancedTree2, &sizeBalancedTree2.Root, [&]()-> auto { return sizeBalancedTree2.GetCount(); }, _n);
+    TestExtensions::TestMultipleRandomCreationsAndDeletions<std::uint32_t>(sizeBalancedTree, &sizeBalancedTree.Root, [&]()-> auto { return sizeBalancedTree.GetCount(); }, _n);
     auto t10 = std::chrono::high_resolution_clock::now();
     auto duration5 = std::chrono::duration_cast<std::chrono::milliseconds>(t10 - t9).count();
     std::cout << duration5 << "ms (random) for SizeBalancedTreeMethods2\n";

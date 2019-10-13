@@ -17,8 +17,8 @@ bool iszero(void* ptr, int bytes)
     return true;
 }
 
+#include "RecursionlessSizeBalancedTree.cpp"
 #include "SizeBalancedTree.cpp"
-#include "SizeBalancedTree2.cpp"
 #include "SizedAndThreadedAVLBalancedTree.cpp"
 #include "TestExtensions.cpp"
 

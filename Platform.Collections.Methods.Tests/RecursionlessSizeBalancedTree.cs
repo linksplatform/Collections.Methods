@@ -6,7 +6,7 @@ using Platform.Collections.Methods.Trees;
 
 namespace Platform.Collections.Methods.Tests
 {
-    public class SizeBalancedTree2<TElement> : SizeBalancedTreeMethods2<TElement>
+    public class RecursionlessSizeBalancedTree<TElement> : RecursionlessSizeBalancedTreeMethods<TElement>
     {
         private struct TreeElement
         {
@@ -22,7 +22,7 @@ namespace Platform.Collections.Methods.Tests
 
         public TElement Count => GetSizeOrZero(Root);
 
-        public SizeBalancedTree2(int capacity) => (_elements, _allocated) = (new TreeElement[capacity], Integer<TElement>.One);
+        public RecursionlessSizeBalancedTree(int capacity) => (_elements, _allocated) = (new TreeElement[capacity], Integer<TElement>.One);
 
         public TElement Allocate()
         {

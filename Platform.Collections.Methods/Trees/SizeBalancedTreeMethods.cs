@@ -8,197 +8,162 @@ namespace Platform.Collections.Methods.Trees
     {
         protected override void AttachCore(ref TElement root, TElement node)
         {
-            while (true)
+            if (EqualToZero(root))
             {
-                ref var left = ref GetLeftReference(root);
-                var leftSize = GetSizeOrZero(left);
-                ref var right = ref GetRightReference(root);
-                var rightSize = GetSizeOrZero(right);
-                if (FirstIsToTheLeftOfSecond(node, root)) // node.Key less than root.Key
+                root = node;
+                IncrementSize(root);
+            }
+            else
+            {
+                IncrementSize(root);
+                if (FirstIsToTheLeftOfSecond(node, root))
                 {
-                    if (EqualToZero(left))
-                    {
-                        IncrementSize(root);
-                        SetSize(node, One);
-                        left = node;
-                        return;
-                    }
-                    if (FirstIsToTheLeftOfSecond(node, left)) // node.Key less than left.Key
-                    {
-                        if (GreaterThan(Increment(leftSize), rightSize))
-                        {
-                            RightRotate(ref root);
-                        }
-                        else
-                        {
-                            IncrementSize(root);
-                            root = ref left;
-                        }
-                    }
-                    else  // node.Key greater than left.Key
-                    {
-                        var leftRightSize = GetSizeOrZero(GetRight(left));
-                        if (GreaterThan(Increment(leftRightSize), rightSize))
-                        {
-                            if (EqualToZero(leftRightSize) && EqualToZero(rightSize))
-                            {
-                                SetLeft(node, left);
-                                SetRight(node, root);
-                                SetSize(node, Add(leftSize, Two)); // Two (2) - node the size of root and a node itself
-                                SetLeft(root, Zero);
-                                SetSize(root, One);
-                                root = node;
-                                return;
-                            }
-                            LeftRotate(ref left);
-                            RightRotate(ref root);
-                        }
-                        else
-                        {
-                            IncrementSize(root);
-                            root = ref left;
-                        }
-                    }
+                    AttachCore(ref GetLeftReference(root), node);
+                    LeftMaintain(ref root);
                 }
-                else // node.Key greater than root.Key
+                else
                 {
-                    if (EqualToZero(right))
-                    {
-                        IncrementSize(root);
-                        SetSize(node, One);
-                        right = node;
-                        return;
-                    }
-                    if (FirstIsToTheRightOfSecond(node, right)) // node.Key greater than right.Key
-                    {
-                        if (GreaterThan(Increment(rightSize), leftSize))
-                        {
-                            LeftRotate(ref root);
-                        }
-                        else
-                        {
-                            IncrementSize(root);
-                            root = ref right;
-                        }
-                    }
-                    else // node.Key less than right.Key
-                    {
-                        var rightLeftSize = GetSizeOrZero(GetLeft(right));
-                        if (GreaterThan(Increment(rightLeftSize), leftSize))
-                        {
-                            if (EqualToZero(rightLeftSize) && EqualToZero(leftSize))
-                            {
-                                SetLeft(node, root);
-                                SetRight(node, right);
-                                SetSize(node, Add(rightSize, Two)); // Two (2) - node the size of root and a node itself
-                                SetRight(root, Zero);
-                                SetSize(root, One);
-                                root = node;
-                                return;
-                            }
-                            RightRotate(ref right);
-                            LeftRotate(ref root);
-                        }
-                        else
-                        {
-                            IncrementSize(root);
-                            root = ref right;
-                        }
-                    }
+                    AttachCore(ref GetRightReference(root), node);
+                    RightMaintain(ref root);
                 }
             }
         }
 
-        protected override void DetachCore(ref TElement root, TElement node)
+        protected override void DetachCore(ref TElement root, TElement nodeToDetach)
         {
-            while (true)
+            ref var currentNode = ref root;
+            ref var parent = ref root;
+            var replacementNode = Zero;
+            while (!AreEqual(currentNode, nodeToDetach))
             {
-                ref var left = ref GetLeftReference(root);
-                var leftSize = GetSizeOrZero(left);
-                ref var right = ref GetRightReference(root);
-                var rightSize = GetSizeOrZero(right);
-                if (FirstIsToTheLeftOfSecond(node, root)) // node.Key less than root.Key
+                DecrementSize(currentNode);
+                if (FirstIsToTheLeftOfSecond(nodeToDetach, currentNode))
                 {
-                    var decrementedLeftSize = Decrement(leftSize);
-                    if (GreaterThan(GetSizeOrZero(GetRight(right)), decrementedLeftSize))
-                    {
-                        LeftRotate(ref root);
-                    }
-                    else if (GreaterThan(GetSizeOrZero(GetLeft(right)), decrementedLeftSize))
-                    {
-                        RightRotate(ref right);
-                        LeftRotate(ref root);
-                    }
-                    else
-                    {
-                        DecrementSize(root);
-                        root = ref left;
-                    }
+                    parent = ref currentNode;
+                    currentNode = ref GetLeftReference(currentNode);
                 }
-                else if (FirstIsToTheRightOfSecond(node, root)) // node.Key greater than root.Key
+                else if (FirstIsToTheRightOfSecond(nodeToDetach, currentNode))
                 {
-                    var decrementedRightSize = Decrement(rightSize);
-                    if (GreaterThan(GetSizeOrZero(GetLeft(left)), decrementedRightSize))
+                    parent = ref currentNode;
+                    currentNode = ref GetRightReference(currentNode);
+                }
+                else
+                {
+                    throw new InvalidOperationException("Duplicate link found in the tree.");
+                }
+            }
+            var nodeToDetachLeft = GetLeft(nodeToDetach);
+            var node = GetRight(nodeToDetach);
+            if (!EqualToZero(nodeToDetachLeft) && !EqualToZero(node))
+            {
+                var leftestNode = GetLeftest(node);
+                DetachCore(ref GetRightReference(nodeToDetach), leftestNode);
+                SetLeft(leftestNode, nodeToDetachLeft);
+                node = GetRight(nodeToDetach);
+                if (!EqualToZero(node))
+                {
+                    SetRight(leftestNode, node);
+                    SetSize(leftestNode, Increment(Add(GetSize(nodeToDetachLeft), GetSize(node))));
+                }
+                else
+                {
+                    SetSize(leftestNode, Increment(GetSize(nodeToDetachLeft)));
+                }
+                replacementNode = leftestNode;
+            }
+            else if (!EqualToZero(nodeToDetachLeft))
+            {
+                replacementNode = nodeToDetachLeft;
+            }
+            else if (!EqualToZero(node))
+            {
+                replacementNode = node;
+            }
+            if (AreEqual(root, nodeToDetach))
+            {
+                root = replacementNode;
+            }
+            else if (AreEqual(GetLeft(parent), nodeToDetach))
+            {
+                SetLeft(parent, replacementNode);
+            }
+            else if (AreEqual(GetRight(parent), nodeToDetach))
+            {
+                SetRight(parent, replacementNode);
+            }
+            ClearNode(nodeToDetach);
+        }
+
+        private void LeftMaintain(ref TElement root)
+        {
+            if (!EqualToZero(root))
+            {
+                var rootLeftNode = GetLeft(root);
+                if (!EqualToZero(rootLeftNode))
+                {
+                    var rootRightNode = GetRight(root);
+                    var rootRightNodeSize = GetSize(rootRightNode);
+                    var rootLeftNodeLeftNode = GetLeft(rootLeftNode);
+                    if (!EqualToZero(rootLeftNodeLeftNode) &&
+                        (EqualToZero(rootRightNode) || GreaterThan(GetSize(rootLeftNodeLeftNode), rootRightNodeSize)))
                     {
                         RightRotate(ref root);
                     }
-                    else if (GreaterThan(GetSizeOrZero(GetRight(left)), decrementedRightSize))
-                    {
-                        LeftRotate(ref left);
-                        RightRotate(ref root);
-                    }
                     else
                     {
-                        DecrementSize(root);
-                        root = ref right;
-                    }
-                }
-                else // key equals to root.Key
-                {
-                    if (GreaterThanZero(leftSize) && GreaterThanZero(rightSize))
-                    {
-                        TElement replacement;
-                        if (GreaterThan(leftSize, rightSize))
+                        var rootLeftNodeRightNode = GetRight(rootLeftNode);
+                        if (!EqualToZero(rootLeftNodeRightNode) &&
+                            (EqualToZero(rootRightNode) || GreaterThan(GetSize(rootLeftNodeRightNode), rootRightNodeSize)))
                         {
-                            replacement = left;
-                            var replacementRight = GetRight(replacement);
-                            while (!EqualToZero(replacementRight))
-                            {
-                                replacement = replacementRight;
-                                replacementRight = GetRight(replacement);
-                            }
-                            DetachCore(ref left, replacement);
+                            LeftRotate(ref GetLeftReference(root));
+                            RightRotate(ref root);
                         }
                         else
                         {
-                            replacement = right;
-                            var replacementLeft = GetLeft(replacement);
-                            while (!EqualToZero(replacementLeft))
-                            {
-                                replacement = replacementLeft;
-                                replacementLeft = GetLeft(replacement);
-                            }
-                            DetachCore(ref right, replacement);
+                            return;
                         }
-                        SetLeft(replacement, left);
-                        SetRight(replacement, right);
-                        SetSize(replacement, Add(leftSize, rightSize));
-                        root = replacement;
                     }
-                    else if (GreaterThanZero(leftSize))
+                    LeftMaintain(ref GetLeftReference(root));
+                    RightMaintain(ref GetRightReference(root));
+                    LeftMaintain(ref root);
+                    RightMaintain(ref root);
+                }
+            }
+        }
+
+        private void RightMaintain(ref TElement root)
+        {
+            if (!EqualToZero(root))
+            {
+                var rootRightNode = GetRight(root);
+                if (!EqualToZero(rootRightNode))
+                {
+                    var rootLeftNode = GetLeft(root);
+                    var rootLeftNodeSize = GetSize(rootLeftNode);
+                    var rootRightNodeRightNode = GetRight(rootRightNode);
+                    if (!EqualToZero(rootRightNodeRightNode) &&
+                        (EqualToZero(rootLeftNode) || GreaterThan(GetSize(rootRightNodeRightNode), rootLeftNodeSize)))
                     {
-                        root = left;
-                    }
-                    else if (GreaterThanZero(rightSize))
-                    {
-                        root = right;
+                        LeftRotate(ref root);
                     }
                     else
                     {
-                        root = Zero;
+                        var rootRightNodeLeftNode = GetLeft(rootRightNode);
+                        if (!EqualToZero(rootRightNodeLeftNode) &&
+                            (EqualToZero(rootLeftNode) || GreaterThan(GetSize(rootRightNodeLeftNode), rootLeftNodeSize)))
+                        {
+                            RightRotate(ref GetRightReference(root));
+                            LeftRotate(ref root);
+                        }
+                        else
+                        {
+                            return;
+                        }
                     }
-                    ClearNode(node);
-                    return;
+                    LeftMaintain(ref GetLeftReference(root));
+                    RightMaintain(ref GetRightReference(root));
+                    LeftMaintain(ref root);
+                    RightMaintain(ref root);
                 }
             }
         }
