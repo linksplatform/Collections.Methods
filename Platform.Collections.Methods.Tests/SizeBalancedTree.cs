@@ -13,9 +13,6 @@ namespace Platform.Collections.Methods.Tests
             public TElement Size;
             public TElement Left;
             public TElement Right;
-            public sbyte Balance;
-            public bool LeftIsChild;
-            public bool RightIsChild;
         }
 
         private readonly TreeElement[] _elements;

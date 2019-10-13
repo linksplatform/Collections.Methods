@@ -8,9 +8,6 @@
             TElement Size = 0;
             TElement Left = 0;
             TElement Right = 0;
-            std::int8_t Balance = 0;
-            bool LeftIsChild = 0;
-            bool RightIsChild = 0;
         };
 
         TreeElement _elements[N] = { {0} };
