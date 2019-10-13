@@ -778,6 +778,295 @@ references:
   commentId: N:Platform.Collections.Methods.Tests
   fullName: Platform.Collections.Methods.Tests
   nameWithType: Platform.Collections.Methods.Tests
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1
+  name: RecursionlessSizeBalancedTree<TElement>
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html
+  commentId: T:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1
+  name.vb: RecursionlessSizeBalancedTree(Of TElement)
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement)
+  nameWithType: RecursionlessSizeBalancedTree<TElement>
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement)
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.#ctor(System.Int32)
+  name: RecursionlessSizeBalancedTree(Int32)
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html#Platform_Collections_Methods_Tests_RecursionlessSizeBalancedTree_1__ctor_System_Int32_
+  commentId: M:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.#ctor(System.Int32)
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>.RecursionlessSizeBalancedTree(System.Int32)
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement).RecursionlessSizeBalancedTree(System.Int32)
+  nameWithType: RecursionlessSizeBalancedTree<TElement>.RecursionlessSizeBalancedTree(Int32)
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement).RecursionlessSizeBalancedTree(Int32)
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.#ctor*
+  name: RecursionlessSizeBalancedTree
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html#Platform_Collections_Methods_Tests_RecursionlessSizeBalancedTree_1__ctor_
+  commentId: Overload:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.#ctor
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>.RecursionlessSizeBalancedTree
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement).RecursionlessSizeBalancedTree
+  nameWithType: RecursionlessSizeBalancedTree<TElement>.RecursionlessSizeBalancedTree
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement).RecursionlessSizeBalancedTree
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.Allocate
+  name: Allocate()
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html#Platform_Collections_Methods_Tests_RecursionlessSizeBalancedTree_1_Allocate
+  commentId: M:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.Allocate
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>.Allocate()
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement).Allocate()
+  nameWithType: RecursionlessSizeBalancedTree<TElement>.Allocate()
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement).Allocate()
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.Allocate*
+  name: Allocate
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html#Platform_Collections_Methods_Tests_RecursionlessSizeBalancedTree_1_Allocate_
+  commentId: Overload:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.Allocate
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>.Allocate
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement).Allocate
+  nameWithType: RecursionlessSizeBalancedTree<TElement>.Allocate
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement).Allocate
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.Count
+  name: Count
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html#Platform_Collections_Methods_Tests_RecursionlessSizeBalancedTree_1_Count
+  commentId: P:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.Count
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>.Count
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement).Count
+  nameWithType: RecursionlessSizeBalancedTree<TElement>.Count
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement).Count
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.Count*
+  name: Count
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html#Platform_Collections_Methods_Tests_RecursionlessSizeBalancedTree_1_Count_
+  commentId: Overload:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.Count
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>.Count
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement).Count
+  nameWithType: RecursionlessSizeBalancedTree<TElement>.Count
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement).Count
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.FirstIsToTheLeftOfSecond(`0,`0)
+  name: FirstIsToTheLeftOfSecond(TElement, TElement)
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html#Platform_Collections_Methods_Tests_RecursionlessSizeBalancedTree_1_FirstIsToTheLeftOfSecond__0__0_
+  commentId: M:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.FirstIsToTheLeftOfSecond(`0,`0)
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>.FirstIsToTheLeftOfSecond(TElement, TElement)
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement).FirstIsToTheLeftOfSecond(TElement, TElement)
+  nameWithType: RecursionlessSizeBalancedTree<TElement>.FirstIsToTheLeftOfSecond(TElement, TElement)
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement).FirstIsToTheLeftOfSecond(TElement, TElement)
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.FirstIsToTheLeftOfSecond*
+  name: FirstIsToTheLeftOfSecond
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html#Platform_Collections_Methods_Tests_RecursionlessSizeBalancedTree_1_FirstIsToTheLeftOfSecond_
+  commentId: Overload:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.FirstIsToTheLeftOfSecond
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>.FirstIsToTheLeftOfSecond
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement).FirstIsToTheLeftOfSecond
+  nameWithType: RecursionlessSizeBalancedTree<TElement>.FirstIsToTheLeftOfSecond
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement).FirstIsToTheLeftOfSecond
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.FirstIsToTheRightOfSecond(`0,`0)
+  name: FirstIsToTheRightOfSecond(TElement, TElement)
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html#Platform_Collections_Methods_Tests_RecursionlessSizeBalancedTree_1_FirstIsToTheRightOfSecond__0__0_
+  commentId: M:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.FirstIsToTheRightOfSecond(`0,`0)
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>.FirstIsToTheRightOfSecond(TElement, TElement)
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement).FirstIsToTheRightOfSecond(TElement, TElement)
+  nameWithType: RecursionlessSizeBalancedTree<TElement>.FirstIsToTheRightOfSecond(TElement, TElement)
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement).FirstIsToTheRightOfSecond(TElement, TElement)
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.FirstIsToTheRightOfSecond*
+  name: FirstIsToTheRightOfSecond
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html#Platform_Collections_Methods_Tests_RecursionlessSizeBalancedTree_1_FirstIsToTheRightOfSecond_
+  commentId: Overload:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.FirstIsToTheRightOfSecond
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>.FirstIsToTheRightOfSecond
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement).FirstIsToTheRightOfSecond
+  nameWithType: RecursionlessSizeBalancedTree<TElement>.FirstIsToTheRightOfSecond
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement).FirstIsToTheRightOfSecond
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.Free(`0)
+  name: Free(TElement)
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html#Platform_Collections_Methods_Tests_RecursionlessSizeBalancedTree_1_Free__0_
+  commentId: M:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.Free(`0)
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>.Free(TElement)
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement).Free(TElement)
+  nameWithType: RecursionlessSizeBalancedTree<TElement>.Free(TElement)
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement).Free(TElement)
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.Free*
+  name: Free
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html#Platform_Collections_Methods_Tests_RecursionlessSizeBalancedTree_1_Free_
+  commentId: Overload:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.Free
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>.Free
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement).Free
+  nameWithType: RecursionlessSizeBalancedTree<TElement>.Free
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement).Free
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.GetLeft(`0)
+  name: GetLeft(TElement)
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html#Platform_Collections_Methods_Tests_RecursionlessSizeBalancedTree_1_GetLeft__0_
+  commentId: M:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.GetLeft(`0)
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>.GetLeft(TElement)
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement).GetLeft(TElement)
+  nameWithType: RecursionlessSizeBalancedTree<TElement>.GetLeft(TElement)
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement).GetLeft(TElement)
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.GetLeft*
+  name: GetLeft
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html#Platform_Collections_Methods_Tests_RecursionlessSizeBalancedTree_1_GetLeft_
+  commentId: Overload:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.GetLeft
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>.GetLeft
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement).GetLeft
+  nameWithType: RecursionlessSizeBalancedTree<TElement>.GetLeft
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement).GetLeft
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.GetLeftReference(`0)
+  name: GetLeftReference(TElement)
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html#Platform_Collections_Methods_Tests_RecursionlessSizeBalancedTree_1_GetLeftReference__0_
+  commentId: M:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.GetLeftReference(`0)
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>.GetLeftReference(TElement)
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement).GetLeftReference(TElement)
+  nameWithType: RecursionlessSizeBalancedTree<TElement>.GetLeftReference(TElement)
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement).GetLeftReference(TElement)
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.GetLeftReference*
+  name: GetLeftReference
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html#Platform_Collections_Methods_Tests_RecursionlessSizeBalancedTree_1_GetLeftReference_
+  commentId: Overload:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.GetLeftReference
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>.GetLeftReference
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement).GetLeftReference
+  nameWithType: RecursionlessSizeBalancedTree<TElement>.GetLeftReference
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement).GetLeftReference
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.GetRight(`0)
+  name: GetRight(TElement)
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html#Platform_Collections_Methods_Tests_RecursionlessSizeBalancedTree_1_GetRight__0_
+  commentId: M:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.GetRight(`0)
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>.GetRight(TElement)
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement).GetRight(TElement)
+  nameWithType: RecursionlessSizeBalancedTree<TElement>.GetRight(TElement)
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement).GetRight(TElement)
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.GetRight*
+  name: GetRight
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html#Platform_Collections_Methods_Tests_RecursionlessSizeBalancedTree_1_GetRight_
+  commentId: Overload:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.GetRight
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>.GetRight
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement).GetRight
+  nameWithType: RecursionlessSizeBalancedTree<TElement>.GetRight
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement).GetRight
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.GetRightReference(`0)
+  name: GetRightReference(TElement)
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html#Platform_Collections_Methods_Tests_RecursionlessSizeBalancedTree_1_GetRightReference__0_
+  commentId: M:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.GetRightReference(`0)
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>.GetRightReference(TElement)
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement).GetRightReference(TElement)
+  nameWithType: RecursionlessSizeBalancedTree<TElement>.GetRightReference(TElement)
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement).GetRightReference(TElement)
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.GetRightReference*
+  name: GetRightReference
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html#Platform_Collections_Methods_Tests_RecursionlessSizeBalancedTree_1_GetRightReference_
+  commentId: Overload:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.GetRightReference
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>.GetRightReference
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement).GetRightReference
+  nameWithType: RecursionlessSizeBalancedTree<TElement>.GetRightReference
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement).GetRightReference
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.GetSize(`0)
+  name: GetSize(TElement)
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html#Platform_Collections_Methods_Tests_RecursionlessSizeBalancedTree_1_GetSize__0_
+  commentId: M:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.GetSize(`0)
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>.GetSize(TElement)
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement).GetSize(TElement)
+  nameWithType: RecursionlessSizeBalancedTree<TElement>.GetSize(TElement)
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement).GetSize(TElement)
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.GetSize*
+  name: GetSize
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html#Platform_Collections_Methods_Tests_RecursionlessSizeBalancedTree_1_GetSize_
+  commentId: Overload:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.GetSize
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>.GetSize
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement).GetSize
+  nameWithType: RecursionlessSizeBalancedTree<TElement>.GetSize
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement).GetSize
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.IsEmpty(`0)
+  name: IsEmpty(TElement)
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html#Platform_Collections_Methods_Tests_RecursionlessSizeBalancedTree_1_IsEmpty__0_
+  commentId: M:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.IsEmpty(`0)
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>.IsEmpty(TElement)
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement).IsEmpty(TElement)
+  nameWithType: RecursionlessSizeBalancedTree<TElement>.IsEmpty(TElement)
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement).IsEmpty(TElement)
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.IsEmpty*
+  name: IsEmpty
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html#Platform_Collections_Methods_Tests_RecursionlessSizeBalancedTree_1_IsEmpty_
+  commentId: Overload:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.IsEmpty
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>.IsEmpty
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement).IsEmpty
+  nameWithType: RecursionlessSizeBalancedTree<TElement>.IsEmpty
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement).IsEmpty
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.PrintNodeValue(`0,StringBuilder)
+  name: PrintNodeValue(TElement, StringBuilder)
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html#Platform_Collections_Methods_Tests_RecursionlessSizeBalancedTree_1_PrintNodeValue__0_StringBuilder_
+  commentId: M:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.PrintNodeValue(`0,StringBuilder)
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>.PrintNodeValue(TElement, StringBuilder)
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement).PrintNodeValue(TElement, StringBuilder)
+  nameWithType: RecursionlessSizeBalancedTree<TElement>.PrintNodeValue(TElement, StringBuilder)
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement).PrintNodeValue(TElement, StringBuilder)
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.PrintNodeValue*
+  name: PrintNodeValue
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html#Platform_Collections_Methods_Tests_RecursionlessSizeBalancedTree_1_PrintNodeValue_
+  commentId: Overload:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.PrintNodeValue
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>.PrintNodeValue
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement).PrintNodeValue
+  nameWithType: RecursionlessSizeBalancedTree<TElement>.PrintNodeValue
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement).PrintNodeValue
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.Root
+  name: Root
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html#Platform_Collections_Methods_Tests_RecursionlessSizeBalancedTree_1_Root
+  commentId: F:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.Root
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>.Root
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement).Root
+  nameWithType: RecursionlessSizeBalancedTree<TElement>.Root
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement).Root
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.SetLeft(`0,`0)
+  name: SetLeft(TElement, TElement)
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html#Platform_Collections_Methods_Tests_RecursionlessSizeBalancedTree_1_SetLeft__0__0_
+  commentId: M:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.SetLeft(`0,`0)
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>.SetLeft(TElement, TElement)
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement).SetLeft(TElement, TElement)
+  nameWithType: RecursionlessSizeBalancedTree<TElement>.SetLeft(TElement, TElement)
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement).SetLeft(TElement, TElement)
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.SetLeft*
+  name: SetLeft
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html#Platform_Collections_Methods_Tests_RecursionlessSizeBalancedTree_1_SetLeft_
+  commentId: Overload:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.SetLeft
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>.SetLeft
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement).SetLeft
+  nameWithType: RecursionlessSizeBalancedTree<TElement>.SetLeft
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement).SetLeft
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.SetRight(`0,`0)
+  name: SetRight(TElement, TElement)
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html#Platform_Collections_Methods_Tests_RecursionlessSizeBalancedTree_1_SetRight__0__0_
+  commentId: M:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.SetRight(`0,`0)
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>.SetRight(TElement, TElement)
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement).SetRight(TElement, TElement)
+  nameWithType: RecursionlessSizeBalancedTree<TElement>.SetRight(TElement, TElement)
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement).SetRight(TElement, TElement)
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.SetRight*
+  name: SetRight
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html#Platform_Collections_Methods_Tests_RecursionlessSizeBalancedTree_1_SetRight_
+  commentId: Overload:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.SetRight
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>.SetRight
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement).SetRight
+  nameWithType: RecursionlessSizeBalancedTree<TElement>.SetRight
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement).SetRight
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.SetSize(`0,`0)
+  name: SetSize(TElement, TElement)
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html#Platform_Collections_Methods_Tests_RecursionlessSizeBalancedTree_1_SetSize__0__0_
+  commentId: M:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.SetSize(`0,`0)
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>.SetSize(TElement, TElement)
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement).SetSize(TElement, TElement)
+  nameWithType: RecursionlessSizeBalancedTree<TElement>.SetSize(TElement, TElement)
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement).SetSize(TElement, TElement)
+- uid: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.SetSize*
+  name: SetSize
+  href: api/Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree-1.html#Platform_Collections_Methods_Tests_RecursionlessSizeBalancedTree_1_SetSize_
+  commentId: Overload:Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree`1.SetSize
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree<TElement>.SetSize
+  fullName.vb: Platform.Collections.Methods.Tests.RecursionlessSizeBalancedTree(Of TElement).SetSize
+  nameWithType: RecursionlessSizeBalancedTree<TElement>.SetSize
+  nameWithType.vb: RecursionlessSizeBalancedTree(Of TElement).SetSize
 - uid: Platform.Collections.Methods.Tests.SizeBalancedTree`1
   name: SizeBalancedTree<TElement>
   href: api/Platform.Collections.Methods.Tests.SizeBalancedTree-1.html
@@ -1067,295 +1356,6 @@ references:
   fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree(Of TElement).SetSize
   nameWithType: SizeBalancedTree<TElement>.SetSize
   nameWithType.vb: SizeBalancedTree(Of TElement).SetSize
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1
-  name: SizeBalancedTree2<TElement>
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html
-  commentId: T:Platform.Collections.Methods.Tests.SizeBalancedTree2`1
-  name.vb: SizeBalancedTree2(Of TElement)
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement)
-  nameWithType: SizeBalancedTree2<TElement>
-  nameWithType.vb: SizeBalancedTree2(Of TElement)
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1.#ctor(System.Int32)
-  name: SizeBalancedTree2(Int32)
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html#Platform_Collections_Methods_Tests_SizeBalancedTree2_1__ctor_System_Int32_
-  commentId: M:Platform.Collections.Methods.Tests.SizeBalancedTree2`1.#ctor(System.Int32)
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>.SizeBalancedTree2(System.Int32)
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement).SizeBalancedTree2(System.Int32)
-  nameWithType: SizeBalancedTree2<TElement>.SizeBalancedTree2(Int32)
-  nameWithType.vb: SizeBalancedTree2(Of TElement).SizeBalancedTree2(Int32)
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1.#ctor*
-  name: SizeBalancedTree2
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html#Platform_Collections_Methods_Tests_SizeBalancedTree2_1__ctor_
-  commentId: Overload:Platform.Collections.Methods.Tests.SizeBalancedTree2`1.#ctor
-  isSpec: "True"
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>.SizeBalancedTree2
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement).SizeBalancedTree2
-  nameWithType: SizeBalancedTree2<TElement>.SizeBalancedTree2
-  nameWithType.vb: SizeBalancedTree2(Of TElement).SizeBalancedTree2
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1.Allocate
-  name: Allocate()
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html#Platform_Collections_Methods_Tests_SizeBalancedTree2_1_Allocate
-  commentId: M:Platform.Collections.Methods.Tests.SizeBalancedTree2`1.Allocate
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>.Allocate()
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement).Allocate()
-  nameWithType: SizeBalancedTree2<TElement>.Allocate()
-  nameWithType.vb: SizeBalancedTree2(Of TElement).Allocate()
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1.Allocate*
-  name: Allocate
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html#Platform_Collections_Methods_Tests_SizeBalancedTree2_1_Allocate_
-  commentId: Overload:Platform.Collections.Methods.Tests.SizeBalancedTree2`1.Allocate
-  isSpec: "True"
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>.Allocate
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement).Allocate
-  nameWithType: SizeBalancedTree2<TElement>.Allocate
-  nameWithType.vb: SizeBalancedTree2(Of TElement).Allocate
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1.Count
-  name: Count
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html#Platform_Collections_Methods_Tests_SizeBalancedTree2_1_Count
-  commentId: P:Platform.Collections.Methods.Tests.SizeBalancedTree2`1.Count
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>.Count
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement).Count
-  nameWithType: SizeBalancedTree2<TElement>.Count
-  nameWithType.vb: SizeBalancedTree2(Of TElement).Count
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1.Count*
-  name: Count
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html#Platform_Collections_Methods_Tests_SizeBalancedTree2_1_Count_
-  commentId: Overload:Platform.Collections.Methods.Tests.SizeBalancedTree2`1.Count
-  isSpec: "True"
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>.Count
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement).Count
-  nameWithType: SizeBalancedTree2<TElement>.Count
-  nameWithType.vb: SizeBalancedTree2(Of TElement).Count
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1.FirstIsToTheLeftOfSecond(`0,`0)
-  name: FirstIsToTheLeftOfSecond(TElement, TElement)
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html#Platform_Collections_Methods_Tests_SizeBalancedTree2_1_FirstIsToTheLeftOfSecond__0__0_
-  commentId: M:Platform.Collections.Methods.Tests.SizeBalancedTree2`1.FirstIsToTheLeftOfSecond(`0,`0)
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>.FirstIsToTheLeftOfSecond(TElement, TElement)
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement).FirstIsToTheLeftOfSecond(TElement, TElement)
-  nameWithType: SizeBalancedTree2<TElement>.FirstIsToTheLeftOfSecond(TElement, TElement)
-  nameWithType.vb: SizeBalancedTree2(Of TElement).FirstIsToTheLeftOfSecond(TElement, TElement)
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1.FirstIsToTheLeftOfSecond*
-  name: FirstIsToTheLeftOfSecond
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html#Platform_Collections_Methods_Tests_SizeBalancedTree2_1_FirstIsToTheLeftOfSecond_
-  commentId: Overload:Platform.Collections.Methods.Tests.SizeBalancedTree2`1.FirstIsToTheLeftOfSecond
-  isSpec: "True"
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>.FirstIsToTheLeftOfSecond
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement).FirstIsToTheLeftOfSecond
-  nameWithType: SizeBalancedTree2<TElement>.FirstIsToTheLeftOfSecond
-  nameWithType.vb: SizeBalancedTree2(Of TElement).FirstIsToTheLeftOfSecond
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1.FirstIsToTheRightOfSecond(`0,`0)
-  name: FirstIsToTheRightOfSecond(TElement, TElement)
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html#Platform_Collections_Methods_Tests_SizeBalancedTree2_1_FirstIsToTheRightOfSecond__0__0_
-  commentId: M:Platform.Collections.Methods.Tests.SizeBalancedTree2`1.FirstIsToTheRightOfSecond(`0,`0)
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>.FirstIsToTheRightOfSecond(TElement, TElement)
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement).FirstIsToTheRightOfSecond(TElement, TElement)
-  nameWithType: SizeBalancedTree2<TElement>.FirstIsToTheRightOfSecond(TElement, TElement)
-  nameWithType.vb: SizeBalancedTree2(Of TElement).FirstIsToTheRightOfSecond(TElement, TElement)
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1.FirstIsToTheRightOfSecond*
-  name: FirstIsToTheRightOfSecond
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html#Platform_Collections_Methods_Tests_SizeBalancedTree2_1_FirstIsToTheRightOfSecond_
-  commentId: Overload:Platform.Collections.Methods.Tests.SizeBalancedTree2`1.FirstIsToTheRightOfSecond
-  isSpec: "True"
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>.FirstIsToTheRightOfSecond
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement).FirstIsToTheRightOfSecond
-  nameWithType: SizeBalancedTree2<TElement>.FirstIsToTheRightOfSecond
-  nameWithType.vb: SizeBalancedTree2(Of TElement).FirstIsToTheRightOfSecond
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1.Free(`0)
-  name: Free(TElement)
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html#Platform_Collections_Methods_Tests_SizeBalancedTree2_1_Free__0_
-  commentId: M:Platform.Collections.Methods.Tests.SizeBalancedTree2`1.Free(`0)
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>.Free(TElement)
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement).Free(TElement)
-  nameWithType: SizeBalancedTree2<TElement>.Free(TElement)
-  nameWithType.vb: SizeBalancedTree2(Of TElement).Free(TElement)
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1.Free*
-  name: Free
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html#Platform_Collections_Methods_Tests_SizeBalancedTree2_1_Free_
-  commentId: Overload:Platform.Collections.Methods.Tests.SizeBalancedTree2`1.Free
-  isSpec: "True"
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>.Free
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement).Free
-  nameWithType: SizeBalancedTree2<TElement>.Free
-  nameWithType.vb: SizeBalancedTree2(Of TElement).Free
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1.GetLeft(`0)
-  name: GetLeft(TElement)
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html#Platform_Collections_Methods_Tests_SizeBalancedTree2_1_GetLeft__0_
-  commentId: M:Platform.Collections.Methods.Tests.SizeBalancedTree2`1.GetLeft(`0)
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>.GetLeft(TElement)
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement).GetLeft(TElement)
-  nameWithType: SizeBalancedTree2<TElement>.GetLeft(TElement)
-  nameWithType.vb: SizeBalancedTree2(Of TElement).GetLeft(TElement)
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1.GetLeft*
-  name: GetLeft
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html#Platform_Collections_Methods_Tests_SizeBalancedTree2_1_GetLeft_
-  commentId: Overload:Platform.Collections.Methods.Tests.SizeBalancedTree2`1.GetLeft
-  isSpec: "True"
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>.GetLeft
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement).GetLeft
-  nameWithType: SizeBalancedTree2<TElement>.GetLeft
-  nameWithType.vb: SizeBalancedTree2(Of TElement).GetLeft
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1.GetLeftReference(`0)
-  name: GetLeftReference(TElement)
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html#Platform_Collections_Methods_Tests_SizeBalancedTree2_1_GetLeftReference__0_
-  commentId: M:Platform.Collections.Methods.Tests.SizeBalancedTree2`1.GetLeftReference(`0)
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>.GetLeftReference(TElement)
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement).GetLeftReference(TElement)
-  nameWithType: SizeBalancedTree2<TElement>.GetLeftReference(TElement)
-  nameWithType.vb: SizeBalancedTree2(Of TElement).GetLeftReference(TElement)
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1.GetLeftReference*
-  name: GetLeftReference
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html#Platform_Collections_Methods_Tests_SizeBalancedTree2_1_GetLeftReference_
-  commentId: Overload:Platform.Collections.Methods.Tests.SizeBalancedTree2`1.GetLeftReference
-  isSpec: "True"
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>.GetLeftReference
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement).GetLeftReference
-  nameWithType: SizeBalancedTree2<TElement>.GetLeftReference
-  nameWithType.vb: SizeBalancedTree2(Of TElement).GetLeftReference
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1.GetRight(`0)
-  name: GetRight(TElement)
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html#Platform_Collections_Methods_Tests_SizeBalancedTree2_1_GetRight__0_
-  commentId: M:Platform.Collections.Methods.Tests.SizeBalancedTree2`1.GetRight(`0)
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>.GetRight(TElement)
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement).GetRight(TElement)
-  nameWithType: SizeBalancedTree2<TElement>.GetRight(TElement)
-  nameWithType.vb: SizeBalancedTree2(Of TElement).GetRight(TElement)
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1.GetRight*
-  name: GetRight
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html#Platform_Collections_Methods_Tests_SizeBalancedTree2_1_GetRight_
-  commentId: Overload:Platform.Collections.Methods.Tests.SizeBalancedTree2`1.GetRight
-  isSpec: "True"
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>.GetRight
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement).GetRight
-  nameWithType: SizeBalancedTree2<TElement>.GetRight
-  nameWithType.vb: SizeBalancedTree2(Of TElement).GetRight
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1.GetRightReference(`0)
-  name: GetRightReference(TElement)
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html#Platform_Collections_Methods_Tests_SizeBalancedTree2_1_GetRightReference__0_
-  commentId: M:Platform.Collections.Methods.Tests.SizeBalancedTree2`1.GetRightReference(`0)
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>.GetRightReference(TElement)
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement).GetRightReference(TElement)
-  nameWithType: SizeBalancedTree2<TElement>.GetRightReference(TElement)
-  nameWithType.vb: SizeBalancedTree2(Of TElement).GetRightReference(TElement)
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1.GetRightReference*
-  name: GetRightReference
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html#Platform_Collections_Methods_Tests_SizeBalancedTree2_1_GetRightReference_
-  commentId: Overload:Platform.Collections.Methods.Tests.SizeBalancedTree2`1.GetRightReference
-  isSpec: "True"
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>.GetRightReference
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement).GetRightReference
-  nameWithType: SizeBalancedTree2<TElement>.GetRightReference
-  nameWithType.vb: SizeBalancedTree2(Of TElement).GetRightReference
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1.GetSize(`0)
-  name: GetSize(TElement)
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html#Platform_Collections_Methods_Tests_SizeBalancedTree2_1_GetSize__0_
-  commentId: M:Platform.Collections.Methods.Tests.SizeBalancedTree2`1.GetSize(`0)
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>.GetSize(TElement)
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement).GetSize(TElement)
-  nameWithType: SizeBalancedTree2<TElement>.GetSize(TElement)
-  nameWithType.vb: SizeBalancedTree2(Of TElement).GetSize(TElement)
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1.GetSize*
-  name: GetSize
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html#Platform_Collections_Methods_Tests_SizeBalancedTree2_1_GetSize_
-  commentId: Overload:Platform.Collections.Methods.Tests.SizeBalancedTree2`1.GetSize
-  isSpec: "True"
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>.GetSize
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement).GetSize
-  nameWithType: SizeBalancedTree2<TElement>.GetSize
-  nameWithType.vb: SizeBalancedTree2(Of TElement).GetSize
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1.IsEmpty(`0)
-  name: IsEmpty(TElement)
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html#Platform_Collections_Methods_Tests_SizeBalancedTree2_1_IsEmpty__0_
-  commentId: M:Platform.Collections.Methods.Tests.SizeBalancedTree2`1.IsEmpty(`0)
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>.IsEmpty(TElement)
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement).IsEmpty(TElement)
-  nameWithType: SizeBalancedTree2<TElement>.IsEmpty(TElement)
-  nameWithType.vb: SizeBalancedTree2(Of TElement).IsEmpty(TElement)
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1.IsEmpty*
-  name: IsEmpty
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html#Platform_Collections_Methods_Tests_SizeBalancedTree2_1_IsEmpty_
-  commentId: Overload:Platform.Collections.Methods.Tests.SizeBalancedTree2`1.IsEmpty
-  isSpec: "True"
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>.IsEmpty
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement).IsEmpty
-  nameWithType: SizeBalancedTree2<TElement>.IsEmpty
-  nameWithType.vb: SizeBalancedTree2(Of TElement).IsEmpty
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1.PrintNodeValue(`0,StringBuilder)
-  name: PrintNodeValue(TElement, StringBuilder)
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html#Platform_Collections_Methods_Tests_SizeBalancedTree2_1_PrintNodeValue__0_StringBuilder_
-  commentId: M:Platform.Collections.Methods.Tests.SizeBalancedTree2`1.PrintNodeValue(`0,StringBuilder)
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>.PrintNodeValue(TElement, StringBuilder)
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement).PrintNodeValue(TElement, StringBuilder)
-  nameWithType: SizeBalancedTree2<TElement>.PrintNodeValue(TElement, StringBuilder)
-  nameWithType.vb: SizeBalancedTree2(Of TElement).PrintNodeValue(TElement, StringBuilder)
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1.PrintNodeValue*
-  name: PrintNodeValue
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html#Platform_Collections_Methods_Tests_SizeBalancedTree2_1_PrintNodeValue_
-  commentId: Overload:Platform.Collections.Methods.Tests.SizeBalancedTree2`1.PrintNodeValue
-  isSpec: "True"
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>.PrintNodeValue
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement).PrintNodeValue
-  nameWithType: SizeBalancedTree2<TElement>.PrintNodeValue
-  nameWithType.vb: SizeBalancedTree2(Of TElement).PrintNodeValue
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1.Root
-  name: Root
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html#Platform_Collections_Methods_Tests_SizeBalancedTree2_1_Root
-  commentId: F:Platform.Collections.Methods.Tests.SizeBalancedTree2`1.Root
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>.Root
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement).Root
-  nameWithType: SizeBalancedTree2<TElement>.Root
-  nameWithType.vb: SizeBalancedTree2(Of TElement).Root
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1.SetLeft(`0,`0)
-  name: SetLeft(TElement, TElement)
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html#Platform_Collections_Methods_Tests_SizeBalancedTree2_1_SetLeft__0__0_
-  commentId: M:Platform.Collections.Methods.Tests.SizeBalancedTree2`1.SetLeft(`0,`0)
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>.SetLeft(TElement, TElement)
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement).SetLeft(TElement, TElement)
-  nameWithType: SizeBalancedTree2<TElement>.SetLeft(TElement, TElement)
-  nameWithType.vb: SizeBalancedTree2(Of TElement).SetLeft(TElement, TElement)
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1.SetLeft*
-  name: SetLeft
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html#Platform_Collections_Methods_Tests_SizeBalancedTree2_1_SetLeft_
-  commentId: Overload:Platform.Collections.Methods.Tests.SizeBalancedTree2`1.SetLeft
-  isSpec: "True"
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>.SetLeft
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement).SetLeft
-  nameWithType: SizeBalancedTree2<TElement>.SetLeft
-  nameWithType.vb: SizeBalancedTree2(Of TElement).SetLeft
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1.SetRight(`0,`0)
-  name: SetRight(TElement, TElement)
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html#Platform_Collections_Methods_Tests_SizeBalancedTree2_1_SetRight__0__0_
-  commentId: M:Platform.Collections.Methods.Tests.SizeBalancedTree2`1.SetRight(`0,`0)
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>.SetRight(TElement, TElement)
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement).SetRight(TElement, TElement)
-  nameWithType: SizeBalancedTree2<TElement>.SetRight(TElement, TElement)
-  nameWithType.vb: SizeBalancedTree2(Of TElement).SetRight(TElement, TElement)
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1.SetRight*
-  name: SetRight
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html#Platform_Collections_Methods_Tests_SizeBalancedTree2_1_SetRight_
-  commentId: Overload:Platform.Collections.Methods.Tests.SizeBalancedTree2`1.SetRight
-  isSpec: "True"
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>.SetRight
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement).SetRight
-  nameWithType: SizeBalancedTree2<TElement>.SetRight
-  nameWithType.vb: SizeBalancedTree2(Of TElement).SetRight
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1.SetSize(`0,`0)
-  name: SetSize(TElement, TElement)
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html#Platform_Collections_Methods_Tests_SizeBalancedTree2_1_SetSize__0__0_
-  commentId: M:Platform.Collections.Methods.Tests.SizeBalancedTree2`1.SetSize(`0,`0)
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>.SetSize(TElement, TElement)
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement).SetSize(TElement, TElement)
-  nameWithType: SizeBalancedTree2<TElement>.SetSize(TElement, TElement)
-  nameWithType.vb: SizeBalancedTree2(Of TElement).SetSize(TElement, TElement)
-- uid: Platform.Collections.Methods.Tests.SizeBalancedTree2`1.SetSize*
-  name: SetSize
-  href: api/Platform.Collections.Methods.Tests.SizeBalancedTree2-1.html#Platform_Collections_Methods_Tests_SizeBalancedTree2_1_SetSize_
-  commentId: Overload:Platform.Collections.Methods.Tests.SizeBalancedTree2`1.SetSize
-  isSpec: "True"
-  fullName: Platform.Collections.Methods.Tests.SizeBalancedTree2<TElement>.SetSize
-  fullName.vb: Platform.Collections.Methods.Tests.SizeBalancedTree2(Of TElement).SetSize
-  nameWithType: SizeBalancedTree2<TElement>.SetSize
-  nameWithType.vb: SizeBalancedTree2(Of TElement).SetSize
 - uid: Platform.Collections.Methods.Tests.SizedAndThreadedAVLBalancedTree`1
   name: SizedAndThreadedAVLBalancedTree<TElement>
   href: api/Platform.Collections.Methods.Tests.SizedAndThreadedAVLBalancedTree-1.html
@@ -1875,6 +1875,51 @@ references:
   commentId: N:Platform.Collections.Methods.Trees
   fullName: Platform.Collections.Methods.Trees
   nameWithType: Platform.Collections.Methods.Trees
+- uid: Platform.Collections.Methods.Trees.RecursionlessSizeBalancedTreeMethods`1
+  name: RecursionlessSizeBalancedTreeMethods<TElement>
+  href: api/Platform.Collections.Methods.Trees.RecursionlessSizeBalancedTreeMethods-1.html
+  commentId: T:Platform.Collections.Methods.Trees.RecursionlessSizeBalancedTreeMethods`1
+  name.vb: RecursionlessSizeBalancedTreeMethods(Of TElement)
+  fullName: Platform.Collections.Methods.Trees.RecursionlessSizeBalancedTreeMethods<TElement>
+  fullName.vb: Platform.Collections.Methods.Trees.RecursionlessSizeBalancedTreeMethods(Of TElement)
+  nameWithType: RecursionlessSizeBalancedTreeMethods<TElement>
+  nameWithType.vb: RecursionlessSizeBalancedTreeMethods(Of TElement)
+- uid: Platform.Collections.Methods.Trees.RecursionlessSizeBalancedTreeMethods`1.AttachCore(`0@,`0)
+  name: AttachCore(ref TElement, TElement)
+  href: api/Platform.Collections.Methods.Trees.RecursionlessSizeBalancedTreeMethods-1.html#Platform_Collections_Methods_Trees_RecursionlessSizeBalancedTreeMethods_1_AttachCore__0___0_
+  commentId: M:Platform.Collections.Methods.Trees.RecursionlessSizeBalancedTreeMethods`1.AttachCore(`0@,`0)
+  name.vb: AttachCore(ByRef TElement, TElement)
+  fullName: Platform.Collections.Methods.Trees.RecursionlessSizeBalancedTreeMethods<TElement>.AttachCore(ref TElement, TElement)
+  fullName.vb: Platform.Collections.Methods.Trees.RecursionlessSizeBalancedTreeMethods(Of TElement).AttachCore(ByRef TElement, TElement)
+  nameWithType: RecursionlessSizeBalancedTreeMethods<TElement>.AttachCore(ref TElement, TElement)
+  nameWithType.vb: RecursionlessSizeBalancedTreeMethods(Of TElement).AttachCore(ByRef TElement, TElement)
+- uid: Platform.Collections.Methods.Trees.RecursionlessSizeBalancedTreeMethods`1.AttachCore*
+  name: AttachCore
+  href: api/Platform.Collections.Methods.Trees.RecursionlessSizeBalancedTreeMethods-1.html#Platform_Collections_Methods_Trees_RecursionlessSizeBalancedTreeMethods_1_AttachCore_
+  commentId: Overload:Platform.Collections.Methods.Trees.RecursionlessSizeBalancedTreeMethods`1.AttachCore
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Trees.RecursionlessSizeBalancedTreeMethods<TElement>.AttachCore
+  fullName.vb: Platform.Collections.Methods.Trees.RecursionlessSizeBalancedTreeMethods(Of TElement).AttachCore
+  nameWithType: RecursionlessSizeBalancedTreeMethods<TElement>.AttachCore
+  nameWithType.vb: RecursionlessSizeBalancedTreeMethods(Of TElement).AttachCore
+- uid: Platform.Collections.Methods.Trees.RecursionlessSizeBalancedTreeMethods`1.DetachCore(`0@,`0)
+  name: DetachCore(ref TElement, TElement)
+  href: api/Platform.Collections.Methods.Trees.RecursionlessSizeBalancedTreeMethods-1.html#Platform_Collections_Methods_Trees_RecursionlessSizeBalancedTreeMethods_1_DetachCore__0___0_
+  commentId: M:Platform.Collections.Methods.Trees.RecursionlessSizeBalancedTreeMethods`1.DetachCore(`0@,`0)
+  name.vb: DetachCore(ByRef TElement, TElement)
+  fullName: Platform.Collections.Methods.Trees.RecursionlessSizeBalancedTreeMethods<TElement>.DetachCore(ref TElement, TElement)
+  fullName.vb: Platform.Collections.Methods.Trees.RecursionlessSizeBalancedTreeMethods(Of TElement).DetachCore(ByRef TElement, TElement)
+  nameWithType: RecursionlessSizeBalancedTreeMethods<TElement>.DetachCore(ref TElement, TElement)
+  nameWithType.vb: RecursionlessSizeBalancedTreeMethods(Of TElement).DetachCore(ByRef TElement, TElement)
+- uid: Platform.Collections.Methods.Trees.RecursionlessSizeBalancedTreeMethods`1.DetachCore*
+  name: DetachCore
+  href: api/Platform.Collections.Methods.Trees.RecursionlessSizeBalancedTreeMethods-1.html#Platform_Collections_Methods_Trees_RecursionlessSizeBalancedTreeMethods_1_DetachCore_
+  commentId: Overload:Platform.Collections.Methods.Trees.RecursionlessSizeBalancedTreeMethods`1.DetachCore
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Trees.RecursionlessSizeBalancedTreeMethods<TElement>.DetachCore
+  fullName.vb: Platform.Collections.Methods.Trees.RecursionlessSizeBalancedTreeMethods(Of TElement).DetachCore
+  nameWithType: RecursionlessSizeBalancedTreeMethods<TElement>.DetachCore
+  nameWithType.vb: RecursionlessSizeBalancedTreeMethods(Of TElement).DetachCore
 - uid: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods`1
   name: SizeBalancedTreeMethods<TElement>
   href: api/Platform.Collections.Methods.Trees.SizeBalancedTreeMethods-1.html
@@ -1920,51 +1965,6 @@ references:
   fullName.vb: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods(Of TElement).DetachCore
   nameWithType: SizeBalancedTreeMethods<TElement>.DetachCore
   nameWithType.vb: SizeBalancedTreeMethods(Of TElement).DetachCore
-- uid: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2`1
-  name: SizeBalancedTreeMethods2<TElement>
-  href: api/Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2-1.html
-  commentId: T:Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2`1
-  name.vb: SizeBalancedTreeMethods2(Of TElement)
-  fullName: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2<TElement>
-  fullName.vb: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2(Of TElement)
-  nameWithType: SizeBalancedTreeMethods2<TElement>
-  nameWithType.vb: SizeBalancedTreeMethods2(Of TElement)
-- uid: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2`1.AttachCore(`0@,`0)
-  name: AttachCore(ref TElement, TElement)
-  href: api/Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2-1.html#Platform_Collections_Methods_Trees_SizeBalancedTreeMethods2_1_AttachCore__0___0_
-  commentId: M:Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2`1.AttachCore(`0@,`0)
-  name.vb: AttachCore(ByRef TElement, TElement)
-  fullName: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2<TElement>.AttachCore(ref TElement, TElement)
-  fullName.vb: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2(Of TElement).AttachCore(ByRef TElement, TElement)
-  nameWithType: SizeBalancedTreeMethods2<TElement>.AttachCore(ref TElement, TElement)
-  nameWithType.vb: SizeBalancedTreeMethods2(Of TElement).AttachCore(ByRef TElement, TElement)
-- uid: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2`1.AttachCore*
-  name: AttachCore
-  href: api/Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2-1.html#Platform_Collections_Methods_Trees_SizeBalancedTreeMethods2_1_AttachCore_
-  commentId: Overload:Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2`1.AttachCore
-  isSpec: "True"
-  fullName: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2<TElement>.AttachCore
-  fullName.vb: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2(Of TElement).AttachCore
-  nameWithType: SizeBalancedTreeMethods2<TElement>.AttachCore
-  nameWithType.vb: SizeBalancedTreeMethods2(Of TElement).AttachCore
-- uid: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2`1.DetachCore(`0@,`0)
-  name: DetachCore(ref TElement, TElement)
-  href: api/Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2-1.html#Platform_Collections_Methods_Trees_SizeBalancedTreeMethods2_1_DetachCore__0___0_
-  commentId: M:Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2`1.DetachCore(`0@,`0)
-  name.vb: DetachCore(ByRef TElement, TElement)
-  fullName: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2<TElement>.DetachCore(ref TElement, TElement)
-  fullName.vb: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2(Of TElement).DetachCore(ByRef TElement, TElement)
-  nameWithType: SizeBalancedTreeMethods2<TElement>.DetachCore(ref TElement, TElement)
-  nameWithType.vb: SizeBalancedTreeMethods2(Of TElement).DetachCore(ByRef TElement, TElement)
-- uid: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2`1.DetachCore*
-  name: DetachCore
-  href: api/Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2-1.html#Platform_Collections_Methods_Trees_SizeBalancedTreeMethods2_1_DetachCore_
-  commentId: Overload:Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2`1.DetachCore
-  isSpec: "True"
-  fullName: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2<TElement>.DetachCore
-  fullName.vb: Platform.Collections.Methods.Trees.SizeBalancedTreeMethods2(Of TElement).DetachCore
-  nameWithType: SizeBalancedTreeMethods2<TElement>.DetachCore
-  nameWithType.vb: SizeBalancedTreeMethods2(Of TElement).DetachCore
 - uid: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods`1
   name: SizedAndThreadedAVLBalancedTreeMethods<TElement>
   href: api/Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods-1.html
@@ -2078,6 +2078,23 @@ references:
   fullName.vb: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods(Of TElement).GetBalance
   nameWithType: SizedAndThreadedAVLBalancedTreeMethods<TElement>.GetBalance
   nameWithType.vb: SizedAndThreadedAVLBalancedTreeMethods(Of TElement).GetBalance
+- uid: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods`1.GetLeftest(`0)
+  name: GetLeftest(TElement)
+  href: api/Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods-1.html#Platform_Collections_Methods_Trees_SizedAndThreadedAVLBalancedTreeMethods_1_GetLeftest__0_
+  commentId: M:Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods`1.GetLeftest(`0)
+  fullName: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods<TElement>.GetLeftest(TElement)
+  fullName.vb: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods(Of TElement).GetLeftest(TElement)
+  nameWithType: SizedAndThreadedAVLBalancedTreeMethods<TElement>.GetLeftest(TElement)
+  nameWithType.vb: SizedAndThreadedAVLBalancedTreeMethods(Of TElement).GetLeftest(TElement)
+- uid: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods`1.GetLeftest*
+  name: GetLeftest
+  href: api/Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods-1.html#Platform_Collections_Methods_Trees_SizedAndThreadedAVLBalancedTreeMethods_1_GetLeftest_
+  commentId: Overload:Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods`1.GetLeftest
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods<TElement>.GetLeftest
+  fullName.vb: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods(Of TElement).GetLeftest
+  nameWithType: SizedAndThreadedAVLBalancedTreeMethods<TElement>.GetLeftest
+  nameWithType.vb: SizedAndThreadedAVLBalancedTreeMethods(Of TElement).GetLeftest
 - uid: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods`1.GetLeftIsChild(`0)
   name: GetLeftIsChild(TElement)
   href: api/Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods-1.html#Platform_Collections_Methods_Trees_SizedAndThreadedAVLBalancedTreeMethods_1_GetLeftIsChild__0_
@@ -2146,6 +2163,23 @@ references:
   fullName.vb: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods(Of TElement).GetPrevious
   nameWithType: SizedAndThreadedAVLBalancedTreeMethods<TElement>.GetPrevious
   nameWithType.vb: SizedAndThreadedAVLBalancedTreeMethods(Of TElement).GetPrevious
+- uid: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods`1.GetRightest(`0)
+  name: GetRightest(TElement)
+  href: api/Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods-1.html#Platform_Collections_Methods_Trees_SizedAndThreadedAVLBalancedTreeMethods_1_GetRightest__0_
+  commentId: M:Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods`1.GetRightest(`0)
+  fullName: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods<TElement>.GetRightest(TElement)
+  fullName.vb: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods(Of TElement).GetRightest(TElement)
+  nameWithType: SizedAndThreadedAVLBalancedTreeMethods<TElement>.GetRightest(TElement)
+  nameWithType.vb: SizedAndThreadedAVLBalancedTreeMethods(Of TElement).GetRightest(TElement)
+- uid: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods`1.GetRightest*
+  name: GetRightest
+  href: api/Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods-1.html#Platform_Collections_Methods_Trees_SizedAndThreadedAVLBalancedTreeMethods_1_GetRightest_
+  commentId: Overload:Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods`1.GetRightest
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods<TElement>.GetRightest
+  fullName.vb: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods(Of TElement).GetRightest
+  nameWithType: SizedAndThreadedAVLBalancedTreeMethods<TElement>.GetRightest
+  nameWithType.vb: SizedAndThreadedAVLBalancedTreeMethods(Of TElement).GetRightest
 - uid: Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods`1.GetRightIsChild(`0)
   name: GetRightIsChild(TElement)
   href: api/Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods-1.html#Platform_Collections_Methods_Trees_SizedAndThreadedAVLBalancedTreeMethods_1_GetRightIsChild__0_
@@ -2516,6 +2550,23 @@ references:
   fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).GetLeft
   nameWithType: SizedBinaryTreeMethodsBase<TElement>.GetLeft
   nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).GetLeft
+- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.GetLeftest(`0)
+  name: GetLeftest(TElement)
+  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_GetLeftest__0_
+  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.GetLeftest(`0)
+  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.GetLeftest(TElement)
+  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).GetLeftest(TElement)
+  nameWithType: SizedBinaryTreeMethodsBase<TElement>.GetLeftest(TElement)
+  nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).GetLeftest(TElement)
+- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.GetLeftest*
+  name: GetLeftest
+  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_GetLeftest_
+  commentId: Overload:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.GetLeftest
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.GetLeftest
+  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).GetLeftest
+  nameWithType: SizedBinaryTreeMethodsBase<TElement>.GetLeftest
+  nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).GetLeftest
 - uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.GetLeftOrDefault(`0)
   name: GetLeftOrDefault(TElement)
   href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_GetLeftOrDefault__0_
@@ -2567,6 +2618,40 @@ references:
   fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).GetLeftSize
   nameWithType: SizedBinaryTreeMethodsBase<TElement>.GetLeftSize
   nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).GetLeftSize
+- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.GetNext(`0)
+  name: GetNext(TElement)
+  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_GetNext__0_
+  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.GetNext(`0)
+  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.GetNext(TElement)
+  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).GetNext(TElement)
+  nameWithType: SizedBinaryTreeMethodsBase<TElement>.GetNext(TElement)
+  nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).GetNext(TElement)
+- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.GetNext*
+  name: GetNext
+  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_GetNext_
+  commentId: Overload:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.GetNext
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.GetNext
+  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).GetNext
+  nameWithType: SizedBinaryTreeMethodsBase<TElement>.GetNext
+  nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).GetNext
+- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.GetPrevious(`0)
+  name: GetPrevious(TElement)
+  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_GetPrevious__0_
+  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.GetPrevious(`0)
+  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.GetPrevious(TElement)
+  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).GetPrevious(TElement)
+  nameWithType: SizedBinaryTreeMethodsBase<TElement>.GetPrevious(TElement)
+  nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).GetPrevious(TElement)
+- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.GetPrevious*
+  name: GetPrevious
+  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_GetPrevious_
+  commentId: Overload:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.GetPrevious
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.GetPrevious
+  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).GetPrevious
+  nameWithType: SizedBinaryTreeMethodsBase<TElement>.GetPrevious
+  nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).GetPrevious
 - uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.GetRight(`0)
   name: GetRight(TElement)
   href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_GetRight__0_
@@ -2584,6 +2669,23 @@ references:
   fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).GetRight
   nameWithType: SizedBinaryTreeMethodsBase<TElement>.GetRight
   nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).GetRight
+- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.GetRightest(`0)
+  name: GetRightest(TElement)
+  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_GetRightest__0_
+  commentId: M:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.GetRightest(`0)
+  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.GetRightest(TElement)
+  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).GetRightest(TElement)
+  nameWithType: SizedBinaryTreeMethodsBase<TElement>.GetRightest(TElement)
+  nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).GetRightest(TElement)
+- uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.GetRightest*
+  name: GetRightest
+  href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_GetRightest_
+  commentId: Overload:Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.GetRightest
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase<TElement>.GetRightest
+  fullName.vb: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase(Of TElement).GetRightest
+  nameWithType: SizedBinaryTreeMethodsBase<TElement>.GetRightest
+  nameWithType.vb: SizedBinaryTreeMethodsBase(Of TElement).GetRightest
 - uid: Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase`1.GetRightOrDefault(`0)
   name: GetRightOrDefault(TElement)
   href: api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html#Platform_Collections_Methods_Trees_SizedBinaryTreeMethodsBase_1_GetRightOrDefault__0_
