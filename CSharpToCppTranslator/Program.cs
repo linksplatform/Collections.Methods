@@ -11,7 +11,7 @@ namespace CSharpToCppTranslator
             //{
             //    Console.WriteLine(args[i]);
             //}
-            //args = new string[] { @"C:\Code\Links\Collections.Methods\Platform.Collections.Methods\GenericCollectionMethodsBase.cs", @"C:\Code\Links\Collections.Methods\Platform.Collections.Methods.Console\" };
+            //args = new string[] { @"C:\Code\Links\Collections.Methods\Platform.Collections.Methods\GenericCollectionMethodsBase.cs", @"C:\Code\Links\Collections.Methods\cpp\Platform.Collections.Methods\GenericCollectionMethodsBase.cpp" };
             var csharpToCpp = new CustomCSharpToCppTransformer();
             var cli = new TransformerCLI(csharpToCpp);
             if (cli.Run(args, out string message))
