@@ -227,13 +227,13 @@ namespace CSharpToCppTranslator
             (new Regex(@"EqualityComparer<TreeElement>\.Default\.Equals\(GetElement\(node\), default\)"), "iszero(GetElement(node), sizeof(TreeElement))", new Regex(@"Size[a-zA-Z]+Tree\.cs"), 0),
             // Zero
             // 0
-            (new Regex(@"(\W)(Zero|Integer<[a-zA-Z0-9]+>\.Zero)(\W)"), "${1}0$3", null, 0),
+            (new Regex(@"(\W)(Zero)(\W)"), "${1}0$3", null, 0),
             // One
             // 1
-            (new Regex(@"(\W)(One|Integer<[a-zA-Z0-9]+>\.One)(\W)"), "${1}1$3", null, 0),
+            (new Regex(@"(\W)(One)(\W)"), "${1}1$3", null, 0),
             // Two
             // 2
-            (new Regex(@"(\W)(Two|Integer<[a-zA-Z0-9]+>\.Two)(\W)"), "${1}2$3", null, 0),
+            (new Regex(@"(\W)(Two)(\W)"), "${1}2$3", null, 0),
             // Comparer.Compare(firstArgument, secondArgument) < 0
             // (firstArgument) < (secondArgument)
             (new Regex(@"(?<separator>\W)Comparer\.Compare\((?<firstArgument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+), (?<secondArgument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+)\) (?<operator>\S{1,2}) 0"), "${separator}(${firstArgument}) ${operator} (${secondArgument})", null, 0),
