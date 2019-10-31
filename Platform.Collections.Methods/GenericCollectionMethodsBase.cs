@@ -9,7 +9,7 @@ namespace Platform.Collections.Methods
     public abstract class GenericCollectionMethodsBase<TElement>
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual TElement GetZero() => Integer<TElement>.Zero;
+        protected virtual TElement GetZero() => default;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual bool EqualToZero(TElement value) => EqualityComparer.Equals(value, Zero);
