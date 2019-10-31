@@ -23,7 +23,7 @@ namespace Platform.Collections.Methods.Tests
 
         public TElement Count => GetSizeOrZero(Root);
 
-        public SizeBalancedTree(int capacity) => (_elements, _allocated) = (new TreeElement[capacity], Integer<TElement>.One);
+        public SizeBalancedTree(int capacity) => (_elements, _allocated) = (new TreeElement[capacity], One);
 
         public TElement Allocate()
         {
@@ -41,7 +41,7 @@ namespace Platform.Collections.Methods.Tests
 
         public void Free(TElement node)
         {
-            while (!EqualityComparer.Equals(_allocated, Integer<TElement>.One) && IsEmpty(node))
+            while (!EqualityComparer.Equals(_allocated, One) && IsEmpty(node))
             {
                 var lastNode = Arithmetic.Decrement(_allocated);
                 if (EqualityComparer.Equals(lastNode, node))
