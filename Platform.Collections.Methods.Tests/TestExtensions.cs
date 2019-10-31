@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Xunit;
-using Platform.Numbers;
 using Platform.Collections.Methods.Trees;
+using Platform.Converters;
 
 namespace Platform.Collections.Methods.Tests
 {
@@ -18,17 +18,17 @@ namespace Platform.Collections.Methods.Tests
                     var node = allocate();
                     tree.Attach(ref root, node);
                     currentCount++;
-                    Assert.Equal(currentCount, (int)(Integer<TElement>)treeCount());
+                    Assert.Equal(currentCount, (int)UncheckedConverter<TElement, int>.Default.Convert(treeCount()));
                 }
                 for (var i = 1; i <= N; i++)
                 {
-                    TElement node = (Integer<TElement>)i;
+                    TElement node = UncheckedConverter<int, TElement>.Default.Convert(i);
                     if (tree.Contains(node, root))
                     {
                         tree.Detach(ref root, node);
                         free(node);
                         currentCount--;
-                        Assert.Equal(currentCount, (int)(Integer<TElement>)treeCount());
+                        Assert.Equal(currentCount, (int)UncheckedConverter<TElement, int>.Default.Convert(treeCount()));
                     }
                 }
             }
@@ -43,22 +43,22 @@ namespace Platform.Collections.Methods.Tests
             {
                 for (var i = 0; i < N; i++)
                 {
-                    var node = (Integer<TElement>)random.Next(1, N);
+                    var node = UncheckedConverter<int, TElement>.Default.Convert(random.Next(1, N));
                     if (added.Add(node))
                     {
                         tree.Attach(ref root, node);
                         currentCount++;
-                        Assert.Equal(currentCount, (int)(Integer<TElement>)treeCount());
+                        Assert.Equal(currentCount, (int)UncheckedConverter<TElement, int>.Default.Convert(treeCount()));
                     }
                 }
                 for (var i = 1; i <= N; i++)
                 {
-                    TElement node = (Integer<TElement>)random.Next(1, N);
+                    TElement node = UncheckedConverter<int, TElement>.Default.Convert(random.Next(1, N));
                     if (tree.Contains(node, root))
                     {
                         tree.Detach(ref root, node);
                         currentCount--;
-                        Assert.Equal(currentCount, (int)(Integer<TElement>)treeCount());
+                        Assert.Equal(currentCount, (int)UncheckedConverter<TElement, int>.Default.Convert(treeCount()));
                         added.Remove(node);
                     }
                 }

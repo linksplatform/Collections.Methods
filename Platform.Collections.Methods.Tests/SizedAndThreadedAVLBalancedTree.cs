@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Platform.Numbers;
 using Platform.Collections.Methods.Trees;
+using Platform.Converters;
 
 namespace Platform.Collections.Methods.Tests
 {
@@ -94,6 +95,6 @@ namespace Platform.Collections.Methods.Tests
 
         protected override void SetSize(TElement node, TElement size) => GetElement(node).Size = size;
 
-        private ref TreeElement GetElement(TElement node) => ref _elements[(Integer<TElement>)node];
+        private ref TreeElement GetElement(TElement node) => ref _elements[UncheckedConverter<TElement, long>.Default.Convert(node)];
     }
 }

@@ -219,6 +219,9 @@ namespace CSharpToCppTranslator
             // Just delete it in SizedAndThreadedAVLBalancedTreeMethods.cs
             (new Regex(@"\r?\n[\t ]+void PrintNode(.|\s)+?}[\t ]*\r?\n"), "", new Regex(@"SizedAndThreadedAVLBalancedTreeMethods\.cs"), 0),
 
+            // UncheckedConverter<TElement, long>.Default.Convert(node)
+            // node
+            (new Regex(@"UncheckedConverter<[a-zA-Z0-9]+, [a-zA-Z0-9]+>\.Default\.Convert\((?<argument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+)\)"), "${argument}", null, 0),
             // EqualityComparer<TreeElement>.Default.Equals(GetElement(node), default)
             // iszero(GetElement(node), sizeof(TreeElement))
             (new Regex(@"EqualityComparer<TreeElement>\.Default\.Equals\(GetElement\(node\), default\)"), "iszero(GetElement(node), sizeof(TreeElement))", new Regex(@"Size[a-zA-Z]+Tree\.cs"), 0),
@@ -231,9 +234,6 @@ namespace CSharpToCppTranslator
             // Two
             // 2
             (new Regex(@"(\W)(Two|Integer<[a-zA-Z0-9]+>\.Two)(\W)"), "${1}2$3", null, 0),
-            // (Integer<TElement>)
-            // 
-            (new Regex(@"\(Integer<[a-zA-Z0-9]+>\)"), "", null, 0),
             // Comparer.Compare(firstArgument, secondArgument) < 0
             // (firstArgument) < (secondArgument)
             (new Regex(@"(?<separator>\W)Comparer\.Compare\((?<firstArgument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+), (?<secondArgument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+)\) (?<operator>\S{1,2}) 0"), "${separator}(${firstArgument}) ${operator} (${secondArgument})", null, 0),
