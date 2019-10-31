@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/linksplatform/Collections.Methods.svg?branch=master)](https://travis-ci.com/linksplatform/Collections.Methods)
+[![Actions Status](https://github.com/linksplatform/Collections.Methods/workflows/CD/badge.svg)](https://github.com/linksplatform/Collections.Methods/actions?workflow=CD)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f095ae6c0742405399a34ad50ec6ab8d)](https://app.codacy.com/app/drakonard/Collections.Methods?utm_source=github.com&utm_medium=referral&utm_content=linksplatform/Collections.Methods&utm_campaign=Badge_Grade_Dashboard)
 [![CodeFactor](https://www.codefactor.io/repository/github/linksplatform/collections.methods/badge)](https://www.codefactor.io/repository/github/linksplatform/collections.methods)
 
