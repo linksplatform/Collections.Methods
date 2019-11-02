@@ -326,7 +326,7 @@
                 {
                     if (this->FirstIsToTheLeftOfSecond(node, currentNode))
                     {
-                        if (!GetLeftIsChild(currentNode))
+                        if (!this->GetLeftIsChild(currentNode))
                         {
                             throw std::exception("Cannot find a node.");
                         }
@@ -336,7 +336,7 @@
                     }
                     else if (this->FirstIsToTheRightOfSecond(node, currentNode))
                     {
-                        if (!GetRightIsChild(currentNode))
+                        if (!this->GetRightIsChild(currentNode))
                         {
                             throw std::exception("Cannot find a node.");
                         }
@@ -352,9 +352,9 @@
                 auto parent = path[--pathPosition];
                 auto balanceNode = parent;
                 auto isLeftNode = parent != 0 && currentNode == this->GetLeft(parent);
-                if (!GetLeftIsChild(currentNode))
+                if (!this->GetLeftIsChild(currentNode))
                 {
-                    if (!GetRightIsChild(currentNode))
+                    if (!this->GetRightIsChild(currentNode))
                     {
                         if (parent == 0)
                         {
@@ -396,7 +396,7 @@
                 }
                 else
                 {
-                    if (!GetRightIsChild(currentNode))
+                    if (!this->GetRightIsChild(currentNode))
                     {
                         auto predecessor = this->GetPrevious(currentNode);
                         this->SetRight(predecessor, this->GetRight(currentNode));
@@ -435,7 +435,7 @@
                         balanceNode = path[pathPosition];
                         if (successorParent != currentNode)
                         {
-                            if (!GetRightIsChild(successor))
+                            if (!this->GetRightIsChild(successor))
                             {
                                 this->SetLeftIsChild(successorParent, false);
                             }

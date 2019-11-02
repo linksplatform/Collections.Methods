@@ -150,7 +150,7 @@
             Debug.WriteLine("----------------");
             this->ValidateSizes(*root);
             auto sizeAfter = this->GetSize(*root);
-            if (!IsEquals(MathHelpers.(sizeBefore) + 1, sizeAfter))
+            if (!this->IsEquals(MathHelpers.Increment(sizeBefore), sizeAfter))
             {
                 throw std::exception("Tree was broken after attach.");
             }
@@ -179,7 +179,7 @@
             Debug.WriteLine("----------------");
             this->ValidateSizes(*root);
             auto sizeAfter = this->GetSize(*root);
-            if (!IsEquals(MathHelpers.(sizeBefore) - 1, sizeAfter))
+            if (!this->IsEquals(MathHelpers.Decrement(sizeBefore), sizeAfter))
             {
                 throw std::exception("Tree was broken after detach.");
             }
