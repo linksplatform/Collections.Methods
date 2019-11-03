@@ -210,25 +210,27 @@ namespace CSharpToCppTranslator
             // ~!random!~
             // 
             (new Regex(@"~!(?<pointer>[a-zA-Z0-9]+)!~"), "", null, 5),
-        }.Cast<ISubstitutionRule>().ToList();
-
-        public static readonly IList<ISubstitutionRule> Rules = new List<SubstitutionRule>
-        {
+            // Insert method body scope starts.
             // void PrintNodes(TElement node, StringBuilder sb, int level) {
-            // void PrintNodes(TElement node, StringBuilder sb, int level) {/*method-start*/.../*method-end*/}
+            // void PrintNodes(TElement node, StringBuilder sb, int level) {/*method-start*/
             (new Regex(@"(?<start>\r?\n[\t ]+)(?<prefix>((virtual )?[a-zA-Z0-9:_]+ )?)(?<method>[a-zA-Z][a-zA-Z0-9]*)\((?<arguments>[^\)]*)\)(?<override>( override)?)(?<separator>[ \t\r\n]*)\{(?<end>[^~])"), "${start}${prefix}${method}(${arguments})${override}${separator}{/*method-start*/${end}", null, 0),
+            // Insert method body scope ends.
             // {/*method-start*/...}
             // {/*method-start*/.../*method-end*/}
             (new Regex(@"\{/\*method-start\*/(?<body>((?<bracket>\{)|(?<-bracket>\})|[^\{\}]*)+)\}"), "{/*method-start*/${body}/*method-end*/}", null, 0),
-            // Inside method bodies:
+            // Inside method bodies replace:
             // GetFirst(
             // this->GetFirst(
             //(new Regex(@"(?<separator>(\(|, |([\W]) |return ))(?<!(->|\* ))(?<method>(?!sizeof)[a-zA-Z0-9]+)\((?!\) \{)"), "${separator}this->${method}(", null, 1),
             (new Regex(@"(?<scope>/\*method-start\*/)(?<before>((?<!/\*method-end\*/)(.|\n))*?)(?<separator>[\W](?<!(::|\.|->)))(?<method>(?!sizeof)[a-zA-Z0-9]+)\((?!\) \{)(?<after>(.|\n)*?)(?<scopeEnd>/\*method-end\*/)"), "${scope}${before}${separator}this->${method}(${after}${scopeEnd}", null, 100),
+            // Remove scope borders.
             // /*method-start*/
             // 
             (new Regex(@"/\*method-(start|end)\*/"), "", null, 0),
+        }.Cast<ISubstitutionRule>().ToList();
 
+        public static readonly IList<ISubstitutionRule> Rules = new List<SubstitutionRule>
+        {
             // Just delete it in GenericCollectionMethodsBase.cs
             (new Regex(@"virtual TElement GetZero(.|\s)+Increment\(One\)(.|\s)+?}"), "", new Regex(@"GenericCollectionMethodsBase\.cs"), 0),
             // Just delete it in SizedBinaryTreeMethodsBase.cs
