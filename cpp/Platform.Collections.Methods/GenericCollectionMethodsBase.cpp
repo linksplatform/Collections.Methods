@@ -3,5 +3,6 @@
     template <typename TElement> class GenericCollectionMethodsBase
     {
     public:
-        };
+        
+    };
 }
