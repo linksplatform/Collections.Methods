@@ -7,9 +7,8 @@ using Platform.RegularExpressions.Transformer.CSharpToCpp;
 
 namespace CSharpToCppTranslator
 {
-    public class CustomCSharpToCppTransformer : CSharpToCppTransformer // Transformer
+    public class CustomCSharpToCppTransformer : Transformer // CSharpToCppTransformer
     {
-        /*
         public static readonly IList<ISubstitutionRule> FirstStage = new List<SubstitutionRule>
         {
             // // ...
@@ -47,7 +46,7 @@ namespace CSharpToCppTranslator
             (new Regex(@"Action<([a-zA-Z0-9]+)> ([a-zA-Z0-9]+)"), "std::function<void($1)> $2", null, 0),
             // private const int MaxPath = 92;
             // static const int MaxPath = 92;
-            (new Regex(@"private const ([a-zA-Z0-9]+) ([_a-zA-Z0-9]+) = ([a-zA-Z0-9]+);"), "static const $1 $2 = $3;", null, 0),
+            (new Regex(@"private (const|static readonly) ([a-zA-Z0-9]+) ([_a-zA-Z0-9]+) = ([^;]+);"), "static const $2 $3 = $4;", null, 0),
             // protected virtual
             // virtual
             (new Regex(@"protected virtual"), "virtual", null, 0),
@@ -71,7 +70,10 @@ namespace CSharpToCppTranslator
             (new Regex(@"(\W)(private|protected|public|internal) "), "$1", null, 0),
             // SizeBalancedTree(int capacity) => a = b;
             // SizeBalancedTree(int capacity) { a = b; }
-            (new Regex(@"(^\s+)(override )?(void )?([a-zA-Z0-9]+)\(([^\(]+)\)\s+=>\s+([^;]+);"), "$1$2$3$4($5) { $6; }", null, 0),
+            (new Regex(@"(^\s+)(override )?(void )?([a-zA-Z0-9]+)\(([^\(]*)\)\s+=>\s+([^;]+);"), "$1$2$3$4($5) { $6; }", null, 0),
+            // int SizeBalancedTree(int capacity) => a;
+            // int SizeBalancedTree(int capacity) { return a; }
+            (new Regex(@"(^\s+)(override )?([a-zA-Z0-9]+ )([a-zA-Z0-9]+)\(([^\(]*)\)\s+=>\s+([^;]+);"), "$1$2$3$4($5) { return $6; }", null, 0),
             // () => Integer<TElement>.Zero,
             // () { return Integer<TElement>.Zero; },
             (new Regex(@"\(\)\s+=>\s+([^\r\n,;]+?),"), "() { return $1; },", null, 0),
@@ -176,7 +178,7 @@ namespace CSharpToCppTranslator
             (new Regex(@"(\r?\n[\t ]+)([a-zA-Z0-9]+) ([_a-zA-Z0-9]+)\[([_a-zA-Z0-9]+)\];"), "$1$2 $3[$4] = { {0} };", null, 0),
             // auto path = new TElement[MaxPath];
             // TElement path[MaxPath] = { {0} };
-            (new Regex(@"(\r?\n[\t ]+)[a-zA-Z0-9]+ ([a-zA-Z0-9]+) = new ([a-zA-Z0-9]+)\[([a-zA-Z0-9]+)\];"), "$1$3 $2[$4] = { {0} };", null, 0),
+            (new Regex(@"(\r?\n[\t ]+)[a-zA-Z0-9]+ ([a-zA-Z0-9]+) = new ([a-zA-Z0-9]+)\[([_a-zA-Z0-9]+)\];"), "$1$3 $2[$4] = { {0} };", null, 0),
             // Insert scope borders.
             // auto added = new HashSet<TElement>();
             // ~!added!~std::unordered_set<TElement> added;
@@ -209,7 +211,6 @@ namespace CSharpToCppTranslator
             // 
             (new Regex(@"~!(?<pointer>[a-zA-Z0-9]+)!~"), "", null, 5),
         }.Cast<ISubstitutionRule>().ToList();
-        */
 
         public static readonly IList<ISubstitutionRule> Rules = new List<SubstitutionRule>
         {
@@ -234,14 +235,15 @@ namespace CSharpToCppTranslator
             (new Regex(@"\r?\n[\t ]+void FixSizes(.|\s)+};"), "    };", new Regex(@"SizedBinaryTreeMethodsBase\.cs"), 0),
             // Just delete it in SizedAndThreadedAVLBalancedTreeMethods.cs
             (new Regex(@"\r?\n[\t ]+void PrintNode(.|\s)+?}[\t ]*\r?\n"), "", new Regex(@"SizedAndThreadedAVLBalancedTreeMethods\.cs"), 0),
-
             // TElement path[MaxPath] = { {0} }; 
             // TElement path[MaxPath]; 
-            (new Regex(@"TElement path\[MaxPath\] = \{ \{0\} \};"), "TElement path[MaxPath]; path[0] = 0;", new Regex(@"SizedAndThreadedAVLBalancedTreeMethods\.cs"), 0),
-
+            (new Regex(@"TElement path\[([_a-zA-Z0-9]+)\] = \{ \{0\} \};"), "TElement path[$1]; path[0] = 0;", new Regex(@"SizedAndThreadedAVLBalancedTreeMethods\.cs"), 0),
             // UncheckedConverter<TElement, long>.Default.Convert(node)
             // node
             (new Regex(@"UncheckedConverter<[a-zA-Z0-9]+, [a-zA-Z0-9]+>\.Default\.Convert\((?<argument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+)\)"), "${argument}", null, 0),
+            // (NumericType<TElement>.BitsLength / 8)
+            // sizeof(TElement)
+            (new Regex(@"\(NumericType<([a-zA-Z0-9]+)>\.BitsLength / 8\)"), "sizeof($1)", new Regex(@"SizedAndThreadedAVLBalancedTreeMethods\.cs"), 0),
             // EqualityComparer<TreeElement>.Default.Equals(this->GetElement(node), default)
             // iszero(GetElement(node), sizeof(TreeElement))
             (new Regex(@"EqualityComparer<TreeElement>\.Default\.Equals\(this->GetElement\(node\), default\)"), "iszero(this->GetElement(node), sizeof(TreeElement))", new Regex(@"Size[a-zA-Z]+Tree\.cs"), 0),
@@ -319,7 +321,6 @@ namespace CSharpToCppTranslator
             (new Regex(@"\(SizedBinaryTreeMethodsBase<TElement>"), "(Platform::Collections::Methods::Trees::SizedBinaryTreeMethodsBase<TElement>&", new Regex(@"TestExtensions\.cs"), 0),
         }.Cast<ISubstitutionRule>().ToList();
 
-        /*
         public static readonly IList<ISubstitutionRule> LastStage = new List<SubstitutionRule>
         {
             // (expression)
@@ -350,10 +351,9 @@ namespace CSharpToCppTranslator
             // class
             (new Regex(@"(\S[\r\n]{1,2})?[\r\n]+class"), "$1class", null, 0),
         }.Cast<ISubstitutionRule>().ToList();
-        */
 
-        public CustomCSharpToCppTransformer() : base(Rules) { }
+        //public CustomCSharpToCppTransformer() : base(Rules) { }
 
-        //public CustomCSharpToCppTransformer() : base(FirstStage.Concat(Rules).Concat(LastStage).ToList()) { }
+        public CustomCSharpToCppTransformer() : base(FirstStage.Concat(Rules).Concat(LastStage).ToList()) { }
     }
 }

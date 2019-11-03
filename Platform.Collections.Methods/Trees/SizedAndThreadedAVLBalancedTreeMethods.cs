@@ -4,6 +4,7 @@ using System.Text;
 #if USEARRAYPOOL
 using Platform.Collections;
 #endif
+using Platform.Reflection;
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
@@ -18,7 +19,7 @@ namespace Platform.Collections.Methods.Trees
     /// </remarks>
     public abstract class SizedAndThreadedAVLBalancedTreeMethods<TElement> : SizedBinaryTreeMethodsBase<TElement>
     {
-        private const int MaxPath = 92;
+        private static readonly int _maxPath = 11 * (NumericType<TElement>.BitsLength / 8) + 4;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected override TElement GetRightest(TElement current)
@@ -115,7 +116,7 @@ namespace Platform.Collections.Methods.Trees
                 var pathPosition = 0;
                 path[pathPosition++] = default;
 #else
-                var path = new TElement[MaxPath];
+                var path = new TElement[_maxPath];
                 var pathPosition = 1;
 #endif
                 var currentNode = root;
@@ -373,7 +374,7 @@ namespace Platform.Collections.Methods.Trees
                 var pathPosition = 0;
                 path[pathPosition++] = default;
 #else
-                var path = new TElement[MaxPath];
+                var path = new TElement[_maxPath];
                 var pathPosition = 1;
 #endif
                 var currentNode = root;

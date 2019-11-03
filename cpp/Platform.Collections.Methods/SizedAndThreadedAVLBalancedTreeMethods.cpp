@@ -3,7 +3,7 @@
     template <typename TElement> class SizedAndThreadedAVLBalancedTreeMethods : public SizedBinaryTreeMethodsBase<TElement>
     {
     public:
-        static const int MaxPath = 92;
+        static const int _maxPath = 11 * sizeof(TElement) + 4;
 
         TElement GetRightest(TElement current) override
         {
@@ -75,7 +75,7 @@
                 auto pathPosition = 0;
                 path[pathPosition++] = 0;
 #else
-                TElement path[MaxPath]; path[0] = 0;
+                TElement path[_maxPath]; path[0] = 0;
                 auto pathPosition = 1;
 #endif
                 auto currentNode = *root;
@@ -318,7 +318,7 @@
                 auto pathPosition = 0;
                 path[pathPosition++] = 0;
 #else
-                TElement path[MaxPath]; path[0] = 0;
+                TElement path[_maxPath]; path[0] = 0;
                 auto pathPosition = 1;
 #endif
                 auto currentNode = *root;
