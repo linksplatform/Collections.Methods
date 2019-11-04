@@ -9,8 +9,8 @@ echo "$NuSpecFile"
 cp "$NuSpecFile" "x.xml"
 
 xmlstarlet el -u x.xml
-xmlstarlet sel -t -m '/' -v . x.xml
-Version=$(xmlstarlet sel -t -m '/' -v . x.xml)
+xmlstarlet sel -t -m '/package' -v . x.xml
+Version=$(xmlstarlet sel -t -m '/package' -v . x.xml)
 echo "$Version"
 
 #Version=$(xmlstarlet sel -t -m '//VersionPrefix[1]' -v . -n <"Platform.$REPOSITORY_NAME/Platform.$REPOSITORY_NAME.csproj")
@@ -27,8 +27,8 @@ echo "$Version"
 
 # Pack NuGet package
 # dotnet pack -c Release
-cp "cpp/Platform.$REPOSITORY_NAME/*.h" "cpp/Platform.$REPOSITORY_NAME/NuGetPackageSource/lib/native/include/"
-cp "cpp/Platform.$REPOSITORY_NAME/*.cpp" "cpp/Platform.$REPOSITORY_NAME/NuGetPackageSource/lib/native/include/"
+cp cpp/Platform.$REPOSITORY_NAME/*.h "cpp/Platform.$REPOSITORY_NAME/NuGetPackageSource/lib/native/include/"
+cp cpp/Platform.$REPOSITORY_NAME/*.cpp "cpp/Platform.$REPOSITORY_NAME/NuGetPackageSource/lib/native/include/"
 echo "Files copied."
 
 nuget pack "$NuSpecFile"
