@@ -4,7 +4,9 @@ set -e # Exit with nonzero exit code if anything fails
 sudo apt-get install xmlstarlet
 
 NuSpecFile=$(echo ./cpp/Platform.$REPOSITORY_NAME/NuGetPackageSource/Platform.$REPOSITORY_NAME.TemplateLibrary.*.nuspec)
+echo "$NuSpecFile"
 Version=$(xmlstarlet sel -t -m '//version[1]' -v . -n <"$NuSpecFile")
+echo "$Version"
 
 #Version=$(xmlstarlet sel -t -m '//VersionPrefix[1]' -v . -n <"Platform.$REPOSITORY_NAME/Platform.$REPOSITORY_NAME.csproj")
 
@@ -22,6 +24,7 @@ Version=$(xmlstarlet sel -t -m '//version[1]' -v . -n <"$NuSpecFile")
 # dotnet pack -c Release
 cp "cpp/Platform.$REPOSITORY_NAME/*.h" "cpp/Platform.$REPOSITORY_NAME/NuGetPackageSource/lib/native/include/"
 cp "cpp/Platform.$REPOSITORY_NAME/*.cpp" "cpp/Platform.$REPOSITORY_NAME/NuGetPackageSource/lib/native/include/"
+echo "Files copied."
 
 nuget pack "$NuSpecFile"
 
