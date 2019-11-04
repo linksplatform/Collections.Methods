@@ -343,8 +343,8 @@ namespace CSharpToCppTranslator
             // #if USEARRAYPOOL\r\n#endif
             //
             (new Regex(@"#if [a-zA-Z0-9]+\s+#endif"), "", null, 0),
-            //// [Fact]
-            //// 
+            // [Fact]
+            // 
             (new Regex(@"(?<firstNewLine>\r?\n|\A)(?<indent>[\t ]+)\[[a-zA-Z0-9]+(\((?<expression>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+)(?(parenthesis)(?!))\))?\][ \t]*(\r?\n\k<indent>)?"), "${firstNewLine}${indent}", null, 5),
             // \n ... namespace
             // namespace
