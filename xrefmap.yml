@@ -26,18 +26,6 @@ references:
   isSpec: "True"
   fullName: CSharpToCppTranslator.CustomCSharpToCppTransformer.CustomCSharpToCppTransformer
   nameWithType: CustomCSharpToCppTransformer.CustomCSharpToCppTransformer
-- uid: CSharpToCppTranslator.CustomCSharpToCppTransformer.FirstStage
-  name: FirstStage
-  href: api/CSharpToCppTranslator.CustomCSharpToCppTransformer.html#CSharpToCppTranslator_CustomCSharpToCppTransformer_FirstStage
-  commentId: F:CSharpToCppTranslator.CustomCSharpToCppTransformer.FirstStage
-  fullName: CSharpToCppTranslator.CustomCSharpToCppTransformer.FirstStage
-  nameWithType: CustomCSharpToCppTransformer.FirstStage
-- uid: CSharpToCppTranslator.CustomCSharpToCppTransformer.LastStage
-  name: LastStage
-  href: api/CSharpToCppTranslator.CustomCSharpToCppTransformer.html#CSharpToCppTranslator_CustomCSharpToCppTransformer_LastStage
-  commentId: F:CSharpToCppTranslator.CustomCSharpToCppTransformer.LastStage
-  fullName: CSharpToCppTranslator.CustomCSharpToCppTransformer.LastStage
-  nameWithType: CustomCSharpToCppTransformer.LastStage
 - uid: CSharpToCppTranslator.CustomCSharpToCppTransformer.Rules
   name: Rules
   href: api/CSharpToCppTranslator.CustomCSharpToCppTransformer.html#CSharpToCppTranslator_CustomCSharpToCppTransformer_Rules
