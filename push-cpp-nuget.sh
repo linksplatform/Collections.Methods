@@ -3,7 +3,7 @@ set -e # Exit with nonzero exit code if anything fails
 
 sudo apt-get install xmlstarlet
 
-NuSpecFile=$(echo ./cpp/Platform.$REPOSITORY_NAME/NuGetPackageSource/Platform.$REPOSITORY_NAME.TemplateLibrary.*.nuspec)
+NuSpecFile=$(echo cpp/Platform.$REPOSITORY_NAME/NuGetPackageSource/Platform.$REPOSITORY_NAME.TemplateLibrary.*.nuspec)
 echo "$NuSpecFile"
 Version=$(xmlstarlet sel -t -m '//version[1]' -v . -n <"$NuSpecFile")
 echo "$Version"
