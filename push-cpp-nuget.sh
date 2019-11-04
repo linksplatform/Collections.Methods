@@ -52,7 +52,7 @@ nuget pack "$PackageSpecFileName"
 
 # Push NuGet package
 # dotnet nuget push ./**/*.nupkg -s https://api.nuget.org/v3/index.json -k "${NUGETTOKEN}" 
-nuget push ./**/*.nupkg -Source https://api.nuget.org/v3/index.json -k "${NUGETTOKEN}" 
+nuget push ./**/*.nupkg -Source https://api.nuget.org/v3/index.json -ApiKey "${NUGETTOKEN}" 
 
 # Clean up
 find . -type f -name '*.nupkg' -delete
