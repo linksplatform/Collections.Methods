@@ -39,8 +39,13 @@ fi
 
 # Pack NuGet package
 # dotnet pack -c Release
-cp "cpp/Platform.$REPOSITORY_NAME/"*.h "cpp/Platform.$REPOSITORY_NAME/NuGetPackageSource/lib/native/include/"
-cp "cpp/Platform.$REPOSITORY_NAME/"*.cpp "cpp/Platform.$REPOSITORY_NAME/NuGetPackageSource/lib/native/include/"
+
+LibNativeIncludeDirectory="cpp/Platform.$REPOSITORY_NAME/NuGetPackageSource/lib/native/include"
+
+mkdir -p "$LibNativeIncludeDirectory"
+
+cp "cpp/Platform.$REPOSITORY_NAME/"*.h "$LibNativeIncludeDirectory/"
+cp "cpp/Platform.$REPOSITORY_NAME/"*.cpp "$LibNativeIncludeDirectory/"
 echo "Files copied."
 
 nuget pack "$PackageSpecFileName"
