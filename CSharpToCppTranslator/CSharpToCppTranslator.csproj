@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Platform.IO" Version="0.1.1" />
+    <PackageReference Include="Platform.IO" Version="0.1.2" />
     <PackageReference Include="Platform.RegularExpressions.Transformer.CSharpToCpp" Version="0.0.10" />
   </ItemGroup>
 
