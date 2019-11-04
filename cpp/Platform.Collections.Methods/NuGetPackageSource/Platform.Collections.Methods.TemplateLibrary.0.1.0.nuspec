@@ -5,8 +5,16 @@
     <title>LinksPlatform's Platform.Collections.Methods Template Library</title>
     <summary>LinksPlatform's Platform.Collections.Methods is a Template Library what contains standard implementation of methods for collections.</summary>
     <description>LinksPlatform's Platform.Collections.Methods is a Template Library what contains set of C++ classes templates to build custom implementations of collections on top of provided standard methods implementations. Use Platform.Collections.Methods.h file to include the library.</description>
-    <releaseNotes>Added missing reference to cstdint header file.</releaseNotes>
-    <version>0.0.4</version>
+    <releaseNotes>SizeBalancedTreeMethods renamed to RecursionlessSizeBalancedTreeMethods.
+SizeBalancedTreeMethods2 renamed to SizeBalancedTreeMethods.
+New methods at SizedBinaryTreeMethodsBase:
+* GetRightest
+* GetLeftest
+* GetNext
+* GetPrevious
+
+This release is not backward compatible with the previous 0.0.4 release.</releaseNotes>
+    <version>0.1.0</version>
     <authors>Konstantin Diachenko</authors>
     <owners>Konstantin Diachenko</owners>
     <copyright>Konstantin Diachenko</copyright>
@@ -24,8 +32,8 @@
     <file src="lib\native\include\DoublyLinkedListMethodsBase.cpp" target="lib\native\include\DoublyLinkedListMethodsBase.cpp" />
     <file src="lib\native\include\GenericCollectionMethodsBase.cpp" target="lib\native\include\GenericCollectionMethodsBase.cpp" />
     <file src="lib\native\include\OpenDoublyLinkedListMethods.cpp" target="lib\native\include\OpenDoublyLinkedListMethods.cpp" />
+    <file src="lib\native\include\RecursionlessSizeBalancedTreeMethods.cpp" target="lib\native\include\RecursionlessSizeBalancedTreeMethods.cpp" />
     <file src="lib\native\include\SizeBalancedTreeMethods.cpp" target="lib\native\include\SizeBalancedTreeMethods.cpp" />
-    <file src="lib\native\include\SizeBalancedTreeMethods2.cpp" target="lib\native\include\SizeBalancedTreeMethods2.cpp" />
     <file src="lib\native\include\SizedAndThreadedAVLBalancedTreeMethods.cpp" target="lib\native\include\SizedAndThreadedAVLBalancedTreeMethods.cpp" />
     <file src="lib\native\include\SizedBinaryTreeMethodsBase.cpp" target="lib\native\include\SizedBinaryTreeMethodsBase.cpp" />
   </files>
