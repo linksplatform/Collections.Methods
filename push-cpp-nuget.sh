@@ -20,14 +20,15 @@ if [ "${StatusContents[1]}" == "200" ]; then
   exit 0
 fi
 
+# Ensure target directory exists
 LibNativeIncludeDirectory="cpp/Platform.$REPOSITORY_NAME/NuGetPackageSource/lib/native/include"
-
 mkdir -p "$LibNativeIncludeDirectory"
 
+# Copy files
 cp "cpp/Platform.$REPOSITORY_NAME/"*.h "$LibNativeIncludeDirectory/"
 cp "cpp/Platform.$REPOSITORY_NAME/"*.cpp "$LibNativeIncludeDirectory/"
-echo "Files copied."
 
+# Pack NuGet package
 nuget pack "$PackageSpecFileName"
 
 # Push NuGet package
