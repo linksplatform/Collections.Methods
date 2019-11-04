@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e # Exit with nonzero exit code if anything fails
 
-sudo apt-get install xmlstarlet
+sudo apt install nuget
 
 # Get version string
 PackageSpecFileNamePrefix="cpp/Platform.$REPOSITORY_NAME/NuGetPackageSource/Platform.$REPOSITORY_NAME.TemplateLibrary."
