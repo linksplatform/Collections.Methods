@@ -26,47 +26,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/CSharpToCppTranslator.CustomCSharpToCppTransformer.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/CSharpToCppTranslator.CustomCSharpToCppTransformer.html",
-          "hash": "WP+dboE3szRD/G0aplvcqQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/api/CSharpToCppTranslator.Program.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/CSharpToCppTranslator.Program.html",
-          "hash": "YtfiFWCHkX8/oHRClDp1mg=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/api/CSharpToCppTranslator.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/CSharpToCppTranslator.html",
-          "hash": "Uz42Nw09lIkyGcUBG02ZcQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "obj/api/Platform.Collections.Methods.GenericCollectionMethodsBase-1.yml",
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.GenericCollectionMethodsBase-1.html",
-          "hash": "4ZbXRLf72cR8iBuTkq+G7Q=="
+          "hash": "ZoQ98m/7psUvhXmG8dcf7A=="
         }
       },
       "is_incremental": false,
@@ -78,7 +42,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods-1.html",
-          "hash": "aD3dvWWqHrXQAWUUK5T/fg=="
+          "hash": "WhIGqvfmSLDoNrd3TgjrUw=="
         }
       },
       "is_incremental": false,
@@ -90,7 +54,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase-1.html",
-          "hash": "jXMy2Av8/TM6oWggBs9s1w=="
+          "hash": "QLbcfNuUyX/cmpF41FAjiA=="
         }
       },
       "is_incremental": false,
@@ -102,7 +66,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods-1.html",
-          "hash": "daVrZ7waQW/GykMw3pOGdQ=="
+          "hash": "aDkO1O9irkx4rEM9X5Zvuw=="
         }
       },
       "is_incremental": false,
@@ -126,7 +90,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.Trees.RecursionlessSizeBalancedTreeMethods-1.html",
-          "hash": "8XQ4dFyBwQ2MxBMSvGv23Q=="
+          "hash": "GIOxCwxzptc0deyeGhC9zw=="
         }
       },
       "is_incremental": false,
@@ -138,7 +102,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.Trees.SizeBalancedTreeMethods-1.html",
-          "hash": "oLfUliH30FT0YVg0iFEXFg=="
+          "hash": "9XhPdINcNPoyk802asbwaw=="
         }
       },
       "is_incremental": false,
@@ -150,7 +114,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods-1.html",
-          "hash": "rfAwHJuZ3R/5C3POs6iasQ=="
+          "hash": "hj5inGbfXQoz04hLUSTEoQ=="
         }
       },
       "is_incremental": false,
@@ -162,7 +126,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html",
-          "hash": "W2PmfOsDMzRhaRZXb0fhTQ=="
+          "hash": "XMuJM2DvynxtnnbzkhbrPA=="
         }
       },
       "is_incremental": false,
@@ -198,7 +162,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "i0U7mzIZyAOpCmMDKA+7nA=="
+          "hash": "wHdkEiXSkEu4IM8JYtZ7gQ=="
         }
       },
       "is_incremental": false,
@@ -247,7 +211,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 14,
+          "total_file_count": 11,
           "skipped_file_count": 0
         }
       }
