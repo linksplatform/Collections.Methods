@@ -13,6 +13,15 @@ env:
   SCRIPTS_BASE_URL: https://raw.githubusercontent.com/linksplatform/Scripts/master/MultiProjectRepository
 
 jobs:
+  cppNuGet:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Publish Cpp NuGet package
+      if: github.event_name == 'push'
+      run: |
+        export REPOSITORY_NAME=$(basename ${{ github.repository }})
+        bash ./push-cpp-nuget.sh
   testAndDeploy:
     runs-on: ubuntu-latest
     steps:
@@ -46,11 +55,6 @@ jobs:
         export REPOSITORY_NAME=$(basename ${{ github.repository }})
         wget "$SCRIPTS_BASE_URL/push-nuget.sh"
         bash ./push-nuget.sh
-    - name: Publish Cpp NuGet package
-      if: github.event_name == 'push'
-      run: |
-        export REPOSITORY_NAME=$(basename ${{ github.repository }})
-        bash ./push-cpp-nuget.sh
     - name: Publish release
       if: github.event_name == 'push'
       run: |
