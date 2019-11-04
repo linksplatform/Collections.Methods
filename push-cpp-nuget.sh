@@ -5,9 +5,12 @@ sudo apt-get install xmlstarlet
 
 NuSpecFile=$(echo cpp/Platform.$REPOSITORY_NAME/NuGetPackageSource/Platform.$REPOSITORY_NAME.TemplateLibrary.*.nuspec)
 echo "$NuSpecFile"
-xmlstarlet el -u "$NuSpecFile"
-xmlstarlet sel -t -m '/package/metadata' -v version "$NuSpecFile"
-Version=$(xmlstarlet sel -t -m '/package/metadata' -v version "$NuSpecFile")
+
+cp "$NuSpecFile" "x.xml"
+
+xmlstarlet el -u x.xml
+xmlstarlet sel -t -m '/package/metadata' -v version x.xml
+Version=$(xmlstarlet sel -t -m '/package/metadata' -v version x.xml)
 echo "$Version"
 
 #Version=$(xmlstarlet sel -t -m '//VersionPrefix[1]' -v . -n <"Platform.$REPOSITORY_NAME/Platform.$REPOSITORY_NAME.csproj")
