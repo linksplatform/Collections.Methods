@@ -9,8 +9,8 @@ echo "$NuSpecFile"
 cp "$NuSpecFile" "x.xml"
 
 xmlstarlet el -u x.xml
-xmlstarlet sel -t -m '/package/metadata' -v version x.xml
-Version=$(xmlstarlet sel -t -m '/package/metadata' -v version x.xml)
+xmlstarlet sel -t -m '/' -v . x.xml
+Version=$(xmlstarlet sel -t -m '/' -v . x.xml)
 echo "$Version"
 
 #Version=$(xmlstarlet sel -t -m '//VersionPrefix[1]' -v . -n <"Platform.$REPOSITORY_NAME/Platform.$REPOSITORY_NAME.csproj")
