@@ -4,7 +4,7 @@
     <Description>LinksPlatform's Platform.Collections.Methods Class Library</Description>
     <Copyright>Konstantin Diachenko</Copyright>
     <AssemblyTitle>Platform.Collections.Methods</AssemblyTitle>
-    <VersionPrefix>0.2.0</VersionPrefix>
+    <VersionPrefix>0.2.1</VersionPrefix>
     <Authors>Konstantin Diachenko</Authors>
     <TargetFrameworks>net471;netstandard2.0;netstandard2.1</TargetFrameworks>
     <AssemblyName>Platform.Collections.Methods</AssemblyName>
@@ -24,25 +24,7 @@
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <LangVersion>latest</LangVersion>
-    <PackageReleaseNotes>Added support for .NET Standard 2.1 (.NET Core 3.0).
-Platform.Numbers dependency updated from 0.2.1 to 0.2.2.
-GenericCollectionMethodsBase.IsEquals method renamed to AreEqual.
-RecursionlessSizeBalancedTreeMethods is not experimental anymore.
-SizeBalancedTreeMethods renamed to RecursionlessSizeBalancedTreeMethods.
-SizeBalancedTreeMethods2 renamed to SizeBalancedTreeMethods.
-New methods at SizedBinaryTreeMethodsBase:
-* GetRightest
-* GetLeftest
-* GetNext
-* GetPrevious
-Source link enabled.
-Travis CI disabled.
-GitHub Actions enabled.
-Now there are tests for all three types of tree implementations, for both ordered and random operations.
-C# to C++ translation enabled.
-Refactoring, performance and memory usage optimizations, issues fix.
-
-This release is not backward compatible with the previous 0.1.0 release.</PackageReleaseNotes>
+    <PackageReleaseNotes>Platform.Numbers dependency updated from 0.2.2 to 0.2.3.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4')) AND '$(MSBuildRuntimeType)' == 'Core' AND '$(OS)' != 'Windows_NT'">
@@ -50,7 +32,7 @@ This release is not backward compatible with the previous 0.1.0 release.</Packag
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-19554-01" PrivateAssets="All"/>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-19554-01" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
