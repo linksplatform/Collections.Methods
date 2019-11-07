@@ -19,7 +19,7 @@ namespace Platform.Collections.Methods.Trees
     /// </remarks>
     public abstract class SizedAndThreadedAVLBalancedTreeMethods<TElement> : SizedBinaryTreeMethodsBase<TElement>
     {
-        private static readonly int _maxPath = 11 * (NumericType<TElement>.BitsLength / 8) + 4;
+        private static readonly int _maxPath = 11 * NumericType<TElement>.BytesSize + 4;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected override TElement GetRightest(TElement current)

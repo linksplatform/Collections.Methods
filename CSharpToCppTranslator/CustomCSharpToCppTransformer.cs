@@ -22,9 +22,9 @@ namespace CSharpToCppTranslator
             // UncheckedConverter<TElement, long>.Default.Convert(node)
             // node
             (new Regex(@"UncheckedConverter<[a-zA-Z0-9]+, [a-zA-Z0-9]+>\.Default\.Convert\((?<argument>((?<parenthesis>\()|(?<-parenthesis>\))|[^()]*)+)\)"), "${argument}", null, 0),
-            // (NumericType<TElement>.BitsLength / 8)
+            // NumericType<TElement>.BytesSize
             // sizeof(TElement)
-            (new Regex(@"\(NumericType<([a-zA-Z0-9]+)>\.BitsLength / 8\)"), "sizeof($1)", new Regex(@"SizedAndThreadedAVLBalancedTreeMethods\.cs"), 0),
+            (new Regex(@"NumericType<([a-zA-Z0-9]+)>\.BytesSize"), "sizeof($1)", new Regex(@"SizedAndThreadedAVLBalancedTreeMethods\.cs"), 0),
             // EqualityComparer<TreeElement>.Default.Equals(this->GetElement(node), default)
             // iszero(GetElement(node), sizeof(TreeElement))
             (new Regex(@"EqualityComparer<TreeElement>\.Default\.Equals\(this->GetElement\(node\), default\)"), "iszero(this->GetElement(node), sizeof(TreeElement))", new Regex(@"Size[a-zA-Z]+Tree\.cs"), 0),
