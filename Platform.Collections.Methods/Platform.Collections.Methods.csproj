@@ -54,7 +54,7 @@ This release is not backward compatible with the previous 0.1.0 release.</Packag
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Platform.Numbers" Version="0.2.2" />
+    <PackageReference Include="Platform.Numbers" Version="0.2.3" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(OS)' == 'Windows_NT' AND $(TargetFramework) == 'netstandard2.1'">
