@@ -17,7 +17,7 @@ namespace CSharpToCppTranslator
             // Just delete it in SizedAndThreadedAVLBalancedTreeMethods.cs
             (new Regex(@"\r?\n[\t ]+void PrintNode(.|\s)+?}[\t ]*\r?\n"), "", new Regex(@"SizedAndThreadedAVLBalancedTreeMethods\.cs"), 0),
             // TElement path[MaxPath] = { {0} }; 
-            // TElement path[MaxPath]; 
+            // TElement path[MaxPath]; path[0] = 0;
             (new Regex(@"TElement path\[([_a-zA-Z0-9]+)\] = \{ \{0\} \};"), "TElement path[$1]; path[0] = 0;", new Regex(@"SizedAndThreadedAVLBalancedTreeMethods\.cs"), 0),
             // UncheckedConverter<TElement, long>.Default.Convert(node)
             // node
