@@ -20,7 +20,7 @@ jobs:
     - name: Remove cpp projects
       run: |
         export REPOSITORY_NAME=$(basename ${{ github.repository }})
-        dotnet sln "Platform.$REPOSITORY_NAME.sln" remove cpp/Platform.Collections.Methods.Tests/Platform.Collections.Methods.TemplateLibrary.Tests.vcxproj cpp/Platform.Collections.Methods.Tests.Console/Platform.Collections.Methods.TemplateLibrary.Tests.Console.vcxproj
+        dotnet sln "Platform.$REPOSITORY_NAME.sln" remove cpp/Platform.$REPOSITORY_NAME.Tests/Platform.$REPOSITORY_NAME.TemplateLibrary.Tests.vcxproj cpp/Platform.$REPOSITORY_NAME.Tests.Console/Platform.$REPOSITORY_NAME.TemplateLibrary.Tests.Console.vcxproj
     - name: Test
       run: dotnet test -c Release -f netcoreapp3.0
     - name: Generate PDF with code
