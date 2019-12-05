@@ -4,11 +4,6 @@
 #include <iostream>
 #include <chrono>
 
-#include <Platform.Collections.Methods.h>
-#include <Trees.h>
-
-using namespace Platform::Collections::Methods::Tests;
-
 class Assert
 {
 public:
@@ -21,6 +16,11 @@ public:
         }
     }
 };
+
+#include <Platform.Collections.Methods.h>
+#include <Trees.h>
+
+using namespace Platform::Collections::Methods::Tests;
 
 int main()
 {

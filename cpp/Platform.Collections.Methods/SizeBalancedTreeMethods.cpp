@@ -46,7 +46,7 @@
                 }
                 else
                 {
-                    throw std::exception("Duplicate link found in the tree.");
+                    throw std::runtime_error("Duplicate link found in the tree.");
                 }
             }
             auto nodeToDetachLeft = this->GetLeft(nodeToDetach);

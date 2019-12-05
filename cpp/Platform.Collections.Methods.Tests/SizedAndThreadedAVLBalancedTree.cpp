@@ -32,7 +32,7 @@
             }
             else
             {
-                throw std::exception("Allocated tree element is not empty.");
+                throw std::runtime_error("Allocated tree element is not empty.");
             }
         }
 

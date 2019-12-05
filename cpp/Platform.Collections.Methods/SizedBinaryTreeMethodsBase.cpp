@@ -47,7 +47,7 @@
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
             if (right == 0)
             {
-                throw std::exception("Right is null.");
+                throw std::runtime_error("Right is null.");
             }
 #endif
             this->SetRight(root, this->GetLeft(right));
@@ -65,7 +65,7 @@
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
             if (left == 0)
             {
-                throw std::exception("Left is null.");
+                throw std::runtime_error("Left is null.");
             }
 #endif
             this->SetLeft(root, this->GetRight(left));
@@ -152,7 +152,7 @@
             auto sizeAfter = this->GetSize(*root);
             if (!this->IsEquals(MathHelpers.Increment(sizeBefore), sizeAfter))
             {
-                throw std::exception("Tree was broken after attach.");
+                throw std::runtime_error("Tree was broken after attach.");
             }
 #endif
         }
@@ -169,7 +169,7 @@
             auto sizeBefore = this->GetSize(*root);
             if (this->ValueEqualToZero(*root))
             {
-                throw std::exception("Элемент с {node} не содержится в дереве.");
+                throw std::runtime_error("Элемент с {node} не содержится в дереве.");
             }
 #endif
             this->DetachCore(root, node);
@@ -181,7 +181,7 @@
             auto sizeAfter = this->GetSize(*root);
             if (!this->IsEquals(MathHelpers.Decrement(sizeBefore), sizeAfter))
             {
-                throw std::exception("Tree was broken after detach.");
+                throw std::runtime_error("Tree was broken after detach.");
             }
 #endif
         }

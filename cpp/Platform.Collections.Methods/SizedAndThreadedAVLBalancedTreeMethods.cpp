@@ -123,7 +123,7 @@
                     }
                     else
                     {
-                        throw std::exception("Node with the same key already attached to a tree.");
+                        throw std::runtime_error("Node with the same key already attached to a tree.");
                     }
                 }
                 while (true)
@@ -328,7 +328,7 @@
                     {
                         if (!this->GetLeftIsChild(currentNode))
                         {
-                            throw std::exception("Cannot find a node.");
+                            throw std::runtime_error("Cannot find a node.");
                         }
                         this->DecrementSize(currentNode);
                         path[pathPosition++] = currentNode;
@@ -338,7 +338,7 @@
                     {
                         if (!this->GetRightIsChild(currentNode))
                         {
-                            throw std::exception("Cannot find a node.");
+                            throw std::runtime_error("Cannot find a node.");
                         }
                         this->DecrementSize(currentNode);
                         path[pathPosition++] = currentNode;
