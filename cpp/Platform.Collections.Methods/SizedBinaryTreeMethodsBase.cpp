@@ -169,7 +169,7 @@
             auto sizeBefore = this->GetSize(*root);
             if (this->ValueEqualToZero(*root))
             {
-                throw std::runtime_error("Элемент с {node} не содержится в дереве.");
+                throw std::runtime_error(((std::string)"Элемент с ").append(node).append(" не содержится в дереве."));
             }
 #endif
             this->DetachCore(root, node);
