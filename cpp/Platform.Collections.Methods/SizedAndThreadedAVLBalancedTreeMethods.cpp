@@ -2,10 +2,9 @@
 {
     template <typename TElement> class SizedAndThreadedAVLBalancedTreeMethods : public SizedBinaryTreeMethodsBase<TElement>
     {
-    public:
-        static const int _maxPath = 11 * sizeof(TElement) + 4;
+        private: static const int _maxPath = 11 * sizeof(TElement) + 4;
 
-        TElement GetRightest(TElement current) override
+        protected: TElement GetRightest(TElement current) override
         {
             auto currentRight = this->GetRightOrDefault(current);
             while (currentRight != 0)
@@ -16,7 +15,7 @@
             return current;
         }
 
-        TElement GetLeftest(TElement current) override
+        protected: TElement GetLeftest(TElement current) override
         {
             auto currentLeft = this->GetLeftOrDefault(current);
             while (currentLeft != 0)
@@ -27,7 +26,7 @@
             return current;
         }
 
-        bool Contains(TElement node, TElement root) override
+        public: bool Contains(TElement node, TElement root) override
         {
             while (root != 0)
             {
@@ -47,27 +46,27 @@
             return false;
         }
 
-        void IncrementBalance(TElement node) { this->SetBalance(node, (std::int8_t)(this->GetBalance(node) + 1)); }
+        protected: void IncrementBalance(TElement node) { this->SetBalance(node, (std::int8_t)(this->GetBalance(node) + 1)); }
 
-        void DecrementBalance(TElement node) { this->SetBalance(node, (std::int8_t)(this->GetBalance(node) - 1)); }
+        protected: void DecrementBalance(TElement node) { this->SetBalance(node, (std::int8_t)(this->GetBalance(node) - 1)); }
 
-        TElement GetLeftOrDefault(TElement node) override { return this->GetLeftIsChild(node) ? this->GetLeft(node) : 0; }
+        protected: TElement GetLeftOrDefault(TElement node) override { return this->GetLeftIsChild(node) ? this->GetLeft(node) : 0; }
 
-        TElement GetRightOrDefault(TElement node) override { return this->GetRightIsChild(node) ? this->GetRight(node) : 0; }
+        protected: TElement GetRightOrDefault(TElement node) override { return this->GetRightIsChild(node) ? this->GetRight(node) : 0; }
 
-        virtual bool GetLeftIsChild(TElement node) = 0;
+        protected: virtual bool GetLeftIsChild(TElement node) = 0;
 
-        virtual void SetLeftIsChild(TElement node, bool value) = 0;
+        protected: virtual void SetLeftIsChild(TElement node, bool value) = 0;
 
-        virtual bool GetRightIsChild(TElement node) = 0;
+        protected: virtual bool GetRightIsChild(TElement node) = 0;
 
-        virtual void SetRightIsChild(TElement node, bool value) = 0;
+        protected: virtual void SetRightIsChild(TElement node, bool value) = 0;
 
-        virtual std::int8_t GetBalance(TElement node) = 0;
+        protected: virtual std::int8_t GetBalance(TElement node) = 0;
 
-        virtual void SetBalance(TElement node, std::int8_t value) = 0;
+        protected: virtual void SetBalance(TElement node, std::int8_t value) = 0;
 
-        void AttachCore(TElement* root, TElement node) override
+        protected: void AttachCore(TElement* root, TElement node) override
         {
             {
 #if USEARRAYPOOL
@@ -170,7 +169,7 @@
             }
         }
 
-        TElement Balance(TElement node)
+        private: TElement Balance(TElement node)
         {
             {
                 auto rootBalance = this->GetBalance(node);
@@ -198,7 +197,7 @@
             }
         }
 
-        TElement LeftRotateWithBalance(TElement node)
+        protected: TElement LeftRotateWithBalance(TElement node)
         {
             {
                 auto right = this->GetRight(node);
@@ -244,7 +243,7 @@
             }
         }
 
-        TElement RightRotateWithBalance(TElement node)
+        protected: TElement RightRotateWithBalance(TElement node)
         {
             {
                 auto left = this->GetLeft(node);
@@ -290,7 +289,7 @@
             }
         }
 
-        TElement GetNext(TElement node) override
+        protected: TElement GetNext(TElement node) override
         {
             auto current = this->GetRight(node);
             if (this->GetRightIsChild(node))
@@ -300,7 +299,7 @@
             return current;
         }
 
-        TElement GetPrevious(TElement node) override
+        protected: TElement GetPrevious(TElement node) override
         {
             auto current = this->GetLeft(node);
             if (this->GetLeftIsChild(node))
@@ -310,7 +309,7 @@
             return current;
         }
 
-        void DetachCore(TElement* root, TElement node) override
+        protected: void DetachCore(TElement* root, TElement node) override
         {
             {
 #if USEARRAYPOOL
@@ -521,7 +520,7 @@
             }
         }
 
-        void ClearNode(TElement node) override
+        protected: void ClearNode(TElement node) override
         {
             this->SetLeft(node, 0);
             this->SetRight(node, 0);

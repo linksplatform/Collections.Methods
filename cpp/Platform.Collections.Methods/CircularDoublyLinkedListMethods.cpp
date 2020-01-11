@@ -2,8 +2,7 @@
 {
     template <typename TElement> class CircularDoublyLinkedListMethods : public DoublyLinkedListMethodsBase<TElement>
     {
-    public:
-        void AttachBefore(TElement baseElement, TElement newElement)
+        public: void AttachBefore(TElement baseElement, TElement newElement)
         {
             auto baseElementPrevious = this->GetPrevious(baseElement);
             this->SetPrevious(newElement, baseElementPrevious);
@@ -17,7 +16,7 @@
             this->IncrementSize();
         }
 
-        void AttachAfter(TElement baseElement, TElement newElement)
+        public: void AttachAfter(TElement baseElement, TElement newElement)
         {
             auto baseElementNext = this->GetNext(baseElement);
             this->SetPrevious(newElement, baseElement);
@@ -31,7 +30,7 @@
             this->IncrementSize();
         }
 
-        void AttachAsFirst(TElement element)
+        public: void AttachAsFirst(TElement element)
         {
             auto first = this->GetFirst();
             if (first == 0)
@@ -48,7 +47,7 @@
             }
         }
 
-        void AttachAsLast(TElement element)
+        public: void AttachAsLast(TElement element)
         {
             auto last = this->GetLast();
             if (last == 0)
@@ -61,7 +60,7 @@
             }
         }
 
-        void Detach(TElement element)
+        public: void Detach(TElement element)
         {
             auto elementPrevious = this->GetPrevious(element);
             auto elementNext = this->GetNext(element);

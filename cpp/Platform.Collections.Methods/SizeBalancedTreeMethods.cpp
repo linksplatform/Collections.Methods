@@ -2,8 +2,7 @@
 {
     template <typename TElement> class SizeBalancedTreeMethods : public SizedBinaryTreeMethodsBase<TElement>
     {
-    public:
-        void AttachCore(TElement* root, TElement node) override
+        protected: void AttachCore(TElement* root, TElement node) override
         {
             if (*root == 0)
             {
@@ -26,7 +25,7 @@
             }
         }
 
-        void DetachCore(TElement* root, TElement nodeToDetach) override
+        protected: void DetachCore(TElement* root, TElement nodeToDetach) override
         {
             auto* currentNode = root;
             auto* parent = root;
@@ -91,7 +90,7 @@
             this->ClearNode(nodeToDetach);
         }
 
-        void LeftMaintain(TElement* root)
+        private: void LeftMaintain(TElement* root)
         {
             if (*root != 0)
             {
@@ -128,7 +127,7 @@
             }
         }
 
-        void RightMaintain(TElement* root)
+        private: void RightMaintain(TElement* root)
         {
             if (*root != 0)
             {

@@ -2,46 +2,45 @@
 {
     template <typename TElement> class SizedBinaryTreeMethodsBase : public GenericCollectionMethodsBase<TElement>
     {
-    public:
-        virtual TElement* GetLeftReference(TElement node) = 0;
+        protected: virtual TElement* GetLeftReference(TElement node) = 0;
 
-        virtual TElement* GetRightReference(TElement node) = 0;
+        protected: virtual TElement* GetRightReference(TElement node) = 0;
 
-        virtual TElement GetLeft(TElement node) = 0;
+        protected: virtual TElement GetLeft(TElement node) = 0;
 
-        virtual TElement GetRight(TElement node) = 0;
+        protected: virtual TElement GetRight(TElement node) = 0;
 
-        virtual TElement GetSize(TElement node) = 0;
+        protected: virtual TElement GetSize(TElement node) = 0;
 
-        virtual void SetLeft(TElement node, TElement left) = 0;
+        protected: virtual void SetLeft(TElement node, TElement left) = 0;
 
-        virtual void SetRight(TElement node, TElement right) = 0;
+        protected: virtual void SetRight(TElement node, TElement right) = 0;
 
-        virtual void SetSize(TElement node, TElement size) = 0;
+        protected: virtual void SetSize(TElement node, TElement size) = 0;
 
-        virtual bool FirstIsToTheLeftOfSecond(TElement first, TElement second) = 0;
+        protected: virtual bool FirstIsToTheLeftOfSecond(TElement first, TElement second) = 0;
 
-        virtual bool FirstIsToTheRightOfSecond(TElement first, TElement second) = 0;
+        protected: virtual bool FirstIsToTheRightOfSecond(TElement first, TElement second) = 0;
 
-        virtual TElement GetLeftOrDefault(TElement node) { return node == 0 ? 0 : this->GetLeft(node); }
+        protected: virtual TElement GetLeftOrDefault(TElement node) { return node == 0 ? 0 : this->GetLeft(node); }
 
-        virtual TElement GetRightOrDefault(TElement node) { return node == 0 ? 0 : this->GetRight(node); }
+        protected: virtual TElement GetRightOrDefault(TElement node) { return node == 0 ? 0 : this->GetRight(node); }
 
-        void IncrementSize(TElement node) { this->SetSize(node, this->GetSize(node) + 1); }
+        protected: void IncrementSize(TElement node) { this->SetSize(node, this->GetSize(node) + 1); }
 
-        void DecrementSize(TElement node) { this->SetSize(node, this->GetSize(node) - 1); }
+        protected: void DecrementSize(TElement node) { this->SetSize(node, this->GetSize(node) - 1); }
 
-        TElement GetLeftSize(TElement node) { return this->GetSizeOrZero(this->GetLeftOrDefault(node)); }
+        protected: TElement GetLeftSize(TElement node) { return this->GetSizeOrZero(this->GetLeftOrDefault(node)); }
 
-        TElement GetRightSize(TElement node) { return this->GetSizeOrZero(this->GetRightOrDefault(node)); }
+        protected: TElement GetRightSize(TElement node) { return this->GetSizeOrZero(this->GetRightOrDefault(node)); }
 
-        TElement GetSizeOrZero(TElement node) { return node == 0 ? 0 : this->GetSize(node); }
+        protected: TElement GetSizeOrZero(TElement node) { return node == 0 ? 0 : this->GetSize(node); }
 
-        void FixSize(TElement node) { this->SetSize(node, (this->GetLeftSize(node) + this->GetRightSize(node)) + 1); }
+        protected: void FixSize(TElement node) { this->SetSize(node, (this->GetLeftSize(node) + this->GetRightSize(node)) + 1); }
 
-        void LeftRotate(TElement* root) { *root = this->LeftRotate(*root); }
+        protected: void LeftRotate(TElement* root) { *root = this->LeftRotate(*root); }
 
-        TElement LeftRotate(TElement root)
+        protected: TElement LeftRotate(TElement root)
         {
             auto right = this->GetRight(root);
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
@@ -57,9 +56,9 @@
             return right;
         }
 
-        void RightRotate(TElement* root) { *root = this->RightRotate(*root); }
+        protected: void RightRotate(TElement* root) { *root = this->RightRotate(*root); }
 
-        TElement RightRotate(TElement root)
+        protected: TElement RightRotate(TElement root)
         {
             auto left = this->GetLeft(root);
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
@@ -75,7 +74,7 @@
             return left;
         }
 
-        virtual TElement GetRightest(TElement current)
+        protected: virtual TElement GetRightest(TElement current)
         {
             auto currentRight = this->GetRight(current);
             while (currentRight != 0)
@@ -86,7 +85,7 @@
             return current;
         }
 
-        virtual TElement GetLeftest(TElement current)
+        protected: virtual TElement GetLeftest(TElement current)
         {
             auto currentLeft = this->GetLeft(current);
             while (currentLeft != 0)
@@ -97,11 +96,11 @@
             return current;
         }
 
-        virtual TElement GetNext(TElement node) { return this->GetLeftest(this->GetRight(node)); }
+        protected: virtual TElement GetNext(TElement node) { return this->GetLeftest(this->GetRight(node)); }
 
-        virtual TElement GetPrevious(TElement node) { return this->GetRightest(this->GetLeft(node)); }
+        protected: virtual TElement GetPrevious(TElement node) { return this->GetRightest(this->GetLeft(node)); }
 
-        virtual bool Contains(TElement node, TElement root)
+        public: virtual bool Contains(TElement node, TElement root)
         {
             while (root != 0)
             {
@@ -121,14 +120,14 @@
             return false;
         }
 
-        virtual void ClearNode(TElement node)
+        protected: virtual void ClearNode(TElement node)
         {
             this->SetLeft(node, 0);
             this->SetRight(node, 0);
             this->SetSize(node, 0);
         }
 
-        void Attach(TElement* root, TElement node)
+        public: void Attach(TElement* root, TElement node)
         {
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
             this->ValidateSizes(*root);
@@ -157,9 +156,9 @@
 #endif
         }
 
-        virtual void AttachCore(TElement* root, TElement node) = 0;
+        protected: virtual void AttachCore(TElement* root, TElement node) = 0;
 
-        void Detach(TElement* root, TElement node)
+        public: void Detach(TElement* root, TElement node)
         {
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
             this->ValidateSizes(*root);
@@ -186,6 +185,6 @@
 #endif
         }
 
-        virtual void DetachCore(TElement* root, TElement node) = 0;
+        protected: virtual void DetachCore(TElement* root, TElement node) = 0;
     };
 }

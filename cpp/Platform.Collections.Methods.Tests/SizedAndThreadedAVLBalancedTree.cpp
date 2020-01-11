@@ -2,27 +2,26 @@
 {
     template <typename TElement, std::size_t N> class SizedAndThreadedAVLBalancedTree : public Platform::Collections::Methods::Trees::SizedAndThreadedAVLBalancedTreeMethods<TElement>
     {
-    public:
         struct TreeElement
         {
-            TElement Size = 0;
-            TElement Left = 0;
-            TElement Right = 0;
-            std::int8_t Balance = 0;
-            bool LeftIsChild = 0;
-            bool RightIsChild = 0;
+            public: TElement Size = 0;
+            public: TElement Left = 0;
+            public: TElement Right = 0;
+            public: std::int8_t Balance = 0;
+            public: bool LeftIsChild = 0;
+            public: bool RightIsChild = 0;
         };
 
-        TreeElement _elements[N] = { {0} };
-        TElement _allocated = 0;
+        private: TreeElement _elements[N] = { {0} };
+        private: TElement _allocated = 0;
 
-        TElement Root = 0;
+        public: TElement Root = 0;
 
-        TElement GetCount() { return this->GetSizeOrZero(Root); }
+        public: TElement GetCount() { return this->GetSizeOrZero(Root); }
 
-        SizedAndThreadedAVLBalancedTree() { _allocated = 1; }
+        public: SizedAndThreadedAVLBalancedTree() { _allocated = 1; }
 
-        TElement Allocate()
+        public: TElement Allocate()
         {
             auto newNode = _allocated;
             if (this->IsEmpty(newNode))
@@ -36,7 +35,7 @@
             }
         }
 
-        void Free(TElement node)
+        public: void Free(TElement node)
         {
             while (_allocated != 1 && this->IsEmpty(node))
             {
@@ -53,40 +52,40 @@
             }
         }
 
-        bool IsEmpty(TElement node) { return iszero(this->GetElement(node), sizeof(TreeElement)); }
+        public: bool IsEmpty(TElement node) { return iszero(this->GetElement(node), sizeof(TreeElement)); }
 
-        bool FirstIsToTheLeftOfSecond(TElement first, TElement second) override { return first < second; }
+        protected: bool FirstIsToTheLeftOfSecond(TElement first, TElement second) override { return first < second; }
 
-        bool FirstIsToTheRightOfSecond(TElement first, TElement second) override { return first > second; }
+        protected: bool FirstIsToTheRightOfSecond(TElement first, TElement second) override { return first > second; }
 
-        std::int8_t GetBalance(TElement node) override { return this->GetElement(node)->Balance; }
+        protected: std::int8_t GetBalance(TElement node) override { return this->GetElement(node)->Balance; }
 
-        bool GetLeftIsChild(TElement node) override { return this->GetElement(node)->LeftIsChild; }
+        protected: bool GetLeftIsChild(TElement node) override { return this->GetElement(node)->LeftIsChild; }
 
-        TElement* GetLeftReference(TElement node) override { return &GetElement(node)->Left; }
+        protected: TElement* GetLeftReference(TElement node) override { return &GetElement(node)->Left; }
 
-        TElement GetLeft(TElement node) override { return this->GetElement(node)->Left; }
+        protected: TElement GetLeft(TElement node) override { return this->GetElement(node)->Left; }
 
-        bool GetRightIsChild(TElement node) override { return this->GetElement(node)->RightIsChild; }
+        protected: bool GetRightIsChild(TElement node) override { return this->GetElement(node)->RightIsChild; }
 
-        TElement* GetRightReference(TElement node) override { return &GetElement(node)->Right; }
+        protected: TElement* GetRightReference(TElement node) override { return &GetElement(node)->Right; }
 
-        TElement GetRight(TElement node) override { return this->GetElement(node)->Right; }
+        protected: TElement GetRight(TElement node) override { return this->GetElement(node)->Right; }
 
-        TElement GetSize(TElement node) override { return this->GetElement(node)->Size; }
+        protected: TElement GetSize(TElement node) override { return this->GetElement(node)->Size; }
 
-        void SetBalance(TElement node, std::int8_t value) override { this->GetElement(node)->Balance = value; }
+        protected: void SetBalance(TElement node, std::int8_t value) override { this->GetElement(node)->Balance = value; }
 
-        void SetLeft(TElement node, TElement left) override { this->GetElement(node)->Left = left; }
+        protected: void SetLeft(TElement node, TElement left) override { this->GetElement(node)->Left = left; }
 
-        void SetLeftIsChild(TElement node, bool value) override { this->GetElement(node)->LeftIsChild = value; }
+        protected: void SetLeftIsChild(TElement node, bool value) override { this->GetElement(node)->LeftIsChild = value; }
 
-        void SetRight(TElement node, TElement right) override { this->GetElement(node)->Right = right; }
+        protected: void SetRight(TElement node, TElement right) override { this->GetElement(node)->Right = right; }
 
-        void SetRightIsChild(TElement node, bool value) override { this->GetElement(node)->RightIsChild = value; }
+        protected: void SetRightIsChild(TElement node, bool value) override { this->GetElement(node)->RightIsChild = value; }
 
-        void SetSize(TElement node, TElement size) override { this->GetElement(node)->Size = size; }
+        protected: void SetSize(TElement node, TElement size) override { this->GetElement(node)->Size = size; }
 
-        TreeElement* GetElement(TElement node) { return &_elements[node]; }
+        private: TreeElement* GetElement(TElement node) { return &_elements[node]; }
     };
 }

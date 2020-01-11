@@ -2,8 +2,7 @@
 {
     template <typename TElement> class RecursionlessSizeBalancedTreeMethods : public SizedBinaryTreeMethodsBase<TElement>
     {
-    public:
-        void AttachCore(TElement* root, TElement node) override
+        protected: void AttachCore(TElement* root, TElement node) override
         {
             while (true)
             {
@@ -106,7 +105,7 @@
             }
         }
 
-        void DetachCore(TElement* root, TElement node) override
+        protected: void DetachCore(TElement* root, TElement node) override
         {
             while (true)
             {
