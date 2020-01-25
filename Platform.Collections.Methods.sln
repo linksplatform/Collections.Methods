@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Platform.Collections.Methods.Tests", "Platform.Collections.Methods.Tests\Platform.Collections.Methods.Tests.csproj", "{D5667200-FFE1-4D69-9124-FF8FCDC3E1AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Platform.Collections.Methods.Tests", "csharp\Platform.Collections.Methods.Tests\Platform.Collections.Methods.Tests.csproj", "{D5667200-FFE1-4D69-9124-FF8FCDC3E1AB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharpToCppTranslator", "CSharpToCppTranslator\CSharpToCppTranslator.csproj", "{A0967E25-55C0-465E-86A5-04067A1B7B45}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Platform.Collections.Methods", "Platform.Collections.Methods\Platform.Collections.Methods.csproj", "{4987038E-38B7-4222-8427-C5A978B9FE58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Platform.Collections.Methods", "csharp\Platform.Collections.Methods\Platform.Collections.Methods.csproj", "{4987038E-38B7-4222-8427-C5A978B9FE58}"
 	ProjectSection(ProjectDependencies) = postProject
 		{A0967E25-55C0-465E-86A5-04067A1B7B45} = {A0967E25-55C0-465E-86A5-04067A1B7B45}
 	EndProjectSection
@@ -24,7 +24,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Platform.Collections.Method
 		{A29D2221-D4BA-4CD0-9D71-0CFDF33C7582} = {A29D2221-D4BA-4CD0-9D71-0CFDF33C7582}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Platform.Collections.Methods.Tests.Console", "Platform.Collections.Methods.Tests.Console\Platform.Collections.Methods.Tests.Console.csproj", "{D8068FF2-5830-4199-8D3B-7775A1FBC4A6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Platform.Collections.Methods.Tests.Console", "csharp\Platform.Collections.Methods.Tests.Console\Platform.Collections.Methods.Tests.Console.csproj", "{D8068FF2-5830-4199-8D3B-7775A1FBC4A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
