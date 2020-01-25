@@ -70,7 +70,7 @@ jobs:
           submodules: true
       - name: Remove Cpp projects
         run: |
-          dotnet sln "Platform.Interfaces.sln" remove cpp/Platform.Interfaces.Tests/Platform.Collections.Methods.TemplateLibrary.Tests.vcxproj cpp/Platform.$REPOSITORY_NAME.Tests.Console/Platform.Collections.Methods.TemplateLibrary.Tests.Console.vcxproj
+          dotnet sln "Platform.Interfaces.sln" remove cpp/Platform.Collections.Methods.Tests/Platform.Collections.Methods.TemplateLibrary.Tests.vcxproj cpp/Platform.Collections.Methods.Tests.Console/Platform.Collections.Methods.TemplateLibrary.Tests.Console.vcxproj
       - uses: warrenbuckley/Setup-Nuget@v1
       - name: Publish CSharp NuGet to GitHub Package Registry
         run: |
