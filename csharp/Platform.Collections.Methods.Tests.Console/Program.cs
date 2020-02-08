@@ -11,17 +11,34 @@ namespace Platform.Collections.Methods.Tests.Console
             var sizeBalancedTree = new SizeBalancedTree<uint>(10000);
             var avlTree = new SizedAndThreadedAVLBalancedTree<uint>(10000);
 
+            System.Console.WriteLine("Warm up started.");
+
+            // WarmUp (ensure all source code is precompiled)
+            recursionlessSizeBalancedTree.TestMultipleCreationsAndDeletions(recursionlessSizeBalancedTree.Allocate, recursionlessSizeBalancedTree.Free, ref recursionlessSizeBalancedTree.Root, () => recursionlessSizeBalancedTree.Count, _n);
+            sizeBalancedTree.TestMultipleCreationsAndDeletions(sizeBalancedTree.Allocate, sizeBalancedTree.Free, ref sizeBalancedTree.Root, () => sizeBalancedTree.Count, _n);
+            avlTree.TestMultipleCreationsAndDeletions(avlTree.Allocate, avlTree.Free, ref avlTree.Root, () => avlTree.Count, _n);
+            recursionlessSizeBalancedTree.TestMultipleRandomCreationsAndDeletions(ref recursionlessSizeBalancedTree.Root, () => recursionlessSizeBalancedTree.Count, _n);
+            sizeBalancedTree.TestMultipleRandomCreationsAndDeletions(ref sizeBalancedTree.Root, () => sizeBalancedTree.Count, _n);
+            avlTree.TestMultipleRandomCreationsAndDeletions(ref avlTree.Root, () => avlTree.Count, _n);
+
+            System.Console.WriteLine("Warm up finished.");
+
+            // Reset data to avoid the bug (attempt to fix it later)
+            recursionlessSizeBalancedTree = new RecursionlessSizeBalancedTree<uint>(10000);
+            sizeBalancedTree = new SizeBalancedTree<uint>(10000);
+            avlTree = new SizedAndThreadedAVLBalancedTree<uint>(10000);
+
             var ts1 = Performance.Measure(() =>
             {
                 recursionlessSizeBalancedTree.TestMultipleCreationsAndDeletions(recursionlessSizeBalancedTree.Allocate, recursionlessSizeBalancedTree.Free, ref recursionlessSizeBalancedTree.Root, () => recursionlessSizeBalancedTree.Count, _n);
             });
-            System.Console.WriteLine($"{(int)ts1.TotalMilliseconds}ms (in order) for SizeBalancedTreeMethods");
+            System.Console.WriteLine($"{(int)ts1.TotalMilliseconds}ms (in order) for RecursionlessSizeBalancedTreeMethods");
 
             var ts2 = Performance.Measure(() =>
             {
                 sizeBalancedTree.TestMultipleCreationsAndDeletions(sizeBalancedTree.Allocate, sizeBalancedTree.Free, ref sizeBalancedTree.Root, () => sizeBalancedTree.Count, _n);
             });
-            System.Console.WriteLine($"{(int)ts2.TotalMilliseconds}ms (in order) for SizeBalancedTreeMethods2");
+            System.Console.WriteLine($"{(int)ts2.TotalMilliseconds}ms (in order) for SizeBalancedTreeMethods");
 
             var ts3 = Performance.Measure(() =>
             {
@@ -33,13 +50,13 @@ namespace Platform.Collections.Methods.Tests.Console
             {
                 recursionlessSizeBalancedTree.TestMultipleRandomCreationsAndDeletions(ref recursionlessSizeBalancedTree.Root, () => recursionlessSizeBalancedTree.Count, _n);
             });
-            System.Console.WriteLine($"{(int)ts4.TotalMilliseconds}ms (random) for SizeBalancedTreeMethods");
+            System.Console.WriteLine($"{(int)ts4.TotalMilliseconds}ms (random) for RecursionlessSizeBalancedTreeMethods");
 
             var ts5 = Performance.Measure(() =>
             {
                 sizeBalancedTree.TestMultipleRandomCreationsAndDeletions(ref sizeBalancedTree.Root, () => sizeBalancedTree.Count, _n);
             });
-            System.Console.WriteLine($"{(int)ts5.TotalMilliseconds}ms (random) for SizeBalancedTreeMethods2");
+            System.Console.WriteLine($"{(int)ts5.TotalMilliseconds}ms (random) for SizeBalancedTreeMethods");
 
             var ts6 = Performance.Measure(() =>
             {
