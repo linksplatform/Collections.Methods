@@ -2,7 +2,7 @@
 {
     TEST_CLASS(Trees)
     {
-        private: static const int _n = 500;
+        private: static const std::int32_t _n = 500;
 
         public: TEST_METHOD(RecursionlessSizeBalancedTreeMultipleAttachAndDetachTest)
         {

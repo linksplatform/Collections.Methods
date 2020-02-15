@@ -2,7 +2,7 @@
 {
     class TestExtensions
     {
-        public: template <typename TElement> static void TestMultipleCreationsAndDeletions(Platform::Collections::Methods::Trees::SizedBinaryTreeMethodsBase<TElement>& tree, std::function<TElement()> allocate, std::function<void(TElement)> free, TElement* root, std::function<TElement()> treeCount, int maximumOperationsPerCycle)
+        public: template <typename TElement> static void TestMultipleCreationsAndDeletions(Platform::Collections::Methods::Trees::SizedBinaryTreeMethodsBase<TElement>& tree, std::function<TElement()> allocate, std::function<void(TElement)> free, TElement* root, std::function<TElement()> treeCount, std::int32_t maximumOperationsPerCycle)
         {
             for (auto N = 1; N < maximumOperationsPerCycle; N++)
             {
@@ -12,7 +12,7 @@
                     auto node = allocate();
                     tree.Attach(root, node);
                     currentCount++;
-                    Assert::AreEqual(currentCount, (int)treeCount());
+                    Assert::AreEqual(currentCount, (std::int32_t)treeCount());
                 }
                 for (auto i = 1; i <= N; i++)
                 {
@@ -22,13 +22,13 @@
                         tree.Detach(root, node);
                         free(node);
                         currentCount--;
-                        Assert::AreEqual(currentCount, (int)treeCount());
+                        Assert::AreEqual(currentCount, (std::int32_t)treeCount());
                     }
                 }
             }
         }
 
-        public: template <typename TElement> static void TestMultipleRandomCreationsAndDeletions(Platform::Collections::Methods::Trees::SizedBinaryTreeMethodsBase<TElement>& tree, TElement* root, std::function<TElement()> treeCount, int maximumOperationsPerCycle)
+        public: template <typename TElement> static void TestMultipleRandomCreationsAndDeletions(Platform::Collections::Methods::Trees::SizedBinaryTreeMethodsBase<TElement>& tree, TElement* root, std::function<TElement()> treeCount, std::int32_t maximumOperationsPerCycle)
         {
             std::srand(0);
             std::unordered_set<TElement> added;
@@ -43,7 +43,7 @@
                         added.insert(node);
                         tree.Attach(root, node);
                         currentCount++;
-                        Assert::AreEqual(currentCount, (int)treeCount());
+                        Assert::AreEqual(currentCount, (std::int32_t)treeCount());
                     }
                 }
                 for (auto i = 1; i <= N; i++)
@@ -53,7 +53,7 @@
                     {
                         tree.Detach(root, node);
                         currentCount--;
-                        Assert::AreEqual(currentCount, (int)treeCount());
+                        Assert::AreEqual(currentCount, (std::int32_t)treeCount());
                         added.erase(node);
                     }
                 }

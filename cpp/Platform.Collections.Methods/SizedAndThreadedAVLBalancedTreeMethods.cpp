@@ -2,7 +2,7 @@
 {
     template <typename TElement> class SizedAndThreadedAVLBalancedTreeMethods : public SizedBinaryTreeMethodsBase<TElement>
     {
-        private: static const int _maxPath = 11 * sizeof(TElement) + 4;
+        private: static const std::int32_t _maxPath = 11 * sizeof(TElement) + 4;
 
         protected: TElement GetRightest(TElement current) override
         {
@@ -420,7 +420,7 @@
                         auto predecessor = this->GetLeft(currentNode);
                         auto successor = this->GetRight(currentNode);
                         auto successorParent = currentNode;
-                        int previousPathPosition = ++pathPosition;
+                        std::int32_t previousPathPosition = ++pathPosition;
                         while (this->GetLeftIsChild(successor))
                         {
                             path[++pathPosition] = successorParent = successor;
