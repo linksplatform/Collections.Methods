@@ -4,7 +4,7 @@
     <Description>LinksPlatform's Platform.Collections.Methods Class Library</Description>
     <Copyright>Konstantin Diachenko</Copyright>
     <AssemblyTitle>Platform.Collections.Methods</AssemblyTitle>
-    <VersionPrefix>0.2.2</VersionPrefix>
+    <VersionPrefix>0.3.0</VersionPrefix>
     <Authors>Konstantin Diachenko</Authors>
     <TargetFrameworks>net472;netstandard2.0;netstandard2.1</TargetFrameworks>
     <AssemblyName>Platform.Collections.Methods</AssemblyName>
@@ -24,7 +24,8 @@
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <LangVersion>latest</LangVersion>
-    <PackageReleaseNotes>Platform.Numbers dependency updated from 0.2.3 to 0.3.0.</PackageReleaseNotes>
+    <PackageReleaseNotes>Lowest supported version of .NET Framework is now 4.7.2.
+Platform.Numbers dependency updated from 0.3.0 to 0.4.0.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4')) AND '$(MSBuildRuntimeType)' == 'Core' AND '$(OS)' != 'Windows_NT'">
