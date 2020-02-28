@@ -2,7 +2,7 @@
 {
     template <typename TElement> class SizedAndThreadedAVLBalancedTreeMethods : public SizedBinaryTreeMethodsBase<TElement>
     {
-        private: static const std::int32_t _maxPath = 11 * sizeof(TElement) + 4;
+        private: inline static const std::int32_t _maxPath = 11 * sizeof(TElement) + 4;
 
         protected: TElement GetRightest(TElement current) override
         {
