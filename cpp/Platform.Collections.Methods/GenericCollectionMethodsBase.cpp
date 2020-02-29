@@ -2,6 +2,5 @@
 {
     template <typename TElement> class GenericCollectionMethodsBase
     {
-        
     };
 }
