@@ -5,15 +5,15 @@
 
 #include <cstdint>
 
-#include "GenericCollectionMethodsBase.cpp"
+#include "GenericCollectionMethodsBase.h"
 
-#include "DoublyLinkedListMethodsBase.cpp"
-#include "CircularDoublyLinkedListMethods.cpp"
-#include "OpenDoublyLinkedListMethods.cpp"
+#include "DoublyLinkedListMethodsBase.h"
+#include "CircularDoublyLinkedListMethods.h"
+#include "OpenDoublyLinkedListMethods.h"
 
-#include "SizedBinaryTreeMethodsBase.cpp"
-#include "RecursionlessSizeBalancedTreeMethods.cpp"
-#include "SizeBalancedTreeMethods.cpp"
-#include "SizedAndThreadedAVLBalancedTreeMethods.cpp"
+#include "SizedBinaryTreeMethodsBase.h"
+#include "RecursionlessSizeBalancedTreeMethods.h"
+#include "SizeBalancedTreeMethods.h"
+#include "SizedAndThreadedAVLBalancedTreeMethods.h"
 
 #endif // Platform_Collections_Methods
