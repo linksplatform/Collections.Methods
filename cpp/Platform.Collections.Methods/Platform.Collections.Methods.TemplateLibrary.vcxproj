@@ -18,6 +18,17 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GenericCollectionMethodsBase.h" />
+    <ClInclude Include="Lists\CircularDoublyLinkedListMethods.h" />
+    <ClInclude Include="Lists\DoublyLinkedListMethodsBase.h" />
+    <ClInclude Include="Lists\OpenDoublyLinkedListMethods.h" />
+    <ClInclude Include="Platform.Collections.Methods.h" />
+    <ClInclude Include="Trees\RecursionlessSizeBalancedTreeMethods.h" />
+    <ClInclude Include="Trees\SizeBalancedTreeMethods.h" />
+    <ClInclude Include="Trees\SizedAndThreadedAVLBalancedTreeMethods.h" />
+    <ClInclude Include="Trees\SizedBinaryTreeMethodsBase.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{4F0B50E4-F3B2-4C37-9624-4E096CED1B5A}</ProjectGuid>
@@ -141,17 +152,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="CircularDoublyLinkedListMethods.h" />
-    <ClInclude Include="DoublyLinkedListMethodsBase.h" />
-    <ClInclude Include="GenericCollectionMethodsBase.h" />
-    <ClInclude Include="OpenDoublyLinkedListMethods.h" />
-    <ClInclude Include="Platform.Collections.Methods.h" />
-    <ClInclude Include="RecursionlessSizeBalancedTreeMethods.h" />
-    <ClInclude Include="SizeBalancedTreeMethods.h" />
-    <ClInclude Include="SizedAndThreadedAVLBalancedTreeMethods.h" />
-    <ClInclude Include="SizedBinaryTreeMethodsBase.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

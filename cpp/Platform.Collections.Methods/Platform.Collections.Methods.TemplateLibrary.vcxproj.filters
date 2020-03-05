@@ -15,31 +15,31 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CircularDoublyLinkedListMethods.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DoublyLinkedListMethodsBase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GenericCollectionMethodsBase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="OpenDoublyLinkedListMethods.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Platform.Collections.Methods.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RecursionlessSizeBalancedTreeMethods.h">
+    <ClInclude Include="Lists\CircularDoublyLinkedListMethods.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SizeBalancedTreeMethods.h">
+    <ClInclude Include="Lists\DoublyLinkedListMethodsBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SizedAndThreadedAVLBalancedTreeMethods.h">
+    <ClInclude Include="Lists\OpenDoublyLinkedListMethods.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SizedBinaryTreeMethodsBase.h">
+    <ClInclude Include="Trees\RecursionlessSizeBalancedTreeMethods.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Trees\SizeBalancedTreeMethods.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Trees\SizedAndThreadedAVLBalancedTreeMethods.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Trees\SizedBinaryTreeMethodsBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

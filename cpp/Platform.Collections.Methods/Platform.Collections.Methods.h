@@ -7,13 +7,13 @@
 
 #include "GenericCollectionMethodsBase.h"
 
-#include "DoublyLinkedListMethodsBase.h"
-#include "CircularDoublyLinkedListMethods.h"
-#include "OpenDoublyLinkedListMethods.h"
+#include "Lists/DoublyLinkedListMethodsBase.h"
+#include "Lists/CircularDoublyLinkedListMethods.h"
+#include "Lists/OpenDoublyLinkedListMethods.h"
 
-#include "SizedBinaryTreeMethodsBase.h"
-#include "RecursionlessSizeBalancedTreeMethods.h"
-#include "SizeBalancedTreeMethods.h"
-#include "SizedAndThreadedAVLBalancedTreeMethods.h"
+#include "Trees/SizedBinaryTreeMethodsBase.h"
+#include "Trees/RecursionlessSizeBalancedTreeMethods.h"
+#include "Trees/SizeBalancedTreeMethods.h"
+#include "Trees/SizedAndThreadedAVLBalancedTreeMethods.h"
 
 #endif // Platform_Collections_Methods
