@@ -17,14 +17,14 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Platform.Collections.Method
 		{D5667200-FFE1-4D69-9124-FF8FCDC3E1AB} = {D5667200-FFE1-4D69-9124-FF8FCDC3E1AB}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Platform.Collections.Methods.TemplateLibrary", "cpp\Platform.Collections.Methods\Platform.Collections.Methods.TemplateLibrary.vcxitems", "{5F8D8B8C-A6A0-41EF-B127-98EEDD0773E3}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Platform.Collections.Methods.TemplateLibrary.Tests.Console", "cpp\Platform.Collections.Methods.Tests.Console\Platform.Collections.Methods.TemplateLibrary.Tests.Console.vcxproj", "{18AA405C-8342-4F02-8933-A33F91DB4979}"
 	ProjectSection(ProjectDependencies) = postProject
 		{A29D2221-D4BA-4CD0-9D71-0CFDF33C7582} = {A29D2221-D4BA-4CD0-9D71-0CFDF33C7582}
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Platform.Collections.Methods.Tests.Console", "csharp\Platform.Collections.Methods.Tests.Console\Platform.Collections.Methods.Tests.Console.csproj", "{D8068FF2-5830-4199-8D3B-7775A1FBC4A6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Platform.Collections.Methods.TemplateLibrary", "cpp\Platform.Collections.Methods\Platform.Collections.Methods.TemplateLibrary.vcxproj", "{4F0B50E4-F3B2-4C37-9624-4E096CED1B5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -104,6 +104,16 @@ Global
 		{D8068FF2-5830-4199-8D3B-7775A1FBC4A6}.Release|x64.Build.0 = Release|Any CPU
 		{D8068FF2-5830-4199-8D3B-7775A1FBC4A6}.Release|x86.ActiveCfg = Release|Any CPU
 		{D8068FF2-5830-4199-8D3B-7775A1FBC4A6}.Release|x86.Build.0 = Release|Any CPU
+		{4F0B50E4-F3B2-4C37-9624-4E096CED1B5A}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{4F0B50E4-F3B2-4C37-9624-4E096CED1B5A}.Debug|x64.ActiveCfg = Debug|x64
+		{4F0B50E4-F3B2-4C37-9624-4E096CED1B5A}.Debug|x64.Build.0 = Debug|x64
+		{4F0B50E4-F3B2-4C37-9624-4E096CED1B5A}.Debug|x86.ActiveCfg = Debug|Win32
+		{4F0B50E4-F3B2-4C37-9624-4E096CED1B5A}.Debug|x86.Build.0 = Debug|Win32
+		{4F0B50E4-F3B2-4C37-9624-4E096CED1B5A}.Release|Any CPU.ActiveCfg = Release|Win32
+		{4F0B50E4-F3B2-4C37-9624-4E096CED1B5A}.Release|x64.ActiveCfg = Release|x64
+		{4F0B50E4-F3B2-4C37-9624-4E096CED1B5A}.Release|x64.Build.0 = Release|x64
+		{4F0B50E4-F3B2-4C37-9624-4E096CED1B5A}.Release|x86.ActiveCfg = Release|Win32
+		{4F0B50E4-F3B2-4C37-9624-4E096CED1B5A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
