@@ -21,13 +21,13 @@ Files structure updated.</releaseNotes>
   <files>
     <file src="Platform.Collections.Methods.TemplateLibrary.targets" target="build\native\Platform.Collections.Methods.TemplateLibrary.targets" />
     <file src="Platform.Collections.Methods.h" target="lib\native\include\Platform.Collections.Methods.h" />
-    <file src="Lists\CircularDoublyLinkedListMethods.h" target="lib\native\include\CircularDoublyLinkedListMethods.h" />
-    <file src="Lists\DoublyLinkedListMethodsBase.h" target="lib\native\include\DoublyLinkedListMethodsBase.h" />
-    <file src="Lists\OpenDoublyLinkedListMethods.h" target="lib\native\include\OpenDoublyLinkedListMethods.h" />
-    <file src="Trees\RecursionlessSizeBalancedTreeMethods.h" target="lib\native\include\RecursionlessSizeBalancedTreeMethods.h" />
-    <file src="Trees\SizeBalancedTreeMethods.h" target="lib\native\include\SizeBalancedTreeMethods.h" />
-    <file src="Trees\SizedAndThreadedAVLBalancedTreeMethods.h" target="lib\native\include\SizedAndThreadedAVLBalancedTreeMethods.h" />
-    <file src="Trees\SizedBinaryTreeMethodsBase.h" target="lib\native\include\SizedBinaryTreeMethodsBase.h" />
+    <file src="Lists\CircularDoublyLinkedListMethods.h" target="lib\native\include\Lists\CircularDoublyLinkedListMethods.h" />
+    <file src="Lists\DoublyLinkedListMethodsBase.h" target="lib\native\include\Lists\DoublyLinkedListMethodsBase.h" />
+    <file src="Lists\OpenDoublyLinkedListMethods.h" target="lib\native\include\Lists\OpenDoublyLinkedListMethods.h" />
+    <file src="Trees\RecursionlessSizeBalancedTreeMethods.h" target="lib\native\include\Trees\RecursionlessSizeBalancedTreeMethods.h" />
+    <file src="Trees\SizeBalancedTreeMethods.h" target="lib\native\include\Trees\SizeBalancedTreeMethods.h" />
+    <file src="Trees\SizedAndThreadedAVLBalancedTreeMethods.h" target="lib\native\include\Trees\SizedAndThreadedAVLBalancedTreeMethods.h" />
+    <file src="Trees\SizedBinaryTreeMethodsBase.h" target="lib\native\include\Trees\SizedBinaryTreeMethodsBase.h" />
     <file src="GenericCollectionMethodsBase.h" target="lib\native\include\GenericCollectionMethodsBase.h" />
   </files>
 </package>
