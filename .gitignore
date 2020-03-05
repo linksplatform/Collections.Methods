@@ -344,6 +344,7 @@ org.kde.konsole.desktop
 
 # Generated code files
 *.AssemblyInfo.cpp
+*.AssemblyInfo.h
 
 # GitHub refuses chages to .github folder at the moment
 .github/

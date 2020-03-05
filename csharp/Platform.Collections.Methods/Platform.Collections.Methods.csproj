@@ -44,8 +44,8 @@ Platform.Numbers dependency updated from 0.3.0 to 0.4.0.</PackageReleaseNotes>
     <CSharpFiles Include="**\*.cs" />
   </ItemGroup>
 
-  <Target Name="CSharpFilesTransform" BeforeTargets="BeforeBuild" Condition="'$(OS)' == 'Windows_NT' AND $(TargetFramework) == 'netstandard2.1'">
-    <Exec WorkingDirectory="$(ProjectDir)" IgnoreExitCode="true" Command="..\..\CSharpToCppTranslator\bin\$(Configuration)\netcoreapp3.0\CSharpToCppTranslator.exe %(CSharpFiles.Identity) $(SolutionDir)cpp\Platform.Collections.Methods\" />
+  <Target Name="CSharpToCppTranslation" AfterTargets="PostBuildEvent" Condition="'$(OS)' == 'Windows_NT' AND $(TargetFramework) == 'netstandard2.1'">
+    <Exec Command="..\..\CSharpToCppTranslator\bin\$(Configuration)\netcoreapp3.0\CSharpToCppTranslator.exe $(ProjectDir) $(SolutionDir)cpp\$(ProjectName)\"></Exec>
   </Target>
 
 </Project>
