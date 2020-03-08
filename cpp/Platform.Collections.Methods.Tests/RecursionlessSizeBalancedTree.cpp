@@ -1,6 +1,6 @@
 ﻿namespace Platform::Collections::Methods::Tests
 {
-    template <typename TElement, std::size_t N> class RecursionlessSizeBalanced : public Platform::Collections::Methods::Trees::RecursionlessSizeBalanced<TElement>
+    template <typename TElement, std::size_t N> class RecursionlessSizeBalancedTree : public Platform::Collections::Methods::Trees::RecursionlessSizeBalancedTreeMethods<TElement>
     {
         struct TreeElement
         {

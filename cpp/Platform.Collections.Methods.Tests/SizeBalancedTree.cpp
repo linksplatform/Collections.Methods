@@ -1,6 +1,6 @@
 ﻿namespace Platform::Collections::Methods::Tests
 {
-    template <typename TElement, std::size_t N> class SizeBalanced : public Platform::Collections::Methods::Trees::SizeBalanced<TElement>
+    template <typename TElement, std::size_t N> class SizeBalancedTree : public Platform::Collections::Methods::Trees::SizeBalancedTreeMethods<TElement>
     {
         struct TreeElement
         {
