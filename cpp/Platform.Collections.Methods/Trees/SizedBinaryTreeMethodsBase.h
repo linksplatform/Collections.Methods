@@ -1,6 +1,7 @@
 ﻿namespace Platform::Collections::Methods::Trees
 {
-    template <typename TElement> class SizedBinaryTreeMethodsBase : public GenericCollectionMethodsBase<TElement>
+    template <typename ...> class SizedBinaryTreeMethodsBase;
+    template <typename TElement> class SizedBinaryTreeMethodsBase<TElement> : public GenericCollectionMethodsBase<TElement>
     {
         protected: virtual TElement* GetLeftReference(TElement node) = 0;
 

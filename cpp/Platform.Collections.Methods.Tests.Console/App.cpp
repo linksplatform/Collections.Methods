@@ -25,9 +25,9 @@ using namespace Platform::Collections::Methods::Tests;
 int main()
 {
     static const int _n = 2000;
-    RecursionlessSizeBalancedTree<std::uint32_t, 10000> recursionlessSizeBalancedTree;
-    SizeBalancedTree<std::uint32_t, 10000> sizeBalancedTree;
-    SizedAndThreadedAVLBalancedTree<std::uint32_t, 10000> avlTree;
+    RecursionlessSizeBalancedTree<10000, std::uint32_t> recursionlessSizeBalancedTree;
+    SizeBalancedTree<10000, std::uint32_t> sizeBalancedTree;
+    SizedAndThreadedAVLBalancedTree<10000, std::uint32_t> avlTree;
 
     auto t1 = std::chrono::high_resolution_clock::now();
     TestExtensions::TestMultipleCreationsAndDeletions<std::uint32_t>(recursionlessSizeBalancedTree, [&]()-> auto { return recursionlessSizeBalancedTree.Allocate(); }, [&](std::uint32_t link)-> auto { recursionlessSizeBalancedTree.Free(link); }, & recursionlessSizeBalancedTree.Root, [&]()-> auto { return recursionlessSizeBalancedTree.GetCount(); }, _n);

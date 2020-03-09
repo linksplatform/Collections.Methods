@@ -1,6 +1,7 @@
 ﻿namespace Platform::Collections::Methods::Trees
 {
-    template <typename TElement> class SizedAndThreadedAVLBalancedTreeMethods : public SizedBinaryTreeMethodsBase<TElement>
+    template <typename ...> class SizedAndThreadedAVLBalancedTreeMethods;
+    template <typename TElement> class SizedAndThreadedAVLBalancedTreeMethods<TElement> : public SizedBinaryTreeMethodsBase<TElement>
     {
         private: inline static const std::int32_t _maxPath = 11 * sizeof(TElement) + 4;
 

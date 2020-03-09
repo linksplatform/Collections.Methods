@@ -1,6 +1,7 @@
 ﻿namespace Platform::Collections::Methods::Tests
 {
-    template <typename TElement, std::size_t N> class SizedAndThreadedAVLBalancedTree : public Platform::Collections::Methods::Trees::SizedAndThreadedAVLBalancedTreeMethods<TElement>
+    template <std::size_t N, typename ...> class SizedAndThreadedAVLBalancedTree;
+    template <std::size_t N, typename TElement> class SizedAndThreadedAVLBalancedTree<N, TElement> : public Platform::Collections::Methods::Trees::SizedAndThreadedAVLBalancedTreeMethods<TElement>
     {
         struct TreeElement
         {

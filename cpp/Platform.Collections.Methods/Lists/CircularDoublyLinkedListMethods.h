@@ -1,6 +1,7 @@
 ﻿namespace Platform::Collections::Methods::Lists
 {
-    template <typename TElement> class CircularDoublyLinkedListMethods : public DoublyLinkedListMethodsBase<TElement>
+    template <typename ...> class CircularDoublyLinkedListMethods;
+    template <typename TElement> class CircularDoublyLinkedListMethods<TElement> : public DoublyLinkedListMethodsBase<TElement>
     {
         public: void AttachBefore(TElement baseElement, TElement newElement)
         {

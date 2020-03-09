@@ -1,6 +1,7 @@
 ﻿namespace Platform::Collections::Methods::Trees
 {
-    template <typename TElement> class RecursionlessSizeBalancedTreeMethods : public SizedBinaryTreeMethodsBase<TElement>
+    template <typename ...> class RecursionlessSizeBalancedTreeMethods;
+    template <typename TElement> class RecursionlessSizeBalancedTreeMethods<TElement> : public SizedBinaryTreeMethodsBase<TElement>
     {
         protected: void AttachCore(TElement* root, TElement node) override
         {

@@ -1,6 +1,7 @@
 ﻿namespace Platform::Collections::Methods::Lists
 {
-    template <typename TElement> class OpenDoublyLinkedListMethods : public DoublyLinkedListMethodsBase<TElement>
+    template <typename ...> class OpenDoublyLinkedListMethods;
+    template <typename TElement> class OpenDoublyLinkedListMethods<TElement> : public DoublyLinkedListMethodsBase<TElement>
     {
         public: void AttachBefore(TElement baseElement, TElement newElement)
         {

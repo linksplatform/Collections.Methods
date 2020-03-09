@@ -1,6 +1,7 @@
 ﻿namespace Platform::Collections::Methods::Lists
 {
-    template <typename TElement> class DoublyLinkedListMethodsBase : public GenericCollectionMethodsBase<TElement>
+    template <typename ...> class DoublyLinkedListMethodsBase;
+    template <typename TElement> class DoublyLinkedListMethodsBase<TElement> : public GenericCollectionMethodsBase<TElement>
     {
         protected: virtual TElement GetFirst() = 0;
 
