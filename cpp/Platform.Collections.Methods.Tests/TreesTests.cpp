@@ -1,6 +1,6 @@
 ﻿namespace Platform::Collections::Methods::Tests
 {
-    TEST_CLASS(Trees)
+    TEST_CLASS(TreesTests)
     {
         private: inline static const std::int32_t _n = 500;
 
