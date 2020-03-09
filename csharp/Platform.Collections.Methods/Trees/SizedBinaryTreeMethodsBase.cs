@@ -1,9 +1,11 @@
-﻿using System;
+﻿//#define ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
+
+using System;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Text;
 using Platform.Numbers;
 
-//#define ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace Platform.Collections.Methods.Trees
@@ -74,7 +76,7 @@ namespace Platform.Collections.Methods.Trees
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
             if (EqualToZero(right))
             {
-                throw new Exception("Right is null.");
+                throw new InvalidOperationException("Right is null.");
             }
 #endif
             SetRight(root, GetLeft(right));
@@ -94,7 +96,7 @@ namespace Platform.Collections.Methods.Trees
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
             if (EqualToZero(left))
             {
-                throw new Exception("Left is null.");
+                throw new InvalidOperationException("Left is null.");
             }
 #endif
             SetLeft(root, GetRight(left));
@@ -186,9 +188,9 @@ namespace Platform.Collections.Methods.Trees
             Debug.WriteLine("----------------");
             ValidateSizes(root);
             var sizeAfter = GetSize(root);
-            if (!IsEquals(MathHelpers.Increment(sizeBefore), sizeAfter))
+            if (!AreEqual(Arithmetic.Increment(sizeBefore), sizeAfter))
             {
-                throw new Exception("Tree was broken after attach.");
+                throw new InvalidOperationException("Tree was broken after attach.");
             }
 #endif
         }
@@ -204,9 +206,9 @@ namespace Platform.Collections.Methods.Trees
             Debug.WriteLine(PrintNodes(root));
             Debug.WriteLine("----------------");
             var sizeBefore = GetSize(root);
-            if (ValueEqualToZero(root))
+            if (EqualToZero(root))
             {
-                throw new Exception($"Элемент с {node} не содержится в дереве.");
+                throw new InvalidOperationException($"Элемент с {node} не содержится в дереве.");
             }
 #endif
             DetachCore(ref root, node);
@@ -216,9 +218,9 @@ namespace Platform.Collections.Methods.Trees
             Debug.WriteLine("----------------");
             ValidateSizes(root);
             var sizeAfter = GetSize(root);
-            if (!IsEquals(MathHelpers.Decrement(sizeBefore), sizeAfter))
+            if (!AreEqual(Arithmetic.Decrement(sizeBefore), sizeAfter))
             {
-                throw new Exception("Tree was broken after detach.");
+                throw new InvalidOperationException("Tree was broken after detach.");
             }
 #endif
         }

@@ -150,7 +150,7 @@
             Debug.WriteLine("----------------");
             this->ValidateSizes(*root);
             auto sizeAfter = this->GetSize(*root);
-            if (!this->IsEquals(MathHelpers.Increment(sizeBefore), sizeAfter))
+            if ((sizeBefore + 1) != sizeAfter)
             {
                 throw std::runtime_error("Tree was broken after attach.");
             }
@@ -167,7 +167,7 @@
             Debug.WriteLine(this->PrintNodes(*root));
             Debug.WriteLine("----------------");
             auto sizeBefore = this->GetSize(*root);
-            if (this->ValueEqualToZero(*root))
+            if (*root == 0)
             {
                 throw std::runtime_error(std::string("Элемент с ").append(Platform::Converters::To<std::string>(node)).append(" не содержится в дереве.").data());
             }
@@ -179,7 +179,7 @@
             Debug.WriteLine("----------------");
             this->ValidateSizes(*root);
             auto sizeAfter = this->GetSize(*root);
-            if (!this->IsEquals(MathHelpers.Decrement(sizeBefore), sizeAfter))
+            if ((sizeBefore - 1) != sizeAfter)
             {
                 throw std::runtime_error("Tree was broken after detach.");
             }
