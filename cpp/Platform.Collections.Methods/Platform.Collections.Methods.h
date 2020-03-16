@@ -16,4 +16,4 @@
 #include "Trees/SizeBalancedTreeMethods.h"
 #include "Trees/SizedAndThreadedAVLBalancedTreeMethods.h"
 
-#endif // Platform_Collections_Methods
+#endif
