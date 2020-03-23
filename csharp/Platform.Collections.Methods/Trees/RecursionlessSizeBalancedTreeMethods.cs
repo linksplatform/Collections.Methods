@@ -118,11 +118,11 @@ namespace Platform.Collections.Methods.Trees
                 if (FirstIsToTheLeftOfSecond(node, root)) // node.Key less than root.Key
                 {
                     var decrementedLeftSize = Decrement(leftSize);
-                    if (GreaterThan(GetSizeOrZero(GetRight(right)), decrementedLeftSize))
+                    if (GreaterThan(GetSizeOrZero(GetRightOrDefault(right)), decrementedLeftSize))
                     {
                         LeftRotate(ref root);
                     }
-                    else if (GreaterThan(GetSizeOrZero(GetLeft(right)), decrementedLeftSize))
+                    else if (GreaterThan(GetSizeOrZero(GetLeftOrDefault(right)), decrementedLeftSize))
                     {
                         RightRotate(ref right);
                         LeftRotate(ref root);
@@ -136,11 +136,11 @@ namespace Platform.Collections.Methods.Trees
                 else if (FirstIsToTheRightOfSecond(node, root)) // node.Key greater than root.Key
                 {
                     var decrementedRightSize = Decrement(rightSize);
-                    if (GreaterThan(GetSizeOrZero(GetLeft(left)), decrementedRightSize))
+                    if (GreaterThan(GetSizeOrZero(GetLeftOrDefault(left)), decrementedRightSize))
                     {
                         RightRotate(ref root);
                     }
-                    else if (GreaterThan(GetSizeOrZero(GetRight(left)), decrementedRightSize))
+                    else if (GreaterThan(GetSizeOrZero(GetRightOrDefault(left)), decrementedRightSize))
                     {
                         LeftRotate(ref left);
                         RightRotate(ref root);

@@ -117,11 +117,11 @@
                 if (this->FirstIsToTheLeftOfSecond(node, *root))
                 {
                     auto decrementedLeftSize = leftSize - 1;
-                    if (this->GetSizeOrZero(this->GetRight(*right)) > decrementedLeftSize)
+                    if (this->GetSizeOrZero(this->GetRightOrDefault(*right)) > decrementedLeftSize)
                     {
                         this->LeftRotate(root);
                     }
-                    else if (this->GetSizeOrZero(this->GetLeft(*right)) > decrementedLeftSize)
+                    else if (this->GetSizeOrZero(this->GetLeftOrDefault(*right)) > decrementedLeftSize)
                     {
                         this->RightRotate(right);
                         this->LeftRotate(root);
@@ -135,11 +135,11 @@
                 else if (this->FirstIsToTheRightOfSecond(node, *root))
                 {
                     auto decrementedRightSize = rightSize - 1;
-                    if (this->GetSizeOrZero(this->GetLeft(*left)) > decrementedRightSize)
+                    if (this->GetSizeOrZero(this->GetLeftOrDefault(*left)) > decrementedRightSize)
                     {
                         this->RightRotate(root);
                     }
-                    else if (this->GetSizeOrZero(this->GetRight(*left)) > decrementedRightSize)
+                    else if (this->GetSizeOrZero(this->GetRightOrDefault(*left)) > decrementedRightSize)
                     {
                         this->LeftRotate(left);
                         this->RightRotate(root);
