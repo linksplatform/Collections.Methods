@@ -18,7 +18,7 @@
 
         public: TElement Root = 0;
 
-        public: TElement GetCount() { return this->GetSizeOrZero(Root); }
+        public: TElement Count() { return this->GetSizeOrZero(Root); }
 
         public: SizedAndThreadedAVLBalancedTree() { _allocated = 1; }
 

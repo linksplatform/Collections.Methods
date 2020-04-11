@@ -15,7 +15,7 @@
 
         public: TElement Root = 0;
 
-        public: TElement GetCount() { return this->GetSizeOrZero(Root); }
+        public: TElement Count() { return this->GetSizeOrZero(Root); }
 
         public: SizeBalancedTree() { _allocated = 1; }
 
