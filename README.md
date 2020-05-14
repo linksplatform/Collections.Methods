@@ -10,14 +10,14 @@
 
 LinksPlatform's Platform.Collections.Methods Class Library.
 
-Namespace: [Platform.Collections.Methods](https://linksplatform.github.io/Collections.Methods/api/Platform.Collections.Methods.html)
+Namespace: [Platform.Collections.Methods](https://linksplatform.github.io/Collections.Methods/csharp/api/Platform.Collections.Methods.html)
 
 Forked from: [Konard/LinksPlatform/Platform/Platform.Data.Core/Collections](https://github.com/Konard/LinksPlatform/tree/b6866f278712c317b4c895e27e49f2d0b3fe561f/Platform/Platform.Data.Core/Collections)
 
 NuGet package: [Platform.Collections.Methods](https://www.nuget.org/packages/Platform.Collections.Methods)
 
 ## [Documentation](https://linksplatform.github.io/Collections.Methods)
-[PDF file](https://linksplatform.github.io/Collections.Methods/Platform.Collections.Methods.pdf) with code for e-readers.
+[PDF file](https://linksplatform.github.io/Collections.Methods/csharp/Platform.Collections.Methods.pdf) with code for e-readers.
 
 ## Depend on
 *   [Platform.Numbers](https://github.com/linksplatform/Numbers)
