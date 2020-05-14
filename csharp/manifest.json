@@ -18,7 +18,151 @@
       "output": {
         ".html": {
           "relative_path": "README.html",
-          "hash": "xC5I4FEEV3cODZREyeoKTw=="
+          "hash": "pOjSNO4SfWayCBOYA8KTUQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Platform.Collections.Methods.GenericCollectionMethodsBase-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Platform.Collections.Methods.GenericCollectionMethodsBase-1.html",
+          "hash": "aNWEztAl3Zjy9TKskudIXw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods-1.html",
+          "hash": "rriDyfJcBQkFLEbHOhFzMw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase-1.html",
+          "hash": "TznlvUZbNshYXA3qDiu/sQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods-1.html",
+          "hash": "yCwPjN/1f7Z+EyPAs42z+g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Platform.Collections.Methods.Lists.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Platform.Collections.Methods.Lists.html",
+          "hash": "ocoaXbmeSLZbZHVKj+CXZw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Platform.Collections.Methods.Trees.RecursionlessSizeBalancedTreeMethods-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Platform.Collections.Methods.Trees.RecursionlessSizeBalancedTreeMethods-1.html",
+          "hash": "Q3sghkjyW9D4WCLja+UfHw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Platform.Collections.Methods.Trees.SizeBalancedTreeMethods-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Platform.Collections.Methods.Trees.SizeBalancedTreeMethods-1.html",
+          "hash": "MxN3HpSL5rDOr90YDUyPKA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods-1.html",
+          "hash": "70ccFRiICet6HBmIS8jUhw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html",
+          "hash": "GyRUJ6v0fHh7y53hAVGV6g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Platform.Collections.Methods.Trees.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Platform.Collections.Methods.Trees.html",
+          "hash": "apb4w90HNaUAE3ZcR9rDTQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Platform.Collections.Methods.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Platform.Collections.Methods.html",
+          "hash": "EMhrjrCk60gpgRFf/T3u/Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "obj/api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "wHdkEiXSkEu4IM8JYtZ7gQ=="
         }
       },
       "is_incremental": false,
@@ -33,7 +177,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "2sEKDfaDj+AWPxs19qDonA=="
+          "hash": "RwJPteiwS10+6MMBEC/ePg=="
         }
       },
       "is_incremental": false,
@@ -55,6 +199,12 @@
           "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 1,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 11,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
