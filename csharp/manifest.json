@@ -30,7 +30,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.GenericCollectionMethodsBase-1.html",
-          "hash": "Io5xVFShX2IauEHihjqeGQ=="
+          "hash": "5SqhFljLVvzKia7CcgWlhQ=="
         }
       },
       "is_incremental": false,
@@ -38,11 +38,35 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods-1.yml",
+      "source_relative_path": "obj/api/Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods-1.html",
-          "hash": "NSBPKcY/eMLUBcOsgol93g=="
+          "relative_path": "api/Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods-1.html",
+          "hash": "64SZD6hgDIntsJRkkh/LLA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase-1.html",
+          "hash": "JxA/fjdeHzBowVmylATqgQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods-1.html",
+          "hash": "gDx3uaKNStA9vv1jLsOzDA=="
         }
       },
       "is_incremental": false,
@@ -54,7 +78,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase-1.html",
-          "hash": "KfmE4eRpEPBgTgnjnEymuQ=="
+          "hash": "bTEvDT52+fbgQiJC0Nznxw=="
         }
       },
       "is_incremental": false,
@@ -62,11 +86,35 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods-1.yml",
+      "source_relative_path": "obj/api/Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods-1.html",
-          "hash": "FlDyVUgxT7XgXTv2tywScw=="
+          "relative_path": "api/Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods-1.html",
+          "hash": "dcfWrB1PifHiJ70I8Hryzg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase-1.html",
+          "hash": "yVr9m7lw/lCJ9XSjfYxHbA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods-1.html",
+          "hash": "zONYI0yAUd9isMpk0aOBeQ=="
         }
       },
       "is_incremental": false,
@@ -78,7 +126,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.Lists.html",
-          "hash": "ocoaXbmeSLZbZHVKj+CXZw=="
+          "hash": "pMWSLnczHYFJff69DFXgag=="
         }
       },
       "is_incremental": false,
@@ -90,7 +138,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.Trees.RecursionlessSizeBalancedTreeMethods-1.html",
-          "hash": "vmX8kwslrQstlp9nVp4jcw=="
+          "hash": "KvQvbfnwzKECB7tB1I9K4Q=="
         }
       },
       "is_incremental": false,
@@ -102,7 +150,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.Trees.SizeBalancedTreeMethods-1.html",
-          "hash": "FOk3xiSjQfz45Jdvdo3VsA=="
+          "hash": "mlYKh0mHn0nbGLFwFLR8Eg=="
         }
       },
       "is_incremental": false,
@@ -114,7 +162,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.Trees.SizedAndThreadedAVLBalancedTreeMethods-1.html",
-          "hash": "9lc9axHb/F3oy06h9lQ1aA=="
+          "hash": "aUkgj0aWAQJJ2HJcIgKVNQ=="
         }
       },
       "is_incremental": false,
@@ -126,7 +174,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Platform.Collections.Methods.Trees.SizedBinaryTreeMethodsBase-1.html",
-          "hash": "9TCGEnYWtyceAO84zDoEZQ=="
+          "hash": "Vh37u66qbGTyOCBFA9i8sw=="
         }
       },
       "is_incremental": false,
@@ -162,7 +210,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "wHdkEiXSkEu4IM8JYtZ7gQ=="
+          "hash": "ucfl8BOO4nvw/vxjWhDI8w=="
         }
       },
       "is_incremental": false,
@@ -204,7 +252,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 11,
+          "total_file_count": 15,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {

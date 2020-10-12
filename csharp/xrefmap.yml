@@ -334,100 +334,339 @@ references:
   commentId: N:Platform.Collections.Methods.Lists
   fullName: Platform.Collections.Methods.Lists
   nameWithType: Platform.Collections.Methods.Lists
-- uid: Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods`1
-  name: CircularDoublyLinkedListMethods<TElement>
-  href: api/Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods-1.html
-  commentId: T:Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods`1
-  name.vb: CircularDoublyLinkedListMethods(Of TElement)
-  fullName: Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods<TElement>
-  fullName.vb: Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods(Of TElement)
-  nameWithType: CircularDoublyLinkedListMethods<TElement>
-  nameWithType.vb: CircularDoublyLinkedListMethods(Of TElement)
-- uid: Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods`1.AttachAfter(`0,`0)
+- uid: Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods`1
+  name: AbsoluteCircularDoublyLinkedListMethods<TElement>
+  href: api/Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods-1.html
+  commentId: T:Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods`1
+  name.vb: AbsoluteCircularDoublyLinkedListMethods(Of TElement)
+  fullName: Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods<TElement>
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods(Of TElement)
+  nameWithType: AbsoluteCircularDoublyLinkedListMethods<TElement>
+  nameWithType.vb: AbsoluteCircularDoublyLinkedListMethods(Of TElement)
+- uid: Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods`1.AttachAfter(`0,`0)
   name: AttachAfter(TElement, TElement)
-  href: api/Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_CircularDoublyLinkedListMethods_1_AttachAfter__0__0_
-  commentId: M:Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods`1.AttachAfter(`0,`0)
-  fullName: Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods<TElement>.AttachAfter(TElement, TElement)
-  fullName.vb: Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods(Of TElement).AttachAfter(TElement, TElement)
-  nameWithType: CircularDoublyLinkedListMethods<TElement>.AttachAfter(TElement, TElement)
-  nameWithType.vb: CircularDoublyLinkedListMethods(Of TElement).AttachAfter(TElement, TElement)
-- uid: Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods`1.AttachAfter*
+  href: api/Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_AbsoluteCircularDoublyLinkedListMethods_1_AttachAfter__0__0_
+  commentId: M:Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods`1.AttachAfter(`0,`0)
+  fullName: Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods<TElement>.AttachAfter(TElement, TElement)
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods(Of TElement).AttachAfter(TElement, TElement)
+  nameWithType: AbsoluteCircularDoublyLinkedListMethods<TElement>.AttachAfter(TElement, TElement)
+  nameWithType.vb: AbsoluteCircularDoublyLinkedListMethods(Of TElement).AttachAfter(TElement, TElement)
+- uid: Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods`1.AttachAfter*
   name: AttachAfter
-  href: api/Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_CircularDoublyLinkedListMethods_1_AttachAfter_
-  commentId: Overload:Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods`1.AttachAfter
+  href: api/Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_AbsoluteCircularDoublyLinkedListMethods_1_AttachAfter_
+  commentId: Overload:Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods`1.AttachAfter
   isSpec: "True"
-  fullName: Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods<TElement>.AttachAfter
-  fullName.vb: Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods(Of TElement).AttachAfter
-  nameWithType: CircularDoublyLinkedListMethods<TElement>.AttachAfter
-  nameWithType.vb: CircularDoublyLinkedListMethods(Of TElement).AttachAfter
-- uid: Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods`1.AttachAsFirst(`0)
+  fullName: Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods<TElement>.AttachAfter
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods(Of TElement).AttachAfter
+  nameWithType: AbsoluteCircularDoublyLinkedListMethods<TElement>.AttachAfter
+  nameWithType.vb: AbsoluteCircularDoublyLinkedListMethods(Of TElement).AttachAfter
+- uid: Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods`1.AttachAsFirst(`0)
   name: AttachAsFirst(TElement)
-  href: api/Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_CircularDoublyLinkedListMethods_1_AttachAsFirst__0_
-  commentId: M:Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods`1.AttachAsFirst(`0)
-  fullName: Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods<TElement>.AttachAsFirst(TElement)
-  fullName.vb: Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods(Of TElement).AttachAsFirst(TElement)
-  nameWithType: CircularDoublyLinkedListMethods<TElement>.AttachAsFirst(TElement)
-  nameWithType.vb: CircularDoublyLinkedListMethods(Of TElement).AttachAsFirst(TElement)
-- uid: Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods`1.AttachAsFirst*
+  href: api/Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_AbsoluteCircularDoublyLinkedListMethods_1_AttachAsFirst__0_
+  commentId: M:Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods`1.AttachAsFirst(`0)
+  fullName: Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods<TElement>.AttachAsFirst(TElement)
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods(Of TElement).AttachAsFirst(TElement)
+  nameWithType: AbsoluteCircularDoublyLinkedListMethods<TElement>.AttachAsFirst(TElement)
+  nameWithType.vb: AbsoluteCircularDoublyLinkedListMethods(Of TElement).AttachAsFirst(TElement)
+- uid: Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods`1.AttachAsFirst*
   name: AttachAsFirst
-  href: api/Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_CircularDoublyLinkedListMethods_1_AttachAsFirst_
-  commentId: Overload:Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods`1.AttachAsFirst
+  href: api/Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_AbsoluteCircularDoublyLinkedListMethods_1_AttachAsFirst_
+  commentId: Overload:Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods`1.AttachAsFirst
   isSpec: "True"
-  fullName: Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods<TElement>.AttachAsFirst
-  fullName.vb: Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods(Of TElement).AttachAsFirst
-  nameWithType: CircularDoublyLinkedListMethods<TElement>.AttachAsFirst
-  nameWithType.vb: CircularDoublyLinkedListMethods(Of TElement).AttachAsFirst
-- uid: Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods`1.AttachAsLast(`0)
+  fullName: Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods<TElement>.AttachAsFirst
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods(Of TElement).AttachAsFirst
+  nameWithType: AbsoluteCircularDoublyLinkedListMethods<TElement>.AttachAsFirst
+  nameWithType.vb: AbsoluteCircularDoublyLinkedListMethods(Of TElement).AttachAsFirst
+- uid: Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods`1.AttachAsLast(`0)
   name: AttachAsLast(TElement)
-  href: api/Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_CircularDoublyLinkedListMethods_1_AttachAsLast__0_
-  commentId: M:Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods`1.AttachAsLast(`0)
-  fullName: Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods<TElement>.AttachAsLast(TElement)
-  fullName.vb: Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods(Of TElement).AttachAsLast(TElement)
-  nameWithType: CircularDoublyLinkedListMethods<TElement>.AttachAsLast(TElement)
-  nameWithType.vb: CircularDoublyLinkedListMethods(Of TElement).AttachAsLast(TElement)
-- uid: Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods`1.AttachAsLast*
+  href: api/Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_AbsoluteCircularDoublyLinkedListMethods_1_AttachAsLast__0_
+  commentId: M:Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods`1.AttachAsLast(`0)
+  fullName: Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods<TElement>.AttachAsLast(TElement)
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods(Of TElement).AttachAsLast(TElement)
+  nameWithType: AbsoluteCircularDoublyLinkedListMethods<TElement>.AttachAsLast(TElement)
+  nameWithType.vb: AbsoluteCircularDoublyLinkedListMethods(Of TElement).AttachAsLast(TElement)
+- uid: Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods`1.AttachAsLast*
   name: AttachAsLast
-  href: api/Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_CircularDoublyLinkedListMethods_1_AttachAsLast_
-  commentId: Overload:Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods`1.AttachAsLast
+  href: api/Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_AbsoluteCircularDoublyLinkedListMethods_1_AttachAsLast_
+  commentId: Overload:Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods`1.AttachAsLast
   isSpec: "True"
-  fullName: Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods<TElement>.AttachAsLast
-  fullName.vb: Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods(Of TElement).AttachAsLast
-  nameWithType: CircularDoublyLinkedListMethods<TElement>.AttachAsLast
-  nameWithType.vb: CircularDoublyLinkedListMethods(Of TElement).AttachAsLast
-- uid: Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods`1.AttachBefore(`0,`0)
+  fullName: Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods<TElement>.AttachAsLast
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods(Of TElement).AttachAsLast
+  nameWithType: AbsoluteCircularDoublyLinkedListMethods<TElement>.AttachAsLast
+  nameWithType.vb: AbsoluteCircularDoublyLinkedListMethods(Of TElement).AttachAsLast
+- uid: Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods`1.AttachBefore(`0,`0)
   name: AttachBefore(TElement, TElement)
-  href: api/Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_CircularDoublyLinkedListMethods_1_AttachBefore__0__0_
-  commentId: M:Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods`1.AttachBefore(`0,`0)
-  fullName: Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods<TElement>.AttachBefore(TElement, TElement)
-  fullName.vb: Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods(Of TElement).AttachBefore(TElement, TElement)
-  nameWithType: CircularDoublyLinkedListMethods<TElement>.AttachBefore(TElement, TElement)
-  nameWithType.vb: CircularDoublyLinkedListMethods(Of TElement).AttachBefore(TElement, TElement)
-- uid: Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods`1.AttachBefore*
+  href: api/Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_AbsoluteCircularDoublyLinkedListMethods_1_AttachBefore__0__0_
+  commentId: M:Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods`1.AttachBefore(`0,`0)
+  fullName: Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods<TElement>.AttachBefore(TElement, TElement)
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods(Of TElement).AttachBefore(TElement, TElement)
+  nameWithType: AbsoluteCircularDoublyLinkedListMethods<TElement>.AttachBefore(TElement, TElement)
+  nameWithType.vb: AbsoluteCircularDoublyLinkedListMethods(Of TElement).AttachBefore(TElement, TElement)
+- uid: Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods`1.AttachBefore*
   name: AttachBefore
-  href: api/Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_CircularDoublyLinkedListMethods_1_AttachBefore_
-  commentId: Overload:Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods`1.AttachBefore
+  href: api/Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_AbsoluteCircularDoublyLinkedListMethods_1_AttachBefore_
+  commentId: Overload:Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods`1.AttachBefore
   isSpec: "True"
-  fullName: Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods<TElement>.AttachBefore
-  fullName.vb: Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods(Of TElement).AttachBefore
-  nameWithType: CircularDoublyLinkedListMethods<TElement>.AttachBefore
-  nameWithType.vb: CircularDoublyLinkedListMethods(Of TElement).AttachBefore
-- uid: Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods`1.Detach(`0)
+  fullName: Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods<TElement>.AttachBefore
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods(Of TElement).AttachBefore
+  nameWithType: AbsoluteCircularDoublyLinkedListMethods<TElement>.AttachBefore
+  nameWithType.vb: AbsoluteCircularDoublyLinkedListMethods(Of TElement).AttachBefore
+- uid: Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods`1.Detach(`0)
   name: Detach(TElement)
-  href: api/Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_CircularDoublyLinkedListMethods_1_Detach__0_
-  commentId: M:Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods`1.Detach(`0)
-  fullName: Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods<TElement>.Detach(TElement)
-  fullName.vb: Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods(Of TElement).Detach(TElement)
-  nameWithType: CircularDoublyLinkedListMethods<TElement>.Detach(TElement)
-  nameWithType.vb: CircularDoublyLinkedListMethods(Of TElement).Detach(TElement)
-- uid: Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods`1.Detach*
+  href: api/Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_AbsoluteCircularDoublyLinkedListMethods_1_Detach__0_
+  commentId: M:Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods`1.Detach(`0)
+  fullName: Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods<TElement>.Detach(TElement)
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods(Of TElement).Detach(TElement)
+  nameWithType: AbsoluteCircularDoublyLinkedListMethods<TElement>.Detach(TElement)
+  nameWithType.vb: AbsoluteCircularDoublyLinkedListMethods(Of TElement).Detach(TElement)
+- uid: Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods`1.Detach*
   name: Detach
-  href: api/Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_CircularDoublyLinkedListMethods_1_Detach_
-  commentId: Overload:Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods`1.Detach
+  href: api/Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_AbsoluteCircularDoublyLinkedListMethods_1_Detach_
+  commentId: Overload:Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods`1.Detach
   isSpec: "True"
-  fullName: Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods<TElement>.Detach
-  fullName.vb: Platform.Collections.Methods.Lists.CircularDoublyLinkedListMethods(Of TElement).Detach
-  nameWithType: CircularDoublyLinkedListMethods<TElement>.Detach
-  nameWithType.vb: CircularDoublyLinkedListMethods(Of TElement).Detach
+  fullName: Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods<TElement>.Detach
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteCircularDoublyLinkedListMethods(Of TElement).Detach
+  nameWithType: AbsoluteCircularDoublyLinkedListMethods<TElement>.Detach
+  nameWithType.vb: AbsoluteCircularDoublyLinkedListMethods(Of TElement).Detach
+- uid: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1
+  name: AbsoluteDoublyLinkedListMethodsBase<TElement>
+  href: api/Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase-1.html
+  commentId: T:Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1
+  name.vb: AbsoluteDoublyLinkedListMethodsBase(Of TElement)
+  fullName: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase<TElement>
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase(Of TElement)
+  nameWithType: AbsoluteDoublyLinkedListMethodsBase<TElement>
+  nameWithType.vb: AbsoluteDoublyLinkedListMethodsBase(Of TElement)
+- uid: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1.DecrementSize
+  name: DecrementSize()
+  href: api/Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_AbsoluteDoublyLinkedListMethodsBase_1_DecrementSize
+  commentId: M:Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1.DecrementSize
+  fullName: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase<TElement>.DecrementSize()
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase(Of TElement).DecrementSize()
+  nameWithType: AbsoluteDoublyLinkedListMethodsBase<TElement>.DecrementSize()
+  nameWithType.vb: AbsoluteDoublyLinkedListMethodsBase(Of TElement).DecrementSize()
+- uid: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1.DecrementSize*
+  name: DecrementSize
+  href: api/Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_AbsoluteDoublyLinkedListMethodsBase_1_DecrementSize_
+  commentId: Overload:Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1.DecrementSize
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase<TElement>.DecrementSize
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase(Of TElement).DecrementSize
+  nameWithType: AbsoluteDoublyLinkedListMethodsBase<TElement>.DecrementSize
+  nameWithType.vb: AbsoluteDoublyLinkedListMethodsBase(Of TElement).DecrementSize
+- uid: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1.GetFirst
+  name: GetFirst()
+  href: api/Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_AbsoluteDoublyLinkedListMethodsBase_1_GetFirst
+  commentId: M:Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1.GetFirst
+  fullName: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase<TElement>.GetFirst()
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase(Of TElement).GetFirst()
+  nameWithType: AbsoluteDoublyLinkedListMethodsBase<TElement>.GetFirst()
+  nameWithType.vb: AbsoluteDoublyLinkedListMethodsBase(Of TElement).GetFirst()
+- uid: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1.GetFirst*
+  name: GetFirst
+  href: api/Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_AbsoluteDoublyLinkedListMethodsBase_1_GetFirst_
+  commentId: Overload:Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1.GetFirst
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase<TElement>.GetFirst
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase(Of TElement).GetFirst
+  nameWithType: AbsoluteDoublyLinkedListMethodsBase<TElement>.GetFirst
+  nameWithType.vb: AbsoluteDoublyLinkedListMethodsBase(Of TElement).GetFirst
+- uid: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1.GetLast
+  name: GetLast()
+  href: api/Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_AbsoluteDoublyLinkedListMethodsBase_1_GetLast
+  commentId: M:Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1.GetLast
+  fullName: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase<TElement>.GetLast()
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase(Of TElement).GetLast()
+  nameWithType: AbsoluteDoublyLinkedListMethodsBase<TElement>.GetLast()
+  nameWithType.vb: AbsoluteDoublyLinkedListMethodsBase(Of TElement).GetLast()
+- uid: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1.GetLast*
+  name: GetLast
+  href: api/Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_AbsoluteDoublyLinkedListMethodsBase_1_GetLast_
+  commentId: Overload:Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1.GetLast
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase<TElement>.GetLast
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase(Of TElement).GetLast
+  nameWithType: AbsoluteDoublyLinkedListMethodsBase<TElement>.GetLast
+  nameWithType.vb: AbsoluteDoublyLinkedListMethodsBase(Of TElement).GetLast
+- uid: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1.GetSize
+  name: GetSize()
+  href: api/Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_AbsoluteDoublyLinkedListMethodsBase_1_GetSize
+  commentId: M:Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1.GetSize
+  fullName: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase<TElement>.GetSize()
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase(Of TElement).GetSize()
+  nameWithType: AbsoluteDoublyLinkedListMethodsBase<TElement>.GetSize()
+  nameWithType.vb: AbsoluteDoublyLinkedListMethodsBase(Of TElement).GetSize()
+- uid: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1.GetSize*
+  name: GetSize
+  href: api/Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_AbsoluteDoublyLinkedListMethodsBase_1_GetSize_
+  commentId: Overload:Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1.GetSize
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase<TElement>.GetSize
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase(Of TElement).GetSize
+  nameWithType: AbsoluteDoublyLinkedListMethodsBase<TElement>.GetSize
+  nameWithType.vb: AbsoluteDoublyLinkedListMethodsBase(Of TElement).GetSize
+- uid: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1.IncrementSize
+  name: IncrementSize()
+  href: api/Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_AbsoluteDoublyLinkedListMethodsBase_1_IncrementSize
+  commentId: M:Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1.IncrementSize
+  fullName: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase<TElement>.IncrementSize()
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase(Of TElement).IncrementSize()
+  nameWithType: AbsoluteDoublyLinkedListMethodsBase<TElement>.IncrementSize()
+  nameWithType.vb: AbsoluteDoublyLinkedListMethodsBase(Of TElement).IncrementSize()
+- uid: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1.IncrementSize*
+  name: IncrementSize
+  href: api/Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_AbsoluteDoublyLinkedListMethodsBase_1_IncrementSize_
+  commentId: Overload:Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1.IncrementSize
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase<TElement>.IncrementSize
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase(Of TElement).IncrementSize
+  nameWithType: AbsoluteDoublyLinkedListMethodsBase<TElement>.IncrementSize
+  nameWithType.vb: AbsoluteDoublyLinkedListMethodsBase(Of TElement).IncrementSize
+- uid: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1.SetFirst(`0)
+  name: SetFirst(TElement)
+  href: api/Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_AbsoluteDoublyLinkedListMethodsBase_1_SetFirst__0_
+  commentId: M:Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1.SetFirst(`0)
+  fullName: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase<TElement>.SetFirst(TElement)
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase(Of TElement).SetFirst(TElement)
+  nameWithType: AbsoluteDoublyLinkedListMethodsBase<TElement>.SetFirst(TElement)
+  nameWithType.vb: AbsoluteDoublyLinkedListMethodsBase(Of TElement).SetFirst(TElement)
+- uid: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1.SetFirst*
+  name: SetFirst
+  href: api/Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_AbsoluteDoublyLinkedListMethodsBase_1_SetFirst_
+  commentId: Overload:Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1.SetFirst
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase<TElement>.SetFirst
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase(Of TElement).SetFirst
+  nameWithType: AbsoluteDoublyLinkedListMethodsBase<TElement>.SetFirst
+  nameWithType.vb: AbsoluteDoublyLinkedListMethodsBase(Of TElement).SetFirst
+- uid: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1.SetLast(`0)
+  name: SetLast(TElement)
+  href: api/Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_AbsoluteDoublyLinkedListMethodsBase_1_SetLast__0_
+  commentId: M:Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1.SetLast(`0)
+  fullName: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase<TElement>.SetLast(TElement)
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase(Of TElement).SetLast(TElement)
+  nameWithType: AbsoluteDoublyLinkedListMethodsBase<TElement>.SetLast(TElement)
+  nameWithType.vb: AbsoluteDoublyLinkedListMethodsBase(Of TElement).SetLast(TElement)
+- uid: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1.SetLast*
+  name: SetLast
+  href: api/Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_AbsoluteDoublyLinkedListMethodsBase_1_SetLast_
+  commentId: Overload:Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1.SetLast
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase<TElement>.SetLast
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase(Of TElement).SetLast
+  nameWithType: AbsoluteDoublyLinkedListMethodsBase<TElement>.SetLast
+  nameWithType.vb: AbsoluteDoublyLinkedListMethodsBase(Of TElement).SetLast
+- uid: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1.SetSize(`0)
+  name: SetSize(TElement)
+  href: api/Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_AbsoluteDoublyLinkedListMethodsBase_1_SetSize__0_
+  commentId: M:Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1.SetSize(`0)
+  fullName: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase<TElement>.SetSize(TElement)
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase(Of TElement).SetSize(TElement)
+  nameWithType: AbsoluteDoublyLinkedListMethodsBase<TElement>.SetSize(TElement)
+  nameWithType.vb: AbsoluteDoublyLinkedListMethodsBase(Of TElement).SetSize(TElement)
+- uid: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1.SetSize*
+  name: SetSize
+  href: api/Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_AbsoluteDoublyLinkedListMethodsBase_1_SetSize_
+  commentId: Overload:Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase`1.SetSize
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase<TElement>.SetSize
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteDoublyLinkedListMethodsBase(Of TElement).SetSize
+  nameWithType: AbsoluteDoublyLinkedListMethodsBase<TElement>.SetSize
+  nameWithType.vb: AbsoluteDoublyLinkedListMethodsBase(Of TElement).SetSize
+- uid: Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods`1
+  name: AbsoluteOpenDoublyLinkedListMethods<TElement>
+  href: api/Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods-1.html
+  commentId: T:Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods`1
+  name.vb: AbsoluteOpenDoublyLinkedListMethods(Of TElement)
+  fullName: Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods<TElement>
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods(Of TElement)
+  nameWithType: AbsoluteOpenDoublyLinkedListMethods<TElement>
+  nameWithType.vb: AbsoluteOpenDoublyLinkedListMethods(Of TElement)
+- uid: Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods`1.AttachAfter(`0,`0)
+  name: AttachAfter(TElement, TElement)
+  href: api/Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_AbsoluteOpenDoublyLinkedListMethods_1_AttachAfter__0__0_
+  commentId: M:Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods`1.AttachAfter(`0,`0)
+  fullName: Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods<TElement>.AttachAfter(TElement, TElement)
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods(Of TElement).AttachAfter(TElement, TElement)
+  nameWithType: AbsoluteOpenDoublyLinkedListMethods<TElement>.AttachAfter(TElement, TElement)
+  nameWithType.vb: AbsoluteOpenDoublyLinkedListMethods(Of TElement).AttachAfter(TElement, TElement)
+- uid: Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods`1.AttachAfter*
+  name: AttachAfter
+  href: api/Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_AbsoluteOpenDoublyLinkedListMethods_1_AttachAfter_
+  commentId: Overload:Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods`1.AttachAfter
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods<TElement>.AttachAfter
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods(Of TElement).AttachAfter
+  nameWithType: AbsoluteOpenDoublyLinkedListMethods<TElement>.AttachAfter
+  nameWithType.vb: AbsoluteOpenDoublyLinkedListMethods(Of TElement).AttachAfter
+- uid: Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods`1.AttachAsFirst(`0)
+  name: AttachAsFirst(TElement)
+  href: api/Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_AbsoluteOpenDoublyLinkedListMethods_1_AttachAsFirst__0_
+  commentId: M:Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods`1.AttachAsFirst(`0)
+  fullName: Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods<TElement>.AttachAsFirst(TElement)
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods(Of TElement).AttachAsFirst(TElement)
+  nameWithType: AbsoluteOpenDoublyLinkedListMethods<TElement>.AttachAsFirst(TElement)
+  nameWithType.vb: AbsoluteOpenDoublyLinkedListMethods(Of TElement).AttachAsFirst(TElement)
+- uid: Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods`1.AttachAsFirst*
+  name: AttachAsFirst
+  href: api/Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_AbsoluteOpenDoublyLinkedListMethods_1_AttachAsFirst_
+  commentId: Overload:Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods`1.AttachAsFirst
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods<TElement>.AttachAsFirst
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods(Of TElement).AttachAsFirst
+  nameWithType: AbsoluteOpenDoublyLinkedListMethods<TElement>.AttachAsFirst
+  nameWithType.vb: AbsoluteOpenDoublyLinkedListMethods(Of TElement).AttachAsFirst
+- uid: Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods`1.AttachAsLast(`0)
+  name: AttachAsLast(TElement)
+  href: api/Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_AbsoluteOpenDoublyLinkedListMethods_1_AttachAsLast__0_
+  commentId: M:Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods`1.AttachAsLast(`0)
+  fullName: Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods<TElement>.AttachAsLast(TElement)
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods(Of TElement).AttachAsLast(TElement)
+  nameWithType: AbsoluteOpenDoublyLinkedListMethods<TElement>.AttachAsLast(TElement)
+  nameWithType.vb: AbsoluteOpenDoublyLinkedListMethods(Of TElement).AttachAsLast(TElement)
+- uid: Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods`1.AttachAsLast*
+  name: AttachAsLast
+  href: api/Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_AbsoluteOpenDoublyLinkedListMethods_1_AttachAsLast_
+  commentId: Overload:Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods`1.AttachAsLast
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods<TElement>.AttachAsLast
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods(Of TElement).AttachAsLast
+  nameWithType: AbsoluteOpenDoublyLinkedListMethods<TElement>.AttachAsLast
+  nameWithType.vb: AbsoluteOpenDoublyLinkedListMethods(Of TElement).AttachAsLast
+- uid: Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods`1.AttachBefore(`0,`0)
+  name: AttachBefore(TElement, TElement)
+  href: api/Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_AbsoluteOpenDoublyLinkedListMethods_1_AttachBefore__0__0_
+  commentId: M:Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods`1.AttachBefore(`0,`0)
+  fullName: Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods<TElement>.AttachBefore(TElement, TElement)
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods(Of TElement).AttachBefore(TElement, TElement)
+  nameWithType: AbsoluteOpenDoublyLinkedListMethods<TElement>.AttachBefore(TElement, TElement)
+  nameWithType.vb: AbsoluteOpenDoublyLinkedListMethods(Of TElement).AttachBefore(TElement, TElement)
+- uid: Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods`1.AttachBefore*
+  name: AttachBefore
+  href: api/Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_AbsoluteOpenDoublyLinkedListMethods_1_AttachBefore_
+  commentId: Overload:Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods`1.AttachBefore
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods<TElement>.AttachBefore
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods(Of TElement).AttachBefore
+  nameWithType: AbsoluteOpenDoublyLinkedListMethods<TElement>.AttachBefore
+  nameWithType.vb: AbsoluteOpenDoublyLinkedListMethods(Of TElement).AttachBefore
+- uid: Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods`1.Detach(`0)
+  name: Detach(TElement)
+  href: api/Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_AbsoluteOpenDoublyLinkedListMethods_1_Detach__0_
+  commentId: M:Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods`1.Detach(`0)
+  fullName: Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods<TElement>.Detach(TElement)
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods(Of TElement).Detach(TElement)
+  nameWithType: AbsoluteOpenDoublyLinkedListMethods<TElement>.Detach(TElement)
+  nameWithType.vb: AbsoluteOpenDoublyLinkedListMethods(Of TElement).Detach(TElement)
+- uid: Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods`1.Detach*
+  name: Detach
+  href: api/Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_AbsoluteOpenDoublyLinkedListMethods_1_Detach_
+  commentId: Overload:Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods`1.Detach
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods<TElement>.Detach
+  fullName.vb: Platform.Collections.Methods.Lists.AbsoluteOpenDoublyLinkedListMethods(Of TElement).Detach
+  nameWithType: AbsoluteOpenDoublyLinkedListMethods<TElement>.Detach
+  nameWithType.vb: AbsoluteOpenDoublyLinkedListMethods(Of TElement).Detach
 - uid: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1
   name: DoublyLinkedListMethodsBase<TElement>
   href: api/Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase-1.html
@@ -437,57 +676,6 @@ references:
   fullName.vb: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase(Of TElement)
   nameWithType: DoublyLinkedListMethodsBase<TElement>
   nameWithType.vb: DoublyLinkedListMethodsBase(Of TElement)
-- uid: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.DecrementSize
-  name: DecrementSize()
-  href: api/Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_DoublyLinkedListMethodsBase_1_DecrementSize
-  commentId: M:Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.DecrementSize
-  fullName: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase<TElement>.DecrementSize()
-  fullName.vb: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase(Of TElement).DecrementSize()
-  nameWithType: DoublyLinkedListMethodsBase<TElement>.DecrementSize()
-  nameWithType.vb: DoublyLinkedListMethodsBase(Of TElement).DecrementSize()
-- uid: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.DecrementSize*
-  name: DecrementSize
-  href: api/Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_DoublyLinkedListMethodsBase_1_DecrementSize_
-  commentId: Overload:Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.DecrementSize
-  isSpec: "True"
-  fullName: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase<TElement>.DecrementSize
-  fullName.vb: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase(Of TElement).DecrementSize
-  nameWithType: DoublyLinkedListMethodsBase<TElement>.DecrementSize
-  nameWithType.vb: DoublyLinkedListMethodsBase(Of TElement).DecrementSize
-- uid: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.GetFirst
-  name: GetFirst()
-  href: api/Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_DoublyLinkedListMethodsBase_1_GetFirst
-  commentId: M:Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.GetFirst
-  fullName: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase<TElement>.GetFirst()
-  fullName.vb: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase(Of TElement).GetFirst()
-  nameWithType: DoublyLinkedListMethodsBase<TElement>.GetFirst()
-  nameWithType.vb: DoublyLinkedListMethodsBase(Of TElement).GetFirst()
-- uid: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.GetFirst*
-  name: GetFirst
-  href: api/Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_DoublyLinkedListMethodsBase_1_GetFirst_
-  commentId: Overload:Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.GetFirst
-  isSpec: "True"
-  fullName: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase<TElement>.GetFirst
-  fullName.vb: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase(Of TElement).GetFirst
-  nameWithType: DoublyLinkedListMethodsBase<TElement>.GetFirst
-  nameWithType.vb: DoublyLinkedListMethodsBase(Of TElement).GetFirst
-- uid: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.GetLast
-  name: GetLast()
-  href: api/Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_DoublyLinkedListMethodsBase_1_GetLast
-  commentId: M:Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.GetLast
-  fullName: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase<TElement>.GetLast()
-  fullName.vb: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase(Of TElement).GetLast()
-  nameWithType: DoublyLinkedListMethodsBase<TElement>.GetLast()
-  nameWithType.vb: DoublyLinkedListMethodsBase(Of TElement).GetLast()
-- uid: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.GetLast*
-  name: GetLast
-  href: api/Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_DoublyLinkedListMethodsBase_1_GetLast_
-  commentId: Overload:Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.GetLast
-  isSpec: "True"
-  fullName: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase<TElement>.GetLast
-  fullName.vb: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase(Of TElement).GetLast
-  nameWithType: DoublyLinkedListMethodsBase<TElement>.GetLast
-  nameWithType.vb: DoublyLinkedListMethodsBase(Of TElement).GetLast
 - uid: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.GetNext(`0)
   name: GetNext(TElement)
   href: api/Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_DoublyLinkedListMethodsBase_1_GetNext__0_
@@ -522,74 +710,6 @@ references:
   fullName.vb: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase(Of TElement).GetPrevious
   nameWithType: DoublyLinkedListMethodsBase<TElement>.GetPrevious
   nameWithType.vb: DoublyLinkedListMethodsBase(Of TElement).GetPrevious
-- uid: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.GetSize
-  name: GetSize()
-  href: api/Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_DoublyLinkedListMethodsBase_1_GetSize
-  commentId: M:Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.GetSize
-  fullName: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase<TElement>.GetSize()
-  fullName.vb: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase(Of TElement).GetSize()
-  nameWithType: DoublyLinkedListMethodsBase<TElement>.GetSize()
-  nameWithType.vb: DoublyLinkedListMethodsBase(Of TElement).GetSize()
-- uid: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.GetSize*
-  name: GetSize
-  href: api/Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_DoublyLinkedListMethodsBase_1_GetSize_
-  commentId: Overload:Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.GetSize
-  isSpec: "True"
-  fullName: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase<TElement>.GetSize
-  fullName.vb: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase(Of TElement).GetSize
-  nameWithType: DoublyLinkedListMethodsBase<TElement>.GetSize
-  nameWithType.vb: DoublyLinkedListMethodsBase(Of TElement).GetSize
-- uid: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.IncrementSize
-  name: IncrementSize()
-  href: api/Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_DoublyLinkedListMethodsBase_1_IncrementSize
-  commentId: M:Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.IncrementSize
-  fullName: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase<TElement>.IncrementSize()
-  fullName.vb: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase(Of TElement).IncrementSize()
-  nameWithType: DoublyLinkedListMethodsBase<TElement>.IncrementSize()
-  nameWithType.vb: DoublyLinkedListMethodsBase(Of TElement).IncrementSize()
-- uid: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.IncrementSize*
-  name: IncrementSize
-  href: api/Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_DoublyLinkedListMethodsBase_1_IncrementSize_
-  commentId: Overload:Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.IncrementSize
-  isSpec: "True"
-  fullName: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase<TElement>.IncrementSize
-  fullName.vb: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase(Of TElement).IncrementSize
-  nameWithType: DoublyLinkedListMethodsBase<TElement>.IncrementSize
-  nameWithType.vb: DoublyLinkedListMethodsBase(Of TElement).IncrementSize
-- uid: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.SetFirst(`0)
-  name: SetFirst(TElement)
-  href: api/Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_DoublyLinkedListMethodsBase_1_SetFirst__0_
-  commentId: M:Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.SetFirst(`0)
-  fullName: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase<TElement>.SetFirst(TElement)
-  fullName.vb: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase(Of TElement).SetFirst(TElement)
-  nameWithType: DoublyLinkedListMethodsBase<TElement>.SetFirst(TElement)
-  nameWithType.vb: DoublyLinkedListMethodsBase(Of TElement).SetFirst(TElement)
-- uid: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.SetFirst*
-  name: SetFirst
-  href: api/Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_DoublyLinkedListMethodsBase_1_SetFirst_
-  commentId: Overload:Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.SetFirst
-  isSpec: "True"
-  fullName: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase<TElement>.SetFirst
-  fullName.vb: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase(Of TElement).SetFirst
-  nameWithType: DoublyLinkedListMethodsBase<TElement>.SetFirst
-  nameWithType.vb: DoublyLinkedListMethodsBase(Of TElement).SetFirst
-- uid: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.SetLast(`0)
-  name: SetLast(TElement)
-  href: api/Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_DoublyLinkedListMethodsBase_1_SetLast__0_
-  commentId: M:Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.SetLast(`0)
-  fullName: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase<TElement>.SetLast(TElement)
-  fullName.vb: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase(Of TElement).SetLast(TElement)
-  nameWithType: DoublyLinkedListMethodsBase<TElement>.SetLast(TElement)
-  nameWithType.vb: DoublyLinkedListMethodsBase(Of TElement).SetLast(TElement)
-- uid: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.SetLast*
-  name: SetLast
-  href: api/Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_DoublyLinkedListMethodsBase_1_SetLast_
-  commentId: Overload:Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.SetLast
-  isSpec: "True"
-  fullName: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase<TElement>.SetLast
-  fullName.vb: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase(Of TElement).SetLast
-  nameWithType: DoublyLinkedListMethodsBase<TElement>.SetLast
-  nameWithType.vb: DoublyLinkedListMethodsBase(Of TElement).SetLast
 - uid: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.SetNext(`0,`0)
   name: SetNext(TElement, TElement)
   href: api/Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_DoublyLinkedListMethodsBase_1_SetNext__0__0_
@@ -624,117 +744,339 @@ references:
   fullName.vb: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase(Of TElement).SetPrevious
   nameWithType: DoublyLinkedListMethodsBase<TElement>.SetPrevious
   nameWithType.vb: DoublyLinkedListMethodsBase(Of TElement).SetPrevious
-- uid: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.SetSize(`0)
-  name: SetSize(TElement)
-  href: api/Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_DoublyLinkedListMethodsBase_1_SetSize__0_
-  commentId: M:Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.SetSize(`0)
-  fullName: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase<TElement>.SetSize(TElement)
-  fullName.vb: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase(Of TElement).SetSize(TElement)
-  nameWithType: DoublyLinkedListMethodsBase<TElement>.SetSize(TElement)
-  nameWithType.vb: DoublyLinkedListMethodsBase(Of TElement).SetSize(TElement)
-- uid: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.SetSize*
-  name: SetSize
-  href: api/Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_DoublyLinkedListMethodsBase_1_SetSize_
-  commentId: Overload:Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase`1.SetSize
-  isSpec: "True"
-  fullName: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase<TElement>.SetSize
-  fullName.vb: Platform.Collections.Methods.Lists.DoublyLinkedListMethodsBase(Of TElement).SetSize
-  nameWithType: DoublyLinkedListMethodsBase<TElement>.SetSize
-  nameWithType.vb: DoublyLinkedListMethodsBase(Of TElement).SetSize
-- uid: Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods`1
-  name: OpenDoublyLinkedListMethods<TElement>
-  href: api/Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods-1.html
-  commentId: T:Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods`1
-  name.vb: OpenDoublyLinkedListMethods(Of TElement)
-  fullName: Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods<TElement>
-  fullName.vb: Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods(Of TElement)
-  nameWithType: OpenDoublyLinkedListMethods<TElement>
-  nameWithType.vb: OpenDoublyLinkedListMethods(Of TElement)
-- uid: Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods`1.AttachAfter(`0,`0)
-  name: AttachAfter(TElement, TElement)
-  href: api/Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_OpenDoublyLinkedListMethods_1_AttachAfter__0__0_
-  commentId: M:Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods`1.AttachAfter(`0,`0)
-  fullName: Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods<TElement>.AttachAfter(TElement, TElement)
-  fullName.vb: Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods(Of TElement).AttachAfter(TElement, TElement)
-  nameWithType: OpenDoublyLinkedListMethods<TElement>.AttachAfter(TElement, TElement)
-  nameWithType.vb: OpenDoublyLinkedListMethods(Of TElement).AttachAfter(TElement, TElement)
-- uid: Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods`1.AttachAfter*
+- uid: Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods`1
+  name: RelativeCircularDoublyLinkedListMethods<TElement>
+  href: api/Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods-1.html
+  commentId: T:Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods`1
+  name.vb: RelativeCircularDoublyLinkedListMethods(Of TElement)
+  fullName: Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods<TElement>
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods(Of TElement)
+  nameWithType: RelativeCircularDoublyLinkedListMethods<TElement>
+  nameWithType.vb: RelativeCircularDoublyLinkedListMethods(Of TElement)
+- uid: Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods`1.AttachAfter(`0,`0,`0)
+  name: AttachAfter(TElement, TElement, TElement)
+  href: api/Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_RelativeCircularDoublyLinkedListMethods_1_AttachAfter__0__0__0_
+  commentId: M:Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods`1.AttachAfter(`0,`0,`0)
+  fullName: Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods<TElement>.AttachAfter(TElement, TElement, TElement)
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods(Of TElement).AttachAfter(TElement, TElement, TElement)
+  nameWithType: RelativeCircularDoublyLinkedListMethods<TElement>.AttachAfter(TElement, TElement, TElement)
+  nameWithType.vb: RelativeCircularDoublyLinkedListMethods(Of TElement).AttachAfter(TElement, TElement, TElement)
+- uid: Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods`1.AttachAfter*
   name: AttachAfter
-  href: api/Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_OpenDoublyLinkedListMethods_1_AttachAfter_
-  commentId: Overload:Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods`1.AttachAfter
+  href: api/Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_RelativeCircularDoublyLinkedListMethods_1_AttachAfter_
+  commentId: Overload:Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods`1.AttachAfter
   isSpec: "True"
-  fullName: Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods<TElement>.AttachAfter
-  fullName.vb: Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods(Of TElement).AttachAfter
-  nameWithType: OpenDoublyLinkedListMethods<TElement>.AttachAfter
-  nameWithType.vb: OpenDoublyLinkedListMethods(Of TElement).AttachAfter
-- uid: Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods`1.AttachAsFirst(`0)
-  name: AttachAsFirst(TElement)
-  href: api/Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_OpenDoublyLinkedListMethods_1_AttachAsFirst__0_
-  commentId: M:Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods`1.AttachAsFirst(`0)
-  fullName: Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods<TElement>.AttachAsFirst(TElement)
-  fullName.vb: Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods(Of TElement).AttachAsFirst(TElement)
-  nameWithType: OpenDoublyLinkedListMethods<TElement>.AttachAsFirst(TElement)
-  nameWithType.vb: OpenDoublyLinkedListMethods(Of TElement).AttachAsFirst(TElement)
-- uid: Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods`1.AttachAsFirst*
+  fullName: Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods<TElement>.AttachAfter
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods(Of TElement).AttachAfter
+  nameWithType: RelativeCircularDoublyLinkedListMethods<TElement>.AttachAfter
+  nameWithType.vb: RelativeCircularDoublyLinkedListMethods(Of TElement).AttachAfter
+- uid: Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods`1.AttachAsFirst(`0,`0)
+  name: AttachAsFirst(TElement, TElement)
+  href: api/Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_RelativeCircularDoublyLinkedListMethods_1_AttachAsFirst__0__0_
+  commentId: M:Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods`1.AttachAsFirst(`0,`0)
+  fullName: Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods<TElement>.AttachAsFirst(TElement, TElement)
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods(Of TElement).AttachAsFirst(TElement, TElement)
+  nameWithType: RelativeCircularDoublyLinkedListMethods<TElement>.AttachAsFirst(TElement, TElement)
+  nameWithType.vb: RelativeCircularDoublyLinkedListMethods(Of TElement).AttachAsFirst(TElement, TElement)
+- uid: Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods`1.AttachAsFirst*
   name: AttachAsFirst
-  href: api/Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_OpenDoublyLinkedListMethods_1_AttachAsFirst_
-  commentId: Overload:Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods`1.AttachAsFirst
+  href: api/Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_RelativeCircularDoublyLinkedListMethods_1_AttachAsFirst_
+  commentId: Overload:Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods`1.AttachAsFirst
   isSpec: "True"
-  fullName: Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods<TElement>.AttachAsFirst
-  fullName.vb: Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods(Of TElement).AttachAsFirst
-  nameWithType: OpenDoublyLinkedListMethods<TElement>.AttachAsFirst
-  nameWithType.vb: OpenDoublyLinkedListMethods(Of TElement).AttachAsFirst
-- uid: Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods`1.AttachAsLast(`0)
-  name: AttachAsLast(TElement)
-  href: api/Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_OpenDoublyLinkedListMethods_1_AttachAsLast__0_
-  commentId: M:Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods`1.AttachAsLast(`0)
-  fullName: Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods<TElement>.AttachAsLast(TElement)
-  fullName.vb: Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods(Of TElement).AttachAsLast(TElement)
-  nameWithType: OpenDoublyLinkedListMethods<TElement>.AttachAsLast(TElement)
-  nameWithType.vb: OpenDoublyLinkedListMethods(Of TElement).AttachAsLast(TElement)
-- uid: Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods`1.AttachAsLast*
+  fullName: Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods<TElement>.AttachAsFirst
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods(Of TElement).AttachAsFirst
+  nameWithType: RelativeCircularDoublyLinkedListMethods<TElement>.AttachAsFirst
+  nameWithType.vb: RelativeCircularDoublyLinkedListMethods(Of TElement).AttachAsFirst
+- uid: Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods`1.AttachAsLast(`0,`0)
+  name: AttachAsLast(TElement, TElement)
+  href: api/Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_RelativeCircularDoublyLinkedListMethods_1_AttachAsLast__0__0_
+  commentId: M:Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods`1.AttachAsLast(`0,`0)
+  fullName: Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods<TElement>.AttachAsLast(TElement, TElement)
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods(Of TElement).AttachAsLast(TElement, TElement)
+  nameWithType: RelativeCircularDoublyLinkedListMethods<TElement>.AttachAsLast(TElement, TElement)
+  nameWithType.vb: RelativeCircularDoublyLinkedListMethods(Of TElement).AttachAsLast(TElement, TElement)
+- uid: Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods`1.AttachAsLast*
   name: AttachAsLast
-  href: api/Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_OpenDoublyLinkedListMethods_1_AttachAsLast_
-  commentId: Overload:Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods`1.AttachAsLast
+  href: api/Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_RelativeCircularDoublyLinkedListMethods_1_AttachAsLast_
+  commentId: Overload:Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods`1.AttachAsLast
   isSpec: "True"
-  fullName: Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods<TElement>.AttachAsLast
-  fullName.vb: Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods(Of TElement).AttachAsLast
-  nameWithType: OpenDoublyLinkedListMethods<TElement>.AttachAsLast
-  nameWithType.vb: OpenDoublyLinkedListMethods(Of TElement).AttachAsLast
-- uid: Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods`1.AttachBefore(`0,`0)
-  name: AttachBefore(TElement, TElement)
-  href: api/Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_OpenDoublyLinkedListMethods_1_AttachBefore__0__0_
-  commentId: M:Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods`1.AttachBefore(`0,`0)
-  fullName: Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods<TElement>.AttachBefore(TElement, TElement)
-  fullName.vb: Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods(Of TElement).AttachBefore(TElement, TElement)
-  nameWithType: OpenDoublyLinkedListMethods<TElement>.AttachBefore(TElement, TElement)
-  nameWithType.vb: OpenDoublyLinkedListMethods(Of TElement).AttachBefore(TElement, TElement)
-- uid: Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods`1.AttachBefore*
+  fullName: Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods<TElement>.AttachAsLast
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods(Of TElement).AttachAsLast
+  nameWithType: RelativeCircularDoublyLinkedListMethods<TElement>.AttachAsLast
+  nameWithType.vb: RelativeCircularDoublyLinkedListMethods(Of TElement).AttachAsLast
+- uid: Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods`1.AttachBefore(`0,`0,`0)
+  name: AttachBefore(TElement, TElement, TElement)
+  href: api/Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_RelativeCircularDoublyLinkedListMethods_1_AttachBefore__0__0__0_
+  commentId: M:Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods`1.AttachBefore(`0,`0,`0)
+  fullName: Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods<TElement>.AttachBefore(TElement, TElement, TElement)
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods(Of TElement).AttachBefore(TElement, TElement, TElement)
+  nameWithType: RelativeCircularDoublyLinkedListMethods<TElement>.AttachBefore(TElement, TElement, TElement)
+  nameWithType.vb: RelativeCircularDoublyLinkedListMethods(Of TElement).AttachBefore(TElement, TElement, TElement)
+- uid: Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods`1.AttachBefore*
   name: AttachBefore
-  href: api/Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_OpenDoublyLinkedListMethods_1_AttachBefore_
-  commentId: Overload:Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods`1.AttachBefore
+  href: api/Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_RelativeCircularDoublyLinkedListMethods_1_AttachBefore_
+  commentId: Overload:Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods`1.AttachBefore
   isSpec: "True"
-  fullName: Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods<TElement>.AttachBefore
-  fullName.vb: Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods(Of TElement).AttachBefore
-  nameWithType: OpenDoublyLinkedListMethods<TElement>.AttachBefore
-  nameWithType.vb: OpenDoublyLinkedListMethods(Of TElement).AttachBefore
-- uid: Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods`1.Detach(`0)
-  name: Detach(TElement)
-  href: api/Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_OpenDoublyLinkedListMethods_1_Detach__0_
-  commentId: M:Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods`1.Detach(`0)
-  fullName: Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods<TElement>.Detach(TElement)
-  fullName.vb: Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods(Of TElement).Detach(TElement)
-  nameWithType: OpenDoublyLinkedListMethods<TElement>.Detach(TElement)
-  nameWithType.vb: OpenDoublyLinkedListMethods(Of TElement).Detach(TElement)
-- uid: Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods`1.Detach*
+  fullName: Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods<TElement>.AttachBefore
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods(Of TElement).AttachBefore
+  nameWithType: RelativeCircularDoublyLinkedListMethods<TElement>.AttachBefore
+  nameWithType.vb: RelativeCircularDoublyLinkedListMethods(Of TElement).AttachBefore
+- uid: Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods`1.Detach(`0,`0)
+  name: Detach(TElement, TElement)
+  href: api/Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_RelativeCircularDoublyLinkedListMethods_1_Detach__0__0_
+  commentId: M:Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods`1.Detach(`0,`0)
+  fullName: Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods<TElement>.Detach(TElement, TElement)
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods(Of TElement).Detach(TElement, TElement)
+  nameWithType: RelativeCircularDoublyLinkedListMethods<TElement>.Detach(TElement, TElement)
+  nameWithType.vb: RelativeCircularDoublyLinkedListMethods(Of TElement).Detach(TElement, TElement)
+- uid: Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods`1.Detach*
   name: Detach
-  href: api/Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_OpenDoublyLinkedListMethods_1_Detach_
-  commentId: Overload:Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods`1.Detach
+  href: api/Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_RelativeCircularDoublyLinkedListMethods_1_Detach_
+  commentId: Overload:Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods`1.Detach
   isSpec: "True"
-  fullName: Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods<TElement>.Detach
-  fullName.vb: Platform.Collections.Methods.Lists.OpenDoublyLinkedListMethods(Of TElement).Detach
-  nameWithType: OpenDoublyLinkedListMethods<TElement>.Detach
-  nameWithType.vb: OpenDoublyLinkedListMethods(Of TElement).Detach
+  fullName: Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods<TElement>.Detach
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeCircularDoublyLinkedListMethods(Of TElement).Detach
+  nameWithType: RelativeCircularDoublyLinkedListMethods<TElement>.Detach
+  nameWithType.vb: RelativeCircularDoublyLinkedListMethods(Of TElement).Detach
+- uid: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1
+  name: RelativeDoublyLinkedListMethodsBase<TElement>
+  href: api/Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase-1.html
+  commentId: T:Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1
+  name.vb: RelativeDoublyLinkedListMethodsBase(Of TElement)
+  fullName: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase<TElement>
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase(Of TElement)
+  nameWithType: RelativeDoublyLinkedListMethodsBase<TElement>
+  nameWithType.vb: RelativeDoublyLinkedListMethodsBase(Of TElement)
+- uid: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1.DecrementSize(`0)
+  name: DecrementSize(TElement)
+  href: api/Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_RelativeDoublyLinkedListMethodsBase_1_DecrementSize__0_
+  commentId: M:Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1.DecrementSize(`0)
+  fullName: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase<TElement>.DecrementSize(TElement)
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase(Of TElement).DecrementSize(TElement)
+  nameWithType: RelativeDoublyLinkedListMethodsBase<TElement>.DecrementSize(TElement)
+  nameWithType.vb: RelativeDoublyLinkedListMethodsBase(Of TElement).DecrementSize(TElement)
+- uid: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1.DecrementSize*
+  name: DecrementSize
+  href: api/Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_RelativeDoublyLinkedListMethodsBase_1_DecrementSize_
+  commentId: Overload:Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1.DecrementSize
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase<TElement>.DecrementSize
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase(Of TElement).DecrementSize
+  nameWithType: RelativeDoublyLinkedListMethodsBase<TElement>.DecrementSize
+  nameWithType.vb: RelativeDoublyLinkedListMethodsBase(Of TElement).DecrementSize
+- uid: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1.GetFirst(`0)
+  name: GetFirst(TElement)
+  href: api/Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_RelativeDoublyLinkedListMethodsBase_1_GetFirst__0_
+  commentId: M:Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1.GetFirst(`0)
+  fullName: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase<TElement>.GetFirst(TElement)
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase(Of TElement).GetFirst(TElement)
+  nameWithType: RelativeDoublyLinkedListMethodsBase<TElement>.GetFirst(TElement)
+  nameWithType.vb: RelativeDoublyLinkedListMethodsBase(Of TElement).GetFirst(TElement)
+- uid: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1.GetFirst*
+  name: GetFirst
+  href: api/Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_RelativeDoublyLinkedListMethodsBase_1_GetFirst_
+  commentId: Overload:Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1.GetFirst
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase<TElement>.GetFirst
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase(Of TElement).GetFirst
+  nameWithType: RelativeDoublyLinkedListMethodsBase<TElement>.GetFirst
+  nameWithType.vb: RelativeDoublyLinkedListMethodsBase(Of TElement).GetFirst
+- uid: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1.GetLast(`0)
+  name: GetLast(TElement)
+  href: api/Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_RelativeDoublyLinkedListMethodsBase_1_GetLast__0_
+  commentId: M:Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1.GetLast(`0)
+  fullName: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase<TElement>.GetLast(TElement)
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase(Of TElement).GetLast(TElement)
+  nameWithType: RelativeDoublyLinkedListMethodsBase<TElement>.GetLast(TElement)
+  nameWithType.vb: RelativeDoublyLinkedListMethodsBase(Of TElement).GetLast(TElement)
+- uid: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1.GetLast*
+  name: GetLast
+  href: api/Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_RelativeDoublyLinkedListMethodsBase_1_GetLast_
+  commentId: Overload:Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1.GetLast
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase<TElement>.GetLast
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase(Of TElement).GetLast
+  nameWithType: RelativeDoublyLinkedListMethodsBase<TElement>.GetLast
+  nameWithType.vb: RelativeDoublyLinkedListMethodsBase(Of TElement).GetLast
+- uid: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1.GetSize(`0)
+  name: GetSize(TElement)
+  href: api/Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_RelativeDoublyLinkedListMethodsBase_1_GetSize__0_
+  commentId: M:Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1.GetSize(`0)
+  fullName: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase<TElement>.GetSize(TElement)
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase(Of TElement).GetSize(TElement)
+  nameWithType: RelativeDoublyLinkedListMethodsBase<TElement>.GetSize(TElement)
+  nameWithType.vb: RelativeDoublyLinkedListMethodsBase(Of TElement).GetSize(TElement)
+- uid: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1.GetSize*
+  name: GetSize
+  href: api/Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_RelativeDoublyLinkedListMethodsBase_1_GetSize_
+  commentId: Overload:Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1.GetSize
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase<TElement>.GetSize
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase(Of TElement).GetSize
+  nameWithType: RelativeDoublyLinkedListMethodsBase<TElement>.GetSize
+  nameWithType.vb: RelativeDoublyLinkedListMethodsBase(Of TElement).GetSize
+- uid: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1.IncrementSize(`0)
+  name: IncrementSize(TElement)
+  href: api/Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_RelativeDoublyLinkedListMethodsBase_1_IncrementSize__0_
+  commentId: M:Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1.IncrementSize(`0)
+  fullName: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase<TElement>.IncrementSize(TElement)
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase(Of TElement).IncrementSize(TElement)
+  nameWithType: RelativeDoublyLinkedListMethodsBase<TElement>.IncrementSize(TElement)
+  nameWithType.vb: RelativeDoublyLinkedListMethodsBase(Of TElement).IncrementSize(TElement)
+- uid: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1.IncrementSize*
+  name: IncrementSize
+  href: api/Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_RelativeDoublyLinkedListMethodsBase_1_IncrementSize_
+  commentId: Overload:Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1.IncrementSize
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase<TElement>.IncrementSize
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase(Of TElement).IncrementSize
+  nameWithType: RelativeDoublyLinkedListMethodsBase<TElement>.IncrementSize
+  nameWithType.vb: RelativeDoublyLinkedListMethodsBase(Of TElement).IncrementSize
+- uid: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1.SetFirst(`0,`0)
+  name: SetFirst(TElement, TElement)
+  href: api/Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_RelativeDoublyLinkedListMethodsBase_1_SetFirst__0__0_
+  commentId: M:Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1.SetFirst(`0,`0)
+  fullName: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase<TElement>.SetFirst(TElement, TElement)
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase(Of TElement).SetFirst(TElement, TElement)
+  nameWithType: RelativeDoublyLinkedListMethodsBase<TElement>.SetFirst(TElement, TElement)
+  nameWithType.vb: RelativeDoublyLinkedListMethodsBase(Of TElement).SetFirst(TElement, TElement)
+- uid: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1.SetFirst*
+  name: SetFirst
+  href: api/Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_RelativeDoublyLinkedListMethodsBase_1_SetFirst_
+  commentId: Overload:Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1.SetFirst
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase<TElement>.SetFirst
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase(Of TElement).SetFirst
+  nameWithType: RelativeDoublyLinkedListMethodsBase<TElement>.SetFirst
+  nameWithType.vb: RelativeDoublyLinkedListMethodsBase(Of TElement).SetFirst
+- uid: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1.SetLast(`0,`0)
+  name: SetLast(TElement, TElement)
+  href: api/Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_RelativeDoublyLinkedListMethodsBase_1_SetLast__0__0_
+  commentId: M:Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1.SetLast(`0,`0)
+  fullName: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase<TElement>.SetLast(TElement, TElement)
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase(Of TElement).SetLast(TElement, TElement)
+  nameWithType: RelativeDoublyLinkedListMethodsBase<TElement>.SetLast(TElement, TElement)
+  nameWithType.vb: RelativeDoublyLinkedListMethodsBase(Of TElement).SetLast(TElement, TElement)
+- uid: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1.SetLast*
+  name: SetLast
+  href: api/Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_RelativeDoublyLinkedListMethodsBase_1_SetLast_
+  commentId: Overload:Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1.SetLast
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase<TElement>.SetLast
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase(Of TElement).SetLast
+  nameWithType: RelativeDoublyLinkedListMethodsBase<TElement>.SetLast
+  nameWithType.vb: RelativeDoublyLinkedListMethodsBase(Of TElement).SetLast
+- uid: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1.SetSize(`0,`0)
+  name: SetSize(TElement, TElement)
+  href: api/Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_RelativeDoublyLinkedListMethodsBase_1_SetSize__0__0_
+  commentId: M:Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1.SetSize(`0,`0)
+  fullName: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase<TElement>.SetSize(TElement, TElement)
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase(Of TElement).SetSize(TElement, TElement)
+  nameWithType: RelativeDoublyLinkedListMethodsBase<TElement>.SetSize(TElement, TElement)
+  nameWithType.vb: RelativeDoublyLinkedListMethodsBase(Of TElement).SetSize(TElement, TElement)
+- uid: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1.SetSize*
+  name: SetSize
+  href: api/Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase-1.html#Platform_Collections_Methods_Lists_RelativeDoublyLinkedListMethodsBase_1_SetSize_
+  commentId: Overload:Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase`1.SetSize
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase<TElement>.SetSize
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeDoublyLinkedListMethodsBase(Of TElement).SetSize
+  nameWithType: RelativeDoublyLinkedListMethodsBase<TElement>.SetSize
+  nameWithType.vb: RelativeDoublyLinkedListMethodsBase(Of TElement).SetSize
+- uid: Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods`1
+  name: RelativeOpenDoublyLinkedListMethods<TElement>
+  href: api/Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods-1.html
+  commentId: T:Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods`1
+  name.vb: RelativeOpenDoublyLinkedListMethods(Of TElement)
+  fullName: Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods<TElement>
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods(Of TElement)
+  nameWithType: RelativeOpenDoublyLinkedListMethods<TElement>
+  nameWithType.vb: RelativeOpenDoublyLinkedListMethods(Of TElement)
+- uid: Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods`1.AttachAfter(`0,`0,`0)
+  name: AttachAfter(TElement, TElement, TElement)
+  href: api/Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_RelativeOpenDoublyLinkedListMethods_1_AttachAfter__0__0__0_
+  commentId: M:Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods`1.AttachAfter(`0,`0,`0)
+  fullName: Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods<TElement>.AttachAfter(TElement, TElement, TElement)
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods(Of TElement).AttachAfter(TElement, TElement, TElement)
+  nameWithType: RelativeOpenDoublyLinkedListMethods<TElement>.AttachAfter(TElement, TElement, TElement)
+  nameWithType.vb: RelativeOpenDoublyLinkedListMethods(Of TElement).AttachAfter(TElement, TElement, TElement)
+- uid: Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods`1.AttachAfter*
+  name: AttachAfter
+  href: api/Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_RelativeOpenDoublyLinkedListMethods_1_AttachAfter_
+  commentId: Overload:Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods`1.AttachAfter
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods<TElement>.AttachAfter
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods(Of TElement).AttachAfter
+  nameWithType: RelativeOpenDoublyLinkedListMethods<TElement>.AttachAfter
+  nameWithType.vb: RelativeOpenDoublyLinkedListMethods(Of TElement).AttachAfter
+- uid: Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods`1.AttachAsFirst(`0,`0)
+  name: AttachAsFirst(TElement, TElement)
+  href: api/Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_RelativeOpenDoublyLinkedListMethods_1_AttachAsFirst__0__0_
+  commentId: M:Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods`1.AttachAsFirst(`0,`0)
+  fullName: Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods<TElement>.AttachAsFirst(TElement, TElement)
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods(Of TElement).AttachAsFirst(TElement, TElement)
+  nameWithType: RelativeOpenDoublyLinkedListMethods<TElement>.AttachAsFirst(TElement, TElement)
+  nameWithType.vb: RelativeOpenDoublyLinkedListMethods(Of TElement).AttachAsFirst(TElement, TElement)
+- uid: Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods`1.AttachAsFirst*
+  name: AttachAsFirst
+  href: api/Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_RelativeOpenDoublyLinkedListMethods_1_AttachAsFirst_
+  commentId: Overload:Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods`1.AttachAsFirst
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods<TElement>.AttachAsFirst
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods(Of TElement).AttachAsFirst
+  nameWithType: RelativeOpenDoublyLinkedListMethods<TElement>.AttachAsFirst
+  nameWithType.vb: RelativeOpenDoublyLinkedListMethods(Of TElement).AttachAsFirst
+- uid: Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods`1.AttachAsLast(`0,`0)
+  name: AttachAsLast(TElement, TElement)
+  href: api/Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_RelativeOpenDoublyLinkedListMethods_1_AttachAsLast__0__0_
+  commentId: M:Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods`1.AttachAsLast(`0,`0)
+  fullName: Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods<TElement>.AttachAsLast(TElement, TElement)
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods(Of TElement).AttachAsLast(TElement, TElement)
+  nameWithType: RelativeOpenDoublyLinkedListMethods<TElement>.AttachAsLast(TElement, TElement)
+  nameWithType.vb: RelativeOpenDoublyLinkedListMethods(Of TElement).AttachAsLast(TElement, TElement)
+- uid: Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods`1.AttachAsLast*
+  name: AttachAsLast
+  href: api/Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_RelativeOpenDoublyLinkedListMethods_1_AttachAsLast_
+  commentId: Overload:Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods`1.AttachAsLast
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods<TElement>.AttachAsLast
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods(Of TElement).AttachAsLast
+  nameWithType: RelativeOpenDoublyLinkedListMethods<TElement>.AttachAsLast
+  nameWithType.vb: RelativeOpenDoublyLinkedListMethods(Of TElement).AttachAsLast
+- uid: Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods`1.AttachBefore(`0,`0,`0)
+  name: AttachBefore(TElement, TElement, TElement)
+  href: api/Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_RelativeOpenDoublyLinkedListMethods_1_AttachBefore__0__0__0_
+  commentId: M:Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods`1.AttachBefore(`0,`0,`0)
+  fullName: Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods<TElement>.AttachBefore(TElement, TElement, TElement)
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods(Of TElement).AttachBefore(TElement, TElement, TElement)
+  nameWithType: RelativeOpenDoublyLinkedListMethods<TElement>.AttachBefore(TElement, TElement, TElement)
+  nameWithType.vb: RelativeOpenDoublyLinkedListMethods(Of TElement).AttachBefore(TElement, TElement, TElement)
+- uid: Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods`1.AttachBefore*
+  name: AttachBefore
+  href: api/Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_RelativeOpenDoublyLinkedListMethods_1_AttachBefore_
+  commentId: Overload:Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods`1.AttachBefore
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods<TElement>.AttachBefore
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods(Of TElement).AttachBefore
+  nameWithType: RelativeOpenDoublyLinkedListMethods<TElement>.AttachBefore
+  nameWithType.vb: RelativeOpenDoublyLinkedListMethods(Of TElement).AttachBefore
+- uid: Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods`1.Detach(`0,`0)
+  name: Detach(TElement, TElement)
+  href: api/Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_RelativeOpenDoublyLinkedListMethods_1_Detach__0__0_
+  commentId: M:Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods`1.Detach(`0,`0)
+  fullName: Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods<TElement>.Detach(TElement, TElement)
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods(Of TElement).Detach(TElement, TElement)
+  nameWithType: RelativeOpenDoublyLinkedListMethods<TElement>.Detach(TElement, TElement)
+  nameWithType.vb: RelativeOpenDoublyLinkedListMethods(Of TElement).Detach(TElement, TElement)
+- uid: Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods`1.Detach*
+  name: Detach
+  href: api/Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods-1.html#Platform_Collections_Methods_Lists_RelativeOpenDoublyLinkedListMethods_1_Detach_
+  commentId: Overload:Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods`1.Detach
+  isSpec: "True"
+  fullName: Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods<TElement>.Detach
+  fullName.vb: Platform.Collections.Methods.Lists.RelativeOpenDoublyLinkedListMethods(Of TElement).Detach
+  nameWithType: RelativeOpenDoublyLinkedListMethods<TElement>.Detach
+  nameWithType.vb: RelativeOpenDoublyLinkedListMethods(Of TElement).Detach
 - uid: Platform.Collections.Methods.Trees
   name: Platform.Collections.Methods.Trees
   href: api/Platform.Collections.Methods.Trees.html
