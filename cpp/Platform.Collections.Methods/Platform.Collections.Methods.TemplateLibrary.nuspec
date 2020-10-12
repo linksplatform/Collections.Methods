@@ -5,8 +5,11 @@
     <title>LinksPlatform's Platform.Collections.Methods Template Library</title>
     <summary>LinksPlatform's Platform.Collections.Methods is a Template Library what contains standard implementation of methods for collections.</summary>
     <description>LinksPlatform's Platform.Collections.Methods is a Template Library what contains set of C++ classes templates to build custom implementations of collections on top of provided standard methods implementations. Use Platform.Collections.Methods.h file to include the library.</description>
-    <releaseNotes>RecursionlessSizeBalancedTreeMethods detach bug fix.</releaseNotes>
-    <version>0.1.4</version>
+    <releaseNotes>DoublyLinkedLists split into two implementations absolute and relative.
+Absolute implementation means there is a single global list with fixed location (can be decided on initialization).
+Relative implementation means there are many lists and each is relative to some element's location (must be decided on each read/write operation).
+Better translation from C#.</releaseNotes>
+    <version>0.2.0</version>
     <authors>Konstantin Diachenko</authors>
     <owners>Konstantin Diachenko</owners>
     <copyright>Konstantin Diachenko</copyright>
@@ -24,9 +27,13 @@
     <file src="icon.png" target="images/icon.png" />
     <file src="Platform.Collections.Methods.TemplateLibrary.targets" target="build\native\Platform.Collections.Methods.TemplateLibrary.targets" />
     <file src="Platform.Collections.Methods.h" target="lib\native\include\Platform.Collections.Methods.h" />
-    <file src="Lists\CircularDoublyLinkedListMethods.h" target="lib\native\include\Lists\CircularDoublyLinkedListMethods.h" />
+    <file src="Lists\AbsoluteCircularDoublyLinkedListMethods.h" target="lib\native\include\Lists\AbsoluteCircularDoublyLinkedListMethods.h" />
+		<file src="Lists\AbsoluteDoublyLinkedListMethodsBase.h" target="lib\native\include\Lists\AbsoluteDoublyLinkedListMethodsBase.h" />
+		<file src="Lists\AbsoluteOpenDoublyLinkedListMethods.h" target="lib\native\include\Lists\AbsoluteOpenDoublyLinkedListMethods.h" />
     <file src="Lists\DoublyLinkedListMethodsBase.h" target="lib\native\include\Lists\DoublyLinkedListMethodsBase.h" />
-    <file src="Lists\OpenDoublyLinkedListMethods.h" target="lib\native\include\Lists\OpenDoublyLinkedListMethods.h" />
+    <file src="Lists\RelativeCircularDoublyLinkedListMethods.h" target="lib\native\include\Lists\RelativeCircularDoublyLinkedListMethods.h" />
+		<file src="Lists\RelativeDoublyLinkedListMethodsBase.h" target="lib\native\include\Lists\RelativeDoublyLinkedListMethodsBase.h" />
+		<file src="Lists\RelativeOpenDoublyLinkedListMethods.h" target="lib\native\include\Lists\RelativeOpenDoublyLinkedListMethods.h" />
     <file src="Trees\RecursionlessSizeBalancedTreeMethods.h" target="lib\native\include\Trees\RecursionlessSizeBalancedTreeMethods.h" />
     <file src="Trees\SizeBalancedTreeMethods.h" target="lib\native\include\Trees\SizeBalancedTreeMethods.h" />
     <file src="Trees\SizedAndThreadedAVLBalancedTreeMethods.h" target="lib\native\include\Trees\SizedAndThreadedAVLBalancedTreeMethods.h" />

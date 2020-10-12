@@ -20,9 +20,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GenericCollectionMethodsBase.h" />
-    <ClInclude Include="Lists\CircularDoublyLinkedListMethods.h" />
+    <ClInclude Include="Lists\AbsoluteCircularDoublyLinkedListMethods.h" />
+    <ClInclude Include="Lists\AbsoluteDoublyLinkedListMethodsBase.h" />
+    <ClInclude Include="Lists\AbsoluteOpenDoublyLinkedListMethods.h" />
     <ClInclude Include="Lists\DoublyLinkedListMethodsBase.h" />
-    <ClInclude Include="Lists\OpenDoublyLinkedListMethods.h" />
+    <ClInclude Include="Lists\RelativeCircularDoublyLinkedListMethods.h" />
+    <ClInclude Include="Lists\RelativeDoublyLinkedListMethodsBase.h" />
+    <ClInclude Include="Lists\RelativeOpenDoublyLinkedListMethods.h" />
     <ClInclude Include="Platform.Collections.Methods.h" />
     <ClInclude Include="Trees\RecursionlessSizeBalancedTreeMethods.h" />
     <ClInclude Include="Trees\SizeBalancedTreeMethods.h" />

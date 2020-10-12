@@ -4,7 +4,7 @@
     <Description>LinksPlatform's Platform.Collections.Methods Class Library</Description>
     <Copyright>Konstantin Diachenko</Copyright>
     <AssemblyTitle>Platform.Collections.Methods</AssemblyTitle>
-    <VersionPrefix>0.3.1</VersionPrefix>
+    <VersionPrefix>0.4.0</VersionPrefix>
     <Authors>Konstantin Diachenko</Authors>
     <TargetFrameworks>net472;netstandard2.0;netstandard2.1</TargetFrameworks>
     <AssemblyName>Platform.Collections.Methods</AssemblyName>
@@ -24,7 +24,10 @@
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <LangVersion>latest</LangVersion>
-    <PackageReleaseNotes>RecursionlessSizeBalancedTreeMethods detach bug fix.</PackageReleaseNotes>
+    <PackageReleaseNotes>Platform.Numbers dependency updated from 0.4.0 to 0.4.1. 
+DoublyLinkedLists split into two implementations absolute and relative.
+Absolute implementation means there is a single global list with fixed location (can be decided on initialization).
+Relative implementation means there are many lists and each is relative to some element's location (must be decided on each read/write operation).</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4')) AND '$(MSBuildRuntimeType)' == 'Core' AND '$(OS)' != 'Windows_NT'">
