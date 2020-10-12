@@ -2,18 +2,21 @@
 
 namespace Platform.Collections.Methods.Lists
 {
-    public abstract class CircularDoublyLinkedListMethods<TElement> : DoublyLinkedListMethodsBase<TElement>
+    public abstract class AbsoluteOpenDoublyLinkedListMethods<TElement> : AbsoluteDoublyLinkedListMethodsBase<TElement>
     {
         public void AttachBefore(TElement baseElement, TElement newElement)
         {
             var baseElementPrevious = GetPrevious(baseElement);
             SetPrevious(newElement, baseElementPrevious);
             SetNext(newElement, baseElement);
-            if (AreEqual(baseElement, GetFirst()))
+            if (EqualToZero(baseElementPrevious))
             {
                 SetFirst(newElement);
             }
-            SetNext(baseElementPrevious, newElement);
+            else
+            {
+                SetNext(baseElementPrevious, newElement);
+            }
             SetPrevious(baseElement, newElement);
             IncrementSize();
         }
@@ -23,11 +26,14 @@ namespace Platform.Collections.Methods.Lists
             var baseElementNext = GetNext(baseElement);
             SetPrevious(newElement, baseElement);
             SetNext(newElement, baseElementNext);
-            if (AreEqual(baseElement, GetLast()))
+            if (EqualToZero(baseElementNext))
             {
                 SetLast(newElement);
             }
-            SetPrevious(baseElementNext, newElement);
+            else
+            {
+                SetPrevious(baseElementNext, newElement);
+            }
             SetNext(baseElement, newElement);
             IncrementSize();
         }
@@ -39,8 +45,8 @@ namespace Platform.Collections.Methods.Lists
             {
                 SetFirst(element);
                 SetLast(element);
-                SetPrevious(element, element);
-                SetNext(element, element);
+                SetPrevious(element, Zero);
+                SetNext(element, Zero);
                 IncrementSize();
             }
             else
@@ -66,23 +72,21 @@ namespace Platform.Collections.Methods.Lists
         {
             var elementPrevious = GetPrevious(element);
             var elementNext = GetNext(element);
-            if (AreEqual(elementNext, element))
+            if (EqualToZero(elementPrevious))
             {
-                SetFirst(Zero);
-                SetLast(Zero);
+                SetFirst(elementNext);
             }
             else
             {
                 SetNext(elementPrevious, elementNext);
+            }
+            if (EqualToZero(elementNext))
+            {
+                SetLast(elementPrevious);
+            }
+            else
+            {
                 SetPrevious(elementNext, elementPrevious);
-                if (AreEqual(element, GetFirst()))
-                {
-                    SetFirst(elementNext);
-                }
-                if (AreEqual(element, GetLast()))
-                {
-                    SetLast(elementPrevious);
-                }
             }
             SetPrevious(element, Zero);
             SetNext(element, Zero);

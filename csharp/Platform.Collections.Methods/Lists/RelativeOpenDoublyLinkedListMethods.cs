@@ -2,79 +2,79 @@
 
 namespace Platform.Collections.Methods.Lists
 {
-    public abstract class OpenDoublyLinkedListMethods<TElement> : DoublyLinkedListMethodsBase<TElement>
+    public abstract class RelativeOpenDoublyLinkedListMethods<TElement> : RelativeDoublyLinkedListMethodsBase<TElement>
     {
-        public void AttachBefore(TElement baseElement, TElement newElement)
+        public void AttachBefore(TElement headElement, TElement baseElement, TElement newElement)
         {
             var baseElementPrevious = GetPrevious(baseElement);
             SetPrevious(newElement, baseElementPrevious);
             SetNext(newElement, baseElement);
             if (EqualToZero(baseElementPrevious))
             {
-                SetFirst(newElement);
+                SetFirst(headElement, newElement);
             }
             else
             {
                 SetNext(baseElementPrevious, newElement);
             }
             SetPrevious(baseElement, newElement);
-            IncrementSize();
+            IncrementSize(headElement);
         }
 
-        public void AttachAfter(TElement baseElement, TElement newElement)
+        public void AttachAfter(TElement headElement, TElement baseElement, TElement newElement)
         {
             var baseElementNext = GetNext(baseElement);
             SetPrevious(newElement, baseElement);
             SetNext(newElement, baseElementNext);
             if (EqualToZero(baseElementNext))
             {
-                SetLast(newElement);
+                SetLast(headElement, newElement);
             }
             else
             {
                 SetPrevious(baseElementNext, newElement);
             }
             SetNext(baseElement, newElement);
-            IncrementSize();
+            IncrementSize(headElement);
         }
 
-        public void AttachAsFirst(TElement element)
+        public void AttachAsFirst(TElement headElement, TElement element)
         {
-            var first = GetFirst();
+            var first = GetFirst(headElement);
             if (EqualToZero(first))
             {
-                SetFirst(element);
-                SetLast(element);
+                SetFirst(headElement, element);
+                SetLast(headElement, element);
                 SetPrevious(element, Zero);
                 SetNext(element, Zero);
-                IncrementSize();
+                IncrementSize(headElement);
             }
             else
             {
-                AttachBefore(first, element);
+                AttachBefore(headElement, first, element);
             }
         }
 
-        public void AttachAsLast(TElement element)
+        public void AttachAsLast(TElement headElement, TElement element)
         {
-            var last = GetLast();
+            var last = GetLast(headElement);
             if (EqualToZero(last))
             {
-                AttachAsFirst(element);
+                AttachAsFirst(headElement, element);
             }
             else
             {
-                AttachAfter(last, element);
+                AttachAfter(headElement, last, element);
             }
         }
 
-        public void Detach(TElement element)
+        public void Detach(TElement headElement, TElement element)
         {
             var elementPrevious = GetPrevious(element);
             var elementNext = GetNext(element);
             if (EqualToZero(elementPrevious))
             {
-                SetFirst(elementNext);
+                SetFirst(headElement, elementNext);
             }
             else
             {
@@ -82,7 +82,7 @@ namespace Platform.Collections.Methods.Lists
             }
             if (EqualToZero(elementNext))
             {
-                SetLast(elementPrevious);
+                SetLast(headElement, elementPrevious);
             }
             else
             {
@@ -90,7 +90,7 @@ namespace Platform.Collections.Methods.Lists
             }
             SetPrevious(element, Zero);
             SetNext(element, Zero);
-            DecrementSize();
+            DecrementSize(headElement);
         }
     }
 }
