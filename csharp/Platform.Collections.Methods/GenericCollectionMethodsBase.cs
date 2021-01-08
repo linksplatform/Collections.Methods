@@ -17,6 +17,11 @@ namespace Platform.Collections.Methods
     public abstract class GenericCollectionMethodsBase<TElement>
     {
     
+        /// <summary>
+        /// <para>Presents the Range in readable format.</para>
+        /// <para>Представляет диапазон в удобном для чтения формате.</para>
+        /// </summary>
+        /// <returns><para>String representation of the Range.</para><para>Строковое представление диапазона.</para></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual TElement GetZero() => default;
 
