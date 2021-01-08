@@ -140,12 +140,6 @@ namespace Platform.Collections.Methods
         /// <para>Returns minimum value of the range.</para>
         /// <para>Возвращает минимальное значение диапазона.</para>
         /// </summary>
-        
-        /// <summary>
-        /// <para>Presents the Range in readable format.</para>
-        /// <para>Представляет диапазон в удобном для чтения формате.</para>
-        /// </summary>
-        /// <returns><para>String representation of the Range.</para><para>Строковое представление диапазона.</para></returns>
         protected readonly TElement Zero;
         protected readonly TElement One;
         protected readonly TElement Two;
