@@ -7,7 +7,7 @@ using Platform.Numbers;
 namespace Platform.Collections.Methods
 {
     /// <summary>
-    /// <para>Represents the basic system of methods for a collection of elements of type TElement.</para>
+    /// <para>Represents a base implementation of methods for a collection of elements of type TElement.</para>
     /// <para>Представляет базовую реализацию методов коллекции элементов типа TElement.</para>
     /// </summary>
     public abstract class GenericCollectionMethodsBase<TElement>
