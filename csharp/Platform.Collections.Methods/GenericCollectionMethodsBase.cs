@@ -10,6 +10,7 @@ namespace Platform.Collections.Methods
     /// <para>Represents a base implementation of methods for a collection of elements of type TElement.</para>
     /// <para>Представляет базовую реализацию методов коллекции элементов типа TElement.</para>
     /// </summary>
+    /// <typeparam name="TElement"><para>Source type of conversion.</para><para>Исходный тип конверсии.</para></typeparam>
     public abstract class GenericCollectionMethodsBase<TElement>
     {
         /// <summary>
@@ -17,7 +18,6 @@ namespace Platform.Collections.Methods
         /// <para>Представляет диапазон в удобном для чтения формате.</para>
         /// </summary>
         /// <returns><para>The collection's element type.</para><para>Тип элемента коллекции.</para></returns>
-        /// <typeparam name="TElement"><para>Source type of conversion.</para><para>Исходный тип конверсии.</para></typeparam>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual TElement GetZero() => default;
       
