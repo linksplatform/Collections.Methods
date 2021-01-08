@@ -149,11 +149,6 @@ namespace Platform.Collections.Methods
         /// <returns><para>String representation of the Range.</para><para>Строковое представление диапазона.</para></returns>
         protected GenericCollectionMethodsBase()
         {
-            /// <summary>
-            /// <para>Presents the Range in readable format.</para>
-            /// <para>Представляет диапазон в удобном для чтения формате.</para>
-            /// </summary>
-            /// <returns><para>String representation of the Range.</para><para>Строковое представление диапазона.</para></returns>
             EqualityComparer = EqualityComparer<TElement>.Default;
             Comparer = Comparer<TElement>.Default;
             Zero = GetZero(); //-V3068
