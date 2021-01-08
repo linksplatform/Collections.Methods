@@ -8,6 +8,16 @@ namespace Platform.Collections.Methods
 {
     public abstract class GenericCollectionMethodsBase<TElement>
     {
+    
+            /// <summary>
+            /// <para>Represents a range between minimum and maximum values.</para>
+            /// <para>Представляет диапазон между минимальным и максимальным значениями.</para>
+            /// </summary>
+            /// <remarks>
+            /// <para>Based on <a href="http://stackoverflow.com/questions/5343006/is-there-a-c-sharp-type-for-representing-an-integer-range">the question at StackOverflow</a>.</para>
+            /// <para>Основано на <a href="http://stackoverflow.com/questions/5343006/is-there-a-c-sharp-type-for-representing-an-integer-range">вопросе в StackOverflow</a>.</para>
+            /// </remarks>
+    
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual TElement GetZero() => default;
 
@@ -61,6 +71,15 @@ namespace Platform.Collections.Methods
 
         protected GenericCollectionMethodsBase()
         {
+        
+                /// <summary>
+                /// <para>Represents a range between minimum and maximum values.</para>
+                /// <para>Представляет диапазон между минимальным и максимальным значениями.</para>
+                /// </summary>
+                /// <remarks>
+                /// <para>Based on <a href="http://stackoverflow.com/questions/5343006/is-there-a-c-sharp-type-for-representing-an-integer-range">the question at StackOverflow</a>.</para>
+                /// <para>Основано на <a href="http://stackoverflow.com/questions/5343006/is-there-a-c-sharp-type-for-representing-an-integer-range">вопросе в StackOverflow</a>.</para>
+                /// </remarks>
             EqualityComparer = EqualityComparer<TElement>.Default;
             Comparer = Comparer<TElement>.Default;
             Zero = GetZero(); //-V3068
