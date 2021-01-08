@@ -141,9 +141,24 @@ namespace Platform.Collections.Methods
         /// <para>Возвращает минимальное значение диапазона.</para>
         /// </summary>
         protected readonly TElement Zero;
+        
+        /// <summary>
+        /// <para>Returns minimum value of the range.</para>
+        /// <para>Возвращает минимальное значение диапазона.</para>
+        /// </summary>
         protected readonly TElement One;
         protected readonly TElement Two;
+        
+        /// <summary>
+        /// <para>Returns minimum value of the range.</para>
+        /// <para>Возвращает минимальное значение диапазона.</para>
+        /// </summary>
         protected readonly EqualityComparer<TElement> EqualityComparer;
+        
+        /// <summary>
+        /// <para>Returns minimum value of the range.</para>
+        /// <para>Возвращает минимальное значение диапазона.</para>
+        /// </summary>
         protected readonly Comparer<TElement> Comparer;
         
         /// <summary>
