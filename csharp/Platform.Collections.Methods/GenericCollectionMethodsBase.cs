@@ -17,22 +17,13 @@ namespace Platform.Collections.Methods
     public abstract class GenericCollectionMethodsBase<TElement>
     {
         /// <summary>
-        /// <para>Returns minimum value of the range.</para>
-        /// <para>Возвращает минимальное значение диапазона.</para>
-        /// </summary>
-    
-        /// <summary>
         /// <para>Presents the Range in readable format.</para>
         /// <para>Представляет диапазон в удобном для чтения формате.</para>
         /// </summary>
         /// <returns><para>String representation of the Range.</para><para>Строковое представление диапазона.</para></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual TElement GetZero() => default;
-        /// <summary>
-        /// <para>Returns minimum value of the range.</para>
-        /// <para>Возвращает минимальное значение диапазона.</para>
-        /// </summary>
-        
+      
         /// <summary>
         /// <para>Presents the Range in readable format.</para>
         /// <para>Представляет диапазон в удобном для чтения формате.</para>
@@ -40,11 +31,7 @@ namespace Platform.Collections.Methods
         /// <returns><para>String representation of the Range.</para><para>Строковое представление диапазона.</para></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual bool EqualToZero(TElement value) => EqualityComparer.Equals(value, Zero);
-        /// <summary>
-        /// <para>Returns minimum value of the range.</para>
-        /// <para>Возвращает минимальное значение диапазона.</para>
-        /// </summary>
-
+   
         /// <summary>
         /// <para>Presents the Range in readable format.</para>
         /// <para>Представляет диапазон в удобном для чтения формате.</para>
@@ -52,10 +39,6 @@ namespace Platform.Collections.Methods
         /// <returns><para>String representation of the Range.</para><para>Строковое представление диапазона.</para></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual bool AreEqual(TElement first, TElement second) => EqualityComparer.Equals(first, second);
-        /// <summary>
-        /// <para>Returns minimum value of the range.</para>
-        /// <para>Возвращает минимальное значение диапазона.</para>
-        /// </summary>
 
         /// <summary>
         /// <para>Presents the Range in readable format.</para>
@@ -64,11 +47,7 @@ namespace Platform.Collections.Methods
         /// <returns><para>String representation of the Range.</para><para>Строковое представление диапазона.</para></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual bool GreaterThanZero(TElement value) => Comparer.Compare(value, Zero) > 0;
-        /// <summary>
-        /// <para>Returns minimum value of the range.</para>
-        /// <para>Возвращает минимальное значение диапазона.</para>
-        /// </summary>
-
+   
         /// <summary>
         /// <para>Presents the Range in readable format.</para>
         /// <para>Представляет диапазон в удобном для чтения формате.</para>
@@ -76,11 +55,7 @@ namespace Platform.Collections.Methods
         /// <returns><para>String representation of the Range.</para><para>Строковое представление диапазона.</para></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual bool GreaterThan(TElement first, TElement second) => Comparer.Compare(first, second) > 0;
-        /// <summary>
-        /// <para>Returns minimum value of the range.</para>
-        /// <para>Возвращает минимальное значение диапазона.</para>
-        /// </summary>
-
+       
         /// <summary>
         /// <para>Presents the Range in readable format.</para>
         /// <para>Представляет диапазон в удобном для чтения формате.</para>
@@ -88,11 +63,7 @@ namespace Platform.Collections.Methods
         /// <returns><para>String representation of the Range.</para><para>Строковое представление диапазона.</para></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual bool GreaterOrEqualThanZero(TElement value) => Comparer.Compare(value, Zero) >= 0;
-        /// <summary>
-        /// <para>Returns minimum value of the range.</para>
-        /// <para>Возвращает минимальное значение диапазона.</para>
-        /// </summary>
-
+  
         /// <summary>
         /// <para>Presents the Range in readable format.</para>
         /// <para>Представляет диапазон в удобном для чтения формате.</para>
@@ -100,11 +71,7 @@ namespace Platform.Collections.Methods
         /// <returns><para>String representation of the Range.</para><para>Строковое представление диапазона.</para></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual bool GreaterOrEqualThan(TElement first, TElement second) => Comparer.Compare(first, second) >= 0;
-        /// <summary>
-        /// <para>Returns minimum value of the range.</para>
-        /// <para>Возвращает минимальное значение диапазона.</para>
-        /// </summary>
-
+  
         /// <summary>
         /// <para>Presents the Range in readable format.</para>
         /// <para>Представляет диапазон в удобном для чтения формате.</para>
@@ -112,10 +79,6 @@ namespace Platform.Collections.Methods
         /// <returns><para>String representation of the Range.</para><para>Строковое представление диапазона.</para></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual bool LessOrEqualThanZero(TElement value) => Comparer.Compare(value, Zero) <= 0;
-        /// <summary>
-        /// <para>Returns minimum value of the range.</para>
-        /// <para>Возвращает минимальное значение диапазона.</para>
-        /// </summary>
 
         /// <summary>
         /// <para>Presents the Range in readable format.</para>
@@ -124,10 +87,6 @@ namespace Platform.Collections.Methods
         /// <returns><para>String representation of the Range.</para><para>Строковое представление диапазона.</para></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual bool LessOrEqualThan(TElement first, TElement second) => Comparer.Compare(first, second) <= 0;
-        /// <summary>
-        /// <para>Returns minimum value of the range.</para>
-        /// <para>Возвращает минимальное значение диапазона.</para>
-        /// </summary>
 
         /// <summary>
         /// <para>Presents the Range in readable format.</para>
@@ -136,11 +95,7 @@ namespace Platform.Collections.Methods
         /// <returns><para>String representation of the Range.</para><para>Строковое представление диапазона.</para></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual bool LessThanZero(TElement value) => Comparer.Compare(value, Zero) < 0;
-        /// <summary>
-        /// <para>Returns minimum value of the range.</para>
-        /// <para>Возвращает минимальное значение диапазона.</para>
-        /// </summary>
-
+ 
         /// <summary>
         /// <para>Presents the Range in readable format.</para>
         /// <para>Представляет диапазон в удобном для чтения формате.</para>
@@ -148,11 +103,7 @@ namespace Platform.Collections.Methods
         /// <returns><para>String representation of the Range.</para><para>Строковое представление диапазона.</para></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual bool LessThan(TElement first, TElement second) => Comparer.Compare(first, second) < 0;
-        /// <summary>
-        /// <para>Returns minimum value of the range.</para>
-        /// <para>Возвращает минимальное значение диапазона.</para>
-        /// </summary>
-
+   
         /// <summary>
         /// <para>Presents the Range in readable format.</para>
         /// <para>Представляет диапазон в удобном для чтения формате.</para>
@@ -160,11 +111,7 @@ namespace Platform.Collections.Methods
         /// <returns><para>String representation of the Range.</para><para>Строковое представление диапазона.</para></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual TElement Increment(TElement value) => Arithmetic<TElement>.Increment(value);
-        /// <summary>
-        /// <para>Returns minimum value of the range.</para>
-        /// <para>Возвращает минимальное значение диапазона.</para>
-        /// </summary>
-
+   
         /// <summary>
         /// <para>Presents the Range in readable format.</para>
         /// <para>Представляет диапазон в удобном для чтения формате.</para>
@@ -172,10 +119,6 @@ namespace Platform.Collections.Methods
         /// <returns><para>String representation of the Range.</para><para>Строковое представление диапазона.</para></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual TElement Decrement(TElement value) => Arithmetic<TElement>.Decrement(value);
-        /// <summary>
-        /// <para>Returns minimum value of the range.</para>
-        /// <para>Возвращает минимальное значение диапазона.</para>
-        /// </summary>
 
         /// <summary>
         /// <para>Presents the Range in readable format.</para>
@@ -184,11 +127,7 @@ namespace Platform.Collections.Methods
         /// <returns><para>String representation of the Range.</para><para>Строковое представление диапазона.</para></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual TElement Add(TElement first, TElement second) => Arithmetic<TElement>.Add(first, second);
-        /// <summary>
-        /// <para>Returns minimum value of the range.</para>
-        /// <para>Возвращает минимальное значение диапазона.</para>
-        /// </summary>
-
+ 
         /// <summary>
         /// <para>Presents the Range in readable format.</para>
         /// <para>Представляет диапазон в удобном для чтения формате.</para>
@@ -196,7 +135,7 @@ namespace Platform.Collections.Methods
         /// <returns><para>String representation of the Range.</para><para>Строковое представление диапазона.</para></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual TElement Subtract(TElement first, TElement second) => Arithmetic<TElement>.Subtract(first, second);
-
+        
         /// <summary>
         /// <para>Returns minimum value of the range.</para>
         /// <para>Возвращает минимальное значение диапазона.</para>
