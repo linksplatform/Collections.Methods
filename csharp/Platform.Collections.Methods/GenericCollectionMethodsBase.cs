@@ -16,7 +16,8 @@ namespace Platform.Collections.Methods
         /// <para>Presents the Range in readable format.</para>
         /// <para>Представляет диапазон в удобном для чтения формате.</para>
         /// </summary>
-        /// <returns><para>String representation of the Range.</para><para>Строковое представление диапазона.</para></returns>
+        /// <returns><para>The collection's element type.</para><para>Тип элемента коллекции.</para></returns>
+        /// <typeparam name="TElement"><para>Source type of conversion.</para><para>Исходный тип конверсии.</para></typeparam>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual TElement GetZero() => default;
       
