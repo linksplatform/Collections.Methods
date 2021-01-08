@@ -147,6 +147,11 @@ namespace Platform.Collections.Methods
         /// <para>Возвращает минимальное значение диапазона.</para>
         /// </summary>
         protected readonly TElement One;
+        
+         /// <summary>
+        /// <para>Returns minimum value of the range.</para>
+        /// <para>Возвращает минимальное значение диапазона.</para>
+        /// </summary>
         protected readonly TElement Two;
         
         /// <summary>
