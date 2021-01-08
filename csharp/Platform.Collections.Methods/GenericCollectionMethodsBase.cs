@@ -16,6 +16,7 @@ namespace Platform.Collections.Methods
     /// </remarks>
     public abstract class GenericCollectionMethodsBase<TElement>
     {
+    
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual TElement GetZero() => default;
 
@@ -66,6 +67,7 @@ namespace Platform.Collections.Methods
         protected readonly TElement Two;
         protected readonly EqualityComparer<TElement> EqualityComparer;
         protected readonly Comparer<TElement> Comparer;
+        
         /// <summary>
         /// <para>Presents the Range in readable format.</para>
         /// <para>Представляет диапазон в удобном для чтения формате.</para>
