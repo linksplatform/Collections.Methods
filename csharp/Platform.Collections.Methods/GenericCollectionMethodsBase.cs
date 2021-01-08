@@ -68,14 +68,14 @@ namespace Platform.Collections.Methods
         protected readonly TElement Two;
         protected readonly EqualityComparer<TElement> EqualityComparer;
         protected readonly Comparer<TElement> Comparer;
-
-        protected GenericCollectionMethodsBase()
-        {
             /// <summary>
             /// <para>Presents the Range in readable format.</para>
             /// <para>Представляет диапазон в удобном для чтения формате.</para>
             /// </summary>
             /// <returns><para>String representation of the Range.</para><para>Строковое представление диапазона.</para></returns>
+        protected GenericCollectionMethodsBase()
+        {
+            
             EqualityComparer = EqualityComparer<TElement>.Default;
             Comparer = Comparer<TElement>.Default;
             Zero = GetZero(); //-V3068
