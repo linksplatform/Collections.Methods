@@ -6,14 +6,15 @@ using Platform.Numbers;
 
 namespace Platform.Collections.Methods
 {
-    /// <summary>
-    /// <para>Represents a range between minimum and maximum values.</para>
-    /// <para>Представляет диапазон между минимальным и максимальным значениями.</para>
-    /// </summary>
-    /// <remarks>
-    /// <para>Based on <a href="http://stackoverflow.com/questions/5343006/is-there-a-c-sharp-type-for-representing-an-integer-range">the question at StackOverflow</a>.</para>
-    /// <para>Основано на <a href="http://stackoverflow.com/questions/5343006/is-there-a-c-sharp-type-for-representing-an-integer-range">вопросе в StackOverflow</a>.</para>
-    /// </remarks>
+        /// <summary>
+        /// <para>Represents a range between minimum and maximum values.</para>
+        /// <para>Представляет диапазон между минимальным и максимальным значениями.</para>
+        /// </summary>
+        /// <remarks>
+        /// <para>Based on <a href="http://stackoverflow.com/questions/5343006/is-there-a-c-sharp-type-for-representing-an-integer-range">the question at StackOverflow</a>.</para>
+        /// <para>Основано на <a href="http://stackoverflow.com/questions/5343006/is-there-a-c-sharp-type-for-representing-an-integer-range">вопросе в StackOverflow</a>.</para>
+        /// </remarks>
+        
     public abstract class GenericCollectionMethodsBase<TElement>
     {
    
@@ -71,12 +72,12 @@ namespace Platform.Collections.Methods
 
         protected GenericCollectionMethodsBase()
         {
-        
             /// <summary>
             /// <para>Presents the Range in readable format.</para>
             /// <para>Представляет диапазон в удобном для чтения формате.</para>
             /// </summary>
             /// <returns><para>String representation of the Range.</para><para>Строковое представление диапазона.</para></returns>
+            
             EqualityComparer = EqualityComparer<TElement>.Default;
             Comparer = Comparer<TElement>.Default;
             Zero = GetZero(); //-V3068
