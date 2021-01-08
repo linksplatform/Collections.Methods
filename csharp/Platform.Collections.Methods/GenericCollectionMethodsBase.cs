@@ -14,7 +14,6 @@ namespace Platform.Collections.Methods
         /// <para>Based on <a href="http://stackoverflow.com/questions/5343006/is-there-a-c-sharp-type-for-representing-an-integer-range">the question at StackOverflow</a>.</para>
         /// <para>Основано на <a href="http://stackoverflow.com/questions/5343006/is-there-a-c-sharp-type-for-representing-an-integer-range">вопросе в StackOverflow</a>.</para>
         /// </remarks>
-        
     public abstract class GenericCollectionMethodsBase<TElement>
     {
    
@@ -77,7 +76,6 @@ namespace Platform.Collections.Methods
             /// <para>Представляет диапазон в удобном для чтения формате.</para>
             /// </summary>
             /// <returns><para>String representation of the Range.</para><para>Строковое представление диапазона.</para></returns>
-            
             EqualityComparer = EqualityComparer<TElement>.Default;
             Comparer = Comparer<TElement>.Default;
             Zero = GetZero(); //-V3068
