@@ -14,10 +14,10 @@ namespace Platform.Collections.Methods
     public abstract class GenericCollectionMethodsBase<TElement>
     {
         /// <summary>
-        /// <para>Presents the Range in readable format.</para>
-        /// <para>Представляет диапазон в удобном для чтения формате.</para>
+        /// <para>Returns a null constant of type <see cref = "TElement" />.</para>
+        /// <para>Возвращает нулевую константу типа <see cref="TElement" />.</para>
         /// </summary>
-        /// <returns><para>The collection's element type.</para><para>Тип элемента коллекции.</para></returns>
+        /// <returns><para>A null constant like <see cref = "TElement" />.</para><para>Нулевую константу типа <see cref="TElement" />.</para></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual TElement GetZero() => default;
       
