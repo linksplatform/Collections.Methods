@@ -17,7 +17,7 @@ namespace Platform.Collections.Methods
         /// <para>Returns a null constant of type <see cref = "TElement" />.</para>
         /// <para>Возвращает нулевую константу типа <see cref="TElement" />.</para>
         /// </summary>
-        /// <returns><para>A null constant like <see cref = "TElement" />.</para><para>Нулевую константу типа <see cref="TElement" />.</para></returns>
+        /// <returns><para>A null constant of type <see cref = "TElement" />.</para><para>Нулевую константу типа <see cref="TElement" />.</para></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual TElement GetZero() => default;
       
