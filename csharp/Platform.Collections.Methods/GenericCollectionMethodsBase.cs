@@ -22,10 +22,10 @@ namespace Platform.Collections.Methods
         protected virtual TElement GetZero() => default;
       
         /// <summary>
-        /// <para>Presents the Range in readable format.</para>
-        /// <para>Представляет диапазон в удобном для чтения формате.</para>
+        /// <para>Returns a null constant of type <see. Cref="EqualToZero" />.</para>
+        /// <para>Возвращает нулевую константу типа <see cref="EqualToZero" />.</para>
         /// </summary>
-        /// <returns><para>String representation of the Range.</para><para>Строковое представление диапазона.</para></returns>
+        /// <returns><para>A null constant of type <see cref="EqualToZero" />.</para><para>Нулевая константа типа <см. Cref="EqualToZero" />.</para></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual bool EqualToZero(TElement value) => EqualityComparer.Equals(value, Zero);
    
