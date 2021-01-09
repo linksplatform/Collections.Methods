@@ -22,10 +22,10 @@ namespace Platform.Collections.Methods
         protected virtual TElement GetZero() => default;
       
         /// <summary>
-        /// <para>Returns a null constant of type <see. Cref="EqualToZero" />.</para>
-        /// <para>Возвращает нулевую константу типа <see cref="EqualToZero" />.</para>
+        /// <para>Calling the Equals method</para>
+        /// <para>Вызываем метод Equals</para>
         /// </summary>
-        /// <returns><para>A null constant of type <see cref="EqualToZero" />.</para><para>Нулевая константа типа <см. Cref="EqualToZero" />.</para></returns>
+        /// <returns><para></para>Equals method<para>метод Equals</para></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual bool EqualToZero(TElement value) => EqualityComparer.Equals(value, Zero);
    
