@@ -14,7 +14,7 @@ namespace Platform.Collections.Methods
     public abstract class GenericCollectionMethodsBase<TElement>
     {
         /// <summary>
-        /// <para>Returns a null constant of type <see cref = "TElement" />.</para>
+        /// <para>Returns a null constant of type <see cref="TElement" />.</para>
         /// <para>Возвращает нулевую константу типа <see cref="TElement" />.</para>
         /// </summary>
         /// <returns><para>A null constant of type <see cref = "TElement" />.</para><para>Нулевую константу типа <see cref="TElement" />.</para></returns>
