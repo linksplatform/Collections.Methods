@@ -1,22 +1,25 @@
 ﻿namespace Platform::Collections::Methods::Lists
 {
-    template <typename ...> class RelativeDoublyLinkedListMethodsBase;
-    template <typename TElement> class RelativeDoublyLinkedListMethodsBase<TElement> : public DoublyLinkedListMethodsBase<TElement>
+    template <class impl_t, typename ...> class RelativeDoublyLinkedListMethodsBase;
+    template <class impl_t, typename TElement> class RelativeDoublyLinkedListMethodsBase<impl_t, TElement> : public DoublyLinkedListMethodsBase<impl_t, TElement>
     {
-        protected: virtual TElement GetFirst(TElement headElement) = 0;
+        public: using base_t = DoublyLinkedListMethodsBase<impl_t, TElement>;
+        friend base_t;
 
-        protected: virtual TElement GetLast(TElement headElement) = 0;
+        protected: TElement GetFirst(TElement headElement) { return static_cast<impl_t*>(this)->GetFirst(headElement); };
 
-        protected: virtual TElement GetSize(TElement headElement) = 0;
+        protected: TElement GetLast(TElement headElement) { return static_cast<impl_t*>(this)->GetLast(headElement); };
 
-        protected: virtual void SetFirst(TElement headElement, TElement element) = 0;
+        protected: TElement GetSize(TElement headElement) { return static_cast<impl_t*>(this)->GetSize(headElement); };
 
-        protected: virtual void SetLast(TElement headElement, TElement element) = 0;
+        protected: void SetFirst(TElement headElement, TElement element) { static_cast<impl_t*>(this)->SetFirst(headElement, element); };
 
-        protected: virtual void SetSize(TElement headElement, TElement size) = 0;
+        protected: void SetLast(TElement headElement, TElement element) { static_cast<impl_t*>(this)->SetLast(headElement, element); };
 
-        protected: void IncrementSize(TElement headElement) { this->SetSize(headElement, this->GetSize(headElement) + 1); }
+        protected: void SetSize(TElement headElement, TElement size) { static_cast<impl_t*>(this)->SetSize(headElement, size); };
 
-        protected: void DecrementSize(TElement headElement) { this->SetSize(headElement, this->GetSize(headElement) - 1); }
+        protected: void IncrementSize(TElement headElement) { static_cast<impl_t*>(this)->SetSize(headElement, static_cast<impl_t*>(this)->GetSize(headElement) + 1); }
+
+        protected: void DecrementSize(TElement headElement) { static_cast<impl_t*>(this)->SetSize(headElement, static_cast<impl_t*>(this)->GetSize(headElement) - 1); }
     };
 }

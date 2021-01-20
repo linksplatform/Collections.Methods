@@ -1,43 +1,46 @@
 ﻿namespace Platform::Collections::Methods::Trees
 {
     template <typename ...> class SizedAndThreadedAVLBalancedTreeMethods;
-    template <typename TElement> class SizedAndThreadedAVLBalancedTreeMethods<TElement> : public SizedBinaryTreeMethodsBase<TElement>
+    template <typename impl_t, typename TElement> class SizedAndThreadedAVLBalancedTreeMethods<impl_t, TElement> : public SizedBinaryTreeMethodsBase<impl_t, TElement>
     {
+        public: using base_t = SizedBinaryTreeMethodsBase<impl_t, TElement>;
+        friend base_t;
+
         private: inline static const std::int32_t _maxPath = 11 * sizeof(TElement) + 4;
 
-        protected: TElement GetRightest(TElement current) override
+        protected: TElement GetRightest(TElement current)
         {
-            auto currentRight = this->GetRightOrDefault(current);
+            auto currentRight = static_cast<impl_t*>(this)->GetRightOrDefault(current);
             while (currentRight != 0)
             {
                 current = currentRight;
-                currentRight = this->GetRightOrDefault(current);
+                currentRight = static_cast<impl_t*>(this)->GetRightOrDefault(current);
             }
             return current;
         }
 
-        protected: TElement GetLeftest(TElement current) override
+        protected: TElement GetLeftest(TElement current)
         {
-            auto currentLeft = this->GetLeftOrDefault(current);
+            auto currentLeft = static_cast<impl_t*>(this)->GetLeftOrDefault(current);
             while (currentLeft != 0)
             {
                 current = currentLeft;
-                currentLeft = this->GetLeftOrDefault(current);
+                currentLeft = static_cast<impl_t*>(this)->GetLeftOrDefault(current);
             }
             return current;
         }
 
-        public: bool Contains(TElement node, TElement root) override
+        public: bool Contains(TElement node, TElement root)
         {
             while (root != 0)
             {
-                if (this->FirstIsToTheLeftOfSecond(node, root))
+                if (static_cast<impl_t*>(this)->FirstIsToTheLeftOfSecond(node, root))
                 {
-                    root = this->GetLeftOrDefault(root);
+                    root = static_cast<impl_t*>(this)->GetLeftOrDefault(root);
                 }
-                else if (this->FirstIsToTheRightOfSecond(node, root))
+                else if (static_cast<impl_t*>(this)->FirstIsToTheRightOfSecond(node, root))
                 {
-                    root = this->GetRightOrDefault(root);
+                    root = static_cast<impl_t*>(this)->GetRightOrDefault(root);
                 }
                 else
                 {
@@ -47,27 +50,27 @@
             return false;
         }
 
-        protected: void IncrementBalance(TElement node) { this->SetBalance(node, (std::int8_t)(this->GetBalance(node) + 1)); }
+        protected: void IncrementBalance(TElement node) { static_cast<impl_t*>(this)->SetBalance(node, (std::int8_t)(static_cast<impl_t*>(this)->GetBalance(node) + 1)); }
 
-        protected: void DecrementBalance(TElement node) { this->SetBalance(node, (std::int8_t)(this->GetBalance(node) - 1)); }
+        protected: void DecrementBalance(TElement node) { static_cast<impl_t*>(this)->SetBalance(node, (std::int8_t)(static_cast<impl_t*>(this)->GetBalance(node) - 1)); }
 
-        protected: TElement GetLeftOrDefault(TElement node) override { return this->GetLeftIsChild(node) ? this->GetLeft(node) : 0; }
+        protected: TElement GetLeftOrDefault(TElement node) { return static_cast<impl_t*>(this)->GetLeftIsChild(node) ? static_cast<impl_t*>(this)->GetLeft(node) : 0; }
 
-        protected: TElement GetRightOrDefault(TElement node) override { return this->GetRightIsChild(node) ? this->GetRight(node) : 0; }
+        protected: TElement GetRightOrDefault(TElement node) { return static_cast<impl_t*>(this)->GetRightIsChild(node) ? static_cast<impl_t*>(this)->GetRight(node) : 0; }
 
-        protected: virtual bool GetLeftIsChild(TElement node) = 0;
+        protected: bool GetLeftIsChild(TElement node) { return static_cast<impl_t*>(this)->GetLeftIsChild(node); }
 
-        protected: virtual void SetLeftIsChild(TElement node, bool value) = 0;
+        protected: void SetLeftIsChild(TElement node, bool value) { static_cast<impl_t*>(this)->SetLeftIsChild(node, value); }
 
-        protected: virtual bool GetRightIsChild(TElement node) = 0;
+        protected: bool GetRightIsChild(TElement node) { return static_cast<impl_t*>(this)->GetRightIsChild(node); }
 
-        protected: virtual void SetRightIsChild(TElement node, bool value) = 0;
+        protected: void SetRightIsChild(TElement node, bool value) { static_cast<impl_t*>(this)->SetRightIsChild(node, value); }
 
-        protected: virtual std::int8_t GetBalance(TElement node) = 0;
+        protected: std::int8_t GetBalance(TElement node) { return static_cast<impl_t*>(this)->GetBalance(node); }
 
-        protected: virtual void SetBalance(TElement node, std::int8_t value) = 0;
+        protected: void SetBalance(TElement node, std::int8_t value) { static_cast<impl_t*>(this)->SetBalance(node, value); }
 
-        protected: void AttachCore(TElement* root, TElement node) override
+        protected: void AttachCore(TElement* root, TElement node)
         {
             {
 #if USEARRAYPOOL
@@ -81,43 +84,43 @@
                 auto currentNode = *root;
                 while (true)
                 {
-                    if (this->FirstIsToTheLeftOfSecond(node, currentNode))
+                    if (static_cast<impl_t*>(this)->FirstIsToTheLeftOfSecond(node, currentNode))
                     {
-                        if (this->GetLeftIsChild(currentNode))
+                        if (static_cast<impl_t*>(this)->GetLeftIsChild(currentNode))
                         {
-                            this->IncrementSize(currentNode);
+                            static_cast<impl_t*>(this)->IncrementSize(currentNode);
                             path[pathPosition++] = currentNode;
-                            currentNode = this->GetLeft(currentNode);
+                            currentNode = static_cast<impl_t*>(this)->GetLeft(currentNode);
                         }
                         else
                         {
-                            this->SetLeft(node, this->GetLeft(currentNode));
-                            this->SetRight(node, currentNode);
-                            this->SetLeft(currentNode, node);
-                            this->SetLeftIsChild(currentNode, true);
-                            this->DecrementBalance(currentNode);
-                            this->SetSize(node, 1);
-                            this->FixSize(currentNode);
+                            static_cast<impl_t*>(this)->SetLeft(node, static_cast<impl_t*>(this)->GetLeft(currentNode));
+                            static_cast<impl_t*>(this)->SetRight(node, currentNode);
+                            static_cast<impl_t*>(this)->SetLeft(currentNode, node);
+                            static_cast<impl_t*>(this)->SetLeftIsChild(currentNode, true);
+                            static_cast<impl_t*>(this)->DecrementBalance(currentNode);
+                            static_cast<impl_t*>(this)->SetSize(node, 1);
+                            static_cast<impl_t*>(this)->FixSize(currentNode);
                             break;
                         }
                     }
-                    else if (this->FirstIsToTheRightOfSecond(node, currentNode))
+                    else if (static_cast<impl_t*>(this)->FirstIsToTheRightOfSecond(node, currentNode))
                     {
-                        if (this->GetRightIsChild(currentNode))
+                        if (static_cast<impl_t*>(this)->GetRightIsChild(currentNode))
                         {
-                            this->IncrementSize(currentNode);
+                            static_cast<impl_t*>(this)->IncrementSize(currentNode);
                             path[pathPosition++] = currentNode;
-                            currentNode = this->GetRight(currentNode);
+                            currentNode = static_cast<impl_t*>(this)->GetRight(currentNode);
                         }
                         else
                         {
-                            this->SetRight(node, this->GetRight(currentNode));
-                            this->SetLeft(node, currentNode);
-                            this->SetRight(currentNode, node);
-                            this->SetRightIsChild(currentNode, true);
-                            this->IncrementBalance(currentNode);
-                            this->SetSize(node, 1);
-                            this->FixSize(currentNode);
+                            static_cast<impl_t*>(this)->SetRight(node, static_cast<impl_t*>(this)->GetRight(currentNode));
+                            static_cast<impl_t*>(this)->SetLeft(node, currentNode);
+                            static_cast<impl_t*>(this)->SetRight(currentNode, node);
+                            static_cast<impl_t*>(this)->SetRightIsChild(currentNode, true);
+                            static_cast<impl_t*>(this)->IncrementBalance(currentNode);
+                            static_cast<impl_t*>(this)->SetSize(node, 1);
+                            static_cast<impl_t*>(this)->FixSize(currentNode);
                             break;
                         }
                     }
@@ -129,38 +132,38 @@
                 while (true)
                 {
                     auto parent = path[--pathPosition];
-                    auto isLeftNode = parent != 0 && currentNode == this->GetLeft(parent);
-                    auto currentNodeBalance = this->GetBalance(currentNode);
+                    auto isLeftNode = parent != 0 && currentNode == static_cast<impl_t*>(this)->GetLeft(parent);
+                    auto currentNodeBalance = static_cast<impl_t*>(this)->GetBalance(currentNode);
                     if (currentNodeBalance < -1 || currentNodeBalance > 1)
                     {
-                        currentNode = this->Balance(currentNode);
+                        currentNode = static_cast<impl_t*>(this)->Balance(currentNode);
                         if (parent == 0)
                         {
                             *root = currentNode;
                         }
                         else if (isLeftNode)
                         {
-                            this->SetLeft(parent, currentNode);
-                            this->FixSize(parent);
+                            static_cast<impl_t*>(this)->SetLeft(parent, currentNode);
+                            static_cast<impl_t*>(this)->FixSize(parent);
                         }
                         else
                         {
-                            this->SetRight(parent, currentNode);
-                            this->FixSize(parent);
+                            static_cast<impl_t*>(this)->SetRight(parent, currentNode);
+                            static_cast<impl_t*>(this)->FixSize(parent);
                         }
                     }
-                    currentNodeBalance = this->GetBalance(currentNode);
+                    currentNodeBalance = static_cast<impl_t*>(this)->GetBalance(currentNode);
                     if (currentNodeBalance == 0 || parent == 0)
                     {
                         break;
                     }
                     if (isLeftNode)
                     {
-                        this->DecrementBalance(parent);
+                        static_cast<impl_t*>(this)->DecrementBalance(parent);
                     }
                     else
                     {
-                        this->IncrementBalance(parent);
+                        static_cast<impl_t*>(this)->IncrementBalance(parent);
                     }
                     currentNode = parent;
                 }
@@ -173,26 +176,26 @@
         private: TElement Balance(TElement node)
         {
             {
-                auto rootBalance = this->GetBalance(node);
+                auto rootBalance = static_cast<impl_t*>(this)->GetBalance(node);
                 if (rootBalance < -1)
                 {
-                    auto left = this->GetLeft(node);
-                    if (this->GetBalance(left) > 0)
+                    auto left = static_cast<impl_t*>(this)->GetLeft(node);
+                    if (static_cast<impl_t*>(this)->GetBalance(left) > 0)
                     {
-                        this->SetLeft(node, this->LeftRotateWithBalance(left));
-                        this->FixSize(node);
+                        static_cast<impl_t*>(this)->SetLeft(node, static_cast<impl_t*>(this)->LeftRotateWithBalance(left));
+                        static_cast<impl_t*>(this)->FixSize(node);
                     }
-                    node = this->RightRotateWithBalance(node);
+                    node = static_cast<impl_t*>(this)->RightRotateWithBalance(node);
                 }
                 else if (rootBalance > 1)
                 {
-                    auto right = this->GetRight(node);
-                    if (this->GetBalance(right) < 0)
+                    auto right = static_cast<impl_t*>(this)->GetRight(node);
+                    if (static_cast<impl_t*>(this)->GetBalance(right) < 0)
                     {
-                        this->SetRight(node, this->RightRotateWithBalance(right));
-                        this->FixSize(node);
+                        static_cast<impl_t*>(this)->SetRight(node, static_cast<impl_t*>(this)->RightRotateWithBalance(right));
+                        static_cast<impl_t*>(this)->FixSize(node);
                     }
-                    node = this->LeftRotateWithBalance(node);
+                    node = static_cast<impl_t*>(this)->LeftRotateWithBalance(node);
                 }
                 return node;
             }
@@ -201,44 +204,44 @@
         protected: TElement LeftRotateWithBalance(TElement node)
         {
             {
-                auto right = this->GetRight(node);
-                if (this->GetLeftIsChild(right))
+                auto right = static_cast<impl_t*>(this)->GetRight(node);
+                if (static_cast<impl_t*>(this)->GetLeftIsChild(right))
                 {
-                    this->SetRight(node, this->GetLeft(right));
+                    static_cast<impl_t*>(this)->SetRight(node, static_cast<impl_t*>(this)->GetLeft(right));
                 }
                 else
                 {
-                    this->SetRightIsChild(node, false);
-                    this->SetLeftIsChild(right, true);
+                    static_cast<impl_t*>(this)->SetRightIsChild(node, false);
+                    static_cast<impl_t*>(this)->SetLeftIsChild(right, true);
                 }
-                this->SetLeft(right, node);
-                this->SetSize(right, this->GetSize(node));
-                this->FixSize(node);
-                auto rootBalance = this->GetBalance(node);
-                auto rightBalance = this->GetBalance(right);
+                static_cast<impl_t*>(this)->SetLeft(right, node);
+                static_cast<impl_t*>(this)->SetSize(right, static_cast<impl_t*>(this)->GetSize(node));
+                static_cast<impl_t*>(this)->FixSize(node);
+                auto rootBalance = static_cast<impl_t*>(this)->GetBalance(node);
+                auto rightBalance = static_cast<impl_t*>(this)->GetBalance(right);
                 if (rightBalance <= 0)
                 {
                     if (rootBalance >= 1)
                     {
-                        this->SetBalance(right, (std::int8_t)(rightBalance - 1));
+                        static_cast<impl_t*>(this)->SetBalance(right, (std::int8_t)(rightBalance - 1));
                     }
                     else
                     {
-                        this->SetBalance(right, (std::int8_t)(rootBalance + rightBalance - 2));
+                        static_cast<impl_t*>(this)->SetBalance(right, (std::int8_t)(rootBalance + rightBalance - 2));
                     }
-                    this->SetBalance(node, (std::int8_t)(rootBalance - 1));
+                    static_cast<impl_t*>(this)->SetBalance(node, (std::int8_t)(rootBalance - 1));
                 }
                 else
                 {
                     if (rootBalance <= rightBalance)
                     {
-                        this->SetBalance(right, (std::int8_t)(rootBalance - 2));
+                        static_cast<impl_t*>(this)->SetBalance(right, (std::int8_t)(rootBalance - 2));
                     }
                     else
                     {
-                        this->SetBalance(right, (std::int8_t)(rightBalance - 1));
+                        static_cast<impl_t*>(this)->SetBalance(right, (std::int8_t)(rightBalance - 1));
                     }
-                    this->SetBalance(node, (std::int8_t)(rootBalance - rightBalance - 1));
+                    static_cast<impl_t*>(this)->SetBalance(node, (std::int8_t)(rootBalance - rightBalance - 1));
                 }
                 return right;
             }
@@ -247,70 +250,70 @@
         protected: TElement RightRotateWithBalance(TElement node)
         {
             {
-                auto left = this->GetLeft(node);
-                if (this->GetRightIsChild(left))
+                auto left = static_cast<impl_t*>(this)->GetLeft(node);
+                if (static_cast<impl_t*>(this)->GetRightIsChild(left))
                 {
-                    this->SetLeft(node, this->GetRight(left));
+                    static_cast<impl_t*>(this)->SetLeft(node, static_cast<impl_t*>(this)->GetRight(left));
                 }
                 else
                 {
-                    this->SetLeftIsChild(node, false);
-                    this->SetRightIsChild(left, true);
+                    static_cast<impl_t*>(this)->SetLeftIsChild(node, false);
+                    static_cast<impl_t*>(this)->SetRightIsChild(left, true);
                 }
-                this->SetRight(left, node);
-                this->SetSize(left, this->GetSize(node));
-                this->FixSize(node);
-                auto rootBalance = this->GetBalance(node);
-                auto leftBalance = this->GetBalance(left);
+                static_cast<impl_t*>(this)->SetRight(left, node);
+                static_cast<impl_t*>(this)->SetSize(left, static_cast<impl_t*>(this)->GetSize(node));
+                static_cast<impl_t*>(this)->FixSize(node);
+                auto rootBalance = static_cast<impl_t*>(this)->GetBalance(node);
+                auto leftBalance = static_cast<impl_t*>(this)->GetBalance(left);
                 if (leftBalance <= 0)
                 {
                     if (leftBalance > rootBalance)
                     {
-                        this->SetBalance(left, (std::int8_t)(leftBalance + 1));
+                        static_cast<impl_t*>(this)->SetBalance(left, (std::int8_t)(leftBalance + 1));
                     }
                     else
                     {
-                        this->SetBalance(left, (std::int8_t)(rootBalance + 2));
+                        static_cast<impl_t*>(this)->SetBalance(left, (std::int8_t)(rootBalance + 2));
                     }
-                    this->SetBalance(node, (std::int8_t)(rootBalance - leftBalance + 1));
+                    static_cast<impl_t*>(this)->SetBalance(node, (std::int8_t)(rootBalance - leftBalance + 1));
                 }
                 else
                 {
                     if (rootBalance <= -1)
                     {
-                        this->SetBalance(left, (std::int8_t)(leftBalance + 1));
+                        static_cast<impl_t*>(this)->SetBalance(left, (std::int8_t)(leftBalance + 1));
                     }
                     else
                     {
-                        this->SetBalance(left, (std::int8_t)(rootBalance + leftBalance + 2));
+                        static_cast<impl_t*>(this)->SetBalance(left, (std::int8_t)(rootBalance + leftBalance + 2));
                     }
-                    this->SetBalance(node, (std::int8_t)(rootBalance + 1));
+                    static_cast<impl_t*>(this)->SetBalance(node, (std::int8_t)(rootBalance + 1));
                 }
                 return left;
             }
         }
 
-        protected: TElement GetNext(TElement node) override
+        protected: TElement GetNext(TElement node)
         {
-            auto current = this->GetRight(node);
-            if (this->GetRightIsChild(node))
+            auto current = static_cast<impl_t*>(this)->GetRight(node);
+            if (static_cast<impl_t*>(this)->GetRightIsChild(node))
             {
-                return this->GetLeftest(current);
+                return static_cast<impl_t*>(this)->GetLeftest(current);
             }
             return current;
         }
 
-        protected: TElement GetPrevious(TElement node) override
+        protected: TElement GetPrevious(TElement node)
         {
-            auto current = this->GetLeft(node);
-            if (this->GetLeftIsChild(node))
+            auto current = static_cast<impl_t*>(this)->GetLeft(node);
+            if (static_cast<impl_t*>(this)->GetLeftIsChild(node))
             {
-                return this->GetRightest(current);
+                return static_cast<impl_t*>(this)->GetRightest(current);
             }
             return current;
         }
 
-        protected: void DetachCore(TElement* root, TElement node) override
+        protected: void DetachCore(TElement* root, TElement node)
         {
             {
 #if USEARRAYPOOL
@@ -324,25 +327,25 @@
                 auto currentNode = *root;
                 while (true)
                 {
-                    if (this->FirstIsToTheLeftOfSecond(node, currentNode))
+                    if (static_cast<impl_t*>(this)->FirstIsToTheLeftOfSecond(node, currentNode))
                     {
-                        if (!this->GetLeftIsChild(currentNode))
+                        if (!static_cast<impl_t*>(this)->GetLeftIsChild(currentNode))
                         {
                             throw std::runtime_error("Cannot find a node.");
                         }
-                        this->DecrementSize(currentNode);
+                        static_cast<impl_t*>(this)->DecrementSize(currentNode);
                         path[pathPosition++] = currentNode;
-                        currentNode = this->GetLeft(currentNode);
+                        currentNode = static_cast<impl_t*>(this)->GetLeft(currentNode);
                     }
-                    else if (this->FirstIsToTheRightOfSecond(node, currentNode))
+                    else if (static_cast<impl_t*>(this)->FirstIsToTheRightOfSecond(node, currentNode))
                     {
-                        if (!this->GetRightIsChild(currentNode))
+                        if (!static_cast<impl_t*>(this)->GetRightIsChild(currentNode))
                         {
                             throw std::runtime_error("Cannot find a node.");
                         }
-                        this->DecrementSize(currentNode);
+                        static_cast<impl_t*>(this)->DecrementSize(currentNode);
                         path[pathPosition++] = currentNode;
-                        currentNode = this->GetRight(currentNode);
+                        currentNode = static_cast<impl_t*>(this)->GetRight(currentNode);
                     }
                     else
                     {
@@ -351,10 +354,10 @@
                 }
                 auto parent = path[--pathPosition];
                 auto balanceNode = parent;
-                auto isLeftNode = parent != 0 && currentNode == this->GetLeft(parent);
-                if (!this->GetLeftIsChild(currentNode))
+                auto isLeftNode = parent != 0 && currentNode == static_cast<impl_t*>(this)->GetLeft(parent);
+                if (!static_cast<impl_t*>(this)->GetLeftIsChild(currentNode))
                 {
-                    if (!this->GetRightIsChild(currentNode))
+                    if (!static_cast<impl_t*>(this)->GetRightIsChild(currentNode))
                     {
                         if (parent == 0)
                         {
@@ -362,116 +365,116 @@
                         }
                         else if (isLeftNode)
                         {
-                            this->SetLeftIsChild(parent, false);
-                            this->SetLeft(parent, this->GetLeft(currentNode));
-                            this->IncrementBalance(parent);
+                            static_cast<impl_t*>(this)->SetLeftIsChild(parent, false);
+                            static_cast<impl_t*>(this)->SetLeft(parent, static_cast<impl_t*>(this)->GetLeft(currentNode));
+                            static_cast<impl_t*>(this)->IncrementBalance(parent);
                         }
                         else
                         {
-                            this->SetRightIsChild(parent, false);
-                            this->SetRight(parent, this->GetRight(currentNode));
-                            this->DecrementBalance(parent);
+                            static_cast<impl_t*>(this)->SetRightIsChild(parent, false);
+                            static_cast<impl_t*>(this)->SetRight(parent, static_cast<impl_t*>(this)->GetRight(currentNode));
+                            static_cast<impl_t*>(this)->DecrementBalance(parent);
                         }
                     }
                     else
                     {
-                        auto successor = this->GetNext(currentNode);
-                        this->SetLeft(successor, this->GetLeft(currentNode));
-                        auto right = this->GetRight(currentNode);
+                        auto successor = static_cast<impl_t*>(this)->GetNext(currentNode);
+                        static_cast<impl_t*>(this)->SetLeft(successor, static_cast<impl_t*>(this)->GetLeft(currentNode));
+                        auto right = static_cast<impl_t*>(this)->GetRight(currentNode);
                         if (parent == 0)
                         {
                             *root = right;
                         }
                         else if (isLeftNode)
                         {
-                            this->SetLeft(parent, right);
-                            this->IncrementBalance(parent);
+                            static_cast<impl_t*>(this)->SetLeft(parent, right);
+                            static_cast<impl_t*>(this)->IncrementBalance(parent);
                         }
                         else
                         {
-                            this->SetRight(parent, right);
-                            this->DecrementBalance(parent);
+                            static_cast<impl_t*>(this)->SetRight(parent, right);
+                            static_cast<impl_t*>(this)->DecrementBalance(parent);
                         }
                     }
                 }
                 else
                 {
-                    if (!this->GetRightIsChild(currentNode))
+                    if (!static_cast<impl_t*>(this)->GetRightIsChild(currentNode))
                     {
-                        auto predecessor = this->GetPrevious(currentNode);
-                        this->SetRight(predecessor, this->GetRight(currentNode));
-                        auto leftValue = this->GetLeft(currentNode);
+                        auto predecessor = static_cast<impl_t*>(this)->GetPrevious(currentNode);
+                        static_cast<impl_t*>(this)->SetRight(predecessor, static_cast<impl_t*>(this)->GetRight(currentNode));
+                        auto leftValue = static_cast<impl_t*>(this)->GetLeft(currentNode);
                         if (parent == 0)
                         {
                             *root = leftValue;
                         }
                         else if (isLeftNode)
                         {
-                            this->SetLeft(parent, leftValue);
-                            this->IncrementBalance(parent);
+                            static_cast<impl_t*>(this)->SetLeft(parent, leftValue);
+                            static_cast<impl_t*>(this)->IncrementBalance(parent);
                         }
                         else
                         {
-                            this->SetRight(parent, leftValue);
-                            this->DecrementBalance(parent);
+                            static_cast<impl_t*>(this)->SetRight(parent, leftValue);
+                            static_cast<impl_t*>(this)->DecrementBalance(parent);
                         }
                     }
                     else
                     {
-                        auto predecessor = this->GetLeft(currentNode);
-                        auto successor = this->GetRight(currentNode);
+                        auto predecessor = static_cast<impl_t*>(this)->GetLeft(currentNode);
+                        auto successor = static_cast<impl_t*>(this)->GetRight(currentNode);
                         auto successorParent = currentNode;
                         std::int32_t previousPathPosition = ++pathPosition;
-                        while (this->GetLeftIsChild(successor))
+                        while (static_cast<impl_t*>(this)->GetLeftIsChild(successor))
                         {
                             path[++pathPosition] = successorParent = successor;
-                            successor = this->GetLeft(successor);
+                            successor = static_cast<impl_t*>(this)->GetLeft(successor);
                             if (successorParent != currentNode)
                             {
-                                this->DecrementSize(successorParent);
+                                static_cast<impl_t*>(this)->DecrementSize(successorParent);
                             }
                         }
                         path[previousPathPosition] = successor;
                         balanceNode = path[pathPosition];
                         if (successorParent != currentNode)
                         {
-                            if (!this->GetRightIsChild(successor))
+                            if (!static_cast<impl_t*>(this)->GetRightIsChild(successor))
                             {
-                                this->SetLeftIsChild(successorParent, false);
+                                static_cast<impl_t*>(this)->SetLeftIsChild(successorParent, false);
                             }
                             else
                             {
-                                this->SetLeft(successorParent, this->GetRight(successor));
+                                static_cast<impl_t*>(this)->SetLeft(successorParent, static_cast<impl_t*>(this)->GetRight(successor));
                             }
-                            this->IncrementBalance(successorParent);
-                            this->SetRightIsChild(successor, true);
-                            this->SetRight(successor, this->GetRight(currentNode));
+                            static_cast<impl_t*>(this)->IncrementBalance(successorParent);
+                            static_cast<impl_t*>(this)->SetRightIsChild(successor, true);
+                            static_cast<impl_t*>(this)->SetRight(successor, static_cast<impl_t*>(this)->GetRight(currentNode));
                         }
                         else
                         {
-                            this->DecrementBalance(currentNode);
+                            static_cast<impl_t*>(this)->DecrementBalance(currentNode);
                         }
-                        while (this->GetRightIsChild(predecessor))
+                        while (static_cast<impl_t*>(this)->GetRightIsChild(predecessor))
                         {
-                            predecessor = this->GetRight(predecessor);
+                            predecessor = static_cast<impl_t*>(this)->GetRight(predecessor);
                         }
-                        this->SetRight(predecessor, successor);
-                        auto left = this->GetLeft(currentNode);
-                        this->SetLeftIsChild(successor, true);
-                        this->SetLeft(successor, left);
-                        this->SetBalance(successor, this->GetBalance(currentNode));
-                        this->FixSize(successor);
+                        static_cast<impl_t*>(this)->SetRight(predecessor, successor);
+                        auto left = static_cast<impl_t*>(this)->GetLeft(currentNode);
+                        static_cast<impl_t*>(this)->SetLeftIsChild(successor, true);
+                        static_cast<impl_t*>(this)->SetLeft(successor, left);
+                        static_cast<impl_t*>(this)->SetBalance(successor, static_cast<impl_t*>(this)->GetBalance(currentNode));
+                        static_cast<impl_t*>(this)->FixSize(successor);
                         if (parent == 0)
                         {
                             *root = successor;
                         }
                         else if (isLeftNode)
                         {
-                            this->SetLeft(parent, successor);
+                            static_cast<impl_t*>(this)->SetLeft(parent, successor);
                         }
                         else
                         {
-                            this->SetRight(parent, successor);
+                            static_cast<impl_t*>(this)->SetRight(parent, successor);
                         }
                     }
                 }
@@ -480,55 +483,55 @@
                     while (true)
                     {
                         auto balanceParent = path[--pathPosition];
-                        isLeftNode = balanceParent != 0 && balanceNode == this->GetLeft(balanceParent);
-                        auto currentNodeBalance = this->GetBalance(balanceNode);
+                        isLeftNode = balanceParent != 0 && balanceNode == static_cast<impl_t*>(this)->GetLeft(balanceParent);
+                        auto currentNodeBalance = static_cast<impl_t*>(this)->GetBalance(balanceNode);
                         if (currentNodeBalance < -1 || currentNodeBalance > 1)
                         {
-                            balanceNode = this->Balance(balanceNode);
+                            balanceNode = static_cast<impl_t*>(this)->Balance(balanceNode);
                             if (balanceParent == 0)
                             {
                                 *root = balanceNode;
                             }
                             else if (isLeftNode)
                             {
-                                this->SetLeft(balanceParent, balanceNode);
+                                static_cast<impl_t*>(this)->SetLeft(balanceParent, balanceNode);
                             }
                             else
                             {
-                                this->SetRight(balanceParent, balanceNode);
+                                static_cast<impl_t*>(this)->SetRight(balanceParent, balanceNode);
                             }
                         }
-                        currentNodeBalance = this->GetBalance(balanceNode);
+                        currentNodeBalance = static_cast<impl_t*>(this)->GetBalance(balanceNode);
                         if (currentNodeBalance != 0 || balanceParent == 0)
                         {
                             break;
                         }
                         if (isLeftNode)
                         {
-                            this->IncrementBalance(balanceParent);
+                            static_cast<impl_t*>(this)->IncrementBalance(balanceParent);
                         }
                         else
                         {
-                            this->DecrementBalance(balanceParent);
+                            static_cast<impl_t*>(this)->DecrementBalance(balanceParent);
                         }
                         balanceNode = balanceParent;
                     }
                 }
-                this->ClearNode(node);
+                static_cast<impl_t*>(this)->ClearNode(node);
 #if USEARRAYPOOL
                 ArrayPool.Free(path);
 #endif
             }
         }
 
-        protected: void ClearNode(TElement node) override
+        protected: void ClearNode(TElement node)
         {
-            this->SetLeft(node, 0);
-            this->SetRight(node, 0);
-            this->SetSize(node, 0);
-            this->SetLeftIsChild(node, false);
-            this->SetRightIsChild(node, false);
-            this->SetBalance(node, 0);
+            static_cast<impl_t*>(this)->SetLeft(node, 0);
+            static_cast<impl_t*>(this)->SetRight(node, 0);
+            static_cast<impl_t*>(this)->SetSize(node, 0);
+            static_cast<impl_t*>(this)->SetLeftIsChild(node, false);
+            static_cast<impl_t*>(this)->SetRightIsChild(node, false);
+            static_cast<impl_t*>(this)->SetBalance(node, 0);
         }
     };
 }

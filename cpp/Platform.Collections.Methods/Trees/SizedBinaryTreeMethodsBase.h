@@ -1,117 +1,120 @@
 ﻿namespace Platform::Collections::Methods::Trees
 {
-    template <typename ...> class SizedBinaryTreeMethodsBase;
-    template <typename TElement> class SizedBinaryTreeMethodsBase<TElement> : public GenericCollectionMethodsBase<TElement>
+    template <class impl_t, typename ...> class SizedBinaryTreeMethodsBase;
+    template <class impl_t, typename TElement> class SizedBinaryTreeMethodsBase<impl_t, TElement> : public GenericCollectionMethodsBase<impl_t, TElement>
     {
-        protected: virtual TElement* GetLeftReference(TElement node) = 0;
+        public: using base_t = GenericCollectionMethodsBase<impl_t, TElement>;
+        friend base_t;
 
-        protected: virtual TElement* GetRightReference(TElement node) = 0;
+        protected: TElement* GetLeftReference(TElement node) { return static_cast<impl_t*>(this)->GetLeftReference(node); };
 
-        protected: virtual TElement GetLeft(TElement node) = 0;
+        protected: TElement* GetRightReference(TElement node) { return static_cast<impl_t*>(this)->GetRightReference(node); };
 
-        protected: virtual TElement GetRight(TElement node) = 0;
+        protected: TElement GetLeft(TElement node) { return static_cast<impl_t*>(this)->GetLeft(node); };
 
-        protected: virtual TElement GetSize(TElement node) = 0;
+        protected: TElement GetRight(TElement node) { return static_cast<impl_t*>(this)->GetRight(node); };
 
-        protected: virtual void SetLeft(TElement node, TElement left) = 0;
+        protected: TElement GetSize(TElement node) { return static_cast<impl_t*>(this)->GetSize(node); };
 
-        protected: virtual void SetRight(TElement node, TElement right) = 0;
+        protected: void SetLeft(TElement node, TElement left) { static_cast<impl_t*>(this)->SetLeft(node, left); };
 
-        protected: virtual void SetSize(TElement node, TElement size) = 0;
+        protected: void SetRight(TElement node, TElement right) { static_cast<impl_t*>(this)->SetRight(node, right); };
 
-        protected: virtual bool FirstIsToTheLeftOfSecond(TElement first, TElement second) = 0;
+        protected: void SetSize(TElement node, TElement size) { static_cast<impl_t*>(this)->SetSize(node, size); };
 
-        protected: virtual bool FirstIsToTheRightOfSecond(TElement first, TElement second) = 0;
+        protected: bool FirstIsToTheLeftOfSecond(TElement first, TElement second) { return static_cast<impl_t*>(this)->FirstIsToTheLeftOfSecond(first, second); };
 
-        protected: virtual TElement GetLeftOrDefault(TElement node) { return node == 0 ? 0 : this->GetLeft(node); }
+        protected: bool FirstIsToTheRightOfSecond(TElement first, TElement second) { return static_cast<impl_t*>(this)->FirstIsToTheRightOfSecond(first, second); };
 
-        protected: virtual TElement GetRightOrDefault(TElement node) { return node == 0 ? 0 : this->GetRight(node); }
+        protected: TElement GetLeftOrDefault(TElement node) { return node == 0 ? 0 : static_cast<impl_t*>(this)->GetLeft(node); }
 
-        protected: void IncrementSize(TElement node) { this->SetSize(node, this->GetSize(node) + 1); }
+        protected: TElement GetRightOrDefault(TElement node) { return node == 0 ? 0 : static_cast<impl_t*>(this)->GetRight(node); }
 
-        protected: void DecrementSize(TElement node) { this->SetSize(node, this->GetSize(node) - 1); }
+        protected: void IncrementSize(TElement node) { static_cast<impl_t*>(this)->SetSize(node, static_cast<impl_t*>(this)->GetSize(node) + 1); }
 
-        protected: TElement GetLeftSize(TElement node) { return this->GetSizeOrZero(this->GetLeftOrDefault(node)); }
+        protected: void DecrementSize(TElement node) { static_cast<impl_t*>(this)->SetSize(node, static_cast<impl_t*>(this)->GetSize(node) - 1); }
 
-        protected: TElement GetRightSize(TElement node) { return this->GetSizeOrZero(this->GetRightOrDefault(node)); }
+        protected: TElement GetLeftSize(TElement node) { return static_cast<impl_t*>(this)->GetSizeOrZero(static_cast<impl_t*>(this)->GetLeftOrDefault(node)); }
 
-        protected: TElement GetSizeOrZero(TElement node) { return node == 0 ? 0 : this->GetSize(node); }
+        protected: TElement GetRightSize(TElement node) { return static_cast<impl_t*>(this)->GetSizeOrZero(static_cast<impl_t*>(this)->GetRightOrDefault(node)); }
 
-        protected: void FixSize(TElement node) { this->SetSize(node, (this->GetLeftSize(node) + this->GetRightSize(node)) + 1); }
+        protected: TElement GetSizeOrZero(TElement node) { return node == 0 ? 0 : static_cast<impl_t*>(this)->GetSize(node); }
 
-        protected: void LeftRotate(TElement* root) { *root = this->LeftRotate(*root); }
+        protected: void FixSize(TElement node) { static_cast<impl_t*>(this)->SetSize(node, (static_cast<impl_t*>(this)->GetLeftSize(node) + static_cast<impl_t*>(this)->GetRightSize(node)) + 1); }
+
+        protected: void LeftRotate(TElement* root) { *root = static_cast<impl_t*>(this)->LeftRotate(*root); }
 
         protected: TElement LeftRotate(TElement root)
         {
-            auto right = this->GetRight(root);
+            auto right = static_cast<impl_t*>(this)->GetRight(root);
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
             if (right == 0)
             {
                 throw std::runtime_error("Right is null.");
             }
 #endif
-            this->SetRight(root, this->GetLeft(right));
-            this->SetLeft(right, root);
-            this->SetSize(right, this->GetSize(root));
-            this->FixSize(root);
+            static_cast<impl_t*>(this)->SetRight(root, static_cast<impl_t*>(this)->GetLeft(right));
+            static_cast<impl_t*>(this)->SetLeft(right, root);
+            static_cast<impl_t*>(this)->SetSize(right, static_cast<impl_t*>(this)->GetSize(root));
+            static_cast<impl_t*>(this)->FixSize(root);
             return right;
         }
 
-        protected: void RightRotate(TElement* root) { *root = this->RightRotate(*root); }
+        protected: void RightRotate(TElement* root) { *root = static_cast<impl_t*>(this)->RightRotate(*root); }
 
         protected: TElement RightRotate(TElement root)
         {
-            auto left = this->GetLeft(root);
+            auto left = static_cast<impl_t*>(this)->GetLeft(root);
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
             if (left == 0)
             {
                 throw std::runtime_error("Left is null.");
             }
 #endif
-            this->SetLeft(root, this->GetRight(left));
-            this->SetRight(left, root);
-            this->SetSize(left, this->GetSize(root));
-            this->FixSize(root);
+            static_cast<impl_t*>(this)->SetLeft(root, static_cast<impl_t*>(this)->GetRight(left));
+            static_cast<impl_t*>(this)->SetRight(left, root);
+            static_cast<impl_t*>(this)->SetSize(left, static_cast<impl_t*>(this)->GetSize(root));
+            static_cast<impl_t*>(this)->FixSize(root);
             return left;
         }
 
-        protected: virtual TElement GetRightest(TElement current)
+        protected: TElement GetRightest(TElement current)
         {
-            auto currentRight = this->GetRight(current);
+            auto currentRight = static_cast<impl_t*>(this)->GetRight(current);
             while (currentRight != 0)
             {
                 current = currentRight;
-                currentRight = this->GetRight(current);
+                currentRight = static_cast<impl_t*>(this)->GetRight(current);
             }
             return current;
         }
 
-        protected: virtual TElement GetLeftest(TElement current)
+        protected: TElement GetLeftest(TElement current)
         {
-            auto currentLeft = this->GetLeft(current);
+            auto currentLeft = static_cast<impl_t*>(this)->GetLeft(current);
             while (currentLeft != 0)
             {
                 current = currentLeft;
-                currentLeft = this->GetLeft(current);
+                currentLeft = static_cast<impl_t*>(this)->GetLeft(current);
             }
             return current;
         }
 
-        protected: virtual TElement GetNext(TElement node) { return this->GetLeftest(this->GetRight(node)); }
+        protected: TElement GetNext(TElement node) { return static_cast<impl_t*>(this)->GetLeftest(static_cast<impl_t*>(this)->GetRight(node)); }
 
-        protected: virtual TElement GetPrevious(TElement node) { return this->GetRightest(this->GetLeft(node)); }
+        protected: TElement GetPrevious(TElement node) { return static_cast<impl_t*>(this)->GetRightest(static_cast<impl_t*>(this)->GetLeft(node)); }
 
-        public: virtual bool Contains(TElement node, TElement root)
+        public: bool Contains(TElement node, TElement root)
         {
             while (root != 0)
             {
-                if (this->FirstIsToTheLeftOfSecond(node, root))
+                if (static_cast<impl_t*>(this)->FirstIsToTheLeftOfSecond(node, root))
                 {
-                    root = this->GetLeft(root);
+                    root = static_cast<impl_t*>(this)->GetLeft(root);
                 }
-                else if (this->FirstIsToTheRightOfSecond(node, root))
+                else if (static_cast<impl_t*>(this)->FirstIsToTheRightOfSecond(node, root))
                 {
-                    root = this->GetRight(root);
+                    root = static_cast<impl_t*>(this)->GetRight(root);
                 }
                 else
                 {
@@ -121,35 +124,35 @@
             return false;
         }
 
-        protected: virtual void ClearNode(TElement node)
+        protected: void ClearNode(TElement node)
         {
-            this->SetLeft(node, 0);
-            this->SetRight(node, 0);
-            this->SetSize(node, 0);
+            static_cast<impl_t*>(this)->SetLeft(node, 0);
+            static_cast<impl_t*>(this)->SetRight(node, 0);
+            static_cast<impl_t*>(this)->SetSize(node, 0);
         }
 
         public: void Attach(TElement* root, TElement node)
         {
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
-            this->ValidateSizes(*root);
+            static_cast<impl_t*>(this)->ValidateSizes(*root);
             Debug.WriteLine("--BeforeAttach--");
-            Debug.WriteLine(this->PrintNodes(*root));
+            Debug.WriteLine(static_cast<impl_t*>(this)->PrintNodes(*root));
             Debug.WriteLine("----------------");
-            auto sizeBefore = this->GetSize(*root);
+            auto sizeBefore = static_cast<impl_t*>(this)->GetSize(*root);
 #endif
             if (*root == 0)
             {
-                this->SetSize(node, 1);
+                static_cast<impl_t*>(this)->SetSize(node, 1);
                 *root = node;
                 return;
             }
-            this->AttachCore(root, node);
+            static_cast<impl_t*>(this)->AttachCore(root, node);
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
             Debug.WriteLine("--AfterAttach--");
-            Debug.WriteLine(this->PrintNodes(*root));
+            Debug.WriteLine(static_cast<impl_t*>(this)->PrintNodes(*root));
             Debug.WriteLine("----------------");
-            this->ValidateSizes(*root);
-            auto sizeAfter = this->GetSize(*root);
+            static_cast<impl_t*>(this)->ValidateSizes(*root);
+            auto sizeAfter = static_cast<impl_t*>(this)->GetSize(*root);
             if ((sizeBefore + 1) != sizeAfter)
             {
                 throw std::runtime_error("Tree was broken after attach.");
@@ -157,28 +160,28 @@
 #endif
         }
 
-        protected: virtual void AttachCore(TElement* root, TElement node) = 0;
+        protected: void AttachCore(TElement* root, TElement node) { static_cast<impl_t*>(this)->AttachCore(root, node); };
 
         public: void Detach(TElement* root, TElement node)
         {
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
-            this->ValidateSizes(*root);
+            static_cast<impl_t*>(this)->ValidateSizes(*root);
             Debug.WriteLine("--BeforeDetach--");
-            Debug.WriteLine(this->PrintNodes(*root));
+            Debug.WriteLine(static_cast<impl_t*>(this)->PrintNodes(*root));
             Debug.WriteLine("----------------");
-            auto sizeBefore = this->GetSize(*root);
+            auto sizeBefore = static_cast<impl_t*>(this)->GetSize(*root);
             if (*root == 0)
             {
                 throw std::runtime_error(std::string("Элемент с ").append(Platform::Converters::To<std::string>(node)).append(" не содержится в дереве."));
             }
 #endif
-            this->DetachCore(root, node);
+            static_cast<impl_t*>(this)->DetachCore(root, node);
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
             Debug.WriteLine("--AfterDetach--");
-            Debug.WriteLine(this->PrintNodes(*root));
+            Debug.WriteLine(static_cast<impl_t*>(this)->PrintNodes(*root));
             Debug.WriteLine("----------------");
-            this->ValidateSizes(*root);
-            auto sizeAfter = this->GetSize(*root);
+            static_cast<impl_t*>(this)->ValidateSizes(*root);
+            auto sizeAfter = static_cast<impl_t*>(this)->GetSize(*root);
             if ((sizeBefore - 1) != sizeAfter)
             {
                 throw std::runtime_error("Tree was broken after detach.");
@@ -186,6 +189,6 @@
 #endif
         }
 
-        protected: virtual void DetachCore(TElement* root, TElement node) = 0;
+        protected: void DetachCore(TElement* root, TElement node) { static_cast<impl_t*>(this)->DetachCore(root, node); };
     };
 }

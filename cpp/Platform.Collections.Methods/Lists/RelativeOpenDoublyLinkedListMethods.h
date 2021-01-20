@@ -1,95 +1,98 @@
 ﻿namespace Platform::Collections::Methods::Lists
 {
-    template <typename ...> class RelativeOpenDoublyLinkedListMethods;
-    template <typename TElement> class RelativeOpenDoublyLinkedListMethods<TElement> : public RelativeDoublyLinkedListMethodsBase<TElement>
+    template <class impl_t, typename ...> class RelativeOpenDoublyLinkedListMethods;
+    template <class impl_t, typename TElement> class RelativeOpenDoublyLinkedListMethods<impl_t, TElement> : public RelativeDoublyLinkedListMethodsBase<impl_t, TElement>
     {
+        public: using base_t = RelativeDoublyLinkedListMethodsBase<impl_t, TElement>;
+        friend base_t;
+
         public: void AttachBefore(TElement headElement, TElement baseElement, TElement newElement)
         {
-            auto baseElementPrevious = this->GetPrevious(baseElement);
-            this->SetPrevious(newElement, baseElementPrevious);
-            this->SetNext(newElement, baseElement);
+            auto baseElementPrevious = static_cast<impl_t*>(this)->GetPrevious(baseElement);
+            static_cast<impl_t*>(this)->SetPrevious(newElement, baseElementPrevious);
+            static_cast<impl_t*>(this)->SetNext(newElement, baseElement);
             if (baseElementPrevious == 0)
             {
-                this->SetFirst(headElement, newElement);
+                static_cast<impl_t*>(this)->SetFirst(headElement, newElement);
             }
             else
             {
-                this->SetNext(baseElementPrevious, newElement);
+                static_cast<impl_t*>(this)->SetNext(baseElementPrevious, newElement);
             }
-            this->SetPrevious(baseElement, newElement);
-            this->IncrementSize(headElement);
+            static_cast<impl_t*>(this)->SetPrevious(baseElement, newElement);
+            static_cast<impl_t*>(this)->IncrementSize(headElement);
         }
 
         public: void AttachAfter(TElement headElement, TElement baseElement, TElement newElement)
         {
-            auto baseElementNext = this->GetNext(baseElement);
-            this->SetPrevious(newElement, baseElement);
-            this->SetNext(newElement, baseElementNext);
+            auto baseElementNext = static_cast<impl_t*>(this)->GetNext(baseElement);
+            static_cast<impl_t*>(this)->SetPrevious(newElement, baseElement);
+            static_cast<impl_t*>(this)->SetNext(newElement, baseElementNext);
             if (baseElementNext == 0)
             {
-                this->SetLast(headElement, newElement);
+                static_cast<impl_t*>(this)->SetLast(headElement, newElement);
             }
             else
             {
-                this->SetPrevious(baseElementNext, newElement);
+                static_cast<impl_t*>(this)->SetPrevious(baseElementNext, newElement);
             }
-            this->SetNext(baseElement, newElement);
-            this->IncrementSize(headElement);
+            static_cast<impl_t*>(this)->SetNext(baseElement, newElement);
+            static_cast<impl_t*>(this)->IncrementSize(headElement);
         }
 
         public: void AttachAsFirst(TElement headElement, TElement element)
         {
-            auto first = this->GetFirst(headElement);
+            auto first = static_cast<impl_t*>(this)->GetFirst(headElement);
             if (first == 0)
             {
-                this->SetFirst(headElement, element);
-                this->SetLast(headElement, element);
-                this->SetPrevious(element, 0);
-                this->SetNext(element, 0);
-                this->IncrementSize(headElement);
+                static_cast<impl_t*>(this)->SetFirst(headElement, element);
+                static_cast<impl_t*>(this)->SetLast(headElement, element);
+                static_cast<impl_t*>(this)->SetPrevious(element, 0);
+                static_cast<impl_t*>(this)->SetNext(element, 0);
+                static_cast<impl_t*>(this)->IncrementSize(headElement);
             }
             else
             {
-                this->AttachBefore(headElement, first, element);
+                static_cast<impl_t*>(this)->AttachBefore(headElement, first, element);
             }
         }
 
         public: void AttachAsLast(TElement headElement, TElement element)
         {
-            auto last = this->GetLast(headElement);
+            auto last = static_cast<impl_t*>(this)->GetLast(headElement);
             if (last == 0)
             {
-                this->AttachAsFirst(headElement, element);
+                static_cast<impl_t*>(this)->AttachAsFirst(headElement, element);
             }
             else
             {
-                this->AttachAfter(headElement, last, element);
+                static_cast<impl_t*>(this)->AttachAfter(headElement, last, element);
             }
         }
 
         public: void Detach(TElement headElement, TElement element)
         {
-            auto elementPrevious = this->GetPrevious(element);
-            auto elementNext = this->GetNext(element);
+            auto elementPrevious = static_cast<impl_t*>(this)->GetPrevious(element);
+            auto elementNext = static_cast<impl_t*>(this)->GetNext(element);
             if (elementPrevious == 0)
             {
-                this->SetFirst(headElement, elementNext);
+                static_cast<impl_t*>(this)->SetFirst(headElement, elementNext);
             }
             else
             {
-                this->SetNext(elementPrevious, elementNext);
+                static_cast<impl_t*>(this)->SetNext(elementPrevious, elementNext);
             }
             if (elementNext == 0)
             {
-                this->SetLast(headElement, elementPrevious);
+                static_cast<impl_t*>(this)->SetLast(headElement, elementPrevious);
             }
             else
             {
-                this->SetPrevious(elementNext, elementPrevious);
+                static_cast<impl_t*>(this)->SetPrevious(elementNext, elementPrevious);
             }
-            this->SetPrevious(element, 0);
-            this->SetNext(element, 0);
-            this->DecrementSize(headElement);
+            static_cast<impl_t*>(this)->SetPrevious(element, 0);
+            static_cast<impl_t*>(this)->SetNext(element, 0);
+            static_cast<impl_t*>(this)->DecrementSize(headElement);
         }
     };
 }

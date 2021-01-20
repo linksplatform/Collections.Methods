@@ -1,8 +1,12 @@
 ﻿namespace Platform::Collections::Methods::Tests
 {
     template <std::size_t N, typename ...> class RecursionlessSizeBalancedTree;
-    template <std::size_t N, typename TElement> class RecursionlessSizeBalancedTree<N, TElement> : public Platform::Collections::Methods::Trees::RecursionlessSizeBalancedTreeMethods<TElement>
+    template <std::size_t N, typename TElement> class RecursionlessSizeBalancedTree<N, TElement> : public Platform::Collections::Methods::Trees::RecursionlessSizeBalancedTreeMethods<RecursionlessSizeBalancedTree<N, TElement>, TElement>
     {
+        using base_t = Platform::Collections::Methods::Trees::RecursionlessSizeBalancedTreeMethods<RecursionlessSizeBalancedTree<N, TElement>, TElement>;
+        friend base_t;
+        friend base_t::base_t;
+
         struct TreeElement
         {
             public: TElement Size = 0;
@@ -52,25 +56,25 @@
 
         public: bool IsEmpty(TElement node) { return iszero(this->GetElement(node), sizeof(TreeElement)); }
 
-        protected: bool FirstIsToTheLeftOfSecond(TElement first, TElement second) override { return first < second; }
+        protected: bool FirstIsToTheLeftOfSecond(TElement first, TElement second) { return first < second; }
 
-        protected: bool FirstIsToTheRightOfSecond(TElement first, TElement second) override { return first > second; }
+        protected: bool FirstIsToTheRightOfSecond(TElement first, TElement second) { return first > second; }
 
-        protected: TElement* GetLeftReference(TElement node) override { return &GetElement(node)->Left; }
+        protected: TElement* GetLeftReference(TElement node) { return &GetElement(node)->Left; }
 
-        protected: TElement GetLeft(TElement node) override { return this->GetElement(node)->Left; }
+        protected: TElement GetLeft(TElement node) { return this->GetElement(node)->Left; }
 
-        protected: TElement* GetRightReference(TElement node) override { return &GetElement(node)->Right; }
+        protected: TElement* GetRightReference(TElement node) { return &GetElement(node)->Right; }
 
-        protected: TElement GetRight(TElement node) override { return this->GetElement(node)->Right; }
+        protected: TElement GetRight(TElement node) { return this->GetElement(node)->Right; }
 
-        protected: TElement GetSize(TElement node) override { return this->GetElement(node)->Size; }
+        protected: TElement GetSize(TElement node) { return this->GetElement(node)->Size; }
 
-        protected: void SetLeft(TElement node, TElement left) override { this->GetElement(node)->Left = left; }
+        protected: void SetLeft(TElement node, TElement left) { this->GetElement(node)->Left = left; }
 
-        protected: void SetRight(TElement node, TElement right) override { this->GetElement(node)->Right = right; }
+        protected: void SetRight(TElement node, TElement right) { this->GetElement(node)->Right = right; }
 
-        protected: void SetSize(TElement node, TElement size) override { this->GetElement(node)->Size = size; }
+        protected: void SetSize(TElement node, TElement size) { this->GetElement(node)->Size = size; }
 
         private: TreeElement* GetElement(TElement node) { return &_elements[node]; }
     };

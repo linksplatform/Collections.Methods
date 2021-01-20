@@ -1,22 +1,25 @@
 ﻿namespace Platform::Collections::Methods::Lists
 {
-    template <typename ...> class AbsoluteDoublyLinkedListMethodsBase;
-    template <typename TElement> class AbsoluteDoublyLinkedListMethodsBase<TElement> : public DoublyLinkedListMethodsBase<TElement>
+    template <class impl_t, typename ...> class AbsoluteDoublyLinkedListMethodsBase;
+    template <class impl_t, typename TElement> class AbsoluteDoublyLinkedListMethodsBase<impl_t, TElement> : public DoublyLinkedListMethodsBase<impl_t, TElement>
     {
-        protected: virtual TElement GetFirst() = 0;
+        public: using base_t = DoublyLinkedListMethodsBase<impl_t, TElement>;
+        friend base_t;
 
-        protected: virtual TElement GetLast() = 0;
+        protected: TElement GetFirst() { return static_cast<impl_t*>(this)->GetFirst(); };
 
-        protected: virtual TElement GetSize() = 0;
+        protected: TElement GetLast() { return static_cast<impl_t*>(this)->GetLast(); };
 
-        protected: virtual void SetFirst(TElement element) = 0;
+        protected: TElement GetSize() { return static_cast<impl_t*>(this)->GetSize(); };
 
-        protected: virtual void SetLast(TElement element) = 0;
+        protected: void SetFirst(TElement element) { static_cast<impl_t*>(this)->SetFirst(element); };
 
-        protected: virtual void SetSize(TElement size) = 0;
+        protected: void SetLast(TElement element) { static_cast<impl_t*>(this)->SetLast(element); };
 
-        protected: void IncrementSize() { this->SetSize(this->GetSize() + 1); }
+        protected: void SetSize(TElement size) { static_cast<impl_t*>(this)->SetSize(size); };
 
-        protected: void DecrementSize() { this->SetSize(this->GetSize() - 1); }
+        protected: void IncrementSize() { static_cast<impl_t*>(this)->SetSize(static_cast<impl_t*>(this)->GetSize() + 1); }
+
+        protected: void DecrementSize() { static_cast<impl_t*>(this)->SetSize(static_cast<impl_t*>(this)->GetSize() - 1); }
     };
 }

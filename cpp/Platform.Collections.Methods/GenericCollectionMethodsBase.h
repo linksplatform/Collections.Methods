@@ -1,7 +1,7 @@
 ﻿namespace Platform::Collections::Methods
 {
-    template <typename ...> class GenericCollectionMethodsBase;
-    template <typename TElement> class GenericCollectionMethodsBase<TElement>
+    template <class impl_t, typename ...> class GenericCollectionMethodsBase;
+    template <class impl_t, typename TElement> class GenericCollectionMethodsBase<impl_t, TElement>
     {
     };
 }

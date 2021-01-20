@@ -4,6 +4,7 @@
 #define Platform_Collections_Methods
 
 #include <cstdint>
+#include <stdexcept>
 
 #include "GenericCollectionMethodsBase.h"
 

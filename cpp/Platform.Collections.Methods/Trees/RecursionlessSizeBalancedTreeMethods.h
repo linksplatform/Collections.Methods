@@ -1,58 +1,61 @@
 ﻿namespace Platform::Collections::Methods::Trees
 {
-    template <typename ...> class RecursionlessSizeBalancedTreeMethods;
-    template <typename TElement> class RecursionlessSizeBalancedTreeMethods<TElement> : public SizedBinaryTreeMethodsBase<TElement>
+    template <class impl_t, typename ...> class RecursionlessSizeBalancedTreeMethods;
+    template <class impl_t, typename TElement> class RecursionlessSizeBalancedTreeMethods<impl_t, TElement> : public SizedBinaryTreeMethodsBase<impl_t, TElement>
     {
-        protected: void AttachCore(TElement* root, TElement node) override
+        using base_t = SizedBinaryTreeMethodsBase<impl_t, TElement>;
+        friend base_t;
+
+        protected: void AttachCore(TElement* root, TElement node)
         {
             while (true)
             {
-                auto* left = this->GetLeftReference(*root);
-                auto leftSize = this->GetSizeOrZero(*left);
-                auto* right = this->GetRightReference(*root);
-                auto rightSize = this->GetSizeOrZero(*right);
-                if (this->FirstIsToTheLeftOfSecond(node, *root))
+                auto* left = static_cast<impl_t*>(this)->GetLeftReference(*root);
+                auto leftSize = static_cast<impl_t*>(this)->GetSizeOrZero(*left);
+                auto* right = static_cast<impl_t*>(this)->GetRightReference(*root);
+                auto rightSize = static_cast<impl_t*>(this)->GetSizeOrZero(*right);
+                if (static_cast<impl_t*>(this)->FirstIsToTheLeftOfSecond(node, *root))
                 {
                     if (*left == 0)
                     {
-                        this->IncrementSize(*root);
-                        this->SetSize(node, 1);
+                        static_cast<impl_t*>(this)->IncrementSize(*root);
+                        static_cast<impl_t*>(this)->SetSize(node, 1);
                         *left = node;
                         return;
                     }
-                    if (this->FirstIsToTheLeftOfSecond(node, *left))
+                    if (static_cast<impl_t*>(this)->FirstIsToTheLeftOfSecond(node, *left))
                     {
                         if ((leftSize + 1) > rightSize)
                         {
-                            this->RightRotate(root);
+                            static_cast<impl_t*>(this)->RightRotate(root);
                         }
                         else
                         {
-                            this->IncrementSize(*root);
+                            static_cast<impl_t*>(this)->IncrementSize(*root);
                             root = left;
                         }
                     }
                     else
                     {
-                        auto leftRightSize = this->GetSizeOrZero(this->GetRight(*left));
+                        auto leftRightSize = static_cast<impl_t*>(this)->GetSizeOrZero(static_cast<impl_t*>(this)->GetRight(*left));
                         if ((leftRightSize + 1) > rightSize)
                         {
                             if (leftRightSize == 0 && rightSize == 0)
                             {
-                                this->SetLeft(node, *left);
-                                this->SetRight(node, *root);
-                                this->SetSize(node, leftSize + 2);
-                                this->SetLeft(*root, 0);
-                                this->SetSize(*root, 1);
+                                static_cast<impl_t*>(this)->SetLeft(node, *left);
+                                static_cast<impl_t*>(this)->SetRight(node, *root);
+                                static_cast<impl_t*>(this)->SetSize(node, leftSize + 2);
+                                static_cast<impl_t*>(this)->SetLeft(*root, 0);
+                                static_cast<impl_t*>(this)->SetSize(*root, 1);
                                 *root = node;
                                 return;
                             }
-                            this->LeftRotate(left);
-                            this->RightRotate(root);
+                            static_cast<impl_t*>(this)->LeftRotate(left);
+                            static_cast<impl_t*>(this)->RightRotate(root);
                         }
                         else
                         {
-                            this->IncrementSize(*root);
+                            static_cast<impl_t*>(this)->IncrementSize(*root);
                             root = left;
                         }
                     }
@@ -61,44 +64,44 @@
                 {
                     if (*right == 0)
                     {
-                        this->IncrementSize(*root);
-                        this->SetSize(node, 1);
+                        static_cast<impl_t*>(this)->IncrementSize(*root);
+                        static_cast<impl_t*>(this)->SetSize(node, 1);
                         *right = node;
                         return;
                     }
-                    if (this->FirstIsToTheRightOfSecond(node, *right))
+                    if (static_cast<impl_t*>(this)->FirstIsToTheRightOfSecond(node, *right))
                     {
                         if ((rightSize + 1) > leftSize)
                         {
-                            this->LeftRotate(root);
+                            static_cast<impl_t*>(this)->LeftRotate(root);
                         }
                         else
                         {
-                            this->IncrementSize(*root);
+                            static_cast<impl_t*>(this)->IncrementSize(*root);
                             root = right;
                         }
                     }
                     else
                     {
-                        auto rightLeftSize = this->GetSizeOrZero(this->GetLeft(*right));
+                        auto rightLeftSize = static_cast<impl_t*>(this)->GetSizeOrZero(static_cast<impl_t*>(this)->GetLeft(*right));
                         if ((rightLeftSize + 1) > leftSize)
                         {
                             if (rightLeftSize == 0 && leftSize == 0)
                             {
-                                this->SetLeft(node, *root);
-                                this->SetRight(node, *right);
-                                this->SetSize(node, rightSize + 2);
-                                this->SetRight(*root, 0);
-                                this->SetSize(*root, 1);
+                                static_cast<impl_t*>(this)->SetLeft(node, *root);
+                                static_cast<impl_t*>(this)->SetRight(node, *right);
+                                static_cast<impl_t*>(this)->SetSize(node, rightSize + 2);
+                                static_cast<impl_t*>(this)->SetRight(*root, 0);
+                                static_cast<impl_t*>(this)->SetSize(*root, 1);
                                 *root = node;
                                 return;
                             }
-                            this->RightRotate(right);
-                            this->LeftRotate(root);
+                            static_cast<impl_t*>(this)->RightRotate(right);
+                            static_cast<impl_t*>(this)->LeftRotate(root);
                         }
                         else
                         {
-                            this->IncrementSize(*root);
+                            static_cast<impl_t*>(this)->IncrementSize(*root);
                             root = right;
                         }
                     }
@@ -106,47 +109,47 @@
             }
         }
 
-        protected: void DetachCore(TElement* root, TElement node) override
+        protected: void DetachCore(TElement* root, TElement node)
         {
             while (true)
             {
-                auto* left = this->GetLeftReference(*root);
-                auto leftSize = this->GetSizeOrZero(*left);
-                auto* right = this->GetRightReference(*root);
-                auto rightSize = this->GetSizeOrZero(*right);
-                if (this->FirstIsToTheLeftOfSecond(node, *root))
+                auto* left = static_cast<impl_t*>(this)->GetLeftReference(*root);
+                auto leftSize = static_cast<impl_t*>(this)->GetSizeOrZero(*left);
+                auto* right = static_cast<impl_t*>(this)->GetRightReference(*root);
+                auto rightSize = static_cast<impl_t*>(this)->GetSizeOrZero(*right);
+                if (static_cast<impl_t*>(this)->FirstIsToTheLeftOfSecond(node, *root))
                 {
                     auto decrementedLeftSize = leftSize - 1;
-                    if (this->GetSizeOrZero(this->GetRightOrDefault(*right)) > decrementedLeftSize)
+                    if (static_cast<impl_t*>(this)->GetSizeOrZero(static_cast<impl_t*>(this)->GetRightOrDefault(*right)) > decrementedLeftSize)
                     {
-                        this->LeftRotate(root);
+                        static_cast<impl_t*>(this)->LeftRotate(root);
                     }
-                    else if (this->GetSizeOrZero(this->GetLeftOrDefault(*right)) > decrementedLeftSize)
+                    else if (static_cast<impl_t*>(this)->GetSizeOrZero(static_cast<impl_t*>(this)->GetLeftOrDefault(*right)) > decrementedLeftSize)
                     {
-                        this->RightRotate(right);
-                        this->LeftRotate(root);
+                        static_cast<impl_t*>(this)->RightRotate(right);
+                        static_cast<impl_t*>(this)->LeftRotate(root);
                     }
                     else
                     {
-                        this->DecrementSize(*root);
+                        static_cast<impl_t*>(this)->DecrementSize(*root);
                         root = left;
                     }
                 }
-                else if (this->FirstIsToTheRightOfSecond(node, *root))
+                else if (static_cast<impl_t*>(this)->FirstIsToTheRightOfSecond(node, *root))
                 {
                     auto decrementedRightSize = rightSize - 1;
-                    if (this->GetSizeOrZero(this->GetLeftOrDefault(*left)) > decrementedRightSize)
+                    if (static_cast<impl_t*>(this)->GetSizeOrZero(static_cast<impl_t*>(this)->GetLeftOrDefault(*left)) > decrementedRightSize)
                     {
-                        this->RightRotate(root);
+                        static_cast<impl_t*>(this)->RightRotate(root);
                     }
-                    else if (this->GetSizeOrZero(this->GetRightOrDefault(*left)) > decrementedRightSize)
+                    else if (static_cast<impl_t*>(this)->GetSizeOrZero(static_cast<impl_t*>(this)->GetRightOrDefault(*left)) > decrementedRightSize)
                     {
-                        this->LeftRotate(left);
-                        this->RightRotate(root);
+                        static_cast<impl_t*>(this)->LeftRotate(left);
+                        static_cast<impl_t*>(this)->RightRotate(root);
                     }
                     else
                     {
-                        this->DecrementSize(*root);
+                        static_cast<impl_t*>(this)->DecrementSize(*root);
                         root = right;
                     }
                 }
@@ -157,17 +160,17 @@
                         TElement replacement = 0;
                         if (leftSize > rightSize)
                         {
-                            replacement = this->GetRightest(*left);
-                            this->DetachCore(left, replacement);
+                            replacement = static_cast<impl_t*>(this)->GetRightest(*left);
+                            static_cast<impl_t*>(this)->DetachCore(left, replacement);
                         }
                         else
                         {
-                            replacement = this->GetLeftest(*right);
-                            this->DetachCore(right, replacement);
+                            replacement = static_cast<impl_t*>(this)->GetLeftest(*right);
+                            static_cast<impl_t*>(this)->DetachCore(right, replacement);
                         }
-                        this->SetLeft(replacement, *left);
-                        this->SetRight(replacement, *right);
-                        this->SetSize(replacement, leftSize + rightSize);
+                        static_cast<impl_t*>(this)->SetLeft(replacement, *left);
+                        static_cast<impl_t*>(this)->SetRight(replacement, *right);
+                        static_cast<impl_t*>(this)->SetSize(replacement, leftSize + rightSize);
                         *root = replacement;
                     }
                     else if (leftSize > 0)
@@ -182,7 +185,7 @@
                     {
                         *root = 0;
                     }
-                    this->ClearNode(node);
+                    static_cast<impl_t*>(this)->ClearNode(node);
                     return;
                 }
             }
