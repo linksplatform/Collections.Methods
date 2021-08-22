@@ -1,9 +1,30 @@
-﻿#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace Platform.Collections.Methods.Trees
 {
+    /// <summary>
+    /// <para>
+    /// Represents the recursionless size balanced tree methods.
+    /// </para>
+    /// <para></para>
+    /// </summary>
+    /// <seealso cref="SizedBinaryTreeMethodsBase{TElement}"/>
     public abstract class RecursionlessSizeBalancedTreeMethods<TElement> : SizedBinaryTreeMethodsBase<TElement>
     {
+        /// <summary>
+        /// <para>
+        /// Attaches the core using the specified root.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="root">
+        /// <para>The root.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
         protected override void AttachCore(ref TElement root, TElement node)
         {
             while (true)
@@ -107,6 +128,20 @@ namespace Platform.Collections.Methods.Trees
             }
         }
 
+        /// <summary>
+        /// <para>
+        /// Detaches the core using the specified root.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="root">
+        /// <para>The root.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
         protected override void DetachCore(ref TElement root, TElement node)
         {
             while (true)

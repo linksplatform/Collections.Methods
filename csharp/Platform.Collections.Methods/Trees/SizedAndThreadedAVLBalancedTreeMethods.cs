@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.CompilerServices;
 using System.Text;
 #if USEARRAYPOOL
@@ -19,8 +19,28 @@ namespace Platform.Collections.Methods.Trees
     /// </remarks>
     public abstract class SizedAndThreadedAVLBalancedTreeMethods<TElement> : SizedBinaryTreeMethodsBase<TElement>
     {
+        /// <summary>
+        /// <para>
+        /// The bytes size.
+        /// </para>
+        /// <para></para>
+        /// </summary>
         private static readonly int _maxPath = 11 * NumericType<TElement>.BytesSize + 4;
 
+        /// <summary>
+        /// <para>
+        /// Gets the rightest using the specified current.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="current">
+        /// <para>The current.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The current.</para>
+        /// <para></para>
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected override TElement GetRightest(TElement current)
         {
@@ -33,6 +53,20 @@ namespace Platform.Collections.Methods.Trees
             return current;
         }
 
+        /// <summary>
+        /// <para>
+        /// Gets the leftest using the specified current.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="current">
+        /// <para>The current.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The current.</para>
+        /// <para></para>
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected override TElement GetLeftest(TElement current)
         {
@@ -45,6 +79,24 @@ namespace Platform.Collections.Methods.Trees
             return current;
         }
 
+        /// <summary>
+        /// <para>
+        /// Determines whether this instance contains.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="root">
+        /// <para>The root.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The bool</para>
+        /// <para></para>
+        /// </returns>
         public override bool Contains(TElement node, TElement root)
         {
             while (!EqualToZero(root))
@@ -65,6 +117,24 @@ namespace Platform.Collections.Methods.Trees
             return false;
         }
 
+        /// <summary>
+        /// <para>
+        /// Prints the node using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="sb">
+        /// <para>The sb.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="level">
+        /// <para>The level.</para>
+        /// <para></para>
+        /// </param>
         protected override void PrintNode(TElement node, StringBuilder sb, int level)
         {
             base.PrintNode(node, sb, level);
@@ -75,36 +145,186 @@ namespace Platform.Collections.Methods.Trees
             sb.Append(GetBalance(node));
         }
 
+        /// <summary>
+        /// <para>
+        /// Increments the balance using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected void IncrementBalance(TElement node) => SetBalance(node, (sbyte)(GetBalance(node) + 1));
 
+        /// <summary>
+        /// <para>
+        /// Decrements the balance using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected void DecrementBalance(TElement node) => SetBalance(node, (sbyte)(GetBalance(node) - 1));
 
+        /// <summary>
+        /// <para>
+        /// Gets the left or default using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The element</para>
+        /// <para></para>
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected override TElement GetLeftOrDefault(TElement node) => GetLeftIsChild(node) ? GetLeft(node) : default;
 
+        /// <summary>
+        /// <para>
+        /// Gets the right or default using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The element</para>
+        /// <para></para>
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected override TElement GetRightOrDefault(TElement node) => GetRightIsChild(node) ? GetRight(node) : default;
 
+        /// <summary>
+        /// <para>
+        /// Determines whether this instance get left is child.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The bool</para>
+        /// <para></para>
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract bool GetLeftIsChild(TElement node);
 
+        /// <summary>
+        /// <para>
+        /// Sets the left is child using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="value">
+        /// <para>The value.</para>
+        /// <para></para>
+        /// </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract void SetLeftIsChild(TElement node, bool value);
 
+        /// <summary>
+        /// <para>
+        /// Determines whether this instance get right is child.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The bool</para>
+        /// <para></para>
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract bool GetRightIsChild(TElement node);
 
+        /// <summary>
+        /// <para>
+        /// Sets the right is child using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="value">
+        /// <para>The value.</para>
+        /// <para></para>
+        /// </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract void SetRightIsChild(TElement node, bool value);
 
+        /// <summary>
+        /// <para>
+        /// Gets the balance using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The sbyte</para>
+        /// <para></para>
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract sbyte GetBalance(TElement node);
 
+        /// <summary>
+        /// <para>
+        /// Sets the balance using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="value">
+        /// <para>The value.</para>
+        /// <para></para>
+        /// </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract void SetBalance(TElement node, sbyte value);
 
+        /// <summary>
+        /// <para>
+        /// Attaches the core using the specified root.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="root">
+        /// <para>The root.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <exception cref="InvalidOperationException">
+        /// <para>Node with the same key already attached to a tree.</para>
+        /// <para></para>
+        /// </exception>
         protected override void AttachCore(ref TElement root, TElement node)
         {
             unchecked
@@ -216,6 +436,20 @@ namespace Platform.Collections.Methods.Trees
             }
         }
 
+        /// <summary>
+        /// <para>
+        /// Balances the node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The element</para>
+        /// <para></para>
+        /// </returns>
         private TElement Balance(TElement node)
         {
             unchecked
@@ -245,6 +479,20 @@ namespace Platform.Collections.Methods.Trees
             }
         }
 
+        /// <summary>
+        /// <para>
+        /// Lefts the rotate with balance using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The element</para>
+        /// <para></para>
+        /// </returns>
         protected TElement LeftRotateWithBalance(TElement node)
         {
             unchecked
@@ -294,6 +542,20 @@ namespace Platform.Collections.Methods.Trees
             }
         }
 
+        /// <summary>
+        /// <para>
+        /// Rights the rotate with balance using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The element</para>
+        /// <para></para>
+        /// </returns>
         protected TElement RightRotateWithBalance(TElement node)
         {
             unchecked
@@ -343,6 +605,20 @@ namespace Platform.Collections.Methods.Trees
             }
         }
 
+        /// <summary>
+        /// <para>
+        /// Gets the next using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The current.</para>
+        /// <para></para>
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected override TElement GetNext(TElement node)
         {
@@ -354,6 +630,20 @@ namespace Platform.Collections.Methods.Trees
             return current;
         }
 
+        /// <summary>
+        /// <para>
+        /// Gets the previous using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The current.</para>
+        /// <para></para>
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected override TElement GetPrevious(TElement node)
         {
@@ -365,6 +655,28 @@ namespace Platform.Collections.Methods.Trees
             return current;
         }
 
+        /// <summary>
+        /// <para>
+        /// Detaches the core using the specified root.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="root">
+        /// <para>The root.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <exception cref="InvalidOperationException">
+        /// <para>Cannot find a node.</para>
+        /// <para></para>
+        /// </exception>
+        /// <exception cref="InvalidOperationException">
+        /// <para>Cannot find a node.</para>
+        /// <para></para>
+        /// </exception>
         protected override void DetachCore(ref TElement root, TElement node)
         {
             unchecked
@@ -582,6 +894,16 @@ namespace Platform.Collections.Methods.Trees
             }
         }
 
+        /// <summary>
+        /// <para>
+        /// Clears the node using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected override void ClearNode(TElement node)
         {

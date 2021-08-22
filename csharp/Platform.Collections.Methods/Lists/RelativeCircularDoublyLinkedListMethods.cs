@@ -1,9 +1,34 @@
-﻿#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace Platform.Collections.Methods.Lists
 {
+    /// <summary>
+    /// <para>
+    /// Represents the relative circular doubly linked list methods.
+    /// </para>
+    /// <para></para>
+    /// </summary>
+    /// <seealso cref="RelativeDoublyLinkedListMethodsBase{TElement}"/>
     public abstract class RelativeCircularDoublyLinkedListMethods<TElement> : RelativeDoublyLinkedListMethodsBase<TElement>
     {
+        /// <summary>
+        /// <para>
+        /// Attaches the before using the specified head element.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="headElement">
+        /// <para>The head element.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="baseElement">
+        /// <para>The base element.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="newElement">
+        /// <para>The new element.</para>
+        /// <para></para>
+        /// </param>
         public void AttachBefore(TElement headElement, TElement baseElement, TElement newElement)
         {
             var baseElementPrevious = GetPrevious(baseElement);
@@ -18,6 +43,24 @@ namespace Platform.Collections.Methods.Lists
             IncrementSize(headElement);
         }
 
+        /// <summary>
+        /// <para>
+        /// Attaches the after using the specified head element.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="headElement">
+        /// <para>The head element.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="baseElement">
+        /// <para>The base element.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="newElement">
+        /// <para>The new element.</para>
+        /// <para></para>
+        /// </param>
         public void AttachAfter(TElement headElement, TElement baseElement, TElement newElement)
         {
             var baseElementNext = GetNext(baseElement);
@@ -32,6 +75,20 @@ namespace Platform.Collections.Methods.Lists
             IncrementSize(headElement);
         }
 
+        /// <summary>
+        /// <para>
+        /// Attaches the as first using the specified head element.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="headElement">
+        /// <para>The head element.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="element">
+        /// <para>The element.</para>
+        /// <para></para>
+        /// </param>
         public void AttachAsFirst(TElement headElement, TElement element)
         {
             var first = GetFirst(headElement);
@@ -49,6 +106,20 @@ namespace Platform.Collections.Methods.Lists
             }
         }
 
+        /// <summary>
+        /// <para>
+        /// Attaches the as last using the specified head element.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="headElement">
+        /// <para>The head element.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="element">
+        /// <para>The element.</para>
+        /// <para></para>
+        /// </param>
         public void AttachAsLast(TElement headElement, TElement element)
         {
             var last = GetLast(headElement);
@@ -62,6 +133,20 @@ namespace Platform.Collections.Methods.Lists
             }
         }
 
+        /// <summary>
+        /// <para>
+        /// Detaches the head element.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="headElement">
+        /// <para>The head element.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="element">
+        /// <para>The element.</para>
+        /// <para></para>
+        /// </param>
         public void Detach(TElement headElement, TElement element)
         {
             var elementPrevious = GetPrevious(element);

@@ -1,11 +1,32 @@
-﻿using System;
+using System;
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace Platform.Collections.Methods.Trees
 {
+    /// <summary>
+    /// <para>
+    /// Represents the size balanced tree methods.
+    /// </para>
+    /// <para></para>
+    /// </summary>
+    /// <seealso cref="SizedBinaryTreeMethodsBase{TElement}"/>
     public abstract class SizeBalancedTreeMethods<TElement> : SizedBinaryTreeMethodsBase<TElement>
     {
+        /// <summary>
+        /// <para>
+        /// Attaches the core using the specified root.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="root">
+        /// <para>The root.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
         protected override void AttachCore(ref TElement root, TElement node)
         {
             if (EqualToZero(root))
@@ -29,6 +50,24 @@ namespace Platform.Collections.Methods.Trees
             }
         }
 
+        /// <summary>
+        /// <para>
+        /// Detaches the core using the specified root.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="root">
+        /// <para>The root.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="nodeToDetach">
+        /// <para>The node to detach.</para>
+        /// <para></para>
+        /// </param>
+        /// <exception cref="InvalidOperationException">
+        /// <para>Duplicate link found in the tree.</para>
+        /// <para></para>
+        /// </exception>
         protected override void DetachCore(ref TElement root, TElement nodeToDetach)
         {
             ref var currentNode = ref root;
@@ -94,6 +133,16 @@ namespace Platform.Collections.Methods.Trees
             ClearNode(nodeToDetach);
         }
 
+        /// <summary>
+        /// <para>
+        /// Lefts the maintain using the specified root.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="root">
+        /// <para>The root.</para>
+        /// <para></para>
+        /// </param>
         private void LeftMaintain(ref TElement root)
         {
             if (!EqualToZero(root))
@@ -131,6 +180,16 @@ namespace Platform.Collections.Methods.Trees
             }
         }
 
+        /// <summary>
+        /// <para>
+        /// Rights the maintain using the specified root.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="root">
+        /// <para>The root.</para>
+        /// <para></para>
+        /// </param>
         private void RightMaintain(ref TElement root)
         {
             if (!EqualToZero(root))

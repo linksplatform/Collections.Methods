@@ -1,9 +1,30 @@
-﻿#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace Platform.Collections.Methods.Lists
 {
+    /// <summary>
+    /// <para>
+    /// Represents the absolute circular doubly linked list methods.
+    /// </para>
+    /// <para></para>
+    /// </summary>
+    /// <seealso cref="AbsoluteDoublyLinkedListMethodsBase{TElement}"/>
     public abstract class AbsoluteCircularDoublyLinkedListMethods<TElement> : AbsoluteDoublyLinkedListMethodsBase<TElement>
     {
+        /// <summary>
+        /// <para>
+        /// Attaches the before using the specified base element.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="baseElement">
+        /// <para>The base element.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="newElement">
+        /// <para>The new element.</para>
+        /// <para></para>
+        /// </param>
         public void AttachBefore(TElement baseElement, TElement newElement)
         {
             var baseElementPrevious = GetPrevious(baseElement);
@@ -18,6 +39,20 @@ namespace Platform.Collections.Methods.Lists
             IncrementSize();
         }
 
+        /// <summary>
+        /// <para>
+        /// Attaches the after using the specified base element.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="baseElement">
+        /// <para>The base element.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="newElement">
+        /// <para>The new element.</para>
+        /// <para></para>
+        /// </param>
         public void AttachAfter(TElement baseElement, TElement newElement)
         {
             var baseElementNext = GetNext(baseElement);
@@ -32,6 +67,16 @@ namespace Platform.Collections.Methods.Lists
             IncrementSize();
         }
 
+        /// <summary>
+        /// <para>
+        /// Attaches the as first using the specified element.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="element">
+        /// <para>The element.</para>
+        /// <para></para>
+        /// </param>
         public void AttachAsFirst(TElement element)
         {
             var first = GetFirst();
@@ -49,6 +94,16 @@ namespace Platform.Collections.Methods.Lists
             }
         }
 
+        /// <summary>
+        /// <para>
+        /// Attaches the as last using the specified element.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="element">
+        /// <para>The element.</para>
+        /// <para></para>
+        /// </param>
         public void AttachAsLast(TElement element)
         {
             var last = GetLast();
@@ -62,6 +117,16 @@ namespace Platform.Collections.Methods.Lists
             }
         }
 
+        /// <summary>
+        /// <para>
+        /// Detaches the element.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="element">
+        /// <para>The element.</para>
+        /// <para></para>
+        /// </param>
         public void Detach(TElement element)
         {
             var elementPrevious = GetPrevious(element);

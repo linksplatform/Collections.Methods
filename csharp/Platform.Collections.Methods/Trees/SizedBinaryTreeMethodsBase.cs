@@ -1,4 +1,4 @@
-﻿//#define ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
+//#define ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
 
 using System;
 using System.Diagnostics;
@@ -10,65 +10,344 @@ using Platform.Numbers;
 
 namespace Platform.Collections.Methods.Trees
 {
+    /// <summary>
+    /// <para>
+    /// Represents the sized binary tree methods base.
+    /// </para>
+    /// <para></para>
+    /// </summary>
+    /// <seealso cref="GenericCollectionMethodsBase{TElement}"/>
     public abstract class SizedBinaryTreeMethodsBase<TElement> : GenericCollectionMethodsBase<TElement>
     {
+        /// <summary>
+        /// <para>
+        /// Gets the left reference using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The ref element</para>
+        /// <para></para>
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract ref TElement GetLeftReference(TElement node);
 
+        /// <summary>
+        /// <para>
+        /// Gets the right reference using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The ref element</para>
+        /// <para></para>
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract ref TElement GetRightReference(TElement node);
 
+        /// <summary>
+        /// <para>
+        /// Gets the left using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The element</para>
+        /// <para></para>
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract TElement GetLeft(TElement node);
 
+        /// <summary>
+        /// <para>
+        /// Gets the right using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The element</para>
+        /// <para></para>
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract TElement GetRight(TElement node);
 
+        /// <summary>
+        /// <para>
+        /// Gets the size using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The element</para>
+        /// <para></para>
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract TElement GetSize(TElement node);
 
+        /// <summary>
+        /// <para>
+        /// Sets the left using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="left">
+        /// <para>The left.</para>
+        /// <para></para>
+        /// </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract void SetLeft(TElement node, TElement left);
 
+        /// <summary>
+        /// <para>
+        /// Sets the right using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="right">
+        /// <para>The right.</para>
+        /// <para></para>
+        /// </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract void SetRight(TElement node, TElement right);
 
+        /// <summary>
+        /// <para>
+        /// Sets the size using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="size">
+        /// <para>The size.</para>
+        /// <para></para>
+        /// </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract void SetSize(TElement node, TElement size);
 
+        /// <summary>
+        /// <para>
+        /// Determines whether this instance first is to the left of second.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="first">
+        /// <para>The first.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="second">
+        /// <para>The second.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The bool</para>
+        /// <para></para>
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract bool FirstIsToTheLeftOfSecond(TElement first, TElement second);
 
+        /// <summary>
+        /// <para>
+        /// Determines whether this instance first is to the right of second.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="first">
+        /// <para>The first.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="second">
+        /// <para>The second.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The bool</para>
+        /// <para></para>
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract bool FirstIsToTheRightOfSecond(TElement first, TElement second);
 
+        /// <summary>
+        /// <para>
+        /// Gets the left or default using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The element</para>
+        /// <para></para>
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual TElement GetLeftOrDefault(TElement node) => AreEqual(node, default) ? default : GetLeft(node);
 
+        /// <summary>
+        /// <para>
+        /// Gets the right or default using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The element</para>
+        /// <para></para>
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual TElement GetRightOrDefault(TElement node) => AreEqual(node, default) ? default : GetRight(node);
 
+        /// <summary>
+        /// <para>
+        /// Increments the size using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected void IncrementSize(TElement node) => SetSize(node, Increment(GetSize(node)));
 
+        /// <summary>
+        /// <para>
+        /// Decrements the size using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected void DecrementSize(TElement node) => SetSize(node, Decrement(GetSize(node)));
 
+        /// <summary>
+        /// <para>
+        /// Gets the left size using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The element</para>
+        /// <para></para>
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected TElement GetLeftSize(TElement node) => GetSizeOrZero(GetLeftOrDefault(node));
 
+        /// <summary>
+        /// <para>
+        /// Gets the right size using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The element</para>
+        /// <para></para>
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected TElement GetRightSize(TElement node) => GetSizeOrZero(GetRightOrDefault(node));
 
+        /// <summary>
+        /// <para>
+        /// Gets the size or zero using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The element</para>
+        /// <para></para>
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected TElement GetSizeOrZero(TElement node) => EqualToZero(node) ? Zero : GetSize(node);
 
+        /// <summary>
+        /// <para>
+        /// Fixes the size using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected void FixSize(TElement node) => SetSize(node, Increment(Add(GetLeftSize(node), GetRightSize(node))));
 
+        /// <summary>
+        /// <para>
+        /// Lefts the rotate using the specified root.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="root">
+        /// <para>The root.</para>
+        /// <para></para>
+        /// </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected void LeftRotate(ref TElement root) => root = LeftRotate(root);
 
+        /// <summary>
+        /// <para>
+        /// Lefts the rotate using the specified root.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="root">
+        /// <para>The root.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The right.</para>
+        /// <para></para>
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected TElement LeftRotate(TElement root)
         {
@@ -86,9 +365,33 @@ namespace Platform.Collections.Methods.Trees
             return right;
         }
 
+        /// <summary>
+        /// <para>
+        /// Rights the rotate using the specified root.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="root">
+        /// <para>The root.</para>
+        /// <para></para>
+        /// </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected void RightRotate(ref TElement root) => root = RightRotate(root);
 
+        /// <summary>
+        /// <para>
+        /// Rights the rotate using the specified root.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="root">
+        /// <para>The root.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The left.</para>
+        /// <para></para>
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected TElement RightRotate(TElement root)
         {
@@ -106,6 +409,20 @@ namespace Platform.Collections.Methods.Trees
             return left;
         }
 
+        /// <summary>
+        /// <para>
+        /// Gets the rightest using the specified current.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="current">
+        /// <para>The current.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The current.</para>
+        /// <para></para>
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual TElement GetRightest(TElement current)
         {
@@ -118,6 +435,20 @@ namespace Platform.Collections.Methods.Trees
             return current;
         }
 
+        /// <summary>
+        /// <para>
+        /// Gets the leftest using the specified current.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="current">
+        /// <para>The current.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The current.</para>
+        /// <para></para>
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual TElement GetLeftest(TElement current)
         {
@@ -130,12 +461,58 @@ namespace Platform.Collections.Methods.Trees
             return current;
         }
 
+        /// <summary>
+        /// <para>
+        /// Gets the next using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The element</para>
+        /// <para></para>
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual TElement GetNext(TElement node) => GetLeftest(GetRight(node));
 
+        /// <summary>
+        /// <para>
+        /// Gets the previous using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The element</para>
+        /// <para></para>
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual TElement GetPrevious(TElement node) => GetRightest(GetLeft(node));
 
+        /// <summary>
+        /// <para>
+        /// Determines whether this instance contains.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="root">
+        /// <para>The root.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The bool</para>
+        /// <para></para>
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public virtual bool Contains(TElement node, TElement root)
         {
@@ -157,6 +534,16 @@ namespace Platform.Collections.Methods.Trees
             return false;
         }
 
+        /// <summary>
+        /// <para>
+        /// Clears the node using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual void ClearNode(TElement node)
         {
@@ -165,6 +552,20 @@ namespace Platform.Collections.Methods.Trees
             SetSize(node, Zero);
         }
 
+        /// <summary>
+        /// <para>
+        /// Attaches the root.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="root">
+        /// <para>The root.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Attach(ref TElement root, TElement node)
         {
@@ -195,8 +596,36 @@ namespace Platform.Collections.Methods.Trees
 #endif
         }
 
+        /// <summary>
+        /// <para>
+        /// Attaches the core using the specified root.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="root">
+        /// <para>The root.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
         protected abstract void AttachCore(ref TElement root, TElement node);
 
+        /// <summary>
+        /// <para>
+        /// Detaches the root.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="root">
+        /// <para>The root.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Detach(ref TElement root, TElement node)
         {
@@ -225,8 +654,32 @@ namespace Platform.Collections.Methods.Trees
 #endif
         }
 
+        /// <summary>
+        /// <para>
+        /// Detaches the core using the specified root.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="root">
+        /// <para>The root.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
         protected abstract void DetachCore(ref TElement root, TElement node);
 
+        /// <summary>
+        /// <para>
+        /// Fixes the sizes using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
         public void FixSizes(TElement node)
         {
             if (AreEqual(node, default))
@@ -238,6 +691,20 @@ namespace Platform.Collections.Methods.Trees
             FixSize(node);
         }
 
+        /// <summary>
+        /// <para>
+        /// Validates the sizes using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <exception cref="InvalidOperationException">
+        /// <para>Size of {node} is not valid. Expected size: {expectedSize}, actual size: {size}.</para>
+        /// <para></para>
+        /// </exception>
         public void ValidateSizes(TElement node)
         {
             if (AreEqual(node, default))
@@ -256,6 +723,20 @@ namespace Platform.Collections.Methods.Trees
             ValidateSizes(GetRight(node));
         }
 
+        /// <summary>
+        /// <para>
+        /// Validates the size using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <exception cref="InvalidOperationException">
+        /// <para>Size of {node} is not valid. Expected size: {expectedSize}, actual size: {size}.</para>
+        /// <para></para>
+        /// </exception>
         public void ValidateSize(TElement node)
         {
             var size = GetSize(node);
@@ -268,6 +749,20 @@ namespace Platform.Collections.Methods.Trees
             }
         }
 
+        /// <summary>
+        /// <para>
+        /// Prints the nodes using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The string</para>
+        /// <para></para>
+        /// </returns>
         public string PrintNodes(TElement node)
         {
             var sb = new StringBuilder();
@@ -275,9 +770,41 @@ namespace Platform.Collections.Methods.Trees
             return sb.ToString();
         }
 
+        /// <summary>
+        /// <para>
+        /// Prints the nodes using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="sb">
+        /// <para>The sb.</para>
+        /// <para></para>
+        /// </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void PrintNodes(TElement node, StringBuilder sb) => PrintNodes(node, sb, 0);
 
+        /// <summary>
+        /// <para>
+        /// Prints the nodes using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="sb">
+        /// <para>The sb.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="level">
+        /// <para>The level.</para>
+        /// <para></para>
+        /// </param>
         public void PrintNodes(TElement node, StringBuilder sb, int level)
         {
             if (AreEqual(node, default))
@@ -290,6 +817,20 @@ namespace Platform.Collections.Methods.Trees
             PrintNodes(GetRight(node), sb, level + 1);
         }
 
+        /// <summary>
+        /// <para>
+        /// Prints the node using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The string</para>
+        /// <para></para>
+        /// </returns>
         public string PrintNode(TElement node)
         {
             var sb = new StringBuilder();
@@ -297,9 +838,41 @@ namespace Platform.Collections.Methods.Trees
             return sb.ToString();
         }
 
+        /// <summary>
+        /// <para>
+        /// Prints the node using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="sb">
+        /// <para>The sb.</para>
+        /// <para></para>
+        /// </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected void PrintNode(TElement node, StringBuilder sb) => PrintNode(node, sb, 0);
 
+        /// <summary>
+        /// <para>
+        /// Prints the node using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="sb">
+        /// <para>The sb.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="level">
+        /// <para>The level.</para>
+        /// <para></para>
+        /// </param>
         protected virtual void PrintNode(TElement node, StringBuilder sb, int level)
         {
             sb.Append('\t', level);
@@ -310,6 +883,20 @@ namespace Platform.Collections.Methods.Trees
             sb.Append(GetSize(node));
         }
 
+        /// <summary>
+        /// <para>
+        /// Prints the node value using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="sb">
+        /// <para>The sb.</para>
+        /// <para></para>
+        /// </param>
         protected abstract void PrintNodeValue(TElement node, StringBuilder sb);
     }
 }
