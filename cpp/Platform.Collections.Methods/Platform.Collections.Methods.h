@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef Platform_Collections_Methods
-#define Platform_Collections_Methods
-
 #include <cstdint>
 
 #include "GenericCollectionMethodsBase.h"
@@ -19,5 +16,3 @@
 #include "Trees/RecursionlessSizeBalancedTreeMethods.h"
 #include "Trees/SizeBalancedTreeMethods.h"
 #include "Trees/SizedAndThreadedAVLBalancedTreeMethods.h"
-
-#endif
