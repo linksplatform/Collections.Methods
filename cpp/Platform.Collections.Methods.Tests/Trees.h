@@ -1,5 +1,4 @@
-#ifndef TREES
-#define TREES
+#pragma once
 
 #include <functional>
 #include <unordered_set>
@@ -21,5 +20,3 @@ bool iszero(void* ptr, int bytes)
 #include "SizeBalancedTree.cpp"
 #include "SizedAndThreadedAVLBalancedTree.cpp"
 #include "TestExtensions.cpp"
-
-#endif // Trees
