@@ -19,6 +19,12 @@ namespace Platform.Collections.Methods.Trees
     /// </remarks>
     public abstract class SizedAndThreadedAVLBalancedTreeMethods<TElement> : SizedBinaryTreeMethodsBase<TElement>
     {
+        /// <summary>
+        /// <para>
+        /// The bytes size.
+        /// </para>
+        /// <para></para>
+        /// </summary>
         private static readonly int _maxPath = 11 * NumericType<TElement>.BytesSize + 4;
 
         /// <summary>
@@ -429,6 +435,21 @@ namespace Platform.Collections.Methods.Trees
 #endif
             }
         }
+
+        /// <summary>
+        /// <para>
+        /// Balances the node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The element</para>
+        /// <para></para>
+        /// </returns>
         private TElement Balance(TElement node)
         {
             unchecked

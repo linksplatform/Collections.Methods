@@ -10,6 +10,12 @@ namespace Platform.Collections.Methods.Tests
     /// </summary>
     public static class TreesTests
     {
+        /// <summary>
+        /// <para>
+        /// The .
+        /// </para>
+        /// <para></para>
+        /// </summary>
         private const int _n = 500;
 
         /// <summary>

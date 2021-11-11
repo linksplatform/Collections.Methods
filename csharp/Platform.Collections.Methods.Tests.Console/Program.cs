@@ -2,6 +2,12 @@ using Platform.Diagnostics;
 
 namespace Platform.Collections.Methods.Tests.Console
 {
+    /// <summary>
+    /// <para>
+    /// Represents the program.
+    /// </para>
+    /// <para></para>
+    /// </summary>
     class Program
     {
         /// <summary>

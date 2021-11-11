@@ -132,6 +132,17 @@ namespace Platform.Collections.Methods.Trees
             }
             ClearNode(nodeToDetach);
         }
+
+        /// <summary>
+        /// <para>
+        /// Lefts the maintain using the specified root.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="root">
+        /// <para>The root.</para>
+        /// <para></para>
+        /// </param>
         private void LeftMaintain(ref TElement root)
         {
             if (!EqualToZero(root))
@@ -168,6 +179,17 @@ namespace Platform.Collections.Methods.Trees
                 }
             }
         }
+
+        /// <summary>
+        /// <para>
+        /// Rights the maintain using the specified root.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="root">
+        /// <para>The root.</para>
+        /// <para></para>
+        /// </param>
         private void RightMaintain(ref TElement root)
         {
             if (!EqualToZero(root))

@@ -16,6 +16,12 @@ namespace Platform.Collections.Methods.Tests
     /// <seealso cref="RecursionlessSizeBalancedTreeMethods{TElement}"/>
     public class RecursionlessSizeBalancedTree<TElement> : RecursionlessSizeBalancedTreeMethods<TElement>
     {
+        /// <summary>
+        /// <para>
+        /// The tree element.
+        /// </para>
+        /// <para></para>
+        /// </summary>
         private struct TreeElement
         {
             /// <summary>
@@ -40,7 +46,20 @@ namespace Platform.Collections.Methods.Tests
             /// </summary>
             public TElement Right;
         }
+
+        /// <summary>
+        /// <para>
+        /// The elements.
+        /// </para>
+        /// <para></para>
+        /// </summary>
         private readonly TreeElement[] _elements;
+        /// <summary>
+        /// <para>
+        /// The allocated.
+        /// </para>
+        /// <para></para>
+        /// </summary>
         private TElement _allocated;
 
         /// <summary>
@@ -325,6 +344,21 @@ namespace Platform.Collections.Methods.Tests
         /// <para></para>
         /// </param>
         protected override void SetSize(TElement node, TElement size) => GetElement(node).Size = size;
+
+        /// <summary>
+        /// <para>
+        /// Gets the element using the specified node.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The ref tree element</para>
+        /// <para></para>
+        /// </returns>
         private ref TreeElement GetElement(TElement node) => ref _elements[UncheckedConverter<TElement, long>.Default.Convert(node)];
     }
 }
