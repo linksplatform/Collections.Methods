@@ -23,21 +23,4 @@ Better translation from C#.</releaseNotes>
       <group targetFramework="native"></group>
     </dependencies>
   </metadata>
-  <files>
-    <file src="icon.png" target="images/icon.png" />
-    <file src="Platform.Collections.Methods.TemplateLibrary.targets" target="build\native\Platform.Collections.Methods.TemplateLibrary.targets" />
-    <file src="Platform.Collections.Methods.h" target="lib\native\include\Platform.Collections.Methods.h" />
-    <file src="Lists\AbsoluteCircularDoublyLinkedListMethods.h" target="lib\native\include\Lists\AbsoluteCircularDoublyLinkedListMethods.h" />
-		<file src="Lists\AbsoluteDoublyLinkedListMethodsBase.h" target="lib\native\include\Lists\AbsoluteDoublyLinkedListMethodsBase.h" />
-		<file src="Lists\AbsoluteOpenDoublyLinkedListMethods.h" target="lib\native\include\Lists\AbsoluteOpenDoublyLinkedListMethods.h" />
-    <file src="Lists\DoublyLinkedListMethodsBase.h" target="lib\native\include\Lists\DoublyLinkedListMethodsBase.h" />
-    <file src="Lists\RelativeCircularDoublyLinkedListMethods.h" target="lib\native\include\Lists\RelativeCircularDoublyLinkedListMethods.h" />
-		<file src="Lists\RelativeDoublyLinkedListMethodsBase.h" target="lib\native\include\Lists\RelativeDoublyLinkedListMethodsBase.h" />
-		<file src="Lists\RelativeOpenDoublyLinkedListMethods.h" target="lib\native\include\Lists\RelativeOpenDoublyLinkedListMethods.h" />
-    <file src="Trees\RecursionlessSizeBalancedTreeMethods.h" target="lib\native\include\Trees\RecursionlessSizeBalancedTreeMethods.h" />
-    <file src="Trees\SizeBalancedTreeMethods.h" target="lib\native\include\Trees\SizeBalancedTreeMethods.h" />
-    <file src="Trees\SizedAndThreadedAVLBalancedTreeMethods.h" target="lib\native\include\Trees\SizedAndThreadedAVLBalancedTreeMethods.h" />
-    <file src="Trees\SizedBinaryTreeMethodsBase.h" target="lib\native\include\Trees\SizedBinaryTreeMethodsBase.h" />
-    <file src="GenericCollectionMethodsBase.h" target="lib\native\include\GenericCollectionMethodsBase.h" />
-  </files>
 </package>
