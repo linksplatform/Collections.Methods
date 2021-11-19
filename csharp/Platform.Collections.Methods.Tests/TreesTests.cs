@@ -2,22 +2,10 @@ using Xunit;
 
 namespace Platform.Collections.Methods.Tests
 {
-    /// <summary>
-    /// <para>
-    /// Represents the trees tests.
-    /// </para>
-    /// <para></para>
-    /// </summary>
     public static class TreesTests
     {
         private const int _n = 500;
 
-        /// <summary>
-        /// <para>
-        /// Tests that recursionless size balanced tree multiple attach and detach test.
-        /// </para>
-        /// <para></para>
-        /// </summary>
         [Fact]
         public static void RecursionlessSizeBalancedTreeMultipleAttachAndDetachTest()
         {
@@ -25,12 +13,6 @@ namespace Platform.Collections.Methods.Tests
             recursionlessSizeBalancedTree.TestMultipleCreationsAndDeletions(recursionlessSizeBalancedTree.Allocate, recursionlessSizeBalancedTree.Free, ref recursionlessSizeBalancedTree.Root, () => recursionlessSizeBalancedTree.Count, _n);
         }
 
-        /// <summary>
-        /// <para>
-        /// Tests that size balanced tree multiple attach and detach test.
-        /// </para>
-        /// <para></para>
-        /// </summary>
         [Fact]
         public static void SizeBalancedTreeMultipleAttachAndDetachTest()
         {
@@ -38,12 +20,6 @@ namespace Platform.Collections.Methods.Tests
             sizeBalancedTree.TestMultipleCreationsAndDeletions(sizeBalancedTree.Allocate, sizeBalancedTree.Free, ref sizeBalancedTree.Root, () => sizeBalancedTree.Count, _n);
         }
 
-        /// <summary>
-        /// <para>
-        /// Tests that sized and threaded avl balanced tree multiple attach and detach test.
-        /// </para>
-        /// <para></para>
-        /// </summary>
         [Fact]
         public static void SizedAndThreadedAVLBalancedTreeMultipleAttachAndDetachTest()
         {
@@ -51,12 +27,6 @@ namespace Platform.Collections.Methods.Tests
             avlTree.TestMultipleCreationsAndDeletions(avlTree.Allocate, avlTree.Free, ref avlTree.Root, () => avlTree.Count, _n);
         }
 
-        /// <summary>
-        /// <para>
-        /// Tests that recursionless size balanced tree multiple random attach and detach test.
-        /// </para>
-        /// <para></para>
-        /// </summary>
         [Fact]
         public static void RecursionlessSizeBalancedTreeMultipleRandomAttachAndDetachTest()
         {
@@ -64,12 +34,6 @@ namespace Platform.Collections.Methods.Tests
             recursionlessSizeBalancedTree.TestMultipleRandomCreationsAndDeletions(ref recursionlessSizeBalancedTree.Root, () => recursionlessSizeBalancedTree.Count, _n);
         }
 
-        /// <summary>
-        /// <para>
-        /// Tests that size balanced tree multiple random attach and detach test.
-        /// </para>
-        /// <para></para>
-        /// </summary>
         [Fact]
         public static void SizeBalancedTreeMultipleRandomAttachAndDetachTest()
         {
@@ -77,12 +41,6 @@ namespace Platform.Collections.Methods.Tests
             sizeBalancedTree.TestMultipleRandomCreationsAndDeletions(ref sizeBalancedTree.Root, () => sizeBalancedTree.Count, _n);
         }
 
-        /// <summary>
-        /// <para>
-        /// Tests that sized and threaded avl balanced tree multiple random attach and detach test.
-        /// </para>
-        /// <para></para>
-        /// </summary>
         [Fact]
         public static void SizedAndThreadedAVLBalancedTreeMultipleRandomAttachAndDetachTest()
         {
