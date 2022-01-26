@@ -3,28 +3,29 @@
     template <typename ...> class SizeBalancedTreeMethods;
     template <typename impl_t, typename TElement> class SizeBalancedTreeMethods<impl_t, TElement> : public SizedBinaryTreeMethodsBase<impl_t, TElement>
     {
-        using base_t = SizedBinaryTreeMethodsBase<impl_t, TElement>;
-        friend base_t;
+        using base = SizedBinaryTreeMethodsBase<impl_t, TElement>;
+        friend base;
+        using Polymorph<impl_t>::object;
 
         protected: void AttachCore(TElement* root, TElement node)
         {
             if (*root == 0)
             {
                 *root = node;
-                static_cast<impl_t*>(this)->IncrementSize(*root);
+                object().IncrementSize(*root);
             }
             else
             {
-                static_cast<impl_t*>(this)->IncrementSize(*root);
-                if (static_cast<impl_t*>(this)->FirstIsToTheLeftOfSecond(node, *root))
+                object().IncrementSize(*root);
+                if (object().FirstIsToTheLeftOfSecond(node, *root))
                 {
-                    static_cast<impl_t*>(this)->AttachCore(static_cast<impl_t*>(this)->GetLeftReference(*root), node);
-                    static_cast<impl_t*>(this)->LeftMaintain(root);
+                    object().AttachCore(object().GetLeftReference(*root), node);
+                    object().LeftMaintain(root);
                 }
                 else
                 {
-                    static_cast<impl_t*>(this)->AttachCore(static_cast<impl_t*>(this)->GetRightReference(*root), node);
-                    static_cast<impl_t*>(this)->RightMaintain(root);
+                    object().AttachCore(object().GetRightReference(*root), node);
+                    object().RightMaintain(root);
                 }
             }
         }
@@ -36,38 +37,38 @@
             auto replacementNode = 0;
             while (*currentNode != nodeToDetach)
             {
-                static_cast<impl_t*>(this)->DecrementSize(*currentNode);
-                if (static_cast<impl_t*>(this)->FirstIsToTheLeftOfSecond(nodeToDetach, *currentNode))
+                object().DecrementSize(*currentNode);
+                if (object().FirstIsToTheLeftOfSecond(nodeToDetach, *currentNode))
                 {
                     parent = currentNode;
-                    currentNode = static_cast<impl_t*>(this)->GetLeftReference(*currentNode);
+                    currentNode = object().GetLeftReference(*currentNode);
                 }
-                else if (static_cast<impl_t*>(this)->FirstIsToTheRightOfSecond(nodeToDetach, *currentNode))
+                else if (object().FirstIsToTheRightOfSecond(nodeToDetach, *currentNode))
                 {
                     parent = currentNode;
-                    currentNode = static_cast<impl_t*>(this)->GetRightReference(*currentNode);
+                    currentNode = object().GetRightReference(*currentNode);
                 }
                 else
                 {
                     throw std::runtime_error("Duplicate link found in the tree.");
                 }
             }
-            auto nodeToDetachLeft = static_cast<impl_t*>(this)->GetLeft(nodeToDetach);
-            auto node = static_cast<impl_t*>(this)->GetRight(nodeToDetach);
+            auto nodeToDetachLeft = object().GetLeft(nodeToDetach);
+            auto node = object().GetRight(nodeToDetach);
             if (nodeToDetachLeft != 0 && node != 0)
             {
-                auto leftestNode = static_cast<impl_t*>(this)->GetLeftest(node);
-                static_cast<impl_t*>(this)->DetachCore(static_cast<impl_t*>(this)->GetRightReference(nodeToDetach), leftestNode);
-                static_cast<impl_t*>(this)->SetLeft(leftestNode, nodeToDetachLeft);
-                node = static_cast<impl_t*>(this)->GetRight(nodeToDetach);
+                auto leftestNode = object().GetLeftest(node);
+                object().DetachCore(object().GetRightReference(nodeToDetach), leftestNode);
+                object().SetLeft(leftestNode, nodeToDetachLeft);
+                node = object().GetRight(nodeToDetach);
                 if (node != 0)
                 {
-                    static_cast<impl_t*>(this)->SetRight(leftestNode, node);
-                    static_cast<impl_t*>(this)->SetSize(leftestNode, (static_cast<impl_t*>(this)->GetSize(nodeToDetachLeft) + static_cast<impl_t*>(this)->GetSize(node)) + 1);
+                    object().SetRight(leftestNode, node);
+                    object().SetSize(leftestNode, (object().GetSize(nodeToDetachLeft) + object().GetSize(node)) + 1);
                 }
                 else
                 {
-                    static_cast<impl_t*>(this)->SetSize(leftestNode, static_cast<impl_t*>(this)->GetSize(nodeToDetachLeft) + 1);
+                    object().SetSize(leftestNode, object().GetSize(nodeToDetachLeft) + 1);
                 }
                 replacementNode = leftestNode;
             }
@@ -83,50 +84,50 @@
             {
                 *root = replacementNode;
             }
-            else if (static_cast<impl_t*>(this)->GetLeft(*parent) == nodeToDetach)
+            else if (object().GetLeft(*parent) == nodeToDetach)
             {
-                static_cast<impl_t*>(this)->SetLeft(*parent, replacementNode);
+                object().SetLeft(*parent, replacementNode);
             }
-            else if (static_cast<impl_t*>(this)->GetRight(*parent) == nodeToDetach)
+            else if (object().GetRight(*parent) == nodeToDetach)
             {
-                static_cast<impl_t*>(this)->SetRight(*parent, replacementNode);
+                object().SetRight(*parent, replacementNode);
             }
-            static_cast<impl_t*>(this)->ClearNode(nodeToDetach);
+            object().ClearNode(nodeToDetach);
         }
 
         private: void LeftMaintain(TElement* root)
         {
             if (*root != 0)
             {
-                auto rootLeftNode = static_cast<impl_t*>(this)->GetLeft(*root);
+                auto rootLeftNode = object().GetLeft(*root);
                 if (rootLeftNode != 0)
                 {
-                    auto rootRightNode = static_cast<impl_t*>(this)->GetRight(*root);
-                    auto rootRightNodeSize = static_cast<impl_t*>(this)->GetSize(rootRightNode);
-                    auto rootLeftNodeLeftNode = static_cast<impl_t*>(this)->GetLeft(rootLeftNode);
+                    auto rootRightNode = object().GetRight(*root);
+                    auto rootRightNodeSize = object().GetSize(rootRightNode);
+                    auto rootLeftNodeLeftNode = object().GetLeft(rootLeftNode);
                     if (rootLeftNodeLeftNode != 0 &&
-                        (rootRightNode == 0 || static_cast<impl_t*>(this)->GetSize(rootLeftNodeLeftNode) > rootRightNodeSize))
+                        (rootRightNode == 0 || object().GetSize(rootLeftNodeLeftNode) > rootRightNodeSize))
                     {
-                        static_cast<impl_t*>(this)->RightRotate(root);
+                        object().RightRotate(root);
                     }
                     else
                     {
-                        auto rootLeftNodeRightNode = static_cast<impl_t*>(this)->GetRight(rootLeftNode);
+                        auto rootLeftNodeRightNode = object().GetRight(rootLeftNode);
                         if (rootLeftNodeRightNode != 0 &&
-                            (rootRightNode == 0 || static_cast<impl_t*>(this)->GetSize(rootLeftNodeRightNode) > rootRightNodeSize))
+                            (rootRightNode == 0 || object().GetSize(rootLeftNodeRightNode) > rootRightNodeSize))
                         {
-                            static_cast<impl_t*>(this)->LeftRotate(static_cast<impl_t*>(this)->GetLeftReference(*root));
-                            static_cast<impl_t*>(this)->RightRotate(root);
+                            object().LeftRotate(object().GetLeftReference(*root));
+                            object().RightRotate(root);
                         }
                         else
                         {
                             return;
                         }
                     }
-                    static_cast<impl_t*>(this)->LeftMaintain(static_cast<impl_t*>(this)->GetLeftReference(*root));
-                    static_cast<impl_t*>(this)->RightMaintain(static_cast<impl_t*>(this)->GetRightReference(*root));
-                    static_cast<impl_t*>(this)->LeftMaintain(root);
-                    static_cast<impl_t*>(this)->RightMaintain(root);
+                    object().LeftMaintain(object().GetLeftReference(*root));
+                    object().RightMaintain(object().GetRightReference(*root));
+                    object().LeftMaintain(root);
+                    object().RightMaintain(root);
                 }
             }
         }
@@ -135,35 +136,35 @@
         {
             if (*root != 0)
             {
-                auto rootRightNode = static_cast<impl_t*>(this)->GetRight(*root);
+                auto rootRightNode = object().GetRight(*root);
                 if (rootRightNode != 0)
                 {
-                    auto rootLeftNode = static_cast<impl_t*>(this)->GetLeft(*root);
-                    auto rootLeftNodeSize = static_cast<impl_t*>(this)->GetSize(rootLeftNode);
-                    auto rootRightNodeRightNode = static_cast<impl_t*>(this)->GetRight(rootRightNode);
+                    auto rootLeftNode = object().GetLeft(*root);
+                    auto rootLeftNodeSize = object().GetSize(rootLeftNode);
+                    auto rootRightNodeRightNode = object().GetRight(rootRightNode);
                     if (rootRightNodeRightNode != 0 &&
-                        (rootLeftNode == 0 || static_cast<impl_t*>(this)->GetSize(rootRightNodeRightNode) > rootLeftNodeSize))
+                        (rootLeftNode == 0 || object().GetSize(rootRightNodeRightNode) > rootLeftNodeSize))
                     {
-                        static_cast<impl_t*>(this)->LeftRotate(root);
+                        object().LeftRotate(root);
                     }
                     else
                     {
-                        auto rootRightNodeLeftNode = static_cast<impl_t*>(this)->GetLeft(rootRightNode);
+                        auto rootRightNodeLeftNode = object().GetLeft(rootRightNode);
                         if (rootRightNodeLeftNode != 0 &&
-                            (rootLeftNode == 0 || static_cast<impl_t*>(this)->GetSize(rootRightNodeLeftNode) > rootLeftNodeSize))
+                            (rootLeftNode == 0 || object().GetSize(rootRightNodeLeftNode) > rootLeftNodeSize))
                         {
-                            static_cast<impl_t*>(this)->RightRotate(static_cast<impl_t*>(this)->GetRightReference(*root));
-                            static_cast<impl_t*>(this)->LeftRotate(root);
+                            object().RightRotate(object().GetRightReference(*root));
+                            object().LeftRotate(root);
                         }
                         else
                         {
                             return;
                         }
                     }
-                    static_cast<impl_t*>(this)->LeftMaintain(static_cast<impl_t*>(this)->GetLeftReference(*root));
-                    static_cast<impl_t*>(this)->RightMaintain(static_cast<impl_t*>(this)->GetRightReference(*root));
-                    static_cast<impl_t*>(this)->LeftMaintain(root);
-                    static_cast<impl_t*>(this)->RightMaintain(root);
+                    object().LeftMaintain(object().GetLeftReference(*root));
+                    object().RightMaintain(object().GetRightReference(*root));
+                    object().LeftMaintain(root);
+                    object().RightMaintain(root);
                 }
             }
         }

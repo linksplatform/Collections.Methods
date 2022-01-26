@@ -3,9 +3,9 @@
     template <std::size_t N, typename ...> class RecursionlessSizeBalancedTree;
     template <std::size_t N, typename TElement> class RecursionlessSizeBalancedTree<N, TElement> : public Platform::Collections::Methods::Trees::RecursionlessSizeBalancedTreeMethods<RecursionlessSizeBalancedTree<N, TElement>, TElement>
     {
-        using base_t = Platform::Collections::Methods::Trees::RecursionlessSizeBalancedTreeMethods<RecursionlessSizeBalancedTree<N, TElement>, TElement>;
-        friend base_t;
-        friend base_t::base_t;
+        using base = Platform::Collections::Methods::Trees::RecursionlessSizeBalancedTreeMethods<RecursionlessSizeBalancedTree<N, TElement>, TElement>;
+        friend base;
+        friend base::base;
 
         struct TreeElement
         {

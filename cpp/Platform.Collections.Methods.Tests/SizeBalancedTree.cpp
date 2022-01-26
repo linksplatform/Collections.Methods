@@ -3,9 +3,9 @@
     template <std::size_t N, typename ...> class SizeBalancedTree;
     template <std::size_t N, typename TElement> class SizeBalancedTree<N, TElement> : public Platform::Collections::Methods::Trees::SizeBalancedTreeMethods<SizeBalancedTree<N, TElement>, TElement>
     {
-        using base_t = Platform::Collections::Methods::Trees::SizeBalancedTreeMethods<SizeBalancedTree<N, TElement>, TElement>;
-        friend base_t;
-        friend base_t::base_t;
+        using base = Platform::Collections::Methods::Trees::SizeBalancedTreeMethods<SizeBalancedTree<N, TElement>, TElement>;
+        friend base;
+        friend base::base;
 
         struct TreeElement
         {

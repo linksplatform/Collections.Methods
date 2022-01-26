@@ -6,6 +6,8 @@
 #include <cstdint>
 #include <stdexcept>
 
+#include "Polymorph.h"
+
 #include "GenericCollectionMethodsBase.h"
 
 #include "Lists/DoublyLinkedListMethodsBase.h"

@@ -3,96 +3,95 @@
     template <class impl_t, typename ...> class RelativeOpenDoublyLinkedListMethods;
     template <class impl_t, typename TElement> class RelativeOpenDoublyLinkedListMethods<impl_t, TElement> : public RelativeDoublyLinkedListMethodsBase<impl_t, TElement>
     {
-        public: using base_t = RelativeDoublyLinkedListMethodsBase<impl_t, TElement>;
-        friend base_t;
+        public: using Polymorph<impl_t>::object;
 
         public: void AttachBefore(TElement headElement, TElement baseElement, TElement newElement)
         {
-            auto baseElementPrevious = static_cast<impl_t*>(this)->GetPrevious(baseElement);
-            static_cast<impl_t*>(this)->SetPrevious(newElement, baseElementPrevious);
-            static_cast<impl_t*>(this)->SetNext(newElement, baseElement);
+            auto baseElementPrevious = object().GetPrevious(baseElement);
+            object().SetPrevious(newElement, baseElementPrevious);
+            object().SetNext(newElement, baseElement);
             if (baseElementPrevious == 0)
             {
-                static_cast<impl_t*>(this)->SetFirst(headElement, newElement);
+                object().SetFirst(headElement, newElement);
             }
             else
             {
-                static_cast<impl_t*>(this)->SetNext(baseElementPrevious, newElement);
+                object().SetNext(baseElementPrevious, newElement);
             }
-            static_cast<impl_t*>(this)->SetPrevious(baseElement, newElement);
-            static_cast<impl_t*>(this)->IncrementSize(headElement);
+            object().SetPrevious(baseElement, newElement);
+            object().IncrementSize(headElement);
         }
 
         public: void AttachAfter(TElement headElement, TElement baseElement, TElement newElement)
         {
-            auto baseElementNext = static_cast<impl_t*>(this)->GetNext(baseElement);
-            static_cast<impl_t*>(this)->SetPrevious(newElement, baseElement);
-            static_cast<impl_t*>(this)->SetNext(newElement, baseElementNext);
+            auto baseElementNext = object().GetNext(baseElement);
+            object().SetPrevious(newElement, baseElement);
+            object().SetNext(newElement, baseElementNext);
             if (baseElementNext == 0)
             {
-                static_cast<impl_t*>(this)->SetLast(headElement, newElement);
+                object().SetLast(headElement, newElement);
             }
             else
             {
-                static_cast<impl_t*>(this)->SetPrevious(baseElementNext, newElement);
+                object().SetPrevious(baseElementNext, newElement);
             }
-            static_cast<impl_t*>(this)->SetNext(baseElement, newElement);
-            static_cast<impl_t*>(this)->IncrementSize(headElement);
+            object().SetNext(baseElement, newElement);
+            object().IncrementSize(headElement);
         }
 
         public: void AttachAsFirst(TElement headElement, TElement element)
         {
-            auto first = static_cast<impl_t*>(this)->GetFirst(headElement);
+            auto first = object().GetFirst(headElement);
             if (first == 0)
             {
-                static_cast<impl_t*>(this)->SetFirst(headElement, element);
-                static_cast<impl_t*>(this)->SetLast(headElement, element);
-                static_cast<impl_t*>(this)->SetPrevious(element, 0);
-                static_cast<impl_t*>(this)->SetNext(element, 0);
-                static_cast<impl_t*>(this)->IncrementSize(headElement);
+                object().SetFirst(headElement, element);
+                object().SetLast(headElement, element);
+                object().SetPrevious(element, 0);
+                object().SetNext(element, 0);
+                object().IncrementSize(headElement);
             }
             else
             {
-                static_cast<impl_t*>(this)->AttachBefore(headElement, first, element);
+                object().AttachBefore(headElement, first, element);
             }
         }
 
         public: void AttachAsLast(TElement headElement, TElement element)
         {
-            auto last = static_cast<impl_t*>(this)->GetLast(headElement);
+            auto last = object().GetLast(headElement);
             if (last == 0)
             {
-                static_cast<impl_t*>(this)->AttachAsFirst(headElement, element);
+                object().AttachAsFirst(headElement, element);
             }
             else
             {
-                static_cast<impl_t*>(this)->AttachAfter(headElement, last, element);
+                object().AttachAfter(headElement, last, element);
             }
         }
 
         public: void Detach(TElement headElement, TElement element)
         {
-            auto elementPrevious = static_cast<impl_t*>(this)->GetPrevious(element);
-            auto elementNext = static_cast<impl_t*>(this)->GetNext(element);
+            auto elementPrevious = object().GetPrevious(element);
+            auto elementNext = object().GetNext(element);
             if (elementPrevious == 0)
             {
-                static_cast<impl_t*>(this)->SetFirst(headElement, elementNext);
+                object().SetFirst(headElement, elementNext);
             }
             else
             {
-                static_cast<impl_t*>(this)->SetNext(elementPrevious, elementNext);
+                object().SetNext(elementPrevious, elementNext);
             }
             if (elementNext == 0)
             {
-                static_cast<impl_t*>(this)->SetLast(headElement, elementPrevious);
+                object().SetLast(headElement, elementPrevious);
             }
             else
             {
-                static_cast<impl_t*>(this)->SetPrevious(elementNext, elementPrevious);
+                object().SetPrevious(elementNext, elementPrevious);
             }
-            static_cast<impl_t*>(this)->SetPrevious(element, 0);
-            static_cast<impl_t*>(this)->SetNext(element, 0);
-            static_cast<impl_t*>(this)->DecrementSize(headElement);
+            object().SetPrevious(element, 0);
+            object().SetNext(element, 0);
+            object().DecrementSize(headElement);
         }
     };
 }

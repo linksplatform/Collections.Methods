@@ -3,23 +3,22 @@
     template <class impl_t, typename ...> class AbsoluteDoublyLinkedListMethodsBase;
     template <class impl_t, typename TElement> class AbsoluteDoublyLinkedListMethodsBase<impl_t, TElement> : public DoublyLinkedListMethodsBase<impl_t, TElement>
     {
-        public: using base_t = DoublyLinkedListMethodsBase<impl_t, TElement>;
-        friend base_t;
+        public: using Polymorph<impl_t>::object;
 
-        protected: TElement GetFirst() { return static_cast<impl_t*>(this)->GetFirst(); };
+        protected: TElement GetFirst() { return object().GetFirst(); };
 
-        protected: TElement GetLast() { return static_cast<impl_t*>(this)->GetLast(); };
+        protected: TElement GetLast() { return object().GetLast(); };
 
-        protected: TElement GetSize() { return static_cast<impl_t*>(this)->GetSize(); };
+        protected: TElement GetSize() { return object().GetSize(); };
 
-        protected: void SetFirst(TElement element) { static_cast<impl_t*>(this)->SetFirst(element); };
+        protected: void SetFirst(TElement element) { object().SetFirst(element); };
 
-        protected: void SetLast(TElement element) { static_cast<impl_t*>(this)->SetLast(element); };
+        protected: void SetLast(TElement element) { object().SetLast(element); };
 
-        protected: void SetSize(TElement size) { static_cast<impl_t*>(this)->SetSize(size); };
+        protected: void SetSize(TElement size) { object().SetSize(size); };
 
-        protected: void IncrementSize() { static_cast<impl_t*>(this)->SetSize(static_cast<impl_t*>(this)->GetSize() + 1); }
+        protected: void IncrementSize() { object().SetSize(object().GetSize() + 1); }
 
-        protected: void DecrementSize() { static_cast<impl_t*>(this)->SetSize(static_cast<impl_t*>(this)->GetSize() - 1); }
+        protected: void DecrementSize() { object().SetSize(object().GetSize() - 1); }
     };
 }
