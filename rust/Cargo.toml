@@ -1,0 +1,16 @@
+[package]
+name = "platform-treesmethods"
+version = "0.1.0-aplha.1"
+edition = "2018"
+authors = ["uselesssgoddess", "Linksplatform Team <linksplatformtechnologies@gmail.com>"]
+license = "LGPL-3.0"
+repository = "https://github.com/linksplatform/platform-rs"
+homepage = "https://github.com/linksplatform/platform-rs"
+description = """
+Trees methods for linksplatform
+"""
+
+[dependencies]
+num-traits = "0.2.14"
+
+platform-num = { version = "0.1.0-aplha.0" }
