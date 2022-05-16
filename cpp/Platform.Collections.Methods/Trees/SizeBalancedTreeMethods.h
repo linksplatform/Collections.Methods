@@ -3,9 +3,11 @@
     template <typename ...> class SizeBalancedTreeMethods;
     template <typename impl_t, typename TElement> class SizeBalancedTreeMethods<impl_t, TElement> : public SizedBinaryTreeMethodsBase<impl_t, TElement>
     {
+
+      public:
+        using Polymorph<impl_t>::object;
         using base = SizedBinaryTreeMethodsBase<impl_t, TElement>;
         friend base;
-        using Polymorph<impl_t>::object;
 
         protected: void AttachCore(TElement* root, TElement node)
         {
