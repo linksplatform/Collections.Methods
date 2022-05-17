@@ -3,6 +3,7 @@
     template <class impl_t, typename ...> class RecursionlessSizeBalancedTreeMethods;
     template <class impl_t, typename TElement> class RecursionlessSizeBalancedTreeMethods<impl_t, TElement> : public SizedBinaryTreeMethodsBase<impl_t, TElement>
     {
+    public:
         using base = SizedBinaryTreeMethodsBase<impl_t, TElement>;
         friend base;
         using Polymorph<impl_t>::object;
