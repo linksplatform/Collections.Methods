@@ -46,8 +46,5 @@ Platform.Numbers dependency updated from 0.5.1 to 0.5.2.</PackageReleaseNotes>
     <CSharpFiles Include="**\*.cs" />
   </ItemGroup>
 
-  <Target Name="CSharpToCppTranslation" AfterTargets="PostBuildEvent" Condition="'$(OS)' == 'Windows_NT' AND $(TargetFramework) == 'netstandard2.1'">
-    <Exec Command="..\..\CSharpToCppTranslator\bin\$(Configuration)\netcoreapp3.0\CSharpToCppTranslator.exe $(ProjectDir) $(SolutionDir)cpp\$(ProjectName)\"></Exec>
-  </Target>
 
 </Project>
