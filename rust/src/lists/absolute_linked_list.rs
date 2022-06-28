@@ -1,9 +1,9 @@
 use num_traits::one;
 
-use crate::DoublyLinkedListBase;
-use platform_num::Num;
+use crate::LinkedList;
+use crate::Num;
 
-pub trait AbsoluteDoublyLinkedListBase<T: Num>: DoublyLinkedListBase<T> {
+pub trait AbsoluteLinkedList<T: Num>: LinkedList<T> {
     fn get_first(&self) -> T;
     fn get_last(&self) -> T;
     fn get_size(&self) -> T;

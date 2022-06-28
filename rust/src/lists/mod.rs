@@ -1,12 +1,12 @@
-mod absolute_circular_doubly_linked_list;
-mod absolute_doubly_linked_list_base;
-mod doubly_linked_list_base;
-mod relative_circular_doubly_linked_list;
-mod relative_doubly_linked_list_base;
+mod absolute_circular_linked_list;
+mod absolute_linked_list;
+mod linked_list;
+mod relative_circular_linked_list;
+mod relative_doubly_linked_list;
 
 // TODO: use human names
-pub use absolute_circular_doubly_linked_list::AbsoluteCircularDoublyLinkedList;
-pub use absolute_doubly_linked_list_base::AbsoluteDoublyLinkedListBase;
-pub use doubly_linked_list_base::DoublyLinkedListBase;
-pub use relative_circular_doubly_linked_list::RelativeCircularDoublyLinkedList;
-pub use relative_doubly_linked_list_base::RelativeDoublyLinkedListBase;
+pub use absolute_circular_linked_list::AbsoluteCircularLinkedList;
+pub use absolute_linked_list::AbsoluteLinkedList;
+pub use linked_list::LinkedList;
+pub use relative_circular_linked_list::RelativeCircularLinkedList;
+pub use relative_doubly_linked_list::RelativeLinkedList;

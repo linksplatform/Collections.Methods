@@ -1,6 +1,6 @@
-use platform_num::Num;
+use crate::Num;
 
-pub trait DoublyLinkedListBase<T: Num> {
+pub trait LinkedList<T: Num> {
     fn get_previous(&self, element: T) -> T;
     fn get_next(&self, element: T) -> T;
 

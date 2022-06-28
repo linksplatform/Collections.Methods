@@ -1,9 +1,9 @@
 use num_traits::zero;
 
-use crate::RelativeDoublyLinkedListBase;
-use platform_num::Num;
+use crate::Num;
+use crate::RelativeLinkedList;
 
-pub trait RelativeCircularDoublyLinkedList<T: Num>: RelativeDoublyLinkedListBase<T> {
+pub trait RelativeCircularLinkedList<T: Num>: RelativeLinkedList<T> {
     fn attach_before(&mut self, head: T, base_element: T, new_element: T) {
         let base_element_previous = self.get_previous(base_element);
         self.set_previous(new_element, base_element_previous);

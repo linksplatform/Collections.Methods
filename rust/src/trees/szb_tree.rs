@@ -1,8 +1,8 @@
 use num_traits::{one, zero};
 
-use platform_num::Num;
+use crate::Num;
 
-pub trait SizeBalancedTreeBase<T: Num> {
+pub trait SzbTree<T: Num> {
     fn get_mut_left_reference(&mut self, node: T) -> *mut T;
 
     fn get_mut_right_reference(&mut self, node: T) -> *mut T;

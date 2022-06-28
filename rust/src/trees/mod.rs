@@ -1,8 +1,5 @@
-mod recursuionless_size_balanced_tree;
-mod size_balanced_tree;
-mod size_balanced_tree_base;
+mod no_recur_szb_tree;
+mod szb_tree;
 
-pub use recursuionless_size_balanced_tree::RecursionlessSizeBalancedTreeMethods;
-#[deprecated(note = "use `SizeBalancedTreeBase` instead")]
-pub use size_balanced_tree::SizeBalancedTreeMethods;
-pub use size_balanced_tree_base::SizeBalancedTreeBase;
+pub use no_recur_szb_tree::NoRecurSzbTree;
+pub use szb_tree::SzbTree;

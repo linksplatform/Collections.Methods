@@ -3,11 +3,9 @@ use std::mem::size_of;
 
 use num_traits::{one, zero};
 
-use crate::trees::SizeBalancedTreeMethods;
-use crate::SizeBalancedTreeBase;
-use platform_num::Num;
+use crate::{Num, SzbTree};
 
-pub trait RecursionlessSizeBalancedTreeMethods<T: Num>: SizeBalancedTreeBase<T> {
+pub trait NoRecurSzbTree<T: Num>: SzbTree<T> {
     unsafe fn attach(&mut self, root: *mut T, node: T) {
         if *root == zero() {
             self.set_size(node, one());
@@ -158,13 +156,13 @@ pub trait RecursionlessSizeBalancedTreeMethods<T: Num>: SizeBalancedTreeBase<T> 
 }
 
 #[derive(Default, Debug, Clone, Copy)]
-pub struct TreeElement<T: Num> {
+pub struct TreeElement<T> {
     pub size: T,
     pub left: T,
     pub right: T,
 }
 
-pub struct NonRecurTree<T: Num> {
+pub struct NonRecurTree<T> {
     pub elements: Vec<TreeElement<T>>,
     _allocated: T,
     pub root: T,
@@ -230,7 +228,7 @@ impl<T: Num> NonRecurTree<T> {
     }
 }
 
-impl<T: Num> SizeBalancedTreeMethods<T> for NonRecurTree<T> {
+impl<T: Num> SzbTree<T> for NonRecurTree<T> {
     fn get_left_reference(&self, node: T) -> *const T {
         &self.get(node).left as *const T
     }
