@@ -1,15 +1,15 @@
 [package]
 name = "platform-treesmethods"
-version = "0.1.0-aplha.2"
+version = "0.1.0-beta.1"
 edition = "2018"
 authors = ["uselesssgoddess", "Linksplatform Team <linksplatformtechnologies@gmail.com>"]
 license = "LGPL-3.0"
-repository = "https://github.com/linksplatform/platform-rs"
-homepage = "https://github.com/linksplatform/platform-rs"
+repository = "https://github.com/linksplatform/Collections.Methods"
+homepage = "https://github.com/linksplatform/Collections.Methods/rust"
 description = """
 Trees methods for linksplatform
 """
 
 [dependencies]
-num-traits = "0.2.14"
-platform-num = "0.1.0-alpha.1"
+funty = "2.0"
+platform-data = "0.1.0-beta.3"

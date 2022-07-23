@@ -1,8 +1,7 @@
 use crate::AbsoluteLinkedList;
-use crate::Num;
-use num_traits::zero;
+use platform_data::LinkType;
 
-pub trait AbsoluteCircularLinkedList<T: Num>: AbsoluteLinkedList<T> {
+pub trait AbsoluteCircularLinkedList<T: LinkType>: AbsoluteLinkedList<T> {
     fn attach_before(&mut self, base_element: T, new_element: T) {
         let base_element_previous = self.get_previous(base_element);
         self.set_previous(new_element, base_element_previous);
@@ -29,7 +28,7 @@ pub trait AbsoluteCircularLinkedList<T: Num>: AbsoluteLinkedList<T> {
 
     fn attach_as_first(&mut self, element: T) {
         let first = self.get_first();
-        if first == zero() {
+        if first == T::funty(0) {
             self.set_first(element);
             self.set_last(element);
             self.set_previous(element, element);
@@ -42,7 +41,7 @@ pub trait AbsoluteCircularLinkedList<T: Num>: AbsoluteLinkedList<T> {
 
     fn attach_as_last(&mut self, element: T) {
         let last = self.get_last();
-        if last == zero() {
+        if last == T::funty(0) {
             self.attach_as_first(element);
         } else {
             self.attach_after(last, element);
@@ -53,8 +52,8 @@ pub trait AbsoluteCircularLinkedList<T: Num>: AbsoluteLinkedList<T> {
         let element_previous = self.get_previous(element);
         let element_next = self.get_next(element);
         if element_next == element {
-            self.set_first(zero());
-            self.set_last(zero());
+            self.set_first(T::funty(0));
+            self.set_last(T::funty(0));
         } else {
             self.set_next(element_previous, element_next);
             self.set_previous(element_next, element_previous);
@@ -65,8 +64,8 @@ pub trait AbsoluteCircularLinkedList<T: Num>: AbsoluteLinkedList<T> {
                 self.set_last(element_previous);
             }
         }
-        self.set_previous(element, zero());
-        self.set_next(element, zero());
+        self.set_previous(element, T::funty(0));
+        self.set_next(element, T::funty(0));
         self.dec_size();
     }
 }

@@ -1,6 +1,6 @@
-use crate::Num;
+use platform_data::LinkType;
 
-pub trait LinkedList<T: Num> {
+pub trait LinkedList<T: LinkType> {
     fn get_previous(&self, element: T) -> T;
     fn get_next(&self, element: T) -> T;
 

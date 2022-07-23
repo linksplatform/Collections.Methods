@@ -1,10 +1,7 @@
-#![feature(default_free_fn)]
+// fixme: #![no_std]
 
 mod lists;
-mod num;
 mod trees;
-
-pub(crate) use num::Num;
 
 pub use lists::{
     AbsoluteCircularLinkedList, AbsoluteLinkedList, LinkedList, RelativeCircularLinkedList,
