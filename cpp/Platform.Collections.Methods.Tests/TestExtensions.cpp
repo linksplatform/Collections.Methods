@@ -2,7 +2,7 @@
 {
     class TestExtensions
     {
-        public: template <typename TElement> static void TestMultipleCreationsAndDeletions(Platform::Collections::Methods::Trees::SizedBinaryTreeMethodsBase<TElement>& tree, std::function<TElement()> allocate, std::function<void(TElement)> free, TElement* root, std::function<TElement()> treeCount, std::int32_t maximumOperationsPerCycle)
+        public: template <typename impl_t, typename TElement> static void TestMultipleCreationsAndDeletions(impl_t& tree, auto allocate, auto free, TElement* root, auto treeCount, std::int32_t maximumOperationsPerCycle)
         {
             for (auto N = 1; N < maximumOperationsPerCycle; N++)
             {
@@ -28,7 +28,7 @@
             }
         }
 
-        public: template <typename TElement> static void TestMultipleRandomCreationsAndDeletions(Platform::Collections::Methods::Trees::SizedBinaryTreeMethodsBase<TElement>& tree, TElement* root, std::function<TElement()> treeCount, std::int32_t maximumOperationsPerCycle)
+        public: template <typename impl_t, typename TElement> static void TestMultipleRandomCreationsAndDeletions(impl_t& tree, TElement* root, auto treeCount, std::int32_t maximumOperationsPerCycle)
         {
             std::srand(0);
             std::unordered_set<TElement> added;

@@ -1,14 +1,16 @@
 ﻿namespace Platform::Collections::Methods::Lists
 {
-    template <typename ...> class DoublyLinkedListMethodsBase;
-    template <typename TElement> class DoublyLinkedListMethodsBase<TElement> : public GenericCollectionMethodsBase<TElement>
+    template <class impl_t, typename ...> class DoublyLinkedListMethodsBase;
+    template <class impl_t, typename TElement> class DoublyLinkedListMethodsBase<impl_t, TElement> : public GenericCollectionMethodsBase<impl_t, TElement>
     {
-        protected: virtual TElement GetPrevious(TElement element) = 0;
+        public: using Polymorph<impl_t>::object;
 
-        protected: virtual TElement GetNext(TElement element) = 0;
+        protected: TElement GetPrevious(TElement element) { return object().GetPrevious(element); };
 
-        protected: virtual void SetPrevious(TElement element, TElement previous) = 0;
+        protected: TElement GetNext(TElement element) { return object().GetNext(element); };
 
-        protected: virtual void SetNext(TElement element, TElement next) = 0;
+        protected: void SetPrevious(TElement element, TElement previous) { object().SetPrevious(element, previous); };
+
+        protected: void SetNext(TElement element, TElement next) { object().SetNext(element, next); };
     };
 }

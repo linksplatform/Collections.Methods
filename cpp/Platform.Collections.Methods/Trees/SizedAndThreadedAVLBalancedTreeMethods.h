@@ -1,43 +1,46 @@
 ﻿namespace Platform::Collections::Methods::Trees
 {
     template <typename ...> class SizedAndThreadedAVLBalancedTreeMethods;
-    template <typename TElement> class SizedAndThreadedAVLBalancedTreeMethods<TElement> : public SizedBinaryTreeMethodsBase<TElement>
+    template <typename TSelf, typename TElement> class SizedAndThreadedAVLBalancedTreeMethods<TSelf, TElement> : public SizedBinaryTreeMethodsBase<TSelf, TElement>
     {
+        public: using base = SizedBinaryTreeMethodsBase<TSelf, TElement>;
+        friend base;
+
         private: inline static const std::int32_t _maxPath = 11 * sizeof(TElement) + 4;
 
-        protected: TElement GetRightest(TElement current) override
+        protected: TElement GetRightest(TElement current)
         {
-            auto currentRight = this->GetRightOrDefault(current);
+            auto currentRight = this->object().GetRightOrDefault(current);
             while (currentRight != 0)
             {
                 current = currentRight;
-                currentRight = this->GetRightOrDefault(current);
+                currentRight = this->object().GetRightOrDefault(current);
             }
             return current;
         }
 
-        protected: TElement GetLeftest(TElement current) override
+        protected: TElement GetLeftest(TElement current)
         {
-            auto currentLeft = this->GetLeftOrDefault(current);
+            auto currentLeft = this->object().GetLeftOrDefault(current);
             while (currentLeft != 0)
             {
                 current = currentLeft;
-                currentLeft = this->GetLeftOrDefault(current);
+                currentLeft = this->object().GetLeftOrDefault(current);
             }
             return current;
         }
 
-        public: bool Contains(TElement node, TElement root) override
+        public: bool Contains(TElement node, TElement root)
         {
             while (root != 0)
             {
-                if (this->FirstIsToTheLeftOfSecond(node, root))
+                if (this->object().FirstIsToTheLeftOfSecond(node, root))
                 {
-                    root = this->GetLeftOrDefault(root);
+                    root = this->object().GetLeftOrDefault(root);
                 }
-                else if (this->FirstIsToTheRightOfSecond(node, root))
+                else if (this->object().FirstIsToTheRightOfSecond(node, root))
                 {
-                    root = this->GetRightOrDefault(root);
+                    root = this->object().GetRightOrDefault(root);
                 }
                 else
                 {
@@ -47,27 +50,27 @@
             return false;
         }
 
-        protected: void IncrementBalance(TElement node) { this->SetBalance(node, (std::int8_t)(this->GetBalance(node) + 1)); }
+        protected: void IncrementBalance(TElement node) { this->object().SetBalance(node, (std::int8_t)(this->object().GetBalance(node) + 1)); }
 
-        protected: void DecrementBalance(TElement node) { this->SetBalance(node, (std::int8_t)(this->GetBalance(node) - 1)); }
+        protected: void DecrementBalance(TElement node) { this->object().SetBalance(node, (std::int8_t)(this->object().GetBalance(node) - 1)); }
 
-        protected: TElement GetLeftOrDefault(TElement node) override { return this->GetLeftIsChild(node) ? this->GetLeft(node) : 0; }
+        protected: TElement GetLeftOrDefault(TElement node) { return this->object().GetLeftIsChild(node) ? this->object().GetLeft(node) : 0; }
 
-        protected: TElement GetRightOrDefault(TElement node) override { return this->GetRightIsChild(node) ? this->GetRight(node) : 0; }
+        protected: TElement GetRightOrDefault(TElement node) { return this->object().GetRightIsChild(node) ? this->object().GetRight(node) : 0; }
 
-        protected: virtual bool GetLeftIsChild(TElement node) = 0;
+        protected: bool GetLeftIsChild(TElement node) { return this->object().GetLeftIsChild(node); }
 
-        protected: virtual void SetLeftIsChild(TElement node, bool value) = 0;
+        protected: void SetLeftIsChild(TElement node, bool value) { this->object().SetLeftIsChild(node, value); }
 
-        protected: virtual bool GetRightIsChild(TElement node) = 0;
+        protected: bool GetRightIsChild(TElement node) { return this->object().GetRightIsChild(node); }
 
-        protected: virtual void SetRightIsChild(TElement node, bool value) = 0;
+        protected: void SetRightIsChild(TElement node, bool value) { this->object().SetRightIsChild(node, value); }
 
-        protected: virtual std::int8_t GetBalance(TElement node) = 0;
+        protected: std::int8_t GetBalance(TElement node) { return this->object().GetBalance(node); }
 
-        protected: virtual void SetBalance(TElement node, std::int8_t value) = 0;
+        protected: void SetBalance(TElement node, std::int8_t value) { this->object().SetBalance(node, value); }
 
-        protected: void AttachCore(TElement* root, TElement node) override
+        protected: void AttachCore(TElement* root, TElement node)
         {
             {
 #if USEARRAYPOOL
@@ -81,43 +84,43 @@
                 auto currentNode = *root;
                 while (true)
                 {
-                    if (this->FirstIsToTheLeftOfSecond(node, currentNode))
+                    if (this->object().FirstIsToTheLeftOfSecond(node, currentNode))
                     {
-                        if (this->GetLeftIsChild(currentNode))
+                        if (this->object().GetLeftIsChild(currentNode))
                         {
-                            this->IncrementSize(currentNode);
+                            this->object().IncrementSize(currentNode);
                             path[pathPosition++] = currentNode;
-                            currentNode = this->GetLeft(currentNode);
+                            currentNode = this->object().GetLeft(currentNode);
                         }
                         else
                         {
-                            this->SetLeft(node, this->GetLeft(currentNode));
-                            this->SetRight(node, currentNode);
-                            this->SetLeft(currentNode, node);
-                            this->SetLeftIsChild(currentNode, true);
-                            this->DecrementBalance(currentNode);
-                            this->SetSize(node, 1);
-                            this->FixSize(currentNode);
+                            this->object().SetLeft(node, this->object().GetLeft(currentNode));
+                            this->object().SetRight(node, currentNode);
+                            this->object().SetLeft(currentNode, node);
+                            this->object().SetLeftIsChild(currentNode, true);
+                            this->object().DecrementBalance(currentNode);
+                            this->object().SetSize(node, 1);
+                            this->object().FixSize(currentNode);
                             break;
                         }
                     }
-                    else if (this->FirstIsToTheRightOfSecond(node, currentNode))
+                    else if (this->object().FirstIsToTheRightOfSecond(node, currentNode))
                     {
-                        if (this->GetRightIsChild(currentNode))
+                        if (this->object().GetRightIsChild(currentNode))
                         {
-                            this->IncrementSize(currentNode);
+                            this->object().IncrementSize(currentNode);
                             path[pathPosition++] = currentNode;
-                            currentNode = this->GetRight(currentNode);
+                            currentNode = this->object().GetRight(currentNode);
                         }
                         else
                         {
-                            this->SetRight(node, this->GetRight(currentNode));
-                            this->SetLeft(node, currentNode);
-                            this->SetRight(currentNode, node);
-                            this->SetRightIsChild(currentNode, true);
-                            this->IncrementBalance(currentNode);
-                            this->SetSize(node, 1);
-                            this->FixSize(currentNode);
+                            this->object().SetRight(node, this->object().GetRight(currentNode));
+                            this->object().SetLeft(node, currentNode);
+                            this->object().SetRight(currentNode, node);
+                            this->object().SetRightIsChild(currentNode, true);
+                            this->object().IncrementBalance(currentNode);
+                            this->object().SetSize(node, 1);
+                            this->object().FixSize(currentNode);
                             break;
                         }
                     }
@@ -129,38 +132,38 @@
                 while (true)
                 {
                     auto parent = path[--pathPosition];
-                    auto isLeftNode = parent != 0 && currentNode == this->GetLeft(parent);
-                    auto currentNodeBalance = this->GetBalance(currentNode);
+                    auto isLeftNode = parent != 0 && currentNode == this->object().GetLeft(parent);
+                    auto currentNodeBalance = this->object().GetBalance(currentNode);
                     if (currentNodeBalance < -1 || currentNodeBalance > 1)
                     {
-                        currentNode = this->Balance(currentNode);
+                        currentNode = this->object().Balance(currentNode);
                         if (parent == 0)
                         {
                             *root = currentNode;
                         }
                         else if (isLeftNode)
                         {
-                            this->SetLeft(parent, currentNode);
-                            this->FixSize(parent);
+                            this->object().SetLeft(parent, currentNode);
+                            this->object().FixSize(parent);
                         }
                         else
                         {
-                            this->SetRight(parent, currentNode);
-                            this->FixSize(parent);
+                            this->object().SetRight(parent, currentNode);
+                            this->object().FixSize(parent);
                         }
                     }
-                    currentNodeBalance = this->GetBalance(currentNode);
+                    currentNodeBalance = this->object().GetBalance(currentNode);
                     if (currentNodeBalance == 0 || parent == 0)
                     {
                         break;
                     }
                     if (isLeftNode)
                     {
-                        this->DecrementBalance(parent);
+                        this->object().DecrementBalance(parent);
                     }
                     else
                     {
-                        this->IncrementBalance(parent);
+                        this->object().IncrementBalance(parent);
                     }
                     currentNode = parent;
                 }
@@ -173,26 +176,26 @@
         private: TElement Balance(TElement node)
         {
             {
-                auto rootBalance = this->GetBalance(node);
+                auto rootBalance = this->object().GetBalance(node);
                 if (rootBalance < -1)
                 {
-                    auto left = this->GetLeft(node);
-                    if (this->GetBalance(left) > 0)
+                    auto left = this->object().GetLeft(node);
+                    if (this->object().GetBalance(left) > 0)
                     {
-                        this->SetLeft(node, this->LeftRotateWithBalance(left));
-                        this->FixSize(node);
+                        this->object().SetLeft(node, this->object().LeftRotateWithBalance(left));
+                        this->object().FixSize(node);
                     }
-                    node = this->RightRotateWithBalance(node);
+                    node = this->object().RightRotateWithBalance(node);
                 }
                 else if (rootBalance > 1)
                 {
-                    auto right = this->GetRight(node);
-                    if (this->GetBalance(right) < 0)
+                    auto right = this->object().GetRight(node);
+                    if (this->object().GetBalance(right) < 0)
                     {
-                        this->SetRight(node, this->RightRotateWithBalance(right));
-                        this->FixSize(node);
+                        this->object().SetRight(node, this->object().RightRotateWithBalance(right));
+                        this->object().FixSize(node);
                     }
-                    node = this->LeftRotateWithBalance(node);
+                    node = this->object().LeftRotateWithBalance(node);
                 }
                 return node;
             }
@@ -201,44 +204,44 @@
         protected: TElement LeftRotateWithBalance(TElement node)
         {
             {
-                auto right = this->GetRight(node);
-                if (this->GetLeftIsChild(right))
+                auto right = this->object().GetRight(node);
+                if (this->object().GetLeftIsChild(right))
                 {
-                    this->SetRight(node, this->GetLeft(right));
+                    this->object().SetRight(node, this->object().GetLeft(right));
                 }
                 else
                 {
-                    this->SetRightIsChild(node, false);
-                    this->SetLeftIsChild(right, true);
+                    this->object().SetRightIsChild(node, false);
+                    this->object().SetLeftIsChild(right, true);
                 }
-                this->SetLeft(right, node);
-                this->SetSize(right, this->GetSize(node));
-                this->FixSize(node);
-                auto rootBalance = this->GetBalance(node);
-                auto rightBalance = this->GetBalance(right);
+                this->object().SetLeft(right, node);
+                this->object().SetSize(right, this->object().GetSize(node));
+                this->object().FixSize(node);
+                auto rootBalance = this->object().GetBalance(node);
+                auto rightBalance = this->object().GetBalance(right);
                 if (rightBalance <= 0)
                 {
                     if (rootBalance >= 1)
                     {
-                        this->SetBalance(right, (std::int8_t)(rightBalance - 1));
+                        this->object().SetBalance(right, (std::int8_t)(rightBalance - 1));
                     }
                     else
                     {
-                        this->SetBalance(right, (std::int8_t)(rootBalance + rightBalance - 2));
+                        this->object().SetBalance(right, (std::int8_t)(rootBalance + rightBalance - 2));
                     }
-                    this->SetBalance(node, (std::int8_t)(rootBalance - 1));
+                    this->object().SetBalance(node, (std::int8_t)(rootBalance - 1));
                 }
                 else
                 {
                     if (rootBalance <= rightBalance)
                     {
-                        this->SetBalance(right, (std::int8_t)(rootBalance - 2));
+                        this->object().SetBalance(right, (std::int8_t)(rootBalance - 2));
                     }
                     else
                     {
-                        this->SetBalance(right, (std::int8_t)(rightBalance - 1));
+                        this->object().SetBalance(right, (std::int8_t)(rightBalance - 1));
                     }
-                    this->SetBalance(node, (std::int8_t)(rootBalance - rightBalance - 1));
+                    this->object().SetBalance(node, (std::int8_t)(rootBalance - rightBalance - 1));
                 }
                 return right;
             }
@@ -247,70 +250,70 @@
         protected: TElement RightRotateWithBalance(TElement node)
         {
             {
-                auto left = this->GetLeft(node);
-                if (this->GetRightIsChild(left))
+                auto left = this->object().GetLeft(node);
+                if (this->object().GetRightIsChild(left))
                 {
-                    this->SetLeft(node, this->GetRight(left));
+                    this->object().SetLeft(node, this->object().GetRight(left));
                 }
                 else
                 {
-                    this->SetLeftIsChild(node, false);
-                    this->SetRightIsChild(left, true);
+                    this->object().SetLeftIsChild(node, false);
+                    this->object().SetRightIsChild(left, true);
                 }
-                this->SetRight(left, node);
-                this->SetSize(left, this->GetSize(node));
-                this->FixSize(node);
-                auto rootBalance = this->GetBalance(node);
-                auto leftBalance = this->GetBalance(left);
+                this->object().SetRight(left, node);
+                this->object().SetSize(left, this->object().GetSize(node));
+                this->object().FixSize(node);
+                auto rootBalance = this->object().GetBalance(node);
+                auto leftBalance = this->object().GetBalance(left);
                 if (leftBalance <= 0)
                 {
                     if (leftBalance > rootBalance)
                     {
-                        this->SetBalance(left, (std::int8_t)(leftBalance + 1));
+                        this->object().SetBalance(left, (std::int8_t)(leftBalance + 1));
                     }
                     else
                     {
-                        this->SetBalance(left, (std::int8_t)(rootBalance + 2));
+                        this->object().SetBalance(left, (std::int8_t)(rootBalance + 2));
                     }
-                    this->SetBalance(node, (std::int8_t)(rootBalance - leftBalance + 1));
+                    this->object().SetBalance(node, (std::int8_t)(rootBalance - leftBalance + 1));
                 }
                 else
                 {
                     if (rootBalance <= -1)
                     {
-                        this->SetBalance(left, (std::int8_t)(leftBalance + 1));
+                        this->object().SetBalance(left, (std::int8_t)(leftBalance + 1));
                     }
                     else
                     {
-                        this->SetBalance(left, (std::int8_t)(rootBalance + leftBalance + 2));
+                        this->object().SetBalance(left, (std::int8_t)(rootBalance + leftBalance + 2));
                     }
-                    this->SetBalance(node, (std::int8_t)(rootBalance + 1));
+                    this->object().SetBalance(node, (std::int8_t)(rootBalance + 1));
                 }
                 return left;
             }
         }
 
-        protected: TElement GetNext(TElement node) override
+        protected: TElement GetNext(TElement node)
         {
-            auto current = this->GetRight(node);
-            if (this->GetRightIsChild(node))
+            auto current = this->object().GetRight(node);
+            if (this->object().GetRightIsChild(node))
             {
-                return this->GetLeftest(current);
+                return this->object().GetLeftest(current);
             }
             return current;
         }
 
-        protected: TElement GetPrevious(TElement node) override
+        protected: TElement GetPrevious(TElement node)
         {
-            auto current = this->GetLeft(node);
-            if (this->GetLeftIsChild(node))
+            auto current = this->object().GetLeft(node);
+            if (this->object().GetLeftIsChild(node))
             {
-                return this->GetRightest(current);
+                return this->object().GetRightest(current);
             }
             return current;
         }
 
-        protected: void DetachCore(TElement* root, TElement node) override
+        protected: void DetachCore(TElement* root, TElement node)
         {
             {
 #if USEARRAYPOOL
@@ -324,25 +327,25 @@
                 auto currentNode = *root;
                 while (true)
                 {
-                    if (this->FirstIsToTheLeftOfSecond(node, currentNode))
+                    if (this->object().FirstIsToTheLeftOfSecond(node, currentNode))
                     {
-                        if (!this->GetLeftIsChild(currentNode))
+                        if (!this->object().GetLeftIsChild(currentNode))
                         {
                             throw std::runtime_error("Cannot find a node.");
                         }
-                        this->DecrementSize(currentNode);
+                        this->object().DecrementSize(currentNode);
                         path[pathPosition++] = currentNode;
-                        currentNode = this->GetLeft(currentNode);
+                        currentNode = this->object().GetLeft(currentNode);
                     }
-                    else if (this->FirstIsToTheRightOfSecond(node, currentNode))
+                    else if (this->object().FirstIsToTheRightOfSecond(node, currentNode))
                     {
-                        if (!this->GetRightIsChild(currentNode))
+                        if (!this->object().GetRightIsChild(currentNode))
                         {
                             throw std::runtime_error("Cannot find a node.");
                         }
-                        this->DecrementSize(currentNode);
+                        this->object().DecrementSize(currentNode);
                         path[pathPosition++] = currentNode;
-                        currentNode = this->GetRight(currentNode);
+                        currentNode = this->object().GetRight(currentNode);
                     }
                     else
                     {
@@ -351,10 +354,10 @@
                 }
                 auto parent = path[--pathPosition];
                 auto balanceNode = parent;
-                auto isLeftNode = parent != 0 && currentNode == this->GetLeft(parent);
-                if (!this->GetLeftIsChild(currentNode))
+                auto isLeftNode = parent != 0 && currentNode == this->object().GetLeft(parent);
+                if (!this->object().GetLeftIsChild(currentNode))
                 {
-                    if (!this->GetRightIsChild(currentNode))
+                    if (!this->object().GetRightIsChild(currentNode))
                     {
                         if (parent == 0)
                         {
@@ -362,116 +365,116 @@
                         }
                         else if (isLeftNode)
                         {
-                            this->SetLeftIsChild(parent, false);
-                            this->SetLeft(parent, this->GetLeft(currentNode));
-                            this->IncrementBalance(parent);
+                            this->object().SetLeftIsChild(parent, false);
+                            this->object().SetLeft(parent, this->object().GetLeft(currentNode));
+                            this->object().IncrementBalance(parent);
                         }
                         else
                         {
-                            this->SetRightIsChild(parent, false);
-                            this->SetRight(parent, this->GetRight(currentNode));
-                            this->DecrementBalance(parent);
+                            this->object().SetRightIsChild(parent, false);
+                            this->object().SetRight(parent, this->object().GetRight(currentNode));
+                            this->object().DecrementBalance(parent);
                         }
                     }
                     else
                     {
-                        auto successor = this->GetNext(currentNode);
-                        this->SetLeft(successor, this->GetLeft(currentNode));
-                        auto right = this->GetRight(currentNode);
+                        auto successor = this->object().GetNext(currentNode);
+                        this->object().SetLeft(successor, this->object().GetLeft(currentNode));
+                        auto right = this->object().GetRight(currentNode);
                         if (parent == 0)
                         {
                             *root = right;
                         }
                         else if (isLeftNode)
                         {
-                            this->SetLeft(parent, right);
-                            this->IncrementBalance(parent);
+                            this->object().SetLeft(parent, right);
+                            this->object().IncrementBalance(parent);
                         }
                         else
                         {
-                            this->SetRight(parent, right);
-                            this->DecrementBalance(parent);
+                            this->object().SetRight(parent, right);
+                            this->object().DecrementBalance(parent);
                         }
                     }
                 }
                 else
                 {
-                    if (!this->GetRightIsChild(currentNode))
+                    if (!this->object().GetRightIsChild(currentNode))
                     {
-                        auto predecessor = this->GetPrevious(currentNode);
-                        this->SetRight(predecessor, this->GetRight(currentNode));
-                        auto leftValue = this->GetLeft(currentNode);
+                        auto predecessor = this->object().GetPrevious(currentNode);
+                        this->object().SetRight(predecessor, this->object().GetRight(currentNode));
+                        auto leftValue = this->object().GetLeft(currentNode);
                         if (parent == 0)
                         {
                             *root = leftValue;
                         }
                         else if (isLeftNode)
                         {
-                            this->SetLeft(parent, leftValue);
-                            this->IncrementBalance(parent);
+                            this->object().SetLeft(parent, leftValue);
+                            this->object().IncrementBalance(parent);
                         }
                         else
                         {
-                            this->SetRight(parent, leftValue);
-                            this->DecrementBalance(parent);
+                            this->object().SetRight(parent, leftValue);
+                            this->object().DecrementBalance(parent);
                         }
                     }
                     else
                     {
-                        auto predecessor = this->GetLeft(currentNode);
-                        auto successor = this->GetRight(currentNode);
+                        auto predecessor = this->object().GetLeft(currentNode);
+                        auto successor = this->object().GetRight(currentNode);
                         auto successorParent = currentNode;
                         std::int32_t previousPathPosition = ++pathPosition;
-                        while (this->GetLeftIsChild(successor))
+                        while (this->object().GetLeftIsChild(successor))
                         {
                             path[++pathPosition] = successorParent = successor;
-                            successor = this->GetLeft(successor);
+                            successor = this->object().GetLeft(successor);
                             if (successorParent != currentNode)
                             {
-                                this->DecrementSize(successorParent);
+                                this->object().DecrementSize(successorParent);
                             }
                         }
                         path[previousPathPosition] = successor;
                         balanceNode = path[pathPosition];
                         if (successorParent != currentNode)
                         {
-                            if (!this->GetRightIsChild(successor))
+                            if (!this->object().GetRightIsChild(successor))
                             {
-                                this->SetLeftIsChild(successorParent, false);
+                                this->object().SetLeftIsChild(successorParent, false);
                             }
                             else
                             {
-                                this->SetLeft(successorParent, this->GetRight(successor));
+                                this->object().SetLeft(successorParent, this->object().GetRight(successor));
                             }
-                            this->IncrementBalance(successorParent);
-                            this->SetRightIsChild(successor, true);
-                            this->SetRight(successor, this->GetRight(currentNode));
+                            this->object().IncrementBalance(successorParent);
+                            this->object().SetRightIsChild(successor, true);
+                            this->object().SetRight(successor, this->object().GetRight(currentNode));
                         }
                         else
                         {
-                            this->DecrementBalance(currentNode);
+                            this->object().DecrementBalance(currentNode);
                         }
-                        while (this->GetRightIsChild(predecessor))
+                        while (this->object().GetRightIsChild(predecessor))
                         {
-                            predecessor = this->GetRight(predecessor);
+                            predecessor = this->object().GetRight(predecessor);
                         }
-                        this->SetRight(predecessor, successor);
-                        auto left = this->GetLeft(currentNode);
-                        this->SetLeftIsChild(successor, true);
-                        this->SetLeft(successor, left);
-                        this->SetBalance(successor, this->GetBalance(currentNode));
-                        this->FixSize(successor);
+                        this->object().SetRight(predecessor, successor);
+                        auto left = this->object().GetLeft(currentNode);
+                        this->object().SetLeftIsChild(successor, true);
+                        this->object().SetLeft(successor, left);
+                        this->object().SetBalance(successor, this->object().GetBalance(currentNode));
+                        this->object().FixSize(successor);
                         if (parent == 0)
                         {
                             *root = successor;
                         }
                         else if (isLeftNode)
                         {
-                            this->SetLeft(parent, successor);
+                            this->object().SetLeft(parent, successor);
                         }
                         else
                         {
-                            this->SetRight(parent, successor);
+                            this->object().SetRight(parent, successor);
                         }
                     }
                 }
@@ -480,55 +483,55 @@
                     while (true)
                     {
                         auto balanceParent = path[--pathPosition];
-                        isLeftNode = balanceParent != 0 && balanceNode == this->GetLeft(balanceParent);
-                        auto currentNodeBalance = this->GetBalance(balanceNode);
+                        isLeftNode = balanceParent != 0 && balanceNode == this->object().GetLeft(balanceParent);
+                        auto currentNodeBalance = this->object().GetBalance(balanceNode);
                         if (currentNodeBalance < -1 || currentNodeBalance > 1)
                         {
-                            balanceNode = this->Balance(balanceNode);
+                            balanceNode = this->object().Balance(balanceNode);
                             if (balanceParent == 0)
                             {
                                 *root = balanceNode;
                             }
                             else if (isLeftNode)
                             {
-                                this->SetLeft(balanceParent, balanceNode);
+                                this->object().SetLeft(balanceParent, balanceNode);
                             }
                             else
                             {
-                                this->SetRight(balanceParent, balanceNode);
+                                this->object().SetRight(balanceParent, balanceNode);
                             }
                         }
-                        currentNodeBalance = this->GetBalance(balanceNode);
+                        currentNodeBalance = this->object().GetBalance(balanceNode);
                         if (currentNodeBalance != 0 || balanceParent == 0)
                         {
                             break;
                         }
                         if (isLeftNode)
                         {
-                            this->IncrementBalance(balanceParent);
+                            this->object().IncrementBalance(balanceParent);
                         }
                         else
                         {
-                            this->DecrementBalance(balanceParent);
+                            this->object().DecrementBalance(balanceParent);
                         }
                         balanceNode = balanceParent;
                     }
                 }
-                this->ClearNode(node);
+                this->object().ClearNode(node);
 #if USEARRAYPOOL
                 ArrayPool.Free(path);
 #endif
             }
         }
 
-        protected: void ClearNode(TElement node) override
+        protected: void ClearNode(TElement node)
         {
-            this->SetLeft(node, 0);
-            this->SetRight(node, 0);
-            this->SetSize(node, 0);
-            this->SetLeftIsChild(node, false);
-            this->SetRightIsChild(node, false);
-            this->SetBalance(node, 0);
+            this->object().SetLeft(node, 0);
+            this->object().SetRight(node, 0);
+            this->object().SetSize(node, 0);
+            this->object().SetLeftIsChild(node, false);
+            this->object().SetRightIsChild(node, false);
+            this->object().SetBalance(node, 0);
         }
     };
 }

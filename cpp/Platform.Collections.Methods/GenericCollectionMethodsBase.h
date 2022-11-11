@@ -1,7 +1,9 @@
 ﻿namespace Platform::Collections::Methods
 {
-    template <typename ...> class GenericCollectionMethodsBase;
-    template <typename TElement> class GenericCollectionMethodsBase<TElement>
+    using namespace Platform::Interfaces;
+
+    template <typename TSelf, typename ...> class GenericCollectionMethodsBase;
+    template <typename TSelf, typename TElement> class GenericCollectionMethodsBase<TSelf, TElement> : public Polymorph<TSelf>
     {
     };
 }

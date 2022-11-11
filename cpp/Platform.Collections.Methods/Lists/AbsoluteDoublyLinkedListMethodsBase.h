@@ -1,22 +1,24 @@
 ﻿namespace Platform::Collections::Methods::Lists
 {
-    template <typename ...> class AbsoluteDoublyLinkedListMethodsBase;
-    template <typename TElement> class AbsoluteDoublyLinkedListMethodsBase<TElement> : public DoublyLinkedListMethodsBase<TElement>
+    template <class impl_t, typename ...> class AbsoluteDoublyLinkedListMethodsBase;
+    template <class impl_t, typename TElement> class AbsoluteDoublyLinkedListMethodsBase<impl_t, TElement> : public DoublyLinkedListMethodsBase<impl_t, TElement>
     {
-        protected: virtual TElement GetFirst() = 0;
+        public: using Polymorph<impl_t>::object;
 
-        protected: virtual TElement GetLast() = 0;
+        protected: TElement GetFirst() { return object().GetFirst(); };
 
-        protected: virtual TElement GetSize() = 0;
+        protected: TElement GetLast() { return object().GetLast(); };
 
-        protected: virtual void SetFirst(TElement element) = 0;
+        protected: TElement GetSize() { return object().GetSize(); };
 
-        protected: virtual void SetLast(TElement element) = 0;
+        protected: void SetFirst(TElement element) { object().SetFirst(element); };
 
-        protected: virtual void SetSize(TElement size) = 0;
+        protected: void SetLast(TElement element) { object().SetLast(element); };
 
-        protected: void IncrementSize() { this->SetSize(this->GetSize() + 1); }
+        protected: void SetSize(TElement size) { object().SetSize(size); };
 
-        protected: void DecrementSize() { this->SetSize(this->GetSize() - 1); }
+        protected: void IncrementSize() { object().SetSize(object().GetSize() + 1); }
+
+        protected: void DecrementSize() { object().SetSize(object().GetSize() - 1); }
     };
 }

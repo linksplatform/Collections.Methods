@@ -1,91 +1,93 @@
 ﻿namespace Platform::Collections::Methods::Lists
 {
-    template <typename ...> class RelativeCircularDoublyLinkedListMethods;
-    template <typename TElement> class RelativeCircularDoublyLinkedListMethods<TElement> : public RelativeDoublyLinkedListMethodsBase<TElement>
+    template <class impl_t, typename ...> class RelativeCircularDoublyLinkedListMethods;
+    template <class impl_t, typename TElement> class RelativeCircularDoublyLinkedListMethods<impl_t, TElement> : public RelativeDoublyLinkedListMethodsBase<impl_t, TElement>
     {
+        public: using Polymorph<impl_t>::object;
+
         public: void AttachBefore(TElement headElement, TElement baseElement, TElement newElement)
         {
-            auto baseElementPrevious = this->GetPrevious(baseElement);
-            this->SetPrevious(newElement, baseElementPrevious);
-            this->SetNext(newElement, baseElement);
-            if (baseElement == this->GetFirst(headElement))
+            auto baseElementPrevious = object().GetPrevious(baseElement);
+            object().SetPrevious(newElement, baseElementPrevious);
+            object().SetNext(newElement, baseElement);
+            if (baseElement == object().GetFirst(headElement))
             {
-                this->SetFirst(headElement, newElement);
+                object().SetFirst(headElement, newElement);
             }
-            this->SetNext(baseElementPrevious, newElement);
-            this->SetPrevious(baseElement, newElement);
-            this->IncrementSize(headElement);
+            object().SetNext(baseElementPrevious, newElement);
+            object().SetPrevious(baseElement, newElement);
+            object().IncrementSize(headElement);
         }
 
         public: void AttachAfter(TElement headElement, TElement baseElement, TElement newElement)
         {
-            auto baseElementNext = this->GetNext(baseElement);
-            this->SetPrevious(newElement, baseElement);
-            this->SetNext(newElement, baseElementNext);
-            if (baseElement == this->GetLast(headElement))
+            auto baseElementNext = object().GetNext(baseElement);
+            object().SetPrevious(newElement, baseElement);
+            object().SetNext(newElement, baseElementNext);
+            if (baseElement == object().GetLast(headElement))
             {
-                this->SetLast(headElement, newElement);
+                object().SetLast(headElement, newElement);
             }
-            this->SetPrevious(baseElementNext, newElement);
-            this->SetNext(baseElement, newElement);
-            this->IncrementSize(headElement);
+            object().SetPrevious(baseElementNext, newElement);
+            object().SetNext(baseElement, newElement);
+            object().IncrementSize(headElement);
         }
 
         public: void AttachAsFirst(TElement headElement, TElement element)
         {
-            auto first = this->GetFirst(headElement);
+            auto first = object().GetFirst(headElement);
             if (first == 0)
             {
-                this->SetFirst(headElement, element);
-                this->SetLast(headElement, element);
-                this->SetPrevious(element, element);
-                this->SetNext(element, element);
-                this->IncrementSize(headElement);
+                object().SetFirst(headElement, element);
+                object().SetLast(headElement, element);
+                object().SetPrevious(element, element);
+                object().SetNext(element, element);
+                object().IncrementSize(headElement);
             }
             else
             {
-                this->AttachBefore(headElement, first, element);
+                object().AttachBefore(headElement, first, element);
             }
         }
 
         public: void AttachAsLast(TElement headElement, TElement element)
         {
-            auto last = this->GetLast(headElement);
+            auto last = object().GetLast(headElement);
             if (last == 0)
             {
-                this->AttachAsFirst(headElement, element);
+                object().AttachAsFirst(headElement, element);
             }
             else
             {
-                this->AttachAfter(headElement, last, element);
+                object().AttachAfter(headElement, last, element);
             }
         }
 
         public: void Detach(TElement headElement, TElement element)
         {
-            auto elementPrevious = this->GetPrevious(element);
-            auto elementNext = this->GetNext(element);
+            auto elementPrevious = object().GetPrevious(element);
+            auto elementNext = object().GetNext(element);
             if (elementNext == element)
             {
-                this->SetFirst(headElement, 0);
-                this->SetLast(headElement, 0);
+                object().SetFirst(headElement, 0);
+                object().SetLast(headElement, 0);
             }
             else
             {
-                this->SetNext(elementPrevious, elementNext);
-                this->SetPrevious(elementNext, elementPrevious);
-                if (element == this->GetFirst(headElement))
+                object().SetNext(elementPrevious, elementNext);
+                object().SetPrevious(elementNext, elementPrevious);
+                if (element == object().GetFirst(headElement))
                 {
-                    this->SetFirst(headElement, elementNext);
+                    object().SetFirst(headElement, elementNext);
                 }
-                if (element == this->GetLast(headElement))
+                if (element == object().GetLast(headElement))
                 {
-                    this->SetLast(headElement, elementPrevious);
+                    object().SetLast(headElement, elementPrevious);
                 }
             }
-            this->SetPrevious(element, 0);
-            this->SetNext(element, 0);
-            this->DecrementSize(headElement);
+            object().SetPrevious(element, 0);
+            object().SetNext(element, 0);
+            object().DecrementSize(headElement);
         }
     };
 }

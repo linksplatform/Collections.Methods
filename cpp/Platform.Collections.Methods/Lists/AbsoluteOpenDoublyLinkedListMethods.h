@@ -1,95 +1,97 @@
 ﻿namespace Platform::Collections::Methods::Lists
 {
-    template <typename ...> class AbsoluteOpenDoublyLinkedListMethods;
-    template <typename TElement> class AbsoluteOpenDoublyLinkedListMethods<TElement> : public AbsoluteDoublyLinkedListMethodsBase<TElement>
+    template <class impl_t, typename ...> class AbsoluteOpenDoublyLinkedListMethods;
+    template <class impl_t, typename TElement> class AbsoluteOpenDoublyLinkedListMethods<impl_t, TElement> : public AbsoluteDoublyLinkedListMethodsBase<impl_t, TElement>
     {
+        public: using Polymorph<impl_t>::object;
+
         public: void AttachBefore(TElement baseElement, TElement newElement)
         {
-            auto baseElementPrevious = this->GetPrevious(baseElement);
-            this->SetPrevious(newElement, baseElementPrevious);
-            this->SetNext(newElement, baseElement);
+            auto baseElementPrevious = object().GetPrevious(baseElement);
+            object().SetPrevious(newElement, baseElementPrevious);
+            object().SetNext(newElement, baseElement);
             if (baseElementPrevious == 0)
             {
-                this->SetFirst(newElement);
+                object().SetFirst(newElement);
             }
             else
             {
-                this->SetNext(baseElementPrevious, newElement);
+                object().SetNext(baseElementPrevious, newElement);
             }
-            this->SetPrevious(baseElement, newElement);
-            this->IncrementSize();
+            object().SetPrevious(baseElement, newElement);
+            object().IncrementSize();
         }
 
         public: void AttachAfter(TElement baseElement, TElement newElement)
         {
-            auto baseElementNext = this->GetNext(baseElement);
-            this->SetPrevious(newElement, baseElement);
-            this->SetNext(newElement, baseElementNext);
+            auto baseElementNext = object().GetNext(baseElement);
+            object().SetPrevious(newElement, baseElement);
+            object().SetNext(newElement, baseElementNext);
             if (baseElementNext == 0)
             {
-                this->SetLast(newElement);
+                object().SetLast(newElement);
             }
             else
             {
-                this->SetPrevious(baseElementNext, newElement);
+                object().SetPrevious(baseElementNext, newElement);
             }
-            this->SetNext(baseElement, newElement);
-            this->IncrementSize();
+            object().SetNext(baseElement, newElement);
+            object().IncrementSize();
         }
 
         public: void AttachAsFirst(TElement element)
         {
-            auto first = this->GetFirst();
+            auto first = object().GetFirst();
             if (first == 0)
             {
-                this->SetFirst(element);
-                this->SetLast(element);
-                this->SetPrevious(element, 0);
-                this->SetNext(element, 0);
-                this->IncrementSize();
+                object().SetFirst(element);
+                object().SetLast(element);
+                object().SetPrevious(element, 0);
+                object().SetNext(element, 0);
+                object().IncrementSize();
             }
             else
             {
-                this->AttachBefore(first, element);
+                object().AttachBefore(first, element);
             }
         }
 
         public: void AttachAsLast(TElement element)
         {
-            auto last = this->GetLast();
+            auto last = object().GetLast();
             if (last == 0)
             {
-                this->AttachAsFirst(element);
+                object().AttachAsFirst(element);
             }
             else
             {
-                this->AttachAfter(last, element);
+                object().AttachAfter(last, element);
             }
         }
 
         public: void Detach(TElement element)
         {
-            auto elementPrevious = this->GetPrevious(element);
-            auto elementNext = this->GetNext(element);
+            auto elementPrevious = object().GetPrevious(element);
+            auto elementNext = object().GetNext(element);
             if (elementPrevious == 0)
             {
-                this->SetFirst(elementNext);
+                object().SetFirst(elementNext);
             }
             else
             {
-                this->SetNext(elementPrevious, elementNext);
+                object().SetNext(elementPrevious, elementNext);
             }
             if (elementNext == 0)
             {
-                this->SetLast(elementPrevious);
+                object().SetLast(elementPrevious);
             }
             else
             {
-                this->SetPrevious(elementNext, elementPrevious);
+                object().SetPrevious(elementNext, elementPrevious);
             }
-            this->SetPrevious(element, 0);
-            this->SetNext(element, 0);
-            this->DecrementSize();
+            object().SetPrevious(element, 0);
+            object().SetNext(element, 0);
+            object().DecrementSize();
         }
     };
 }

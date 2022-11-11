@@ -1,58 +1,62 @@
 ﻿namespace Platform::Collections::Methods::Trees
 {
-    template <typename ...> class RecursionlessSizeBalancedTreeMethods;
-    template <typename TElement> class RecursionlessSizeBalancedTreeMethods<TElement> : public SizedBinaryTreeMethodsBase<TElement>
+    template <typename TSelf, typename ...> class RecursionlessSizeBalancedTreeMethods;
+    template <typename TSelf, typename TElement> class RecursionlessSizeBalancedTreeMethods<TSelf, TElement> : public SizedBinaryTreeMethodsBase<TSelf, TElement>
     {
-        protected: void AttachCore(TElement* root, TElement node) override
+    public:
+        using base = SizedBinaryTreeMethodsBase<TSelf, TElement>;
+        friend base;
+
+        protected: void AttachCore(TElement* root, TElement node)
         {
             while (true)
             {
-                auto* left = this->GetLeftReference(*root);
-                auto leftSize = this->GetSizeOrZero(*left);
-                auto* right = this->GetRightReference(*root);
-                auto rightSize = this->GetSizeOrZero(*right);
-                if (this->FirstIsToTheLeftOfSecond(node, *root))
+                auto* left = this->object().GetLeftReference(*root);
+                auto leftSize = this->object().GetSizeOrZero(*left);
+                auto* right = this->object().GetRightReference(*root);
+                auto rightSize = this->object().GetSizeOrZero(*right);
+                if (this->object().FirstIsToTheLeftOfSecond(node, *root))
                 {
                     if (*left == 0)
                     {
-                        this->IncrementSize(*root);
-                        this->SetSize(node, 1);
+                        this->object().IncrementSize(*root);
+                        this->object().SetSize(node, 1);
                         *left = node;
                         return;
                     }
-                    if (this->FirstIsToTheLeftOfSecond(node, *left))
+                    if (this->object().FirstIsToTheLeftOfSecond(node, *left))
                     {
                         if ((leftSize + 1) > rightSize)
                         {
-                            this->RightRotate(root);
+                            this->object().RightRotate(root);
                         }
                         else
                         {
-                            this->IncrementSize(*root);
+                            this->object().IncrementSize(*root);
                             root = left;
                         }
                     }
                     else
                     {
-                        auto leftRightSize = this->GetSizeOrZero(this->GetRight(*left));
+                        auto leftRightSize = this->object().GetSizeOrZero(this->object().GetRight(*left));
                         if ((leftRightSize + 1) > rightSize)
                         {
                             if (leftRightSize == 0 && rightSize == 0)
                             {
-                                this->SetLeft(node, *left);
-                                this->SetRight(node, *root);
-                                this->SetSize(node, leftSize + 2);
-                                this->SetLeft(*root, 0);
-                                this->SetSize(*root, 1);
+                                this->object().SetLeft(node, *left);
+                                this->object().SetRight(node, *root);
+                                this->object().SetSize(node, leftSize + 2);
+                                this->object().SetLeft(*root, 0);
+                                this->object().SetSize(*root, 1);
                                 *root = node;
                                 return;
                             }
-                            this->LeftRotate(left);
-                            this->RightRotate(root);
+                            this->object().LeftRotate(left);
+                            this->object().RightRotate(root);
                         }
                         else
                         {
-                            this->IncrementSize(*root);
+                            this->object().IncrementSize(*root);
                             root = left;
                         }
                     }
@@ -61,44 +65,44 @@
                 {
                     if (*right == 0)
                     {
-                        this->IncrementSize(*root);
-                        this->SetSize(node, 1);
+                        this->object().IncrementSize(*root);
+                        this->object().SetSize(node, 1);
                         *right = node;
                         return;
                     }
-                    if (this->FirstIsToTheRightOfSecond(node, *right))
+                    if (this->object().FirstIsToTheRightOfSecond(node, *right))
                     {
                         if ((rightSize + 1) > leftSize)
                         {
-                            this->LeftRotate(root);
+                            this->object().LeftRotate(root);
                         }
                         else
                         {
-                            this->IncrementSize(*root);
+                            this->object().IncrementSize(*root);
                             root = right;
                         }
                     }
                     else
                     {
-                        auto rightLeftSize = this->GetSizeOrZero(this->GetLeft(*right));
+                        auto rightLeftSize = this->object().GetSizeOrZero(this->object().GetLeft(*right));
                         if ((rightLeftSize + 1) > leftSize)
                         {
                             if (rightLeftSize == 0 && leftSize == 0)
                             {
-                                this->SetLeft(node, *root);
-                                this->SetRight(node, *right);
-                                this->SetSize(node, rightSize + 2);
-                                this->SetRight(*root, 0);
-                                this->SetSize(*root, 1);
+                                this->object().SetLeft(node, *root);
+                                this->object().SetRight(node, *right);
+                                this->object().SetSize(node, rightSize + 2);
+                                this->object().SetRight(*root, 0);
+                                this->object().SetSize(*root, 1);
                                 *root = node;
                                 return;
                             }
-                            this->RightRotate(right);
-                            this->LeftRotate(root);
+                            this->object().RightRotate(right);
+                            this->object().LeftRotate(root);
                         }
                         else
                         {
-                            this->IncrementSize(*root);
+                            this->object().IncrementSize(*root);
                             root = right;
                         }
                     }
@@ -106,47 +110,47 @@
             }
         }
 
-        protected: void DetachCore(TElement* root, TElement node) override
+        protected: void DetachCore(TElement* root, TElement node)
         {
             while (true)
             {
-                auto* left = this->GetLeftReference(*root);
-                auto leftSize = this->GetSizeOrZero(*left);
-                auto* right = this->GetRightReference(*root);
-                auto rightSize = this->GetSizeOrZero(*right);
-                if (this->FirstIsToTheLeftOfSecond(node, *root))
+                auto* left = this->object().GetLeftReference(*root);
+                auto leftSize = this->object().GetSizeOrZero(*left);
+                auto* right = this->object().GetRightReference(*root);
+                auto rightSize = this->object().GetSizeOrZero(*right);
+                if (this->object().FirstIsToTheLeftOfSecond(node, *root))
                 {
                     auto decrementedLeftSize = leftSize - 1;
-                    if (this->GetSizeOrZero(this->GetRightOrDefault(*right)) > decrementedLeftSize)
+                    if (this->object().GetSizeOrZero(this->object().GetRightOrDefault(*right)) > decrementedLeftSize)
                     {
-                        this->LeftRotate(root);
+                        this->object().LeftRotate(root);
                     }
-                    else if (this->GetSizeOrZero(this->GetLeftOrDefault(*right)) > decrementedLeftSize)
+                    else if (this->object().GetSizeOrZero(this->object().GetLeftOrDefault(*right)) > decrementedLeftSize)
                     {
-                        this->RightRotate(right);
-                        this->LeftRotate(root);
+                        this->object().RightRotate(right);
+                        this->object().LeftRotate(root);
                     }
                     else
                     {
-                        this->DecrementSize(*root);
+                        this->object().DecrementSize(*root);
                         root = left;
                     }
                 }
-                else if (this->FirstIsToTheRightOfSecond(node, *root))
+                else if (this->object().FirstIsToTheRightOfSecond(node, *root))
                 {
                     auto decrementedRightSize = rightSize - 1;
-                    if (this->GetSizeOrZero(this->GetLeftOrDefault(*left)) > decrementedRightSize)
+                    if (this->object().GetSizeOrZero(this->object().GetLeftOrDefault(*left)) > decrementedRightSize)
                     {
-                        this->RightRotate(root);
+                        this->object().RightRotate(root);
                     }
-                    else if (this->GetSizeOrZero(this->GetRightOrDefault(*left)) > decrementedRightSize)
+                    else if (this->object().GetSizeOrZero(this->object().GetRightOrDefault(*left)) > decrementedRightSize)
                     {
-                        this->LeftRotate(left);
-                        this->RightRotate(root);
+                        this->object().LeftRotate(left);
+                        this->object().RightRotate(root);
                     }
                     else
                     {
-                        this->DecrementSize(*root);
+                        this->object().DecrementSize(*root);
                         root = right;
                     }
                 }
@@ -157,17 +161,17 @@
                         TElement replacement = 0;
                         if (leftSize > rightSize)
                         {
-                            replacement = this->GetRightest(*left);
-                            this->DetachCore(left, replacement);
+                            replacement = this->object().GetRightest(*left);
+                            this->object().DetachCore(left, replacement);
                         }
                         else
                         {
-                            replacement = this->GetLeftest(*right);
-                            this->DetachCore(right, replacement);
+                            replacement = this->object().GetLeftest(*right);
+                            this->object().DetachCore(right, replacement);
                         }
-                        this->SetLeft(replacement, *left);
-                        this->SetRight(replacement, *right);
-                        this->SetSize(replacement, leftSize + rightSize);
+                        this->object().SetLeft(replacement, *left);
+                        this->object().SetRight(replacement, *right);
+                        this->object().SetSize(replacement, leftSize + rightSize);
                         *root = replacement;
                     }
                     else if (leftSize > 0)
@@ -182,7 +186,7 @@
                     {
                         *root = 0;
                     }
-                    this->ClearNode(node);
+                    this->object().ClearNode(node);
                     return;
                 }
             }
