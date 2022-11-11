@@ -1,12 +1,11 @@
 ﻿namespace Platform::Collections::Methods::Trees
 {
     template <typename ...> class SizeBalancedTreeMethods;
-    template <typename impl_t, typename TElement> class SizeBalancedTreeMethods<impl_t, TElement> : public SizedBinaryTreeMethodsBase<impl_t, TElement>
+    template <typename TSelf, typename TElement> class SizeBalancedTreeMethods<TSelf, TElement> : public SizedBinaryTreeMethodsBase<TSelf, TElement>
     {
 
       public:
-        using Polymorph<impl_t>::object;
-        using base = SizedBinaryTreeMethodsBase<impl_t, TElement>;
+        using base = SizedBinaryTreeMethodsBase<TSelf, TElement>;
         friend base;
 
         protected: void AttachCore(TElement* root, TElement node)
@@ -14,20 +13,20 @@
             if (*root == 0)
             {
                 *root = node;
-                object().IncrementSize(*root);
+                this->object().IncrementSize(*root);
             }
             else
             {
-                object().IncrementSize(*root);
-                if (object().FirstIsToTheLeftOfSecond(node, *root))
+                this->object().IncrementSize(*root);
+                if (this->object().FirstIsToTheLeftOfSecond(node, *root))
                 {
-                    object().AttachCore(object().GetLeftReference(*root), node);
-                    object().LeftMaintain(root);
+                    this->object().AttachCore(this->object().GetLeftReference(*root), node);
+                    this->object().LeftMaintain(root);
                 }
                 else
                 {
-                    object().AttachCore(object().GetRightReference(*root), node);
-                    object().RightMaintain(root);
+                    this->object().AttachCore(this->object().GetRightReference(*root), node);
+                    this->object().RightMaintain(root);
                 }
             }
         }
@@ -39,38 +38,38 @@
             auto replacementNode = 0;
             while (*currentNode != nodeToDetach)
             {
-                object().DecrementSize(*currentNode);
-                if (object().FirstIsToTheLeftOfSecond(nodeToDetach, *currentNode))
+                this->object().DecrementSize(*currentNode);
+                if (this->object().FirstIsToTheLeftOfSecond(nodeToDetach, *currentNode))
                 {
                     parent = currentNode;
-                    currentNode = object().GetLeftReference(*currentNode);
+                    currentNode = this->object().GetLeftReference(*currentNode);
                 }
-                else if (object().FirstIsToTheRightOfSecond(nodeToDetach, *currentNode))
+                else if (this->object().FirstIsToTheRightOfSecond(nodeToDetach, *currentNode))
                 {
                     parent = currentNode;
-                    currentNode = object().GetRightReference(*currentNode);
+                    currentNode = this->object().GetRightReference(*currentNode);
                 }
                 else
                 {
                     throw std::runtime_error("Duplicate link found in the tree.");
                 }
             }
-            auto nodeToDetachLeft = object().GetLeft(nodeToDetach);
-            auto node = object().GetRight(nodeToDetach);
+            auto nodeToDetachLeft = this->object().GetLeft(nodeToDetach);
+            auto node = this->object().GetRight(nodeToDetach);
             if (nodeToDetachLeft != 0 && node != 0)
             {
-                auto leftestNode = object().GetLeftest(node);
-                object().DetachCore(object().GetRightReference(nodeToDetach), leftestNode);
-                object().SetLeft(leftestNode, nodeToDetachLeft);
-                node = object().GetRight(nodeToDetach);
+                auto leftestNode = this->object().GetLeftest(node);
+                this->object().DetachCore(this->object().GetRightReference(nodeToDetach), leftestNode);
+                this->object().SetLeft(leftestNode, nodeToDetachLeft);
+                node = this->object().GetRight(nodeToDetach);
                 if (node != 0)
                 {
-                    object().SetRight(leftestNode, node);
-                    object().SetSize(leftestNode, (object().GetSize(nodeToDetachLeft) + object().GetSize(node)) + 1);
+                    this->object().SetRight(leftestNode, node);
+                    this->object().SetSize(leftestNode, (this->object().GetSize(nodeToDetachLeft) + this->object().GetSize(node)) + 1);
                 }
                 else
                 {
-                    object().SetSize(leftestNode, object().GetSize(nodeToDetachLeft) + 1);
+                    this->object().SetSize(leftestNode, this->object().GetSize(nodeToDetachLeft) + 1);
                 }
                 replacementNode = leftestNode;
             }
@@ -86,50 +85,50 @@
             {
                 *root = replacementNode;
             }
-            else if (object().GetLeft(*parent) == nodeToDetach)
+            else if (this->object().GetLeft(*parent) == nodeToDetach)
             {
-                object().SetLeft(*parent, replacementNode);
+                this->object().SetLeft(*parent, replacementNode);
             }
-            else if (object().GetRight(*parent) == nodeToDetach)
+            else if (this->object().GetRight(*parent) == nodeToDetach)
             {
-                object().SetRight(*parent, replacementNode);
+                this->object().SetRight(*parent, replacementNode);
             }
-            object().ClearNode(nodeToDetach);
+            this->object().ClearNode(nodeToDetach);
         }
 
         private: void LeftMaintain(TElement* root)
         {
             if (*root != 0)
             {
-                auto rootLeftNode = object().GetLeft(*root);
+                auto rootLeftNode = this->object().GetLeft(*root);
                 if (rootLeftNode != 0)
                 {
-                    auto rootRightNode = object().GetRight(*root);
-                    auto rootRightNodeSize = object().GetSize(rootRightNode);
-                    auto rootLeftNodeLeftNode = object().GetLeft(rootLeftNode);
+                    auto rootRightNode = this->object().GetRight(*root);
+                    auto rootRightNodeSize = this->object().GetSize(rootRightNode);
+                    auto rootLeftNodeLeftNode = this->object().GetLeft(rootLeftNode);
                     if (rootLeftNodeLeftNode != 0 &&
-                        (rootRightNode == 0 || object().GetSize(rootLeftNodeLeftNode) > rootRightNodeSize))
+                        (rootRightNode == 0 || this->object().GetSize(rootLeftNodeLeftNode) > rootRightNodeSize))
                     {
-                        object().RightRotate(root);
+                        this->object().RightRotate(root);
                     }
                     else
                     {
-                        auto rootLeftNodeRightNode = object().GetRight(rootLeftNode);
+                        auto rootLeftNodeRightNode = this->object().GetRight(rootLeftNode);
                         if (rootLeftNodeRightNode != 0 &&
-                            (rootRightNode == 0 || object().GetSize(rootLeftNodeRightNode) > rootRightNodeSize))
+                            (rootRightNode == 0 || this->object().GetSize(rootLeftNodeRightNode) > rootRightNodeSize))
                         {
-                            object().LeftRotate(object().GetLeftReference(*root));
-                            object().RightRotate(root);
+                            this->object().LeftRotate(this->object().GetLeftReference(*root));
+                            this->object().RightRotate(root);
                         }
                         else
                         {
                             return;
                         }
                     }
-                    object().LeftMaintain(object().GetLeftReference(*root));
-                    object().RightMaintain(object().GetRightReference(*root));
-                    object().LeftMaintain(root);
-                    object().RightMaintain(root);
+                    this->object().LeftMaintain(this->object().GetLeftReference(*root));
+                    this->object().RightMaintain(this->object().GetRightReference(*root));
+                    this->object().LeftMaintain(root);
+                    this->object().RightMaintain(root);
                 }
             }
         }
@@ -138,35 +137,35 @@
         {
             if (*root != 0)
             {
-                auto rootRightNode = object().GetRight(*root);
+                auto rootRightNode = this->object().GetRight(*root);
                 if (rootRightNode != 0)
                 {
-                    auto rootLeftNode = object().GetLeft(*root);
-                    auto rootLeftNodeSize = object().GetSize(rootLeftNode);
-                    auto rootRightNodeRightNode = object().GetRight(rootRightNode);
+                    auto rootLeftNode = this->object().GetLeft(*root);
+                    auto rootLeftNodeSize = this->object().GetSize(rootLeftNode);
+                    auto rootRightNodeRightNode = this->object().GetRight(rootRightNode);
                     if (rootRightNodeRightNode != 0 &&
-                        (rootLeftNode == 0 || object().GetSize(rootRightNodeRightNode) > rootLeftNodeSize))
+                        (rootLeftNode == 0 || this->object().GetSize(rootRightNodeRightNode) > rootLeftNodeSize))
                     {
-                        object().LeftRotate(root);
+                        this->object().LeftRotate(root);
                     }
                     else
                     {
-                        auto rootRightNodeLeftNode = object().GetLeft(rootRightNode);
+                        auto rootRightNodeLeftNode = this->object().GetLeft(rootRightNode);
                         if (rootRightNodeLeftNode != 0 &&
-                            (rootLeftNode == 0 || object().GetSize(rootRightNodeLeftNode) > rootLeftNodeSize))
+                            (rootLeftNode == 0 || this->object().GetSize(rootRightNodeLeftNode) > rootLeftNodeSize))
                         {
-                            object().RightRotate(object().GetRightReference(*root));
-                            object().LeftRotate(root);
+                            this->object().RightRotate(this->object().GetRightReference(*root));
+                            this->object().LeftRotate(root);
                         }
                         else
                         {
                             return;
                         }
                     }
-                    object().LeftMaintain(object().GetLeftReference(*root));
-                    object().RightMaintain(object().GetRightReference(*root));
-                    object().LeftMaintain(root);
-                    object().RightMaintain(root);
+                    this->object().LeftMaintain(this->object().GetLeftReference(*root));
+                    this->object().RightMaintain(this->object().GetRightReference(*root));
+                    this->object().LeftMaintain(root);
+                    this->object().RightMaintain(root);
                 }
             }
         }

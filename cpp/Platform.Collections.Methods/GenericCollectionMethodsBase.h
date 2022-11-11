@@ -2,8 +2,8 @@
 {
     using namespace Platform::Interfaces;
 
-    template <class impl_t, typename ...> class GenericCollectionMethodsBase;
-    template <class impl_t, typename TElement> class GenericCollectionMethodsBase<impl_t, TElement> : public Polymorph<impl_t>
+    template <typename TSelf, typename ...> class GenericCollectionMethodsBase;
+    template <typename TSelf, typename TElement> class GenericCollectionMethodsBase<TSelf, TElement> : public Polymorph<TSelf>
     {
     };
 }
