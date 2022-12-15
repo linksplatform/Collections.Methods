@@ -4,7 +4,7 @@
     <Description>LinksPlatform's Platform.Collections.Methods Class Library</Description>
     <Copyright>Konstantin Diachenko</Copyright>
     <AssemblyTitle>Platform.Collections.Methods</AssemblyTitle>
-    <VersionPrefix>0.5.2</VersionPrefix>
+    <VersionPrefix>0.6.0</VersionPrefix>
     <Authors>Konstantin Diachenko</Authors>
     <TargetFramework>net7</TargetFramework>
     <AssemblyName>Platform.Collections.Methods</AssemblyName>
@@ -23,22 +23,18 @@
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <LangVersion>latest</LangVersion>
-    <PackageReleaseNotes>.NET 6 support is added.
-Microsoft.SourceLink.GitHub dependency is updated from 1.0.0 to 1.1.1.
-Platform.Numbers dependency updated from 0.5.1 to 0.5.2.</PackageReleaseNotes>
+    <PackageReleaseNotes>Target frameworks are changed to net7.
+License is changed to Unlicense.
+Platform.Numbers dependency is updated from 0.5.2 to 0.6.0.</PackageReleaseNotes>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup Condition="$(TargetFramework.StartsWith('net4')) AND '$(MSBuildRuntimeType)' == 'Core' AND '$(OS)' != 'Windows_NT'">
-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="All" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Platform.Numbers" Version="0.5.2" />
+    <PackageReference Include="Platform.Numbers" Version="0.6.0" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(OS)' == 'Windows_NT' AND $(TargetFramework) == 'netstandard2.1'">
