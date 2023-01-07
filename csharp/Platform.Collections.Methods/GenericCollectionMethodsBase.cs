@@ -115,7 +115,7 @@ namespace Platform.Collections.Methods
         /// </summary>
         /// <returns><para>String representation of the Range.</para><para>Строковое представление диапазона.</para></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual TElement Decrement(TElement value) => Arithmetic<TElement>.Decrement(value);
+        protected virtual TElement Decrement(TElement value) => value-TElement.One;
 
         /// <summary>
         /// <para>Presents the Range in readable format.</para>

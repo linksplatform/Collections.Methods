@@ -43,11 +43,11 @@ namespace Platform.Collections.Methods.Tests
         {
             while (!EqualityComparer.Equals(_allocated, One) && IsEmpty(node))
             {
-                var lastNode = Arithmetic.Decrement(_allocated);
+                var lastNode = _allocated-TElement.One;
                 if (EqualityComparer.Equals(lastNode, node))
                 {
                     _allocated = lastNode;
-                    node = Arithmetic.Decrement(node);
+                    node = node-TElement.One;
                 }
                 else
                 {
