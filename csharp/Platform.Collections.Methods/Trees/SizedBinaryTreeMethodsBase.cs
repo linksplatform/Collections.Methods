@@ -243,7 +243,7 @@ namespace Platform.Collections.Methods.Trees
         /// <para></para>
         /// </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected void IncrementSize(TElement node) => SetSize(node, Increment(GetSize(node)));
+        protected void IncrementSize(TElement node) => SetSize(node, (GetSize(node)) + TElement.One);
 
         /// <summary>
         /// <para>
@@ -320,7 +320,7 @@ namespace Platform.Collections.Methods.Trees
         /// <para></para>
         /// </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected void FixSize(TElement node) => SetSize(node, Increment(Add(GetLeftSize(node), GetRightSize(node))));
+        protected void FixSize(TElement node) => SetSize(node, (Add(GetLeftSize(node), GetRightSize(node))) + TElement.One);
 
         /// <summary>
         /// <para>

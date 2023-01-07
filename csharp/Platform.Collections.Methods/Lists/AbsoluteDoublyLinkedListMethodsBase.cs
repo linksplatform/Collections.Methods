@@ -99,7 +99,7 @@ namespace Platform.Collections.Methods.Lists
         /// <para></para>
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected void IncrementSize() => SetSize(Increment(GetSize()));
+        protected void IncrementSize() => SetSize((GetSize()) + TElement.One);
 
         /// <summary>
         /// <para>
