@@ -40,7 +40,7 @@ namespace Platform.Collections.Methods.Trees
                     if (EqualToZero(left))
                     {
                         IncrementSize(root);
-                        SetSize(node, One);
+                        SetSize(node, TElement.One);
                         left = node;
                         return;
                     }
@@ -67,7 +67,7 @@ namespace Platform.Collections.Methods.Trees
                                 SetRight(node, root);
                                 SetSize(node, Add(leftSize, Two)); // Two (2) - node the size of root and a node itself
                                 SetLeft(root, Zero);
-                                SetSize(root, One);
+                                SetSize(root, TElement.One);
                                 root = node;
                                 return;
                             }
@@ -86,7 +86,7 @@ namespace Platform.Collections.Methods.Trees
                     if (EqualToZero(right))
                     {
                         IncrementSize(root);
-                        SetSize(node, One);
+                        SetSize(node, TElement.One);
                         right = node;
                         return;
                     }
@@ -113,7 +113,7 @@ namespace Platform.Collections.Methods.Trees
                                 SetRight(node, right);
                                 SetSize(node, Add(rightSize, Two)); // Two (2) - node the size of root and a node itself
                                 SetRight(root, Zero);
-                                SetSize(root, One);
+                                SetSize(root, TElement.One);
                                 root = node;
                                 return;
                             }

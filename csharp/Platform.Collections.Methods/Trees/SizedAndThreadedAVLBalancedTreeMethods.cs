@@ -353,7 +353,7 @@ namespace Platform.Collections.Methods.Trees
                             SetLeft(currentNode, node);
                             SetLeftIsChild(currentNode, true);
                             DecrementBalance(currentNode);
-                            SetSize(node, One);
+                            SetSize(node, TElement.One);
                             FixSize(currentNode); // Should be incremented already
                             break;
                         }
@@ -374,7 +374,7 @@ namespace Platform.Collections.Methods.Trees
                             SetRight(currentNode, node);
                             SetRightIsChild(currentNode, true);
                             IncrementBalance(currentNode);
-                            SetSize(node, One);
+                            SetSize(node, TElement.One);
                             FixSize(currentNode); // Should be incremented already
                             break;
                         }

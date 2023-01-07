@@ -26,7 +26,7 @@ namespace Platform.Collections.Methods.Tests
 
         public TElement Count => GetSizeOrZero(Root);
 
-        public SizedAndThreadedAVLBalancedTree(int capacity) => (_elements, _allocated) = (new TreeElement[capacity], One);
+        public SizedAndThreadedAVLBalancedTree(int capacity) => (_elements, _allocated) = (new TreeElement[capacity], TElement.One);
 
         public TElement Allocate()
         {
@@ -44,7 +44,7 @@ namespace Platform.Collections.Methods.Tests
 
         public void Free(TElement node)
         {
-            while ((_allocated != One) && IsEmpty(node))
+            while ((_allocated != TElement.One) && IsEmpty(node))
             {
                 var lastNode = _allocated-TElement.One;
                 if ((lastNode == node))

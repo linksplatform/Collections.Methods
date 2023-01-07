@@ -579,7 +579,7 @@ namespace Platform.Collections.Methods.Trees
 #endif
             if (EqualToZero(root))
             {
-                SetSize(node, One);
+                SetSize(node, TElement.One);
                 root = node;
                 return;
             }
