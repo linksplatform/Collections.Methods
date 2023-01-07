@@ -65,7 +65,7 @@ namespace Platform.Collections.Methods.Trees
                             {
                                 SetLeft(node, left);
                                 SetRight(node, root);
-                                SetSize(node, Add(leftSize, TElement.CreateTruncating(2))); // TElement.CreateTruncating(2) (2) - node the size of root and a node itself
+                                SetSize(node, (leftSize+ TElement.CreateTruncating(2))); // TElement.CreateTruncating(2) (2) - node the size of root and a node itself
                                 SetLeft(root, TElement.Zero);
                                 SetSize(root, TElement.One);
                                 root = node;
@@ -111,7 +111,7 @@ namespace Platform.Collections.Methods.Trees
                             {
                                 SetLeft(node, root);
                                 SetRight(node, right);
-                                SetSize(node, Add(rightSize, TElement.CreateTruncating(2))); // TElement.CreateTruncating(2) (2) - node the size of root and a node itself
+                                SetSize(node, (rightSize + TElement.CreateTruncating(2))); // TElement.CreateTruncating(2) (2) - node the size of root and a node itself
                                 SetRight(root, TElement.Zero);
                                 SetSize(root, TElement.One);
                                 root = node;
@@ -205,7 +205,7 @@ namespace Platform.Collections.Methods.Trees
                         }
                         SetLeft(replacement, left);
                         SetRight(replacement, right);
-                        SetSize(replacement, Add(leftSize, rightSize));
+                        SetSize(replacement, (leftSize + rightSize));
                         root = replacement;
                     }
                     else if (GreaterThanZero(leftSize))
