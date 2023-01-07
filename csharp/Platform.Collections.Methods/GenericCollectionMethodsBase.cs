@@ -124,7 +124,7 @@ namespace Platform.Collections.Methods
         /// </summary>
         /// <returns><para>String representation of the Range.</para><para>Строковое представление диапазона.</para></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual TElement Add(TElement first, TElement second) => Arithmetic<TElement>.Add(first, second);
+        protected virtual TElement Add(TElement first, TElement second) => (first + second);
  
         /// <summary>
         /// <para>Presents the Range in readable format.</para>
@@ -132,7 +132,7 @@ namespace Platform.Collections.Methods
         /// </summary>
         /// <returns><para>String representation of the Range.</para><para>Строковое представление диапазона.</para></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual TElement Subtract(TElement first, TElement second) => Arithmetic<TElement>.Subtract(first, second);
+        protected virtual TElement Subtract(TElement first, TElement second) => (first - second);
         
         /// <summary>
         /// <para>Returns minimum value of the range.</para>
