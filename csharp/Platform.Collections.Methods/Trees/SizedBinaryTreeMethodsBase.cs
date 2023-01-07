@@ -523,7 +523,7 @@ namespace Platform.Collections.Methods.Trees
                 {
                     root = GetLeft(root);
                 }
-                else if (FirstIsToTheRightOfSecond(node, root)) // node.Key > root.Key
+                else if (node > root) // node.Key > root.Key
                 {
                     root = GetRight(root);
                 }

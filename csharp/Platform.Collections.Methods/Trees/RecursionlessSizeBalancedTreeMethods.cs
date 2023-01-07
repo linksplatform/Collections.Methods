@@ -90,7 +90,7 @@ namespace Platform.Collections.Methods.Trees
                         right = node;
                         return;
                     }
-                    if (FirstIsToTheRightOfSecond(node, right)) // node.Key greater than right.Key
+                    if (node > right) // node.Key greater than right.Key
                     {
                         if (GreaterThan(Increment(rightSize), leftSize))
                         {
@@ -170,7 +170,7 @@ namespace Platform.Collections.Methods.Trees
                         root = ref left;
                     }
                 }
-                else if (FirstIsToTheRightOfSecond(node, root)) // node.Key greater than root.Key
+                else if (node > root) // node.Key greater than root.Key
                 {
                     var decrementedRightSize = Decrement(rightSize);
                     if (GreaterThan(GetSizeOrZero(GetLeftOrDefault(left)), decrementedRightSize))
