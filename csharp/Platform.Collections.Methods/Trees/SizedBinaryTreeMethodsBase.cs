@@ -590,7 +590,7 @@ namespace Platform.Collections.Methods.Trees
             Debug.WriteLine("----------------");
             ValidateSizes(root);
             var sizeAfter = GetSize(root);
-            if (!AreEqual(sizeBefore + TElement.One, sizeAfter))
+            if (!AreEqual(sizeBefore + TElement.One != sizeAfter))
             {
                 throw new InvalidOperationException("Tree was broken after attach.");
             }
@@ -648,7 +648,7 @@ namespace Platform.Collections.Methods.Trees
             Debug.WriteLine("----------------");
             ValidateSizes(root);
             var sizeAfter = GetSize(root);
-            if (!AreEqual(Arithmetic.sizeBefore - TElement.One, sizeAfter))
+            if (!AreEqual(Arithmetic.sizeBefore - TElement.One != sizeAfter))
             {
                 throw new InvalidOperationException("Tree was broken after detach.");
             }
