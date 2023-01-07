@@ -158,6 +158,48 @@ namespace Platform.Collections.Methods.Trees
 
         /// <summary>
         /// <para>
+        /// Determines whether this instance first is to the left of second.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="first">
+        /// <para>The first.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="second">
+        /// <para>The second.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The bool</para>
+        /// <para></para>
+        /// </returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected abstract bool FirstIsToTheLeftOfSecond(TElement first, TElement second);
+
+        /// <summary>
+        /// <para>
+        /// Determines whether this instance first is to the right of second.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="first">
+        /// <para>The first.</para>
+        /// <para></para>
+        /// </param>
+        /// <param name="second">
+        /// <para>The second.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The bool</para>
+        /// <para></para>
+        /// </returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected abstract bool FirstIsToTheRightOfSecond(TElement first, TElement second);
+
+        /// <summary>
+        /// <para>
         /// Gets the left or default using the specified node.
         /// </para>
         /// <para></para>

@@ -58,6 +58,10 @@ namespace Platform.Collections.Methods.Tests
 
         public bool IsEmpty(TElement node) => EqualityComparer<TreeElement>.Default.Equals(GetElement(node), default);
 
+        protected override bool FirstIsToTheLeftOfSecond(TElement first, TElement second) => Comparer.Compare(first, second) < 0;
+
+        protected override bool FirstIsToTheRightOfSecond(TElement first, TElement second) => Comparer.Compare(first, second) > 0;
+
         protected override ref TElement GetLeftReference(TElement node) => ref GetElement(node).Left;
 
         protected override TElement GetLeft(TElement node) => GetElement(node).Left;
