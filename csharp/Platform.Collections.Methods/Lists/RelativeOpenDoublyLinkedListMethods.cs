@@ -36,7 +36,7 @@ namespace Platform.Collections.Methods.Lists
             var baseElementPrevious = GetPrevious(baseElement);
             SetPrevious(newElement, baseElementPrevious);
             SetNext(newElement, baseElement);
-            if (EqualToZero(baseElementPrevious))
+            if (baseElementPrevious == TElement.Zero)
             {
                 SetFirst(headElement, newElement);
             }
@@ -71,7 +71,7 @@ namespace Platform.Collections.Methods.Lists
             var baseElementNext = GetNext(baseElement);
             SetPrevious(newElement, baseElement);
             SetNext(newElement, baseElementNext);
-            if (EqualToZero(baseElementNext))
+            if (baseElementNext == TElement.Zero)
             {
                 SetLast(headElement, newElement);
             }
@@ -100,7 +100,7 @@ namespace Platform.Collections.Methods.Lists
         public void AttachAsFirst(TElement headElement, TElement element)
         {
             var first = GetFirst(headElement);
-            if (EqualToZero(first))
+            if (first == TElement.Zero)
             {
                 SetFirst(headElement, element);
                 SetLast(headElement, element);
@@ -131,7 +131,7 @@ namespace Platform.Collections.Methods.Lists
         public void AttachAsLast(TElement headElement, TElement element)
         {
             var last = GetLast(headElement);
-            if (EqualToZero(last))
+            if (last == TElement.Zero)
             {
                 AttachAsFirst(headElement, element);
             }
@@ -159,7 +159,7 @@ namespace Platform.Collections.Methods.Lists
         {
             var elementPrevious = GetPrevious(element);
             var elementNext = GetNext(element);
-            if (EqualToZero(elementPrevious))
+            if (elementPrevious == TElement.Zero)
             {
                 SetFirst(headElement, elementNext);
             }
@@ -167,7 +167,7 @@ namespace Platform.Collections.Methods.Lists
             {
                 SetNext(elementPrevious, elementNext);
             }
-            if (EqualToZero(elementNext))
+            if (elementNext == TElement.Zero)
             {
                 SetLast(headElement, elementPrevious);
             }

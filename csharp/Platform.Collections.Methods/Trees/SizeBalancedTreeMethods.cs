@@ -30,7 +30,7 @@ namespace Platform.Collections.Methods.Trees
         /// </param>
         protected override void AttachCore(ref TElement root, TElement node)
         {
-            if (EqualToZero(root))
+            if (root == TElement.Zero)
             {
                 root = node;
                 IncrementSize(root);
@@ -144,7 +144,7 @@ namespace Platform.Collections.Methods.Trees
                     var rootRightNodeSize = GetSize(rootRightNode);
                     var rootLeftNodeLeftNode = GetLeft(rootLeftNode);
                     if (rootLeftNodeLeftNode != TElement.Zero &&
-                        (EqualToZero(rootRightNode) || GreaterThan(GetSize(rootLeftNodeLeftNode), rootRightNodeSize)))
+                        (rootRightNode == TElement.Zero || GreaterThan(GetSize(rootLeftNodeLeftNode), rootRightNodeSize)))
                     {
                         RightRotate(ref root);
                     }
@@ -152,7 +152,7 @@ namespace Platform.Collections.Methods.Trees
                     {
                         var rootLeftNodeRightNode = GetRight(rootLeftNode);
                         if (rootLeftNodeRightNode != TElement.Zero &&
-                            (EqualToZero(rootRightNode) || GreaterThan(GetSize(rootLeftNodeRightNode), rootRightNodeSize)))
+                            (rootRightNode == TElement.Zero || GreaterThan(GetSize(rootLeftNodeRightNode), rootRightNodeSize)))
                         {
                             LeftRotate(ref GetLeftReference(root));
                             RightRotate(ref root);
@@ -180,7 +180,7 @@ namespace Platform.Collections.Methods.Trees
                     var rootLeftNodeSize = GetSize(rootLeftNode);
                     var rootRightNodeRightNode = GetRight(rootRightNode);
                     if (rootRightNodeRightNode != TElement.Zero &&
-                        (EqualToZero(rootLeftNode) || GreaterThan(GetSize(rootRightNodeRightNode), rootLeftNodeSize)))
+                        (rootLeftNode == TElement.Zero || GreaterThan(GetSize(rootRightNodeRightNode), rootLeftNodeSize)))
                     {
                         LeftRotate(ref root);
                     }
@@ -188,7 +188,7 @@ namespace Platform.Collections.Methods.Trees
                     {
                         var rootRightNodeLeftNode = GetLeft(rootRightNode);
                         if (rootRightNodeLeftNode != TElement.Zero &&
-                            (EqualToZero(rootLeftNode) || GreaterThan(GetSize(rootRightNodeLeftNode), rootLeftNodeSize)))
+                            (rootLeftNode == TElement.Zero || GreaterThan(GetSize(rootRightNodeLeftNode), rootLeftNodeSize)))
                         {
                             RightRotate(ref GetRightReference(root));
                             LeftRotate(ref root);

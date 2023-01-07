@@ -37,7 +37,7 @@ namespace Platform.Collections.Methods.Trees
                 var rightSize = GetSizeOrZero(right);
                 if (node < root) // node.Key less than root.Key
                 {
-                    if (EqualToZero(left))
+                    if (left == TElement.Zero)
                     {
                         IncrementSize(root);
                         SetSize(node, TElement.One);
@@ -61,7 +61,7 @@ namespace Platform.Collections.Methods.Trees
                         var leftRightSize = GetSizeOrZero(GetRight(left));
                         if (GreaterThan(Increment(leftRightSize), rightSize))
                         {
-                            if (EqualToZero(leftRightSize) && EqualToZero(rightSize))
+                            if (leftRightSize == TElement.Zero && rightSize == TElement.Zero)
                             {
                                 SetLeft(node, left);
                                 SetRight(node, root);
@@ -83,7 +83,7 @@ namespace Platform.Collections.Methods.Trees
                 }
                 else // node.Key greater than root.Key
                 {
-                    if (EqualToZero(right))
+                    if (right == TElement.Zero)
                     {
                         IncrementSize(root);
                         SetSize(node, TElement.One);
@@ -107,7 +107,7 @@ namespace Platform.Collections.Methods.Trees
                         var rightLeftSize = GetSizeOrZero(GetLeft(right));
                         if (GreaterThan(Increment(rightLeftSize), leftSize))
                         {
-                            if (EqualToZero(rightLeftSize) && EqualToZero(leftSize))
+                            if (rightLeftSize == TElement.Zero && leftSize == TElement.Zero)
                             {
                                 SetLeft(node, root);
                                 SetRight(node, right);

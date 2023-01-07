@@ -307,7 +307,7 @@ namespace Platform.Collections.Methods.Trees
         /// <para></para>
         /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected TElement GetSizeOrZero(TElement node) => EqualToZero(node) ? TElement.Zero : GetSize(node);
+        protected TElement GetSizeOrZero(TElement node) => node == TElement.Zero ? TElement.Zero : GetSize(node);
 
         /// <summary>
         /// <para>
@@ -354,7 +354,7 @@ namespace Platform.Collections.Methods.Trees
         {
             var right = GetRight(root);
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
-            if (EqualToZero(right))
+            if (right == TElement.Zero)
             {
                 throw new InvalidOperationException("Right is null.");
             }
@@ -398,7 +398,7 @@ namespace Platform.Collections.Methods.Trees
         {
             var left = GetLeft(root);
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
-            if (EqualToZero(left))
+            if (left == TElement.Zero)
             {
                 throw new InvalidOperationException("Left is null.");
             }
@@ -577,7 +577,7 @@ namespace Platform.Collections.Methods.Trees
             Debug.WriteLine("----------------");
             var sizeBefore = GetSize(root);
 #endif
-            if (EqualToZero(root))
+            if (root == TElement.Zero)
             {
                 SetSize(node, TElement.One);
                 root = node;
@@ -636,7 +636,7 @@ namespace Platform.Collections.Methods.Trees
             Debug.WriteLine(PrintNodes(root));
             Debug.WriteLine("----------------");
             var sizeBefore = GetSize(root);
-            if (EqualToZero(root))
+            if (root == TElement.Zero)
             {
                 throw new InvalidOperationException($"Элемент с {node} не содержится в дереве.");
             }

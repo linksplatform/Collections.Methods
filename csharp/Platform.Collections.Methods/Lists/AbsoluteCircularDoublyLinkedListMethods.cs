@@ -82,7 +82,7 @@ namespace Platform.Collections.Methods.Lists
         public void AttachAsFirst(TElement element)
         {
             var first = GetFirst();
-            if (EqualToZero(first))
+            if (first == TElement.Zero)
             {
                 SetFirst(element);
                 SetLast(element);
@@ -109,7 +109,7 @@ namespace Platform.Collections.Methods.Lists
         public void AttachAsLast(TElement element)
         {
             var last = GetLast();
-            if (EqualToZero(last))
+            if (last == TElement.Zero)
             {
                 AttachAsFirst(element);
             }
