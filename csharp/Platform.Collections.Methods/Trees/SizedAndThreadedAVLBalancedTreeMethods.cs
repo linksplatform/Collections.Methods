@@ -40,7 +40,7 @@ namespace Platform.Collections.Methods.Trees
         protected override TElement GetRightest(TElement current)
         {
             var currentRight = GetRightOrDefault(current);
-            while (!EqualToZero(currentRight))
+            while (currentRight != TElement.Zero)
             {
                 current = currentRight;
                 currentRight = GetRightOrDefault(current);
@@ -66,7 +66,7 @@ namespace Platform.Collections.Methods.Trees
         protected override TElement GetLeftest(TElement current)
         {
             var currentLeft = GetLeftOrDefault(current);
-            while (!EqualToZero(currentLeft))
+            while (currentLeft != TElement.Zero)
             {
                 current = currentLeft;
                 currentLeft = GetLeftOrDefault(current);
@@ -94,7 +94,7 @@ namespace Platform.Collections.Methods.Trees
         /// </returns>
         public override bool Contains(TElement node, TElement root)
         {
-            while (!EqualToZero(root))
+            while (root != TElement.Zero)
             {
                 if (node < root) // node.Key < root.Key
                 {

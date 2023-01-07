@@ -428,7 +428,7 @@ namespace Platform.Collections.Methods.Trees
         protected virtual TElement GetRightest(TElement current)
         {
             var currentRight = GetRight(current);
-            while (!EqualToZero(currentRight))
+            while (currentRight != TElement.Zero)
             {
                 current = currentRight;
                 currentRight = GetRight(current);
@@ -454,7 +454,7 @@ namespace Platform.Collections.Methods.Trees
         protected virtual TElement GetLeftest(TElement current)
         {
             var currentLeft = GetLeft(current);
-            while (!EqualToZero(currentLeft))
+            while (currentLeft != TElement.Zero)
             {
                 current = currentLeft;
                 currentLeft = GetLeft(current);
@@ -517,7 +517,7 @@ namespace Platform.Collections.Methods.Trees
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public virtual bool Contains(TElement node, TElement root)
         {
-            while (!EqualToZero(root))
+            while (root != TElement.Zero)
             {
                 if (node < root) // node.Key < root.Key
                 {
