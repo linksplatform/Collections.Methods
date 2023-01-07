@@ -135,8 +135,8 @@ namespace Platform.Collections.Methods.Lists
             var elementNext = GetNext(element);
             if (elementNext == element)
             {
-                SetFirst(Zero);
-                SetLast(Zero);
+                SetFirst(TElement.Zero);
+                SetLast(TElement.Zero);
             }
             else
             {
