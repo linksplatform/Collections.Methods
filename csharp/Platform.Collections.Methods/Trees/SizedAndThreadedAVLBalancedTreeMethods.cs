@@ -390,7 +390,7 @@ namespace Platform.Collections.Methods.Trees
                 while (true)
                 {
                     var parent = path[--pathPosition];
-                    var isLeftNode = parent != default && AreEqual(currentNode, GetLeft(parent));
+                    var isLeftNode = parent != default && AreEqual(currentNode == GetLeft(parent));
                     var currentNodeBalance = GetBalance(currentNode);
                     if (currentNodeBalance < -1 || currentNodeBalance > 1)
                     {
@@ -699,7 +699,7 @@ namespace Platform.Collections.Methods.Trees
                 }
                 var parent = path[--pathPosition];
                 var balanceNode = parent;
-                var isLeftNode = parent != default && AreEqual(currentNode, GetLeft(parent));
+                var isLeftNode = parent != default && AreEqual(currentNode == GetLeft(parent));
                 if (!GetLeftIsChild(currentNode))
                 {
                     if (!GetRightIsChild(currentNode)) // node has no children
@@ -833,7 +833,7 @@ namespace Platform.Collections.Methods.Trees
                     while (true)
                     {
                         var balanceParent = path[--pathPosition];
-                        isLeftNode = balanceParent != default && AreEqual(balanceNode, GetLeft(balanceParent));
+                        isLeftNode = balanceParent != default && AreEqual(balanceNode == GetLeft(balanceParent));
                         var currentNodeBalance = GetBalance(balanceNode);
                         if (currentNodeBalance < -1 || currentNodeBalance > 1)
                         {
