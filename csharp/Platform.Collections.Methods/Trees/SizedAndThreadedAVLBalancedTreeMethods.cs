@@ -100,7 +100,7 @@ namespace Platform.Collections.Methods.Trees
                 {
                     root = GetLeftOrDefault(root);
                 }
-                else if (node > root) // node.Key > root.Key
+                else if (FirstIsToTheRightOfSecond(node, root)) // node.Key > root.Key
                 {
                     root = GetRightOrDefault(root);
                 }
@@ -358,7 +358,7 @@ namespace Platform.Collections.Methods.Trees
                             break;
                         }
                     }
-                    else if (node > currentNode)
+                    else if (FirstIsToTheRightOfSecond(node, currentNode))
                     {
                         if (GetRightIsChild(currentNode))
                         {
@@ -682,7 +682,7 @@ namespace Platform.Collections.Methods.Trees
                         path[pathPosition++] = currentNode;
                         currentNode = GetLeft(currentNode);
                     }
-                    else if (node > currentNode)
+                    else if (FirstIsToTheRightOfSecond(node, currentNode))
                     {
                         if (!GetRightIsChild(currentNode))
                         {

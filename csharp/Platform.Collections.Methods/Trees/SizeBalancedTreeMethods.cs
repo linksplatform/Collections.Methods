@@ -82,7 +82,7 @@ namespace Platform.Collections.Methods.Trees
                     parent = ref currentNode;
                     currentNode = ref GetLeftReference(currentNode);
                 }
-                else if (nodeToDetach > currentNode)
+                else if (FirstIsToTheRightOfSecond(nodeToDetach, currentNode))
                 {
                     parent = ref currentNode;
                     currentNode = ref GetRightReference(currentNode);
