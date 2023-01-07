@@ -320,7 +320,7 @@ namespace Platform.Collections.Methods.Trees
         /// <para></para>
         /// </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected void FixSize(TElement node) => SetSize(node, (Add(GetLeftSize(node), GetRightSize(node))) + TElement.One);
+        protected void FixSize(TElement node) => SetSize(node, ((GetLeftSize(node) + GetRightSize(node))) + TElement.One);
 
         /// <summary>
         /// <para>

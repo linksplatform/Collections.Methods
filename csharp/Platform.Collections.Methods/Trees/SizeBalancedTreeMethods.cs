@@ -103,7 +103,7 @@ namespace Platform.Collections.Methods.Trees
                 if (node != TElement.Zero)
                 {
                     SetRight(leftestNode, node);
-                    SetSize(leftestNode, (Add(GetSize(nodeToDetachLeft), GetSize(node))) + TElement.One);
+                    SetSize(leftestNode, ((GetSize(nodeToDetachLeft) + GetSize(node))) + TElement.One);
                 }
                 else
                 {
