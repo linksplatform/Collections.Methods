@@ -38,7 +38,7 @@ namespace Platform.Collections.Methods.Trees
             else
             {
                 IncrementSize(root);
-                if (FirstIsToTheLeftOfSecond(node, root))
+                if (node < root)
                 {
                     AttachCore(ref GetLeftReference(root), node);
                     LeftMaintain(ref root);
@@ -77,7 +77,7 @@ namespace Platform.Collections.Methods.Trees
             while (!AreEqual(currentNode, nodeToDetach))
             {
                 DecrementSize(currentNode);
-                if (FirstIsToTheLeftOfSecond(nodeToDetach, currentNode))
+                if (nodeToDetach < currentNode)
                 {
                     parent = ref currentNode;
                     currentNode = ref GetLeftReference(currentNode);
