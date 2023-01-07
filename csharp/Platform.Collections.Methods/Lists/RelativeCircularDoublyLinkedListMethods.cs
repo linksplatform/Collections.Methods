@@ -153,7 +153,7 @@ namespace Platform.Collections.Methods.Lists
         {
             var elementPrevious = GetPrevious(element);
             var elementNext = GetNext(element);
-            if (AreEqual(elementNext, element))
+            if (elementNext == element)
             {
                 SetFirst(headElement, TElement.Zero);
                 SetLast(headElement, TElement.Zero);

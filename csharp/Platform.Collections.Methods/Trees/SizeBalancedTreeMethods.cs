@@ -119,7 +119,7 @@ namespace Platform.Collections.Methods.Trees
             {
                 replacementNode = node;
             }
-            if (AreEqual(root, nodeToDetach))
+            if (root == nodeToDetach)
             {
                 root = replacementNode;
             }

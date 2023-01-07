@@ -213,7 +213,7 @@ namespace Platform.Collections.Methods.Trees
         /// <para></para>
         /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual TElement GetLeftOrDefault(TElement node) => AreEqual(node, default) ? default : GetLeft(node);
+        protected virtual TElement GetLeftOrDefault(TElement node) => node == default ? default : GetLeft(node);
 
         /// <summary>
         /// <para>
@@ -230,7 +230,7 @@ namespace Platform.Collections.Methods.Trees
         /// <para></para>
         /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual TElement GetRightOrDefault(TElement node) => AreEqual(node, default) ? default : GetRight(node);
+        protected virtual TElement GetRightOrDefault(TElement node) => node == default ? default : GetRight(node);
 
         /// <summary>
         /// <para>
@@ -683,7 +683,7 @@ namespace Platform.Collections.Methods.Trees
         /// </param>
         public void FixSizes(TElement node)
         {
-            if (AreEqual(node, default))
+            if (node == default)
             {
                 return;
             }
@@ -708,7 +708,7 @@ namespace Platform.Collections.Methods.Trees
         /// </exception>
         public void ValidateSizes(TElement node)
         {
-            if (AreEqual(node, default))
+            if (node == default)
             {
                 return;
             }
@@ -808,7 +808,7 @@ namespace Platform.Collections.Methods.Trees
         /// </param>
         public void PrintNodes(TElement node, StringBuilder sb, int level)
         {
-            if (AreEqual(node, default))
+            if (node == default)
             {
                 return;
             }

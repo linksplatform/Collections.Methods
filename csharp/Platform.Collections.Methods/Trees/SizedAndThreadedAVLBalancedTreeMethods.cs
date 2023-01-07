@@ -395,7 +395,7 @@ namespace Platform.Collections.Methods.Trees
                     if (currentNodeBalance < -1 || currentNodeBalance > 1)
                     {
                         currentNode = Balance(currentNode);
-                        if (AreEqual(parent, default))
+                        if (parent == default)
                         {
                             root = currentNode;
                         }
@@ -411,7 +411,7 @@ namespace Platform.Collections.Methods.Trees
                         }
                     }
                     currentNodeBalance = GetBalance(currentNode);
-                    if (currentNodeBalance == 0 || AreEqual(parent, default))
+                    if (currentNodeBalance == 0 || parent == default)
                     {
                         break;
                     }
@@ -704,7 +704,7 @@ namespace Platform.Collections.Methods.Trees
                 {
                     if (!GetRightIsChild(currentNode)) // node has no children
                     {
-                        if (AreEqual(parent, default))
+                        if (parent == default)
                         {
                             root = TElement.Zero;
                         }
@@ -726,7 +726,7 @@ namespace Platform.Collections.Methods.Trees
                         var successor = GetNext(currentNode);
                         SetLeft(successor, GetLeft(currentNode));
                         var right = GetRight(currentNode);
-                        if (AreEqual(parent, default))
+                        if (parent == default)
                         {
                             root = right;
                         }
@@ -749,7 +749,7 @@ namespace Platform.Collections.Methods.Trees
                         var predecessor = GetPrevious(currentNode);
                         SetRight(predecessor, GetRight(currentNode));
                         var leftValue = GetLeft(currentNode);
-                        if (AreEqual(parent, default))
+                        if (parent == default)
                         {
                             root = leftValue;
                         }
@@ -813,7 +813,7 @@ namespace Platform.Collections.Methods.Trees
                         SetLeft(successor, left);
                         SetBalance(successor, GetBalance(currentNode));
                         FixSize(successor);
-                        if (AreEqual(parent, default))
+                        if (parent == default)
                         {
                             root = successor;
                         }
@@ -838,7 +838,7 @@ namespace Platform.Collections.Methods.Trees
                         if (currentNodeBalance < -1 || currentNodeBalance > 1)
                         {
                             balanceNode = Balance(balanceNode);
-                            if (AreEqual(balanceParent, default))
+                            if (balanceParent == default)
                             {
                                 root = balanceNode;
                             }
@@ -852,7 +852,7 @@ namespace Platform.Collections.Methods.Trees
                             }
                         }
                         currentNodeBalance = GetBalance(balanceNode);
-                        if (currentNodeBalance != 0 || AreEqual(balanceParent, default))
+                        if (currentNodeBalance != 0 || balanceParent == default)
                         {
                             break;
                         }
