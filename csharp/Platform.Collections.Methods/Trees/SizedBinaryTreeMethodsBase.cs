@@ -590,7 +590,7 @@ namespace Platform.Collections.Methods.Trees
             Debug.WriteLine("----------------");
             ValidateSizes(root);
             var sizeAfter = GetSize(root);
-            if (!AreEqual(Arithmetic.Increment(sizeBefore), sizeAfter))
+            if (!AreEqual(sizeBefore + TElement.One, sizeAfter))
             {
                 throw new InvalidOperationException("Tree was broken after attach.");
             }
