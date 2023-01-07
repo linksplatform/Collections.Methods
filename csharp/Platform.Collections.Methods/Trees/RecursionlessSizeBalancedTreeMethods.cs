@@ -190,7 +190,7 @@ namespace Platform.Collections.Methods.Trees
                 }
                 else // key equals to root.Key
                 {
-                    if (GreaterThanZero(leftSize) && GreaterThanZero(rightSize))
+                    if (leftSize > TElement.Zero && rightSize > TElement.Zero)
                     {
                         TElement replacement;
                         if (GreaterThan(leftSize, rightSize))
@@ -208,11 +208,11 @@ namespace Platform.Collections.Methods.Trees
                         SetSize(replacement, (leftSize + rightSize));
                         root = replacement;
                     }
-                    else if (GreaterThanZero(leftSize))
+                    else if (leftSize > TElement.Zero)
                     {
                         root = left;
                     }
-                    else if (GreaterThanZero(rightSize))
+                    else if (rightSize > TElement.Zero)
                     {
                         root = right;
                     }
