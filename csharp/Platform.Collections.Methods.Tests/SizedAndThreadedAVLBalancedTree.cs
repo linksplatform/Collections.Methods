@@ -47,7 +47,7 @@ namespace Platform.Collections.Methods.Tests
             while ((_allocated != One) && IsEmpty(node))
             {
                 var lastNode = _allocated-TElement.One;
-                if (EqualityComparer.Equals(lastNode, node))
+                if ((lastNode == node))
                 {
                     _allocated = lastNode;
                     node = node-TElement.One;
