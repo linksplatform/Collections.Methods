@@ -706,7 +706,7 @@ namespace Platform.Collections.Methods.Trees
                     {
                         if (AreEqual(parent, default))
                         {
-                            root = Zero;
+                            root = TElement.Zero;
                         }
                         else if (isLeftNode)
                         {
@@ -887,9 +887,9 @@ namespace Platform.Collections.Methods.Trees
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected override void ClearNode(TElement node)
         {
-            SetLeft(node, Zero);
-            SetRight(node, Zero);
-            SetSize(node, Zero);
+            SetLeft(node, TElement.Zero);
+            SetRight(node, TElement.Zero);
+            SetSize(node, TElement.Zero);
             SetLeftIsChild(node, false);
             SetRightIsChild(node, false);
             SetBalance(node, 0);

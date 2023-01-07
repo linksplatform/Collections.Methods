@@ -307,7 +307,7 @@ namespace Platform.Collections.Methods.Trees
         /// <para></para>
         /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected TElement GetSizeOrZero(TElement node) => EqualToZero(node) ? Zero : GetSize(node);
+        protected TElement GetSizeOrZero(TElement node) => EqualToZero(node) ? TElement.Zero : GetSize(node);
 
         /// <summary>
         /// <para>
@@ -548,9 +548,9 @@ namespace Platform.Collections.Methods.Trees
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual void ClearNode(TElement node)
         {
-            SetLeft(node, Zero);
-            SetRight(node, Zero);
-            SetSize(node, Zero);
+            SetLeft(node, TElement.Zero);
+            SetRight(node, TElement.Zero);
+            SetSize(node, TElement.Zero);
         }
 
         /// <summary>

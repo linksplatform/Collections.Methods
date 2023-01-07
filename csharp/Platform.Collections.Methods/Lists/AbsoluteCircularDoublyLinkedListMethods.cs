@@ -151,8 +151,8 @@ namespace Platform.Collections.Methods.Lists
                     SetLast(elementPrevious);
                 }
             }
-            SetPrevious(element, Zero);
-            SetNext(element, Zero);
+            SetPrevious(element, TElement.Zero);
+            SetNext(element, TElement.Zero);
             DecrementSize();
         }
     }

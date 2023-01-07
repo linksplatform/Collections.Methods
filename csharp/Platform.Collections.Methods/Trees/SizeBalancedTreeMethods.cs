@@ -73,7 +73,7 @@ namespace Platform.Collections.Methods.Trees
         {
             ref var currentNode = ref root;
             ref var parent = ref root;
-            var replacementNode = Zero;
+            var replacementNode = TElement.Zero;
             while (!AreEqual(currentNode, nodeToDetach))
             {
                 DecrementSize(currentNode);
