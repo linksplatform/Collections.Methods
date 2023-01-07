@@ -35,7 +35,7 @@ namespace Platform.Collections.Methods.Trees
                 var leftSize = GetSizeOrZero(left);
                 ref var right = ref GetRightReference(root);
                 var rightSize = GetSizeOrZero(right);
-                if (node < root) // node.Key less than root.Key
+                if (FirstIsToTheLeftOfSecond(node, root)) // node.Key less than root.Key
                 {
                     if (left == TElement.Zero)
                     {
@@ -44,7 +44,7 @@ namespace Platform.Collections.Methods.Trees
                         left = node;
                         return;
                     }
-                    if (node < left) // node.Key less than left.Key
+                    if (FirstIsToTheLeftOfSecond(node, left)) // node.Key less than left.Key
                     {
                         if ((leftSize + TElement.One) > rightSize)
                         {
@@ -152,7 +152,7 @@ namespace Platform.Collections.Methods.Trees
                 var leftSize = GetSizeOrZero(left);
                 ref var right = ref GetRightReference(root);
                 var rightSize = GetSizeOrZero(right);
-                if (node < root) // node.Key less than root.Key
+                if (FirstIsToTheLeftOfSecond(node, root)) // node.Key less than root.Key
                 {
                     var decrementedLeftSize = leftSize - TElement.One;
                     if ((GetSizeOrZero(GetRightOrDefault(right))) > decrementedLeftSize)

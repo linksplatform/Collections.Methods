@@ -519,7 +519,7 @@ namespace Platform.Collections.Methods.Trees
         {
             while (root != TElement.Zero)
             {
-                if (node < root) // node.Key < root.Key
+                if (FirstIsToTheLeftOfSecond(node, root)) // node.Key < root.Key
                 {
                     root = GetLeft(root);
                 }

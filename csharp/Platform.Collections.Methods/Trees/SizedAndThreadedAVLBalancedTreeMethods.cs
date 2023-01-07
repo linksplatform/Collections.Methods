@@ -96,7 +96,7 @@ namespace Platform.Collections.Methods.Trees
         {
             while (root != TElement.Zero)
             {
-                if (node < root) // node.Key < root.Key
+                if (FirstIsToTheLeftOfSecond(node, root)) // node.Key < root.Key
                 {
                     root = GetLeftOrDefault(root);
                 }
@@ -337,7 +337,7 @@ namespace Platform.Collections.Methods.Trees
                 var currentNode = root;
                 while (true)
                 {
-                    if (node < currentNode)
+                    if (FirstIsToTheLeftOfSecond(node, currentNode))
                     {
                         if (GetLeftIsChild(currentNode))
                         {
@@ -672,7 +672,7 @@ namespace Platform.Collections.Methods.Trees
                 var currentNode = root;
                 while (true)
                 {
-                    if (node < currentNode)
+                    if (FirstIsToTheLeftOfSecond(node, currentNode))
                     {
                         if (!GetLeftIsChild(currentNode))
                         {
