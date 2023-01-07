@@ -648,7 +648,7 @@ namespace Platform.Collections.Methods.Trees
             Debug.WriteLine("----------------");
             ValidateSizes(root);
             var sizeAfter = GetSize(root);
-            if (!AreEqual(Arithmetic.Decrement(sizeBefore), sizeAfter))
+            if (!AreEqual(Arithmetic.sizeBefore - TElement.One, sizeAfter))
             {
                 throw new InvalidOperationException("Tree was broken after detach.");
             }

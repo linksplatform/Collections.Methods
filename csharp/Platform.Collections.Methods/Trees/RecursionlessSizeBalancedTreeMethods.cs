@@ -154,7 +154,7 @@ namespace Platform.Collections.Methods.Trees
                 var rightSize = GetSizeOrZero(right);
                 if (node < root) // node.Key less than root.Key
                 {
-                    var decrementedLeftSize = Decrement(leftSize);
+                    var decrementedLeftSize = leftSize - TElement.One;
                     if (GreaterThan(GetSizeOrZero(GetRightOrDefault(right)), decrementedLeftSize))
                     {
                         LeftRotate(ref root);
@@ -172,7 +172,7 @@ namespace Platform.Collections.Methods.Trees
                 }
                 else if (node > root) // node.Key greater than root.Key
                 {
-                    var decrementedRightSize = Decrement(rightSize);
+                    var decrementedRightSize = rightSize - TElement.One;
                     if (GreaterThan(GetSizeOrZero(GetLeftOrDefault(left)), decrementedRightSize))
                     {
                         RightRotate(ref root);
