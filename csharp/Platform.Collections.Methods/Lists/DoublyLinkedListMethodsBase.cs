@@ -8,7 +8,7 @@ namespace Platform.Collections.Methods.Lists
     /// <remarks>
     /// Based on <a href="https://en.wikipedia.org/wiki/Doubly_linked_list">doubly linked list</a> implementation.
     /// </remarks>
-    public abstract class DoublyLinkedListMethodsBase<TElement> : GenericCollectionMethodsBase<TElement> where TElement: IUnsignedNumber<TElement>, IComparisonOperators<TElement, TElement, bool>
+    public abstract class DoublyLinkedListMethodsBase<TElement>  where TElement: IUnsignedNumber<TElement>, IComparisonOperators<TElement, TElement, bool>
     {
         /// <summary>
         /// <para>
