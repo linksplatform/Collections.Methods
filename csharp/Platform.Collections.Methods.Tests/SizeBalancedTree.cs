@@ -30,7 +30,7 @@ namespace Platform.Collections.Methods.Tests
             var newNode = _allocated;
             if (IsEmpty(newNode))
             {
-                _allocated = Arithmetic.Increment(_allocated);
+                _allocated = _allocated+TElement.One;
                 return newNode;
             }
             else

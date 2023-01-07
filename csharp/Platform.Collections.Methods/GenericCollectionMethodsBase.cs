@@ -107,7 +107,7 @@ namespace Platform.Collections.Methods
         /// </summary>
         /// <returns><para>String representation of the Range.</para><para>Строковое представление диапазона.</para></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual TElement Increment(TElement value) => Arithmetic<TElement>.Increment(value);
+        protected virtual TElement Increment(TElement value) => value+TElement.One;
    
         /// <summary>
         /// <para>Presents the Range in readable format.</para>
