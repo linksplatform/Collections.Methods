@@ -123,11 +123,11 @@ namespace Platform.Collections.Methods.Trees
             {
                 root = replacementNode;
             }
-            else if (AreEqual(GetLeft(parent) == nodeToDetach))
+            else if ((GetLeft(parent) == nodeToDetach))
             {
                 SetLeft(parent, replacementNode);
             }
-            else if (AreEqual(GetRight(parent) == nodeToDetach))
+            else if ((GetRight(parent) == nodeToDetach))
             {
                 SetRight(parent, replacementNode);
             }
