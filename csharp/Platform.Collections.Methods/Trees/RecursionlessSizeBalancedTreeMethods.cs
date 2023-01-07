@@ -65,7 +65,7 @@ namespace Platform.Collections.Methods.Trees
                             {
                                 SetLeft(node, left);
                                 SetRight(node, root);
-                                SetSize(node, Add(leftSize, Two)); // Two (2) - node the size of root and a node itself
+                                SetSize(node, Add(leftSize, TElement.Two)); // TElement.Two (2) - node the size of root and a node itself
                                 SetLeft(root, Zero);
                                 SetSize(root, TElement.One);
                                 root = node;
@@ -111,7 +111,7 @@ namespace Platform.Collections.Methods.Trees
                             {
                                 SetLeft(node, root);
                                 SetRight(node, right);
-                                SetSize(node, Add(rightSize, Two)); // Two (2) - node the size of root and a node itself
+                                SetSize(node, Add(rightSize, TElement.Two)); // TElement.Two (2) - node the size of root and a node itself
                                 SetRight(root, Zero);
                                 SetSize(root, TElement.One);
                                 root = node;
