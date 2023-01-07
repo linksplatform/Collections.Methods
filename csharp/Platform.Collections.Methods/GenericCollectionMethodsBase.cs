@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Numerics;
 using System.Runtime.CompilerServices;
 using Platform.Numbers;
 
@@ -11,7 +12,7 @@ namespace Platform.Collections.Methods
     /// <para>Представляет базовую реализацию методов коллекции элементов типа TElement.</para>
     /// </summary>
     /// <typeparam name="TElement"><para>Source type of conversion.</para><para>Исходный тип конверсии.</para></typeparam>
-    public abstract class GenericCollectionMethodsBase<TElement>
+    public abstract class GenericCollectionMethodsBase<TElement> where TElement: IUnsignedNumber<TElement>, IComparisonOperators<TElement, TElement, bool>
     {
         /// <summary>
         /// <para>Returns a null constant of type <see cref="TElement" />.</para>
