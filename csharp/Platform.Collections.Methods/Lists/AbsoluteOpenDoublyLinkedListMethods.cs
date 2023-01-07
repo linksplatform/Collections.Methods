@@ -1,3 +1,5 @@
+using System.Numerics;
+
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace Platform.Collections.Methods.Lists
@@ -9,7 +11,7 @@ namespace Platform.Collections.Methods.Lists
     /// <para></para>
     /// </summary>
     /// <seealso cref="AbsoluteDoublyLinkedListMethodsBase{TElement}"/>
-    public abstract class AbsoluteOpenDoublyLinkedListMethods<TElement> : AbsoluteDoublyLinkedListMethodsBase<TElement>
+    public abstract class AbsoluteOpenDoublyLinkedListMethods<TElement> : AbsoluteDoublyLinkedListMethodsBase<TElement> where TElement: IUnsignedNumber<TElement>, IComparisonOperators<TElement, TElement, bool>
     {
         /// <summary>
         /// <para>
@@ -30,7 +32,7 @@ namespace Platform.Collections.Methods.Lists
             var baseElementPrevious = GetPrevious(baseElement);
             SetPrevious(newElement, baseElementPrevious);
             SetNext(newElement, baseElement);
-            if (EqualToZero(baseElementPrevious))
+            if (baseElementPrevious == TElement.Zero)
             {
                 SetFirst(newElement);
             }
@@ -61,7 +63,7 @@ namespace Platform.Collections.Methods.Lists
             var baseElementNext = GetNext(baseElement);
             SetPrevious(newElement, baseElement);
             SetNext(newElement, baseElementNext);
-            if (EqualToZero(baseElementNext))
+            if (baseElementNext == TElement.Zero)
             {
                 SetLast(newElement);
             }
@@ -86,12 +88,12 @@ namespace Platform.Collections.Methods.Lists
         public void AttachAsFirst(TElement element)
         {
             var first = GetFirst();
-            if (EqualToZero(first))
+            if (first == TElement.Zero)
             {
                 SetFirst(element);
                 SetLast(element);
-                SetPrevious(element, Zero);
-                SetNext(element, Zero);
+                SetPrevious(element, TElement.Zero);
+                SetNext(element, TElement.Zero);
                 IncrementSize();
             }
             else
@@ -113,7 +115,7 @@ namespace Platform.Collections.Methods.Lists
         public void AttachAsLast(TElement element)
         {
             var last = GetLast();
-            if (EqualToZero(last))
+            if (last == TElement.Zero)
             {
                 AttachAsFirst(element);
             }
@@ -137,7 +139,7 @@ namespace Platform.Collections.Methods.Lists
         {
             var elementPrevious = GetPrevious(element);
             var elementNext = GetNext(element);
-            if (EqualToZero(elementPrevious))
+            if (elementPrevious == TElement.Zero)
             {
                 SetFirst(elementNext);
             }
@@ -145,7 +147,7 @@ namespace Platform.Collections.Methods.Lists
             {
                 SetNext(elementPrevious, elementNext);
             }
-            if (EqualToZero(elementNext))
+            if (elementNext == TElement.Zero)
             {
                 SetLast(elementPrevious);
             }
@@ -153,8 +155,8 @@ namespace Platform.Collections.Methods.Lists
             {
                 SetPrevious(elementNext, elementPrevious);
             }
-            SetPrevious(element, Zero);
-            SetNext(element, Zero);
+            SetPrevious(element, TElement.Zero);
+            SetNext(element, TElement.Zero);
             DecrementSize();
         }
     }

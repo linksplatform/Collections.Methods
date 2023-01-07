@@ -1,3 +1,5 @@
+using System.Numerics;
+
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace Platform.Collections.Methods.Lists
@@ -9,7 +11,7 @@ namespace Platform.Collections.Methods.Lists
     /// <para></para>
     /// </summary>
     /// <seealso cref="RelativeDoublyLinkedListMethodsBase{TElement}"/>
-    public abstract class RelativeCircularDoublyLinkedListMethods<TElement> : RelativeDoublyLinkedListMethodsBase<TElement>
+    public abstract class RelativeCircularDoublyLinkedListMethods<TElement> : RelativeDoublyLinkedListMethodsBase<TElement> where TElement: IUnsignedNumber<TElement>, IComparisonOperators<TElement, TElement, bool>
     {
         /// <summary>
         /// <para>
@@ -34,7 +36,7 @@ namespace Platform.Collections.Methods.Lists
             var baseElementPrevious = GetPrevious(baseElement);
             SetPrevious(newElement, baseElementPrevious);
             SetNext(newElement, baseElement);
-            if (AreEqual(baseElement, GetFirst(headElement)))
+            if ((baseElement == GetFirst(headElement)))
             {
                 SetFirst(headElement, newElement);
             }
@@ -66,7 +68,7 @@ namespace Platform.Collections.Methods.Lists
             var baseElementNext = GetNext(baseElement);
             SetPrevious(newElement, baseElement);
             SetNext(newElement, baseElementNext);
-            if (AreEqual(baseElement, GetLast(headElement)))
+            if ((baseElement == GetLast(headElement)))
             {
                 SetLast(headElement, newElement);
             }
@@ -92,7 +94,7 @@ namespace Platform.Collections.Methods.Lists
         public void AttachAsFirst(TElement headElement, TElement element)
         {
             var first = GetFirst(headElement);
-            if (EqualToZero(first))
+            if (first == TElement.Zero)
             {
                 SetFirst(headElement, element);
                 SetLast(headElement, element);
@@ -123,7 +125,7 @@ namespace Platform.Collections.Methods.Lists
         public void AttachAsLast(TElement headElement, TElement element)
         {
             var last = GetLast(headElement);
-            if (EqualToZero(last))
+            if (last == TElement.Zero)
             {
                 AttachAsFirst(headElement, element);
             }
@@ -151,26 +153,26 @@ namespace Platform.Collections.Methods.Lists
         {
             var elementPrevious = GetPrevious(element);
             var elementNext = GetNext(element);
-            if (AreEqual(elementNext, element))
+            if (elementNext == element)
             {
-                SetFirst(headElement, Zero);
-                SetLast(headElement, Zero);
+                SetFirst(headElement, TElement.Zero);
+                SetLast(headElement, TElement.Zero);
             }
             else
             {
                 SetNext(elementPrevious, elementNext);
                 SetPrevious(elementNext, elementPrevious);
-                if (AreEqual(element, GetFirst(headElement)))
+                if ((element == GetFirst(headElement)))
                 {
                     SetFirst(headElement, elementNext);
                 }
-                if (AreEqual(element, GetLast(headElement)))
+                if ((element == GetLast(headElement)))
                 {
                     SetLast(headElement, elementPrevious);
                 }
             }
-            SetPrevious(element, Zero);
-            SetNext(element, Zero);
+            SetPrevious(element, TElement.Zero);
+            SetNext(element, TElement.Zero);
             DecrementSize(headElement);
         }
     }

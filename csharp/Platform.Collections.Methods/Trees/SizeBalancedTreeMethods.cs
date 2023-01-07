@@ -1,4 +1,5 @@
 using System;
+using System.Numerics;
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
@@ -11,7 +12,7 @@ namespace Platform.Collections.Methods.Trees
     /// <para></para>
     /// </summary>
     /// <seealso cref="SizedBinaryTreeMethodsBase{TElement}"/>
-    public abstract class SizeBalancedTreeMethods<TElement> : SizedBinaryTreeMethodsBase<TElement>
+    public abstract class SizeBalancedTreeMethods<TElement> : SizedBinaryTreeMethodsBase<TElement> where TElement: IUnsignedNumber<TElement>, IComparisonOperators<TElement, TElement, bool>
     {
         /// <summary>
         /// <para>
@@ -29,7 +30,7 @@ namespace Platform.Collections.Methods.Trees
         /// </param>
         protected override void AttachCore(ref TElement root, TElement node)
         {
-            if (EqualToZero(root))
+            if (root == TElement.Zero)
             {
                 root = node;
                 IncrementSize(root);
@@ -37,7 +38,7 @@ namespace Platform.Collections.Methods.Trees
             else
             {
                 IncrementSize(root);
-                if (FirstIsToTheLeftOfSecond(node, root))
+                if (node < root)
                 {
                     AttachCore(ref GetLeftReference(root), node);
                     LeftMaintain(ref root);
@@ -72,16 +73,16 @@ namespace Platform.Collections.Methods.Trees
         {
             ref var currentNode = ref root;
             ref var parent = ref root;
-            var replacementNode = Zero;
-            while (!AreEqual(currentNode, nodeToDetach))
+            var replacementNode = TElement.Zero;
+            while (currentNode != nodeToDetach)
             {
                 DecrementSize(currentNode);
-                if (FirstIsToTheLeftOfSecond(nodeToDetach, currentNode))
+                if (nodeToDetach < currentNode)
                 {
                     parent = ref currentNode;
                     currentNode = ref GetLeftReference(currentNode);
                 }
-                else if (FirstIsToTheRightOfSecond(nodeToDetach, currentNode))
+                else if (nodeToDetach > currentNode)
                 {
                     parent = ref currentNode;
                     currentNode = ref GetRightReference(currentNode);
@@ -93,40 +94,40 @@ namespace Platform.Collections.Methods.Trees
             }
             var nodeToDetachLeft = GetLeft(nodeToDetach);
             var node = GetRight(nodeToDetach);
-            if (!EqualToZero(nodeToDetachLeft) && !EqualToZero(node))
+            if (nodeToDetachLeft != TElement.Zero && node != TElement.Zero)
             {
                 var leftestNode = GetLeftest(node);
                 DetachCore(ref GetRightReference(nodeToDetach), leftestNode);
                 SetLeft(leftestNode, nodeToDetachLeft);
                 node = GetRight(nodeToDetach);
-                if (!EqualToZero(node))
+                if (node != TElement.Zero)
                 {
                     SetRight(leftestNode, node);
-                    SetSize(leftestNode, Increment(Add(GetSize(nodeToDetachLeft), GetSize(node))));
+                    SetSize(leftestNode, ((GetSize(nodeToDetachLeft) + GetSize(node))) + TElement.One);
                 }
                 else
                 {
-                    SetSize(leftestNode, Increment(GetSize(nodeToDetachLeft)));
+                    SetSize(leftestNode, (GetSize(nodeToDetachLeft)) + TElement.One);
                 }
                 replacementNode = leftestNode;
             }
-            else if (!EqualToZero(nodeToDetachLeft))
+            else if (nodeToDetachLeft != TElement.Zero)
             {
                 replacementNode = nodeToDetachLeft;
             }
-            else if (!EqualToZero(node))
+            else if (node != TElement.Zero)
             {
                 replacementNode = node;
             }
-            if (AreEqual(root, nodeToDetach))
+            if (root == nodeToDetach)
             {
                 root = replacementNode;
             }
-            else if (AreEqual(GetLeft(parent), nodeToDetach))
+            else if ((GetLeft(parent) == nodeToDetach))
             {
                 SetLeft(parent, replacementNode);
             }
-            else if (AreEqual(GetRight(parent), nodeToDetach))
+            else if ((GetRight(parent) == nodeToDetach))
             {
                 SetRight(parent, replacementNode);
             }
@@ -134,24 +135,24 @@ namespace Platform.Collections.Methods.Trees
         }
         private void LeftMaintain(ref TElement root)
         {
-            if (!EqualToZero(root))
+            if (root != TElement.Zero)
             {
                 var rootLeftNode = GetLeft(root);
-                if (!EqualToZero(rootLeftNode))
+                if (rootLeftNode != TElement.Zero)
                 {
                     var rootRightNode = GetRight(root);
                     var rootRightNodeSize = GetSize(rootRightNode);
                     var rootLeftNodeLeftNode = GetLeft(rootLeftNode);
-                    if (!EqualToZero(rootLeftNodeLeftNode) &&
-                        (EqualToZero(rootRightNode) || GreaterThan(GetSize(rootLeftNodeLeftNode), rootRightNodeSize)))
+                    if (rootLeftNodeLeftNode != TElement.Zero &&
+                        (rootRightNode == TElement.Zero || (GetSize(rootLeftNodeLeftNode)) > rootRightNodeSize))
                     {
                         RightRotate(ref root);
                     }
                     else
                     {
                         var rootLeftNodeRightNode = GetRight(rootLeftNode);
-                        if (!EqualToZero(rootLeftNodeRightNode) &&
-                            (EqualToZero(rootRightNode) || GreaterThan(GetSize(rootLeftNodeRightNode), rootRightNodeSize)))
+                        if (rootLeftNodeRightNode != TElement.Zero &&
+                            (rootRightNode == TElement.Zero || (GetSize(rootLeftNodeRightNode)) > rootRightNodeSize))
                         {
                             LeftRotate(ref GetLeftReference(root));
                             RightRotate(ref root);
@@ -170,24 +171,24 @@ namespace Platform.Collections.Methods.Trees
         }
         private void RightMaintain(ref TElement root)
         {
-            if (!EqualToZero(root))
+            if (root != TElement.Zero)
             {
                 var rootRightNode = GetRight(root);
-                if (!EqualToZero(rootRightNode))
+                if (rootRightNode != TElement.Zero)
                 {
                     var rootLeftNode = GetLeft(root);
                     var rootLeftNodeSize = GetSize(rootLeftNode);
                     var rootRightNodeRightNode = GetRight(rootRightNode);
-                    if (!EqualToZero(rootRightNodeRightNode) &&
-                        (EqualToZero(rootLeftNode) || GreaterThan(GetSize(rootRightNodeRightNode), rootLeftNodeSize)))
+                    if (rootRightNodeRightNode != TElement.Zero &&
+                        (rootLeftNode == TElement.Zero || (GetSize(rootRightNodeRightNode)) > rootLeftNodeSize))
                     {
                         LeftRotate(ref root);
                     }
                     else
                     {
                         var rootRightNodeLeftNode = GetLeft(rootRightNode);
-                        if (!EqualToZero(rootRightNodeLeftNode) &&
-                            (EqualToZero(rootLeftNode) || GreaterThan(GetSize(rootRightNodeLeftNode), rootLeftNodeSize)))
+                        if (rootRightNodeLeftNode != TElement.Zero &&
+                            (rootLeftNode == TElement.Zero || (GetSize(rootRightNodeLeftNode)) > rootLeftNodeSize))
                         {
                             RightRotate(ref GetRightReference(root));
                             LeftRotate(ref root);

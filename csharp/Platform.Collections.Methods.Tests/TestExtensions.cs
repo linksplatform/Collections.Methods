@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 using Xunit;
 using Platform.Collections.Methods.Trees;
 using Platform.Converters;
@@ -8,7 +9,7 @@ namespace Platform.Collections.Methods.Tests
 {
     public static class TestExtensions
     {
-        public static void TestMultipleCreationsAndDeletions<TElement>(this SizedBinaryTreeMethodsBase<TElement> tree, Func<TElement> allocate, Action<TElement> free, ref TElement root, Func<TElement> treeCount, int maximumOperationsPerCycle)
+        public static void TestMultipleCreationsAndDeletions<TElement>(this SizedBinaryTreeMethodsBase<TElement> tree, Func<TElement> allocate, Action<TElement> free, ref TElement root, Func<TElement> treeCount, int maximumOperationsPerCycle) where TElement: IUnsignedNumber<TElement>, IComparisonOperators<TElement, TElement, bool>
         {
             for (var N = 1; N < maximumOperationsPerCycle; N++)
             {
@@ -34,7 +35,7 @@ namespace Platform.Collections.Methods.Tests
             }
         }
 
-        public static void TestMultipleRandomCreationsAndDeletions<TElement>(this SizedBinaryTreeMethodsBase<TElement> tree, ref TElement root, Func<TElement> treeCount, int maximumOperationsPerCycle)
+        public static void TestMultipleRandomCreationsAndDeletions<TElement>(this SizedBinaryTreeMethodsBase<TElement> tree, ref TElement root, Func<TElement> treeCount, int maximumOperationsPerCycle) where TElement: IUnsignedNumber<TElement>, IComparisonOperators<TElement, TElement, bool>
         {
             var random = new System.Random(0);
             var added = new HashSet<TElement>();

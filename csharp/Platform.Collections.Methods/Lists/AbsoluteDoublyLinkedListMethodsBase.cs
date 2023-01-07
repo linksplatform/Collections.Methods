@@ -1,3 +1,4 @@
+using System.Numerics;
 using System.Runtime.CompilerServices;
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
@@ -11,7 +12,7 @@ namespace Platform.Collections.Methods.Lists
     /// <para></para>
     /// </summary>
     /// <seealso cref="DoublyLinkedListMethodsBase{TElement}"/>
-    public abstract class AbsoluteDoublyLinkedListMethodsBase<TElement> : DoublyLinkedListMethodsBase<TElement>
+    public abstract class AbsoluteDoublyLinkedListMethodsBase<TElement> : DoublyLinkedListMethodsBase<TElement> where TElement: IUnsignedNumber<TElement>, IComparisonOperators<TElement, TElement, bool>
     {
         /// <summary>
         /// <para>
@@ -98,7 +99,7 @@ namespace Platform.Collections.Methods.Lists
         /// <para></para>
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected void IncrementSize() => SetSize(Increment(GetSize()));
+        protected void IncrementSize() => SetSize((GetSize()) + TElement.One);
 
         /// <summary>
         /// <para>
@@ -107,6 +108,6 @@ namespace Platform.Collections.Methods.Lists
         /// <para></para>
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected void DecrementSize() => SetSize(Decrement(GetSize()));
+        protected void DecrementSize() => SetSize((GetSize()) - TElement.One);
     }
 }

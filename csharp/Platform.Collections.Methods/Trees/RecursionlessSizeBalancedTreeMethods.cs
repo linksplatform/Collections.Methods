@@ -1,3 +1,5 @@
+using System.Numerics;
+
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace Platform.Collections.Methods.Trees
@@ -9,7 +11,7 @@ namespace Platform.Collections.Methods.Trees
     /// <para></para>
     /// </summary>
     /// <seealso cref="SizedBinaryTreeMethodsBase{TElement}"/>
-    public abstract class RecursionlessSizeBalancedTreeMethods<TElement> : SizedBinaryTreeMethodsBase<TElement>
+    public abstract class RecursionlessSizeBalancedTreeMethods<TElement> : SizedBinaryTreeMethodsBase<TElement> where TElement: IUnsignedNumber<TElement>, IComparisonOperators<TElement, TElement, bool>
     {
         /// <summary>
         /// <para>
@@ -33,18 +35,18 @@ namespace Platform.Collections.Methods.Trees
                 var leftSize = GetSizeOrZero(left);
                 ref var right = ref GetRightReference(root);
                 var rightSize = GetSizeOrZero(right);
-                if (FirstIsToTheLeftOfSecond(node, root)) // node.Key less than root.Key
+                if (node < root) // node.Key less than root.Key
                 {
-                    if (EqualToZero(left))
+                    if (left == TElement.Zero)
                     {
                         IncrementSize(root);
-                        SetSize(node, One);
+                        SetSize(node, TElement.One);
                         left = node;
                         return;
                     }
-                    if (FirstIsToTheLeftOfSecond(node, left)) // node.Key less than left.Key
+                    if (node < left) // node.Key less than left.Key
                     {
-                        if (GreaterThan(Increment(leftSize), rightSize))
+                        if ((leftSize + TElement.One) > rightSize)
                         {
                             RightRotate(ref root);
                         }
@@ -57,15 +59,15 @@ namespace Platform.Collections.Methods.Trees
                     else  // node.Key greater than left.Key
                     {
                         var leftRightSize = GetSizeOrZero(GetRight(left));
-                        if (GreaterThan(Increment(leftRightSize), rightSize))
+                        if ((leftRightSize + TElement.One) > rightSize)
                         {
-                            if (EqualToZero(leftRightSize) && EqualToZero(rightSize))
+                            if (leftRightSize == TElement.Zero && rightSize == TElement.Zero)
                             {
                                 SetLeft(node, left);
                                 SetRight(node, root);
-                                SetSize(node, Add(leftSize, Two)); // Two (2) - node the size of root and a node itself
-                                SetLeft(root, Zero);
-                                SetSize(root, One);
+                                SetSize(node, (leftSize+ TElement.CreateTruncating(2))); // TElement.CreateTruncating(2) (2) - node the size of root and a node itself
+                                SetLeft(root, TElement.Zero);
+                                SetSize(root, TElement.One);
                                 root = node;
                                 return;
                             }
@@ -81,16 +83,16 @@ namespace Platform.Collections.Methods.Trees
                 }
                 else // node.Key greater than root.Key
                 {
-                    if (EqualToZero(right))
+                    if (right == TElement.Zero)
                     {
                         IncrementSize(root);
-                        SetSize(node, One);
+                        SetSize(node, TElement.One);
                         right = node;
                         return;
                     }
-                    if (FirstIsToTheRightOfSecond(node, right)) // node.Key greater than right.Key
+                    if (node > right) // node.Key greater than right.Key
                     {
-                        if (GreaterThan(Increment(rightSize), leftSize))
+                        if ((rightSize + TElement.One) > leftSize)
                         {
                             LeftRotate(ref root);
                         }
@@ -103,15 +105,15 @@ namespace Platform.Collections.Methods.Trees
                     else // node.Key less than right.Key
                     {
                         var rightLeftSize = GetSizeOrZero(GetLeft(right));
-                        if (GreaterThan(Increment(rightLeftSize), leftSize))
+                        if ((rightLeftSize + TElement.One) > leftSize)
                         {
-                            if (EqualToZero(rightLeftSize) && EqualToZero(leftSize))
+                            if (rightLeftSize == TElement.Zero && leftSize == TElement.Zero)
                             {
                                 SetLeft(node, root);
                                 SetRight(node, right);
-                                SetSize(node, Add(rightSize, Two)); // Two (2) - node the size of root and a node itself
-                                SetRight(root, Zero);
-                                SetSize(root, One);
+                                SetSize(node, (rightSize + TElement.CreateTruncating(2))); // TElement.CreateTruncating(2) (2) - node the size of root and a node itself
+                                SetRight(root, TElement.Zero);
+                                SetSize(root, TElement.One);
                                 root = node;
                                 return;
                             }
@@ -150,14 +152,14 @@ namespace Platform.Collections.Methods.Trees
                 var leftSize = GetSizeOrZero(left);
                 ref var right = ref GetRightReference(root);
                 var rightSize = GetSizeOrZero(right);
-                if (FirstIsToTheLeftOfSecond(node, root)) // node.Key less than root.Key
+                if (node < root) // node.Key less than root.Key
                 {
-                    var decrementedLeftSize = Decrement(leftSize);
-                    if (GreaterThan(GetSizeOrZero(GetRightOrDefault(right)), decrementedLeftSize))
+                    var decrementedLeftSize = leftSize - TElement.One;
+                    if ((GetSizeOrZero(GetRightOrDefault(right))) > decrementedLeftSize)
                     {
                         LeftRotate(ref root);
                     }
-                    else if (GreaterThan(GetSizeOrZero(GetLeftOrDefault(right)), decrementedLeftSize))
+                    else if ((GetSizeOrZero(GetLeftOrDefault(right))) > decrementedLeftSize)
                     {
                         RightRotate(ref right);
                         LeftRotate(ref root);
@@ -168,14 +170,14 @@ namespace Platform.Collections.Methods.Trees
                         root = ref left;
                     }
                 }
-                else if (FirstIsToTheRightOfSecond(node, root)) // node.Key greater than root.Key
+                else if (node > root) // node.Key greater than root.Key
                 {
-                    var decrementedRightSize = Decrement(rightSize);
-                    if (GreaterThan(GetSizeOrZero(GetLeftOrDefault(left)), decrementedRightSize))
+                    var decrementedRightSize = rightSize - TElement.One;
+                    if ((GetSizeOrZero(GetLeftOrDefault(left))) > decrementedRightSize)
                     {
                         RightRotate(ref root);
                     }
-                    else if (GreaterThan(GetSizeOrZero(GetRightOrDefault(left)), decrementedRightSize))
+                    else if ((GetSizeOrZero(GetRightOrDefault(left))) > decrementedRightSize)
                     {
                         LeftRotate(ref left);
                         RightRotate(ref root);
@@ -188,10 +190,10 @@ namespace Platform.Collections.Methods.Trees
                 }
                 else // key equals to root.Key
                 {
-                    if (GreaterThanZero(leftSize) && GreaterThanZero(rightSize))
+                    if (leftSize > TElement.Zero && rightSize > TElement.Zero)
                     {
                         TElement replacement;
-                        if (GreaterThan(leftSize, rightSize))
+                        if ((leftSize) > rightSize)
                         {
                             replacement = GetRightest(left);
                             DetachCore(ref left, replacement);
@@ -203,20 +205,20 @@ namespace Platform.Collections.Methods.Trees
                         }
                         SetLeft(replacement, left);
                         SetRight(replacement, right);
-                        SetSize(replacement, Add(leftSize, rightSize));
+                        SetSize(replacement, (leftSize + rightSize));
                         root = replacement;
                     }
-                    else if (GreaterThanZero(leftSize))
+                    else if (leftSize > TElement.Zero)
                     {
                         root = left;
                     }
-                    else if (GreaterThanZero(rightSize))
+                    else if (rightSize > TElement.Zero)
                     {
                         root = right;
                     }
                     else
                     {
-                        root = Zero;
+                        root = TElement.Zero;
                     }
                     ClearNode(node);
                     return;

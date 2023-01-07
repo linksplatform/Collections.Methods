@@ -2,6 +2,7 @@
 
 using System;
 using System.Diagnostics;
+using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Text;
 using Platform.Numbers;
@@ -17,7 +18,7 @@ namespace Platform.Collections.Methods.Trees
     /// <para></para>
     /// </summary>
     /// <seealso cref="GenericCollectionMethodsBase{TElement}"/>
-    public abstract class SizedBinaryTreeMethodsBase<TElement> : GenericCollectionMethodsBase<TElement>
+    public abstract class SizedBinaryTreeMethodsBase<TElement>   where TElement: IUnsignedNumber<TElement>, IComparisonOperators<TElement, TElement, bool>
     {
         /// <summary>
         /// <para>
@@ -157,48 +158,6 @@ namespace Platform.Collections.Methods.Trees
 
         /// <summary>
         /// <para>
-        /// Determines whether this instance first is to the left of second.
-        /// </para>
-        /// <para></para>
-        /// </summary>
-        /// <param name="first">
-        /// <para>The first.</para>
-        /// <para></para>
-        /// </param>
-        /// <param name="second">
-        /// <para>The second.</para>
-        /// <para></para>
-        /// </param>
-        /// <returns>
-        /// <para>The bool</para>
-        /// <para></para>
-        /// </returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected abstract bool FirstIsToTheLeftOfSecond(TElement first, TElement second);
-
-        /// <summary>
-        /// <para>
-        /// Determines whether this instance first is to the right of second.
-        /// </para>
-        /// <para></para>
-        /// </summary>
-        /// <param name="first">
-        /// <para>The first.</para>
-        /// <para></para>
-        /// </param>
-        /// <param name="second">
-        /// <para>The second.</para>
-        /// <para></para>
-        /// </param>
-        /// <returns>
-        /// <para>The bool</para>
-        /// <para></para>
-        /// </returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected abstract bool FirstIsToTheRightOfSecond(TElement first, TElement second);
-
-        /// <summary>
-        /// <para>
         /// Gets the left or default using the specified node.
         /// </para>
         /// <para></para>
@@ -212,7 +171,7 @@ namespace Platform.Collections.Methods.Trees
         /// <para></para>
         /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual TElement GetLeftOrDefault(TElement node) => AreEqual(node, default) ? default : GetLeft(node);
+        protected virtual TElement GetLeftOrDefault(TElement node) => node == default ? default : GetLeft(node);
 
         /// <summary>
         /// <para>
@@ -229,7 +188,7 @@ namespace Platform.Collections.Methods.Trees
         /// <para></para>
         /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual TElement GetRightOrDefault(TElement node) => AreEqual(node, default) ? default : GetRight(node);
+        protected virtual TElement GetRightOrDefault(TElement node) => node == default ? default : GetRight(node);
 
         /// <summary>
         /// <para>
@@ -242,7 +201,7 @@ namespace Platform.Collections.Methods.Trees
         /// <para></para>
         /// </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected void IncrementSize(TElement node) => SetSize(node, Increment(GetSize(node)));
+        protected void IncrementSize(TElement node) => SetSize(node, (GetSize(node)) + TElement.One);
 
         /// <summary>
         /// <para>
@@ -255,7 +214,7 @@ namespace Platform.Collections.Methods.Trees
         /// <para></para>
         /// </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected void DecrementSize(TElement node) => SetSize(node, Decrement(GetSize(node)));
+        protected void DecrementSize(TElement node) => SetSize(node, (GetSize(node)) - TElement.One);
 
         /// <summary>
         /// <para>
@@ -306,7 +265,7 @@ namespace Platform.Collections.Methods.Trees
         /// <para></para>
         /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected TElement GetSizeOrZero(TElement node) => EqualToZero(node) ? Zero : GetSize(node);
+        protected TElement GetSizeOrZero(TElement node) => node == TElement.Zero ? TElement.Zero : GetSize(node);
 
         /// <summary>
         /// <para>
@@ -319,7 +278,7 @@ namespace Platform.Collections.Methods.Trees
         /// <para></para>
         /// </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected void FixSize(TElement node) => SetSize(node, Increment(Add(GetLeftSize(node), GetRightSize(node))));
+        protected void FixSize(TElement node) => SetSize(node, ((GetLeftSize(node) + GetRightSize(node))) + TElement.One);
 
         /// <summary>
         /// <para>
@@ -353,7 +312,7 @@ namespace Platform.Collections.Methods.Trees
         {
             var right = GetRight(root);
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
-            if (EqualToZero(right))
+            if (right == TElement.Zero)
             {
                 throw new InvalidOperationException("Right is null.");
             }
@@ -397,7 +356,7 @@ namespace Platform.Collections.Methods.Trees
         {
             var left = GetLeft(root);
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
-            if (EqualToZero(left))
+            if (left == TElement.Zero)
             {
                 throw new InvalidOperationException("Left is null.");
             }
@@ -427,7 +386,7 @@ namespace Platform.Collections.Methods.Trees
         protected virtual TElement GetRightest(TElement current)
         {
             var currentRight = GetRight(current);
-            while (!EqualToZero(currentRight))
+            while (currentRight != TElement.Zero)
             {
                 current = currentRight;
                 currentRight = GetRight(current);
@@ -453,7 +412,7 @@ namespace Platform.Collections.Methods.Trees
         protected virtual TElement GetLeftest(TElement current)
         {
             var currentLeft = GetLeft(current);
-            while (!EqualToZero(currentLeft))
+            while (currentLeft != TElement.Zero)
             {
                 current = currentLeft;
                 currentLeft = GetLeft(current);
@@ -516,13 +475,13 @@ namespace Platform.Collections.Methods.Trees
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public virtual bool Contains(TElement node, TElement root)
         {
-            while (!EqualToZero(root))
+            while (root != TElement.Zero)
             {
-                if (FirstIsToTheLeftOfSecond(node, root)) // node.Key < root.Key
+                if (node < root) // node.Key < root.Key
                 {
                     root = GetLeft(root);
                 }
-                else if (FirstIsToTheRightOfSecond(node, root)) // node.Key > root.Key
+                else if (node > root) // node.Key > root.Key
                 {
                     root = GetRight(root);
                 }
@@ -547,9 +506,9 @@ namespace Platform.Collections.Methods.Trees
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual void ClearNode(TElement node)
         {
-            SetLeft(node, Zero);
-            SetRight(node, Zero);
-            SetSize(node, Zero);
+            SetLeft(node, TElement.Zero);
+            SetRight(node, TElement.Zero);
+            SetSize(node, TElement.Zero);
         }
 
         /// <summary>
@@ -576,9 +535,9 @@ namespace Platform.Collections.Methods.Trees
             Debug.WriteLine("----------------");
             var sizeBefore = GetSize(root);
 #endif
-            if (EqualToZero(root))
+            if (root == TElement.Zero)
             {
-                SetSize(node, One);
+                SetSize(node, TElement.One);
                 root = node;
                 return;
             }
@@ -589,7 +548,7 @@ namespace Platform.Collections.Methods.Trees
             Debug.WriteLine("----------------");
             ValidateSizes(root);
             var sizeAfter = GetSize(root);
-            if (!AreEqual(Arithmetic.Increment(sizeBefore), sizeAfter))
+            if (!(sizeBefore + TElement.One != sizeAfter))
             {
                 throw new InvalidOperationException("Tree was broken after attach.");
             }
@@ -635,7 +594,7 @@ namespace Platform.Collections.Methods.Trees
             Debug.WriteLine(PrintNodes(root));
             Debug.WriteLine("----------------");
             var sizeBefore = GetSize(root);
-            if (EqualToZero(root))
+            if (root == TElement.Zero)
             {
                 throw new InvalidOperationException($"Элемент с {node} не содержится в дереве.");
             }
@@ -647,7 +606,7 @@ namespace Platform.Collections.Methods.Trees
             Debug.WriteLine("----------------");
             ValidateSizes(root);
             var sizeAfter = GetSize(root);
-            if (!AreEqual(Arithmetic.Decrement(sizeBefore), sizeAfter))
+            if (!(Arithmetic.sizeBefore - TElement.One != sizeAfter))
             {
                 throw new InvalidOperationException("Tree was broken after detach.");
             }
@@ -682,7 +641,7 @@ namespace Platform.Collections.Methods.Trees
         /// </param>
         public void FixSizes(TElement node)
         {
-            if (AreEqual(node, default))
+            if (node == default)
             {
                 return;
             }
@@ -707,15 +666,15 @@ namespace Platform.Collections.Methods.Trees
         /// </exception>
         public void ValidateSizes(TElement node)
         {
-            if (AreEqual(node, default))
+            if (node == default)
             {
                 return;
             }
             var size = GetSize(node);
             var leftSize = GetLeftSize(node);
             var rightSize = GetRightSize(node);
-            var expectedSize = Arithmetic.Increment(Arithmetic.Add(leftSize, rightSize));
-            if (!AreEqual(size, expectedSize))
+            var expectedSize = (leftSize+ rightSize)+TElement.One;
+            if (size != expectedSize)
             {
                 throw new InvalidOperationException($"Size of {node} is not valid. Expected size: {expectedSize}, actual size: {size}.");
             }
@@ -742,8 +701,8 @@ namespace Platform.Collections.Methods.Trees
             var size = GetSize(node);
             var leftSize = GetLeftSize(node);
             var rightSize = GetRightSize(node);
-            var expectedSize = Arithmetic.Increment(Arithmetic.Add(leftSize, rightSize));
-            if (!AreEqual(size, expectedSize))
+            var expectedSize = (leftSize + rightSize)+TElement.One;
+            if (size != expectedSize)
             {
                 throw new InvalidOperationException($"Size of {node} is not valid. Expected size: {expectedSize}, actual size: {size}.");
             }
@@ -807,7 +766,7 @@ namespace Platform.Collections.Methods.Trees
         /// </param>
         public void PrintNodes(TElement node, StringBuilder sb, int level)
         {
-            if (AreEqual(node, default))
+            if (node == default)
             {
                 return;
             }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Text;
 using Platform.Numbers;
 using Platform.Collections.Methods.Trees;
@@ -7,7 +8,7 @@ using Platform.Converters;
 
 namespace Platform.Collections.Methods.Tests
 {
-    public class SizedAndThreadedAVLBalancedTree<TElement> : SizedAndThreadedAVLBalancedTreeMethods<TElement>
+    public class SizedAndThreadedAVLBalancedTree<TElement> : SizedAndThreadedAVLBalancedTreeMethods<TElement> where TElement: IUnsignedNumber<TElement>, IComparisonOperators<TElement, TElement, bool>
     {
         private struct TreeElement
         {
@@ -25,14 +26,14 @@ namespace Platform.Collections.Methods.Tests
 
         public TElement Count => GetSizeOrZero(Root);
 
-        public SizedAndThreadedAVLBalancedTree(int capacity) => (_elements, _allocated) = (new TreeElement[capacity], One);
+        public SizedAndThreadedAVLBalancedTree(int capacity) => (_elements, _allocated) = (new TreeElement[capacity], TElement.One);
 
         public TElement Allocate()
         {
             var newNode = _allocated;
             if (IsEmpty(newNode))
             {
-                _allocated = Arithmetic.Increment(_allocated);
+                _allocated = _allocated+TElement.One;
                 return newNode;
             }
             else
@@ -43,13 +44,13 @@ namespace Platform.Collections.Methods.Tests
 
         public void Free(TElement node)
         {
-            while (!EqualityComparer.Equals(_allocated, One) && IsEmpty(node))
+            while ((_allocated != TElement.One) && IsEmpty(node))
             {
-                var lastNode = Arithmetic.Decrement(_allocated);
-                if (EqualityComparer.Equals(lastNode, node))
+                var lastNode = _allocated-TElement.One;
+                if ((lastNode == node))
                 {
                     _allocated = lastNode;
-                    node = Arithmetic.Decrement(node);
+                    node = node-TElement.One;
                 }
                 else
                 {
@@ -59,10 +60,6 @@ namespace Platform.Collections.Methods.Tests
         }
 
         public bool IsEmpty(TElement node) => EqualityComparer<TreeElement>.Default.Equals(GetElement(node), default);
-
-        protected override bool FirstIsToTheLeftOfSecond(TElement first, TElement second) => Comparer.Compare(first, second) < 0;
-
-        protected override bool FirstIsToTheRightOfSecond(TElement first, TElement second) => Comparer.Compare(first, second) > 0;
 
         protected override sbyte GetBalance(TElement node) => GetElement(node).Balance;
 
