@@ -1,3 +1,5 @@
+using System.Numerics;
+
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace Platform.Collections.Methods.Lists
@@ -9,7 +11,7 @@ namespace Platform.Collections.Methods.Lists
     /// <para></para>
     /// </summary>
     /// <seealso cref="AbsoluteDoublyLinkedListMethodsBase{TElement}"/>
-    public abstract class AbsoluteOpenDoublyLinkedListMethods<TElement> : AbsoluteDoublyLinkedListMethodsBase<TElement>
+    public abstract class AbsoluteOpenDoublyLinkedListMethods<TElement> : AbsoluteDoublyLinkedListMethodsBase<TElement> where TElement: IUnsignedNumber<TElement>, IComparisonOperators<TElement, TElement, bool>
     {
         /// <summary>
         /// <para>

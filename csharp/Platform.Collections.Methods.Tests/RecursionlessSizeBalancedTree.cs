@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Text;
 using Platform.Numbers;
 using Platform.Collections.Methods.Trees;
@@ -7,7 +8,7 @@ using Platform.Converters;
 
 namespace Platform.Collections.Methods.Tests
 {
-    public class RecursionlessSizeBalancedTree<TElement> : RecursionlessSizeBalancedTreeMethods<TElement>
+    public class RecursionlessSizeBalancedTree<TElement> : RecursionlessSizeBalancedTreeMethods<TElement> where TElement: IUnsignedNumber<TElement>, IComparisonOperators<TElement, TElement, bool>
     {
         private struct TreeElement
         {
