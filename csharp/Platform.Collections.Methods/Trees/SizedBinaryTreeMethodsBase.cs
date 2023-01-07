@@ -256,7 +256,7 @@ namespace Platform.Collections.Methods.Trees
         /// <para></para>
         /// </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected void DecrementSize(TElement node) => SetSize(node, Decrement(GetSize(node)));
+        protected void DecrementSize(TElement node) => SetSize(node, (GetSize(node)) - TElement.One);
 
         /// <summary>
         /// <para>

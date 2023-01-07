@@ -140,6 +140,6 @@ namespace Platform.Collections.Methods.Lists
         /// <para></para>
         /// </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected void DecrementSize(TElement headElement) => SetSize(headElement, Decrement(GetSize(headElement)));
+        protected void DecrementSize(TElement headElement) => SetSize(headElement, (GetSize(headElement)) - TElement.One);
     }
 }
