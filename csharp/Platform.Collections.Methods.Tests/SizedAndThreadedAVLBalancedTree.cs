@@ -44,7 +44,7 @@ namespace Platform.Collections.Methods.Tests
 
         public void Free(TElement node)
         {
-            while (!EqualityComparer.Equals(_allocated, One) && IsEmpty(node))
+            while ((_allocated != One) && IsEmpty(node))
             {
                 var lastNode = _allocated-TElement.One;
                 if (EqualityComparer.Equals(lastNode, node))
