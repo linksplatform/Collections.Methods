@@ -3,22 +3,6 @@
     template <typename TSelf, typename ...> class SizedBinaryTreeMethodsBase;
     template <typename TSelf, typename TElement> class SizedBinaryTreeMethodsBase<TSelf, TElement> : public GenericCollectionMethodsBase<TSelf, TElement>
     {
-        protected: TElement* GetLeftReference(TElement node) { return this->object().GetLeftReference(node); };
-
-        protected: TElement* GetRightReference(TElement node) { return this->object().GetRightReference(node); };
-
-        protected: TElement GetLeft(TElement node) { return this->object().GetLeft(node); };
-
-        protected: TElement GetRight(TElement node) { return this->object().GetRight(node); };
-
-        protected: TElement GetSize(TElement node) { return this->object().GetSize(node); };
-
-        protected: void SetLeft(TElement node, TElement left) { this->object().SetLeft(node, left); };
-
-        protected: void SetRight(TElement node, TElement right) { this->object().SetRight(node, right); };
-
-        protected: void SetSize(TElement node, TElement size) { this->object().SetSize(node, size); };
-
         protected: bool FirstIsToTheLeftOfSecond(TElement first, TElement second) { return this->object().FirstIsToTheLeftOfSecond(first, second); };
 
         protected: bool FirstIsToTheRightOfSecond(TElement first, TElement second) { return this->object().FirstIsToTheRightOfSecond(first, second); };
