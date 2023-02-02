@@ -137,8 +137,6 @@
 #endif
         }
 
-        protected: void AttachCore(TElement* root, TElement node) { this->object().AttachCore(root, node); };
-
         public: void Detach(TElement* root, TElement node)
         {
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
@@ -165,7 +163,5 @@
             }
 #endif
         }
-
-        protected: void DetachCore(TElement* root, TElement node) { this->object().DetachCore(root, node); };
     };
 }
