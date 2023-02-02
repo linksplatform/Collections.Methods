@@ -3,10 +3,6 @@
     template <typename TSelf, typename ...> class SizedBinaryTreeMethodsBase;
     template <typename TSelf, typename TElement> class SizedBinaryTreeMethodsBase<TSelf, TElement> : public GenericCollectionMethodsBase<TSelf, TElement>
     {
-        protected: bool FirstIsToTheLeftOfSecond(TElement first, TElement second) { return this->object().FirstIsToTheLeftOfSecond(first, second); };
-
-        protected: bool FirstIsToTheRightOfSecond(TElement first, TElement second) { return this->object().FirstIsToTheRightOfSecond(first, second); };
-
         protected: TElement GetLeftOrDefault(TElement node) { return node == 0 ? 0 : this->object().GetLeft(node); }
 
         protected: TElement GetRightOrDefault(TElement node) { return node == 0 ? 0 : this->object().GetRight(node); }
