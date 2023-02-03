@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.13)
 
 project(Platform.Collections.Methods CXX)
 
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup(TARGETS)
 
 add_library(${PROJECT_NAME}.Library INTERFACE)
 target_include_directories(${PROJECT_NAME}.Library INTERFACE
