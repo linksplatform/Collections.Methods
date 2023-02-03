@@ -58,18 +58,6 @@
 
         protected: TElement GetRightOrDefault(TElement node) { return this->object().GetRightIsChild(node) ? this->object().GetRight(node) : 0; }
 
-        protected: bool GetLeftIsChild(TElement node) { return this->object().GetLeftIsChild(node); }
-
-        protected: void SetLeftIsChild(TElement node, bool value) { this->object().SetLeftIsChild(node, value); }
-
-        protected: bool GetRightIsChild(TElement node) { return this->object().GetRightIsChild(node); }
-
-        protected: void SetRightIsChild(TElement node, bool value) { this->object().SetRightIsChild(node, value); }
-
-        protected: std::int8_t GetBalance(TElement node) { return this->object().GetBalance(node); }
-
-        protected: void SetBalance(TElement node, std::int8_t value) { this->object().SetBalance(node, value); }
-
         protected: void AttachCore(TElement* root, TElement node)
         {
             {

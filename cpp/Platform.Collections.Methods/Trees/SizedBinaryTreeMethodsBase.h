@@ -3,26 +3,6 @@
     template <typename TSelf, typename ...> class SizedBinaryTreeMethodsBase;
     template <typename TSelf, typename TElement> class SizedBinaryTreeMethodsBase<TSelf, TElement> : public GenericCollectionMethodsBase<TSelf, TElement>
     {
-        protected: TElement* GetLeftReference(TElement node) { return this->object().GetLeftReference(node); };
-
-        protected: TElement* GetRightReference(TElement node) { return this->object().GetRightReference(node); };
-
-        protected: TElement GetLeft(TElement node) { return this->object().GetLeft(node); };
-
-        protected: TElement GetRight(TElement node) { return this->object().GetRight(node); };
-
-        protected: TElement GetSize(TElement node) { return this->object().GetSize(node); };
-
-        protected: void SetLeft(TElement node, TElement left) { this->object().SetLeft(node, left); };
-
-        protected: void SetRight(TElement node, TElement right) { this->object().SetRight(node, right); };
-
-        protected: void SetSize(TElement node, TElement size) { this->object().SetSize(node, size); };
-
-        protected: bool FirstIsToTheLeftOfSecond(TElement first, TElement second) { return this->object().FirstIsToTheLeftOfSecond(first, second); };
-
-        protected: bool FirstIsToTheRightOfSecond(TElement first, TElement second) { return this->object().FirstIsToTheRightOfSecond(first, second); };
-
         protected: TElement GetLeftOrDefault(TElement node) { return node == 0 ? 0 : this->object().GetLeft(node); }
 
         protected: TElement GetRightOrDefault(TElement node) { return node == 0 ? 0 : this->object().GetRight(node); }
@@ -157,8 +137,6 @@
 #endif
         }
 
-        protected: void AttachCore(TElement* root, TElement node) { this->object().AttachCore(root, node); };
-
         public: void Detach(TElement* root, TElement node)
         {
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
@@ -185,7 +163,5 @@
             }
 #endif
         }
-
-        protected: void DetachCore(TElement* root, TElement node) { this->object().DetachCore(root, node); };
     };
 }

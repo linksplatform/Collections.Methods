@@ -1,24 +1,10 @@
 ﻿namespace Platform::Collections::Methods::Lists
 {
-    template <class impl_t, typename ...> class AbsoluteDoublyLinkedListMethodsBase;
-    template <class impl_t, typename TElement> class AbsoluteDoublyLinkedListMethodsBase<impl_t, TElement> : public DoublyLinkedListMethodsBase<impl_t, TElement>
+    template <class TSelf, typename ...> class AbsoluteDoublyLinkedListMethodsBase;
+    template <class TSelf, typename TElement> class AbsoluteDoublyLinkedListMethodsBase<TSelf, TElement> : public DoublyLinkedListMethodsBase<TSelf, TElement>
     {
-        public: using Polymorph<impl_t>::object;
+        protected: void IncrementSize() { this->object().SetSize(this->object().GetSize() + 1); }
 
-        protected: TElement GetFirst() { return object().GetFirst(); };
-
-        protected: TElement GetLast() { return object().GetLast(); };
-
-        protected: TElement GetSize() { return object().GetSize(); };
-
-        protected: void SetFirst(TElement element) { object().SetFirst(element); };
-
-        protected: void SetLast(TElement element) { object().SetLast(element); };
-
-        protected: void SetSize(TElement size) { object().SetSize(size); };
-
-        protected: void IncrementSize() { object().SetSize(object().GetSize() + 1); }
-
-        protected: void DecrementSize() { object().SetSize(object().GetSize() - 1); }
+        protected: void DecrementSize() { this->object().SetSize(this->object().GetSize() - 1); }
     };
 }
