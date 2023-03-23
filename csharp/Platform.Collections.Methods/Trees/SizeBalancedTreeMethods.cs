@@ -41,12 +41,18 @@ namespace Platform.Collections.Methods.Trees
                 if (FirstIsToTheLeftOfSecond(node, root))
                 {
                     AttachCore(ref GetLeftReference(root), node);
-                    LeftMaintain(ref root);
+                    if (attachCount > maintainThreashold) 
+                    {
+                        LeftMaintain(ref root);
+                    }
                 }
                 else
                 {
                     AttachCore(ref GetRightReference(root), node);
-                    RightMaintain(ref root);
+                    if (attachCount > maintainThreashold) 
+                    {
+                        RightMaintain(ref root);
+                    }
                 }
             }
         }
