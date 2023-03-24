@@ -4,7 +4,7 @@
     <Description>LinksPlatform's Platform.Collections.Methods Class Library</Description>
     <Copyright>Konstantin Diachenko</Copyright>
     <AssemblyTitle>Platform.Collections.Methods</AssemblyTitle>
-    <VersionPrefix>0.7.2</VersionPrefix>
+    <VersionPrefix>0.7.3</VersionPrefix>
     <Authors>Konstantin Diachenko</Authors>
     <TargetFramework>net7</TargetFramework>
     <AssemblyName>Platform.Collections.Methods</AssemblyName>
@@ -23,7 +23,7 @@
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <LangVersion>latest</LangVersion>
-    <PackageReleaseNotes>Platform.Numbers dependency is updated to 0.9.0.</PackageReleaseNotes>
+    <PackageReleaseNotes>Perfomance of size balanced trees is increased.</PackageReleaseNotes>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
