@@ -20,9 +20,6 @@ namespace Platform.Collections.Methods.Trees
     /// <seealso cref="GenericCollectionMethodsBase{TElement}"/>
     public abstract class SizedBinaryTreeMethodsBase<TElement>   where TElement: IUnsignedNumber<TElement>, IComparisonOperators<TElement, TElement, bool>
     {
-        protected int attachCount = 0;
-        protected readonly int maintainThreashold = 10;
-
         /// <summary>
         /// <para>
         /// Gets the left reference using the specified node.
@@ -573,7 +570,7 @@ namespace Platform.Collections.Methods.Trees
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Attach(ref TElement root, TElement node)
         {
-            attachCount++;
+            BeforeAttach();
 #if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
             ValidateSizes(root);
             Debug.WriteLine("--BeforeAttach--");
@@ -599,10 +596,11 @@ namespace Platform.Collections.Methods.Trees
                 throw new InvalidOperationException("Tree was broken after attach.");
             }
 #endif
-            if (attachCount > maintainThreashold) 
-            {
-                attachCount = 0;
-            }      
+            AfterAttach();
+        }
+
+        protected virtual void BeforeAttach() 
+        {
         }
 
         /// <summary>
@@ -620,6 +618,10 @@ namespace Platform.Collections.Methods.Trees
         /// <para></para>
         /// </param>
         protected abstract void AttachCore(ref TElement root, TElement node);
+
+        protected virtual void AfterAttach() 
+        {
+        }
 
         /// <summary>
         /// <para>

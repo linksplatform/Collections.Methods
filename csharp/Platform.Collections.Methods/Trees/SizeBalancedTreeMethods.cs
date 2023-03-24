@@ -14,6 +14,14 @@ namespace Platform.Collections.Methods.Trees
     /// <seealso cref="SizedBinaryTreeMethodsBase{TElement}"/>
     public abstract class SizeBalancedTreeMethods<TElement> : SizedBinaryTreeMethodsBase<TElement> where TElement: IUnsignedNumber<TElement>, IComparisonOperators<TElement, TElement, bool>
     {
+        protected int attachCount = 0;
+        const int maintainThreashold = 1;
+
+        protected override void BeforeAttach()
+        {
+            attachCount++;
+        }
+
         /// <summary>
         /// <para>
         /// Attaches the core using the specified root.
@@ -54,6 +62,14 @@ namespace Platform.Collections.Methods.Trees
                         RightMaintain(ref root);
                     }
                 }
+            }
+        }
+
+        protected override void AfterAttach()
+        {
+            if (attachCount > maintainThreashold) 
+            {
+                attachCount = 0;
             }
         }
 
@@ -139,6 +155,7 @@ namespace Platform.Collections.Methods.Trees
             }
             ClearNode(nodeToDetach);
         }
+
         private void LeftMaintain(ref TElement root)
         {
             if (root != TElement.Zero)
@@ -170,11 +187,12 @@ namespace Platform.Collections.Methods.Trees
                     }
                     LeftMaintain(ref GetLeftReference(root));
                     RightMaintain(ref GetRightReference(root));
-                    LeftMaintain(ref root);
                     RightMaintain(ref root);
+                    LeftMaintain(ref root);
                 }
             }
         }
+
         private void RightMaintain(ref TElement root)
         {
             if (root != TElement.Zero)
@@ -206,8 +224,8 @@ namespace Platform.Collections.Methods.Trees
                     }
                     LeftMaintain(ref GetLeftReference(root));
                     RightMaintain(ref GetRightReference(root));
-                    LeftMaintain(ref root);
                     RightMaintain(ref root);
+                    LeftMaintain(ref root);
                 }
             }
         }
