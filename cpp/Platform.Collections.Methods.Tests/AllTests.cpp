@@ -1,5 +1,4 @@
-#include "pch.h"
-#include "CppUnitTest.h"
-using namespace Microsoft::VisualStudio::CppUnitTestFramework;
+#include <gtest/gtest.h>
+#include <Platform.Collections.Methods.h>
 #include "Trees.h"
 #include "TreesTests.cpp"

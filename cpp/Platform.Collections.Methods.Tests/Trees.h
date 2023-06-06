@@ -6,12 +6,13 @@
 bool iszero(void* ptr, int bytes)
 {
     char* bptr = (char*)ptr;
-    while (bytes--)
+    while (bytes)
     {
         if (*bptr++)
         {
             return false;
         }
+        bytes--;
     }
     return true;
 }

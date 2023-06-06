@@ -1,4 +1,6 @@
 [requires]
 platform.interfaces/0.2.5
+gtest/cci.20210126
+benchmark/1.6.0
 [generators]
 cmake

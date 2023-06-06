@@ -1,5 +1,18 @@
 ﻿namespace Platform::Collections::Methods::Tests
 {
+    class Assert
+    {
+    public:
+        template<typename T1, typename T2>
+        static void AreEqual(T1 a, T2 b)
+        {
+            if (a != b)
+            {
+                throw std::runtime_error("Values are not equal");
+            }
+        }
+    };
+    
     class TestExtensions
     {
         public: template <typename impl_t, typename TElement> static void TestMultipleCreationsAndDeletions(impl_t& tree, auto allocate, auto free, TElement* root, auto treeCount, std::int32_t maximumOperationsPerCycle)
