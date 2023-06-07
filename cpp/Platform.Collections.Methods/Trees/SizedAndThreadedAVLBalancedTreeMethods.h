@@ -66,7 +66,7 @@
                 auto pathPosition = 0;
                 path[pathPosition++] = 0;
 #else
-                TElement path[_maxPath]; path[0] = 0;
+                TElement path[_maxPath] = {0};
                 auto pathPosition = 1;
 #endif
                 auto currentNode = *root;
@@ -309,7 +309,7 @@
                 auto pathPosition = 0;
                 path[pathPosition++] = 0;
 #else
-                TElement path[_maxPath]; path[0] = 0;
+                TElement path[_maxPath] = {0};
                 auto pathPosition = 1;
 #endif
                 auto currentNode = *root;
