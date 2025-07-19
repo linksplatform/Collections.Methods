@@ -6,7 +6,7 @@
     <AssemblyTitle>Platform.Collections.Methods</AssemblyTitle>
     <VersionPrefix>0.7.3</VersionPrefix>
     <Authors>Konstantin Diachenko</Authors>
-    <TargetFramework>net7</TargetFramework>
+    <TargetFramework>net8</TargetFramework>
     <AssemblyName>Platform.Collections.Methods</AssemblyName>
     <PackageId>Platform.Collections.Methods</PackageId>
     <PackageTags>LinksPlatform;Collections.Methods;CircularDoublyLinkedListMethods;DoublyLinkedListMethodsBase;OpenDoublyLinkedListMethods;RecursionlessSizeBalancedTreeMethods;SizeBalancedTreeMethods;SizedAndThreadedAVLBalancedTreeMethods;SizedBinaryTreeMethodsBase;GenericCollectionMethodsBase</PackageTags>
@@ -23,7 +23,7 @@
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <LangVersion>latest</LangVersion>
-    <PackageReleaseNotes>Perfomance of size balanced trees is increased.</PackageReleaseNotes>
+    <PackageReleaseNotes>Target framework is updated to net8.</PackageReleaseNotes>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
