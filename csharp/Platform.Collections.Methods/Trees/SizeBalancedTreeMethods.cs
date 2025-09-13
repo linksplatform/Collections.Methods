@@ -11,6 +11,9 @@ namespace Platform.Collections.Methods.Trees
     /// </para>
     /// <para></para>
     /// </summary>
+    /// <remarks>
+    /// Based on: <a href="https://www.scribd.com/document/3072015/10-陈启峰-Size-Balanced-Tree">Size Balanced Tree by Chen Qifeng (陈启峰)</a>.
+    /// </remarks>
     /// <seealso cref="SizedBinaryTreeMethodsBase{TElement}"/>
     public abstract class SizeBalancedTreeMethods<TElement> : SizedBinaryTreeMethodsBase<TElement> where TElement: IUnsignedNumber<TElement>, IComparisonOperators<TElement, TElement, bool>
     {
