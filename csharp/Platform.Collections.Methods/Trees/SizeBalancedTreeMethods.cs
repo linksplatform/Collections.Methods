@@ -17,6 +17,12 @@ namespace Platform.Collections.Methods.Trees
         protected int attachCount = 0;
         const int maintainThreashold = 1;
 
+        /// <summary>
+        /// <para>
+        /// Executes actions before attaching a node to the tree.
+        /// </para>
+        /// <para></para>
+        /// </summary>
         protected override void BeforeAttach()
         {
             attachCount++;
@@ -65,6 +71,12 @@ namespace Platform.Collections.Methods.Trees
             }
         }
 
+        /// <summary>
+        /// <para>
+        /// Executes actions after attaching a node to the tree.
+        /// </para>
+        /// <para></para>
+        /// </summary>
         protected override void AfterAttach()
         {
             if (attachCount > maintainThreashold) 
@@ -156,6 +168,16 @@ namespace Platform.Collections.Methods.Trees
             ClearNode(nodeToDetach);
         }
 
+        /// <summary>
+        /// <para>
+        /// Maintains the balance of the left subtree to ensure size-balanced tree properties.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="root">
+        /// <para>The root.</para>
+        /// <para></para>
+        /// </param>
         private void LeftMaintain(ref TElement root)
         {
             if (root != TElement.Zero)
@@ -193,6 +215,16 @@ namespace Platform.Collections.Methods.Trees
             }
         }
 
+        /// <summary>
+        /// <para>
+        /// Maintains the balance of the right subtree to ensure size-balanced tree properties.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="root">
+        /// <para>The root.</para>
+        /// <para></para>
+        /// </param>
         private void RightMaintain(ref TElement root)
         {
             if (root != TElement.Zero)
