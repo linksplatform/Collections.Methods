@@ -17,7 +17,6 @@ namespace Platform.Collections.Methods.Trees
     /// </para>
     /// <para></para>
     /// </summary>
-    /// <seealso cref="GenericCollectionMethodsBase{TElement}"/>
     public abstract class SizedBinaryTreeMethodsBase<TElement>   where TElement: IUnsignedNumber<TElement>, IComparisonOperators<TElement, TElement, bool>
     {
         /// <summary>
