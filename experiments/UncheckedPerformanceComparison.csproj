@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <StartupObject>Platform.Collections.Methods.Performance.MultiRunBenchmark</StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Platform.Diagnostics" Version="0.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\csharp\Platform.Collections.Methods.Tests\Platform.Collections.Methods.Tests.csproj" />
+    <ProjectReference Include="..\csharp\Platform.Collections.Methods\Platform.Collections.Methods.csproj" />
+  </ItemGroup>
+
+
+</Project>

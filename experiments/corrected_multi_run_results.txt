@@ -1,0 +1,48 @@
+/home/hive/.nuget/packages/microsoft.build.tasks.git/1.1.1/build/Microsoft.Build.Tasks.Git.targets(25,5): warning : Could not find file '/tmp/gh-issue-solver-1757839256396/rust/.git'. The source code won't be available via Source Link. [/tmp/gh-issue-solver-1757839256396/csharp/Platform.Collections.Methods/Platform.Collections.Methods.csproj]
+/tmp/gh-issue-solver-1757839256396/experiments/SizedAndThreadedAVLBalancedTreeWithoutUnchecked.cs(29,16): warning CS8618: Non-nullable field 'Root' must contain a non-null value when exiting constructor. Consider declaring the field as nullable. [/tmp/gh-issue-solver-1757839256396/experiments/UncheckedPerformanceComparison.csproj]
+/tmp/gh-issue-solver-1757839256396/experiments/SizedAndThreadedAVLBalancedTreeMethodsWithoutUnchecked.cs(184,72): warning CS8603: Possible null reference return. [/tmp/gh-issue-solver-1757839256396/experiments/UncheckedPerformanceComparison.csproj]
+/tmp/gh-issue-solver-1757839256396/experiments/SizedAndThreadedAVLBalancedTreeMethodsWithoutUnchecked.cs(201,73): warning CS8603: Possible null reference return. [/tmp/gh-issue-solver-1757839256396/experiments/UncheckedPerformanceComparison.csproj]
+Multiple Run Performance Comparison: With vs Without unchecked blocks
+=====================================================================
+Testing with 1500 operations per test, 5 runs each.
+Warmup with 300 operations first.
+
+Warming up both implementations...
+Warmup completed. Starting performance tests...
+
+Test 1: Sequential operations
+------------------------------
+Run 1/5... WITH: 15468.0ms, WITHOUT: 11681.9ms
+Run 2/5... WITH: 9751.5ms, WITHOUT: 11537.3ms
+Run 3/5... WITH: 18079.3ms, WITHOUT: 15820.1ms
+Run 4/5... WITH: 20308.4ms, WITHOUT: 17010.8ms
+Run 5/5... WITH: 10098.4ms, WITHOUT: 10981.5ms
+
+Test 2: Random operations
+--------------------------
+Run 1/5... WITH: 1176.2ms, WITHOUT: 1234.3ms
+Run 2/5... WITH: 1069.0ms, WITHOUT: 1040.8ms
+Run 3/5... WITH: 1202.3ms, WITHOUT: 1326.9ms
+Run 4/5... WITH: 1211.4ms, WITHOUT: 1191.0ms
+Run 5/5... WITH: 1450.2ms, WITHOUT: 1186.2ms
+
+Results Summary
+===============
+
+Sequential Operations:
+  WITH unchecked:    14741.1 ± 4221.8 ms
+  WITHOUT unchecked: 13406.3 ± 2496.6 ms
+  Difference:        -1334.8 ms (-9.1%)
+
+Random Operations:
+  WITH unchecked:    1221.8 ± 125.0 ms
+  WITHOUT unchecked: 1195.8 ± 92.5 ms
+  Difference:        -26.0 ms (-2.1%)
+
+Analysis:
+--------
+WITHOUT unchecked blocks consistently performs better.
+This suggests JIT optimizations work better with bounds checking enabled.
+
+Recommendation:
+Consider removing unchecked blocks for performance benefit.
