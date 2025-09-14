@@ -1,0 +1,30 @@
+/home/hive/.nuget/packages/microsoft.build.tasks.git/1.1.1/build/Microsoft.Build.Tasks.Git.targets(25,5): warning : Could not find file '/tmp/gh-issue-solver-1757839256396/rust/.git'. The source code won't be available via Source Link. [/tmp/gh-issue-solver-1757839256396/csharp/Platform.Collections.Methods/Platform.Collections.Methods.csproj]
+/tmp/gh-issue-solver-1757839256396/experiments/SizedAndThreadedAVLBalancedTreeWithoutUnchecked.cs(29,16): warning CS8618: Non-nullable field 'Root' must contain a non-null value when exiting constructor. Consider declaring the field as nullable. [/tmp/gh-issue-solver-1757839256396/experiments/UncheckedPerformanceComparison.csproj]
+/tmp/gh-issue-solver-1757839256396/experiments/SizedAndThreadedAVLBalancedTreeMethodsWithoutUnchecked.cs(184,72): warning CS8603: Possible null reference return. [/tmp/gh-issue-solver-1757839256396/experiments/UncheckedPerformanceComparison.csproj]
+/tmp/gh-issue-solver-1757839256396/experiments/SizedAndThreadedAVLBalancedTreeMethodsWithoutUnchecked.cs(201,73): warning CS8603: Possible null reference return. [/tmp/gh-issue-solver-1757839256396/experiments/UncheckedPerformanceComparison.csproj]
+Performance Comparison: With vs Without unchecked blocks
+========================================================
+Testing with 2000 operations per test.
+Warmup with 500 operations first.
+
+Warming up WITH unchecked blocks...
+Warming up WITHOUT unchecked blocks...
+Warm up completed. Starting performance tests...
+
+Test 1: Sequential operations
+------------------------------
+WITH unchecked blocks:    21510.47 ms
+WITHOUT unchecked blocks: 24664.49 ms
+Difference: 3154.01 ms (14.7% slower)
+
+Test 2: Random operations
+--------------------------
+WITH unchecked blocks:    2666.72 ms
+WITHOUT unchecked blocks: 2746.35 ms
+Difference: 79.63 ms (3.0% slower)
+
+Summary
+=======
+Sequential operations: unchecked blocks are 14.7% slower
+Random operations:     unchecked blocks are 3.0% slower
+unchecked blocks provide measurable performance penalty (> 5% slower). This is unexpected and may indicate other factors.
