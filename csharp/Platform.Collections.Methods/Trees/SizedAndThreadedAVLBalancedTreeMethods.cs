@@ -428,6 +428,12 @@ namespace Platform.Collections.Methods.Trees
 #if USEARRAYPOOL
                 ArrayPool.Free(path);
 #endif
+#if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
+                ValidateTree(root);
+                Debug.WriteLine("--AfterAttach--");
+                Debug.WriteLine(PrintNodes(root));
+                Debug.WriteLine("----------------");
+#endif
             }
         }
         private TElement Balance(TElement node)
@@ -871,6 +877,12 @@ namespace Platform.Collections.Methods.Trees
 #if USEARRAYPOOL
                 ArrayPool.Free(path);
 #endif
+#if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
+                ValidateTree(root);
+                Debug.WriteLine("--AfterDetach--");
+                Debug.WriteLine(PrintNodes(root));
+                Debug.WriteLine("----------------");
+#endif
             }
         }
 
@@ -894,5 +906,112 @@ namespace Platform.Collections.Methods.Trees
             SetRightIsChild(node, false);
             SetBalance(node, 0);
         }
+
+#if ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
+        /// <summary>
+        /// <para>
+        /// Calculates the height of a tree node, following GLib's g_tree_node_height logic.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <returns>
+        /// <para>The height of the node.</para>
+        /// <para></para>
+        /// </returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected int GetNodeHeight(TElement node)
+        {
+            if (node == TElement.Zero)
+                return 0;
+
+            int leftHeight = 0;
+            int rightHeight = 0;
+
+            if (GetLeftIsChild(node))
+                leftHeight = GetNodeHeight(GetLeft(node));
+
+            if (GetRightIsChild(node))
+                rightHeight = GetNodeHeight(GetRight(node));
+
+            return Math.Max(leftHeight, rightHeight) + 1;
+        }
+
+        /// <summary>
+        /// <para>
+        /// Validates the AVL tree node structure, following GLib's g_tree_node_check logic.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="node">
+        /// <para>The node.</para>
+        /// <para></para>
+        /// </param>
+        /// <exception cref="InvalidOperationException">
+        /// <para>Thrown when tree structure validation fails.</para>
+        /// <para></para>
+        /// </exception>
+        public void ValidateNodeStructure(TElement node)
+        {
+            if (node == TElement.Zero)
+                return;
+
+            // Validate balance factor
+            int leftHeight = 0;
+            int rightHeight = 0;
+
+            if (GetLeftIsChild(node))
+                leftHeight = GetNodeHeight(GetLeft(node));
+
+            if (GetRightIsChild(node))
+                rightHeight = GetNodeHeight(GetRight(node));
+
+            int calculatedBalance = rightHeight - leftHeight;
+            int storedBalance = GetBalance(node);
+
+            if (calculatedBalance != storedBalance)
+            {
+                throw new InvalidOperationException($"Balance factor mismatch for node {node}. Expected: {calculatedBalance}, Actual: {storedBalance}");
+            }
+
+            // AVL property: balance factor must be -1, 0, or 1
+            if (Math.Abs(calculatedBalance) > 1)
+            {
+                throw new InvalidOperationException($"AVL balance violation for node {node}. Balance factor: {calculatedBalance}");
+            }
+
+            // Recursively validate left and right subtrees
+            if (GetLeftIsChild(node))
+                ValidateNodeStructure(GetLeft(node));
+
+            if (GetRightIsChild(node))
+                ValidateNodeStructure(GetRight(node));
+        }
+
+        /// <summary>
+        /// <para>
+        /// Validates the complete tree structure including sizes and AVL properties.
+        /// </para>
+        /// <para></para>
+        /// </summary>
+        /// <param name="root">
+        /// <para>The root node.</para>
+        /// <para></para>
+        /// </param>
+        public void ValidateTree(TElement root)
+        {
+            if (root == TElement.Zero)
+                return;
+
+            // Validate sizes (from base class)
+            ValidateSizes(root);
+
+            // Validate AVL structure
+            ValidateNodeStructure(root);
+        }
+#endif
     }
 }

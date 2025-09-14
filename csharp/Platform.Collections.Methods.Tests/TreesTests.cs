@@ -47,5 +47,38 @@ namespace Platform.Collections.Methods.Tests
             var avlTree = new SizedAndThreadedAVLBalancedTree<uint>(10000);
             avlTree.TestMultipleRandomCreationsAndDeletions(ref avlTree.Root, () => avlTree.Count, _n);
         }
+
+        [Fact]
+        public static void SizedAndThreadedAVLBalancedTreeValidationTest()
+        {
+            var avlTree = new SizedAndThreadedAVLBalancedTree<uint>(100);
+            
+            // Test basic attach operations with validation
+            for (uint i = 1; i <= 10; i++)
+            {
+                var node = avlTree.Allocate();
+                avlTree.Attach(ref avlTree.Root, node);
+                
+                // Validate tree structure after each insertion
+                // The validation will run automatically due to ENABLE_TREE_AUTO_DEBUG_AND_VALIDATION
+            }
+            
+            // Test detach operations with validation  
+            for (uint i = 1; i <= 5; i++)
+            {
+                avlTree.Detach(ref avlTree.Root, i);
+                
+                // Validation runs automatically after detach
+            }
+            
+            // Test remaining elements
+            for (uint i = 6; i <= 10; i++)
+            {
+                avlTree.Detach(ref avlTree.Root, i);
+            }
+            
+            // Tree should be empty
+            Assert.Equal(0U, avlTree.Count);
+        }
     }
 }
